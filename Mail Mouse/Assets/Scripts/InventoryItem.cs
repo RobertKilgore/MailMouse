@@ -2,10 +2,24 @@ using UnityEngine;
 
 public class InventoryItem : MonoBehaviour
 {
-    
-    [SerializeField] private int rotation;
-    
     public bool[,] shape;
+
+    public Vector2Int gridPosition;
+
+    [SerializeField] private int rotation = 0;
+
+    public RectTransform rectTransform;
+
+    private void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+
+        // TEMP TEST SHAPE (remove later when you build real items)
+        shape = new bool[1, 2]
+        {
+            { true, true },
+        };
+    }
 
     public void RotateClockwise()
     {
@@ -15,20 +29,24 @@ public class InventoryItem : MonoBehaviour
             rotation = 0;
 
         shape = RotateShape(shape);
+
+        // VISUAL ROTATION (THIS IS WHAT YOU WERE MISSING)
+        if (rectTransform != null)
+            rectTransform.rotation = Quaternion.Euler(0, 0, -rotation);
     }
 
     private bool[,] RotateShape(bool[,] original)
     {
-        int width = original.GetLength(0);
-        int height = original.GetLength(1);
+        int w = original.GetLength(0);
+        int h = original.GetLength(1);
 
-        bool[,] rotated = new bool[height, width];
+        bool[,] rotated = new bool[h, w];
 
-        for (int x = 0; x < width; x++)
+        for (int x = 0; x < w; x++)
         {
-            for (int y = 0; y < height; y++)
+            for (int y = 0; y < h; y++)
             {
-                rotated[y, width - 1 - x] = original[x, y];
+                rotated[y, w - 1 - x] = original[x, y];
             }
         }
 

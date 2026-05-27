@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryGrid : MonoBehaviour
 {
@@ -6,11 +7,51 @@ public class InventoryGrid : MonoBehaviour
     public int width = 8;
     public int height = 6;
 
+    public RectTransform gridRoot;
+
+    public InventoryTile[,] tiles;
+
     private InventoryItem[,] grid;
     
     private void Awake()
     {
         grid = new InventoryItem[width, height];
+
+        BuildTileMap();
+
+    }
+
+    private void BuildTileMap()
+    {
+        tiles = new InventoryTile[width, height];
+
+        int index = 0;
+
+        // IMPORTANT: GridLayoutGroup guarantees order of children
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                Transform child = gridRoot.GetChild(index);
+
+                InventoryTile tile = child.GetComponent<InventoryTile>();
+
+                if (tile == null)
+                    tile = child.gameObject.AddComponent<InventoryTile>();
+
+                tile.gridPosition = new Vector2Int(x, y);
+                tile.rect = child.GetComponent<RectTransform>();
+
+                tiles[x, y] = tile;
+
+                index++;
+            }
+        }
+    }
+
+    public Vector2 GetTilePosition(Vector2Int pos)
+    {
+        return tiles[pos.x, pos.y].rect.anchoredPosition;
     }
 
     public bool CanPlaceItem(Vector2Int position, InventoryItem item)

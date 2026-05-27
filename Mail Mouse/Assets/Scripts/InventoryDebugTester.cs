@@ -1,65 +1,86 @@
 using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InventoryDebugTester : MonoBehaviour
 {
     public InventoryGrid grid;
-
     public InventoryItem testItem;
+
+    public RectTransform gridRect;
 
     public Vector2Int testPosition;
 
     private void Update()
     {
+        // Press M → get mouse grid position
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            MoveToMousePosition();
+        }
+
+        // Press 1 → try place item
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             TryPlace();
         }
 
+        // Press 2 → remove item
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             grid.RemoveItem(testItem);
+            Debug.Log("Removed item");
         }
 
+        // Press R → rotate item
         if (Input.GetKeyDown(KeyCode.R))
         {
             testItem.RotateClockwise();
-        }
-
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            MoveToMousePosition();
+            Debug.Log("Rotated item");
         }
     }
 
     private void TryPlace()
     {
-        if (grid.PlaceItem(testPosition, testItem))
+        bool success = grid.PlaceItem(testPosition, testItem);
+
+        if (!success)
         {
-            Debug.Log("Placed item at " + testPosition);
+            Debug.Log("FAILED placement");
+            return;
         }
-        else
-        {
-            Debug.Log("FAILED to place item at " + testPosition);
-        }
+
+        Vector2 pos = grid.GetTilePosition(testPosition);
+
+        testItem.rectTransform.anchoredPosition = pos;
+
+        testItem.gameObject.SetActive(true);
     }
+
+
 
     private void MoveToMousePosition()
     {
-        Vector2 mouse = Input.mousePosition;
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.mousePosition;
 
-        Vector2 localPoint;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            grid.GetComponent<RectTransform>(),
-            mouse,
-            null,
-            out localPoint
-        );
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
 
-        int x = Mathf.FloorToInt(localPoint.x / 64f);
-        int y = Mathf.FloorToInt(-localPoint.y / 64f);
+        foreach (var result in results)
+        {
+            InventoryTile tile = result.gameObject.GetComponent<InventoryTile>();
 
-        testPosition = new Vector2Int(x, y);
+            if (tile != null)
+            {
+                testPosition = tile.gridPosition;
 
-        Debug.Log("Mouse grid position: " + testPosition);
+                Debug.Log("Mouse over tile: " + testPosition);
+                return;
+            }
+        }
+
+        Debug.Log("Mouse not over any tile");
     }
 }
