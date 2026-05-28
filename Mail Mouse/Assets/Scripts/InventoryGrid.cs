@@ -21,6 +21,26 @@ public class InventoryGrid : MonoBehaviour
 
     }
 
+    public void DebugPrintGrid()
+    {
+        Debug.Log("===== GRID STATE =====");
+
+        for (int y = 0; y < height; y++)
+        {
+            string row = "";
+
+            for (int x = 0; x < width; x++)
+            {
+                if (grid[x, y] == null)
+                    row += "[ ]";
+                else
+                    row += "[X]";
+            }
+
+            Debug.Log(row);
+        }
+    }
+
     private void BuildTileMap()
     {
         tiles = new InventoryTile[width, height];
@@ -102,11 +122,11 @@ public class InventoryGrid : MonoBehaviour
 
                 int gridX = position.x + x;
                 int gridY = position.y + y;
-
+                Debug.Log($"Filling slot {gridX}, {gridY}");
                 grid[gridX, gridY] = item;
             }
         }
-
+        DebugPrintGrid();
         return true;
     }
 
@@ -122,5 +142,6 @@ public class InventoryGrid : MonoBehaviour
                 }
             }
         }
+        DebugPrintGrid();
     }
 }

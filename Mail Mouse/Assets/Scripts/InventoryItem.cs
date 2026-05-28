@@ -15,10 +15,26 @@ public class InventoryItem : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
 
         // TEMP TEST SHAPE (remove later when you build real items)
-        shape = new bool[1, 2]
-        {
-            { true, true },
-        };
+            shape = new bool[2, 1]
+            {
+                { true },
+                { true }
+            };
+    }
+
+    public int GetWidth()
+    {
+        return shape.GetLength(0);
+    }
+
+    public int GetHeight()
+    {
+        return shape.GetLength(1);
+    }
+
+    public int GetRotation()
+    {
+        return rotation;
     }
 
     public void RotateClockwise()
@@ -29,6 +45,7 @@ public class InventoryItem : MonoBehaviour
             rotation = 0;
 
         shape = RotateShape(shape);
+        DebugPrintShape();
 
         // VISUAL ROTATION (THIS IS WHAT YOU WERE MISSING)
         if (rectTransform != null)
@@ -62,6 +79,28 @@ public class InventoryItem : MonoBehaviour
     public class ItemShape
     {
         public bool[,] cells;
+    }
+
+    public void DebugPrintShape()
+    {
+        Debug.Log("===== ITEM SHAPE =====");
+
+        int w = shape.GetLength(0);
+        int h = shape.GetLength(1);
+
+        for (int y = 0; y < h; y++)
+        {
+            string row = "";
+
+            for (int x = 0; x < w; x++)
+            {
+                row += shape[x, y] ? "[X]" : "[ ]";
+            }
+
+            Debug.Log(row);
+        }
+
+        Debug.Log($"Width: {w} Height: {h}");
     }
 
 }
