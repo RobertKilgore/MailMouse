@@ -15,10 +15,9 @@ public class InventoryItem : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
 
         // TEMP TEST SHAPE (remove later when you build real items)
-            shape = new bool[2, 1]
+            shape = new bool[1, 4]
             {
-                { true },
-                { true }
+                { true, true, true, true }
             };
     }
 

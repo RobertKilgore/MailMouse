@@ -51,13 +51,13 @@ public class InventoryDebugTester : MonoBehaviour
         // offset by half item size
         if(testItem.GetRotation() % 180 == 0) {
             offset = new Vector2(
-                testItem.rectTransform.rect.width * (.25f * (testItem.GetWidth() - 1)),
-                -testItem.rectTransform.rect.height * (.25f * (testItem.GetHeight() - 1))
+                testItem.rectTransform.rect.width * (.25f * 2),
+                -testItem.rectTransform.rect.height * (.25f * 0)
             );
         } else  {
             offset = new Vector2(
-                testItem.rectTransform.rect.height * (.25f * (testItem.GetWidth() - 1)),
-                -testItem.rectTransform.rect.width * (.25f * (testItem.GetHeight() - 1))
+                testItem.rectTransform.rect.height * (.25f * 2),
+                -testItem.rectTransform.rect.width * (.25f * 0)
             );
         }
 
