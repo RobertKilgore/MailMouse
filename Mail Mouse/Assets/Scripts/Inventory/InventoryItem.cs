@@ -46,7 +46,7 @@ public class InventoryItem : MonoBehaviour
 
     public void RotateClockwise()
     {
-        int oldWidth = shape.GetLength(0);
+        int oldHeight = shape.GetLength(1);
 
         rotation += 90;
 
@@ -55,12 +55,13 @@ public class InventoryItem : MonoBehaviour
 
         shape = RotateShape(shape);
 
-        anchor = RotateAnchor(anchor, oldWidth);
+        anchor = RotateAnchor(anchor, oldHeight);
 
         DebugPrintShape();
 
         if (rectTransform != null)
-            rectTransform.rotation = Quaternion.Euler(0, 0, -rotation);
+            rectTransform.rotation =
+                Quaternion.Euler(0, 0, -rotation);
     }
 
     private bool[,] RotateShape(bool[,] original)
@@ -74,18 +75,19 @@ public class InventoryItem : MonoBehaviour
         {
             for (int y = 0; y < h; y++)
             {
-                rotated[y, w - 1 - x] = original[x, y];
+                // CLOCKWISE ROTATION
+                rotated[h - 1 - y, x] = original[x, y];
             }
         }
 
         return rotated;
     }
 
-    private Vector2Int RotateAnchor(Vector2Int oldAnchor, int oldWidth)
+    private Vector2Int RotateAnchor(Vector2Int oldAnchor, int oldHeight)
     {
         return new Vector2Int(
-            oldAnchor.y,
-            oldWidth - 1 - oldAnchor.x
+            oldHeight - 1 - oldAnchor.y,
+            oldAnchor.x
         );
     }
 
