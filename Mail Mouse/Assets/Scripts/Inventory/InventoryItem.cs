@@ -6,6 +6,8 @@ public class InventoryItem : MonoBehaviour
 
     public Vector2Int gridPosition;
 
+    public Vector2Int anchor;
+
     [SerializeField] private int rotation = 0;
 
     public RectTransform rectTransform;
@@ -14,11 +16,17 @@ public class InventoryItem : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
 
-        // TEMP TEST SHAPE (remove later when you build real items)
-            shape = new bool[1, 4]
-            {
-                { true, true, true, true }
-            };
+        // TEMP TEST SHAPE
+        shape = new bool[3, 3]
+        {
+            { false, true, false},
+            {false, true, true},
+            {true, true, false}
+        };
+        
+
+        CalculateAnchor();
+        DebugPrintShape();
     }
 
     public int GetWidth()
@@ -38,15 +46,19 @@ public class InventoryItem : MonoBehaviour
 
     public void RotateClockwise()
     {
+        int oldWidth = shape.GetLength(0);
+
         rotation += 90;
 
         if (rotation >= 360)
             rotation = 0;
 
         shape = RotateShape(shape);
+
+        anchor = RotateAnchor(anchor, oldWidth);
+
         DebugPrintShape();
 
-        // VISUAL ROTATION (THIS IS WHAT YOU WERE MISSING)
         if (rectTransform != null)
             rectTransform.rotation = Quaternion.Euler(0, 0, -rotation);
     }
@@ -69,15 +81,56 @@ public class InventoryItem : MonoBehaviour
         return rotated;
     }
 
+    private Vector2Int RotateAnchor(Vector2Int oldAnchor, int oldWidth)
+    {
+        return new Vector2Int(
+            oldAnchor.y,
+            oldWidth - 1 - oldAnchor.x
+        );
+    }
+
+    private void CalculateAnchor()
+    {
+        int w = shape.GetLength(0);
+        int h = shape.GetLength(1);
+
+        Vector2 center = new Vector2(
+            (w - 1) / 2f,
+            (h - 1) / 2f
+        );
+
+        float bestDistance = float.MaxValue;
+
+        Vector2Int bestCell = Vector2Int.zero;
+
+        for (int x = 0; x < w; x++)
+        {
+            for (int y = 0; y < h; y++)
+            {
+                if (!shape[x, y])
+                    continue;
+
+                float dist = Vector2.Distance(
+                    new Vector2(x, y),
+                    center
+                );
+
+                if (dist < bestDistance)
+                {
+                    bestDistance = dist;
+                    bestCell = new Vector2Int(x, y);
+                }
+            }
+        }
+
+        anchor = bestCell;
+
+        Debug.Log($"Anchor: {anchor}");
+    }
+
     public bool[,] GetShape()
     {
         return shape;
-    }
-
-    [System.Serializable]
-    public class ItemShape
-    {
-        public bool[,] cells;
     }
 
     public void DebugPrintShape()
@@ -93,7 +146,10 @@ public class InventoryItem : MonoBehaviour
 
             for (int x = 0; x < w; x++)
             {
-                row += shape[x, y] ? "[X]" : "[ ]";
+                if (anchor.x == x && anchor.y == y)
+                    row += "[A]";
+                else
+                    row += shape[x, y] ? "[X]" : "[ ]";
             }
 
             Debug.Log(row);
@@ -101,5 +157,4 @@ public class InventoryItem : MonoBehaviour
 
         Debug.Log($"Width: {w} Height: {h}");
     }
-
 }

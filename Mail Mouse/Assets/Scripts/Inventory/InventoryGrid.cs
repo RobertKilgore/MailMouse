@@ -7,39 +7,31 @@ public class InventoryGrid : MonoBehaviour
     public int width = 8;
     public int height = 6;
 
+    public GridLayoutGroup gridLayout;
     public RectTransform gridRoot;
 
     public InventoryTile[,] tiles;
 
     private InventoryItem[,] grid;
-    
+
+    public Vector2 cellSize;
+
     private void Awake()
     {
         grid = new InventoryItem[width, height];
 
         BuildTileMap();
 
+        //cellSize = tiles[0,0].rect.rect.size;
     }
 
-    public void DebugPrintGrid()
+    private void Start()
     {
-        Debug.Log("===== GRID STATE =====");
-
-        for (int y = 0; y < height; y++)
-        {
-            string row = "";
-
-            for (int x = 0; x < width; x++)
-            {
-                if (grid[x, y] == null)
-                    row += "[ ]";
-                else
-                    row += "[X]";
-            }
-
-            Debug.Log(row);
-        }
+        cellSize = gridLayout.cellSize;
+        Debug.Log($"CELL SIZE: {cellSize}");
     }
+
+
 
     private void BuildTileMap()
     {
@@ -47,7 +39,6 @@ public class InventoryGrid : MonoBehaviour
 
         int index = 0;
 
-        // IMPORTANT: GridLayoutGroup guarantees order of children
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
@@ -69,11 +60,6 @@ public class InventoryGrid : MonoBehaviour
         }
     }
 
-    public Vector2 GetTilePosition(Vector2Int pos)
-    {
-        return tiles[pos.x, pos.y].rect.anchoredPosition;
-    }
-
     public bool CanPlaceItem(Vector2Int position, InventoryItem item)
     {
         bool[,] shape = item.shape;
@@ -88,8 +74,8 @@ public class InventoryGrid : MonoBehaviour
                 if (!shape[x, y])
                     continue;
 
-                int gridX = position.x + x;
-                int gridY = position.y + y;
+                int gridX = position.x + x - item.anchor.x;
+                int gridY = position.y + y - item.anchor.y;
 
                 if (gridX < 0 || gridY < 0 ||
                     gridX >= width || gridY >= height)
@@ -103,7 +89,7 @@ public class InventoryGrid : MonoBehaviour
         return true;
     }
 
-     public bool PlaceItem(Vector2Int position, InventoryItem item)
+    public bool PlaceItem(Vector2Int position, InventoryItem item)
     {
         if (!CanPlaceItem(position, item))
             return false;
@@ -120,13 +106,13 @@ public class InventoryGrid : MonoBehaviour
                 if (!shape[x, y])
                     continue;
 
-                int gridX = position.x + x;
-                int gridY = position.y + y;
-                Debug.Log($"Filling slot {gridX}, {gridY}");
+                int gridX = position.x + x - item.anchor.x;
+                int gridY = position.y + y - item.anchor.y;
+
                 grid[gridX, gridY] = item;
             }
         }
-        DebugPrintGrid();
+
         return true;
     }
 
@@ -142,6 +128,5 @@ public class InventoryGrid : MonoBehaviour
                 }
             }
         }
-        DebugPrintGrid();
     }
 }
