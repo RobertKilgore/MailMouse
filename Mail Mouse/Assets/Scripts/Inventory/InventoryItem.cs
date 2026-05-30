@@ -9,10 +9,8 @@ public class InventoryItem :
     IDragHandler,
     IEndDragHandler
 {
-    [Header("Mail Data")]
     [SerializeField] private MailData mailData;
 
-    [Header("Shape Definition")]
     [TextArea(3, 10)]
     [SerializeField] private string shapeDefinition = @"X";
 
@@ -224,6 +222,14 @@ public class InventoryItem :
     public void SetGridPosition(Vector2Int newPos)
     {
         gridPosition = newPos;
+    }
+
+    public void SetBackgroundVisible(bool visible)
+    {
+        if (backgroundRoot == null)
+            return;
+
+        backgroundRoot.gameObject.SetActive(visible);
     }
 
     public void OnPointerDown(PointerEventData eventData) { }

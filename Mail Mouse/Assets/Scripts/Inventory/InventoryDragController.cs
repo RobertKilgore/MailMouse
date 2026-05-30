@@ -21,11 +21,8 @@ public class InventoryDragController : MonoBehaviour
 
         HandleDragMovement();
         HandleRotationInput();
+        HandlePreview();
     }
-
-    // =====================================================
-    // DRAG START
-    // =====================================================
 
     public void BeginDrag(InventoryItem item)
     {
@@ -38,20 +35,13 @@ public class InventoryDragController : MonoBehaviour
         grid.RemoveItem(item);
 
         item.RectTransform.SetParent(itemLayer, true);
+        item.SetBackgroundVisible(false);
     }
-
-    // =====================================================
-    // DRAG MOVE
-    // =====================================================
 
     private void HandleDragMovement()
     {
         heldItem.RectTransform.position = Input.mousePosition;
     }
-
-    // =====================================================
-    // ROTATION INPUT
-    // =====================================================
 
     private void HandleRotationInput()
     {
@@ -61,13 +51,28 @@ public class InventoryDragController : MonoBehaviour
         }
     }
 
-    // =====================================================
-    // DROP
-    // =====================================================
+    // =========================
+    // PREVIEW (SAFE VERSION)
+    // =========================
+    private void HandlePreview()
+    {
+        InventoryTile hoveredTile = GetHoveredTile();
+
+        if (hoveredTile == null)
+        {
+            grid.ClearPreview();
+            return;
+        }
+
+        Vector2Int target = hoveredTile.gridPosition;
+        grid.ShowPreview(target, heldItem);
+    }
 
     public void EndDrag()
     {
         dragging = false;
+
+        grid.ClearPreview();
 
         if (heldItem == null)
             return;
@@ -92,12 +97,9 @@ public class InventoryDragController : MonoBehaviour
 
         SnapToGrid(target);
 
+        heldItem.SetBackgroundVisible(true);
         heldItem = null;
     }
-
-    // =====================================================
-    // HOVER DETECTION (SIMPLE SAFE VERSION)
-    // =====================================================
 
     private InventoryTile GetHoveredTile()
     {
@@ -119,31 +121,21 @@ public class InventoryDragController : MonoBehaviour
         return null;
     }
 
-    // =====================================================
-    // SNAP TO GRID
-    // =====================================================
-
     private void SnapToGrid(Vector2Int pos)
     {
         Vector2 finalPos =
-            grid.GetItemWorldPosition(
-                pos,
-                heldItem,
-                itemLayer
-            );
+            grid.GetItemWorldPosition(pos, heldItem, itemLayer);
 
         heldItem.RectTransform.localPosition = finalPos;
     }
-
-    // =====================================================
-    // RETURN ITEM
-    // =====================================================
 
     private void ReturnItem()
     {
         grid.PlaceItem(originalGridPos, heldItem);
 
         heldItem.RectTransform.localPosition = originalLocalPos;
+
+        heldItem.SetBackgroundVisible(true);
 
         heldItem = null;
     }

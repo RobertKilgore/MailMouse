@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class InventoryGrid : MonoBehaviour
 {
@@ -11,8 +12,17 @@ public class InventoryGrid : MonoBehaviour
     [SerializeField] private GridLayoutGroup gridLayout;
     [SerializeField] private RectTransform gridRoot;
 
+    [Header("Preview Layer")]
+    [SerializeField] private RectTransform previewLayer;
+
+    [Header("Preview Colors")]
+    [SerializeField] private Color validPreviewColor = new Color(0f, 1f, 0f, 0.35f);
+    [SerializeField] private Color invalidPreviewColor = new Color(1f, 0f, 0f, 0.35f);
+
     private InventoryTile[,] tiles;
     private InventoryItem[,] grid;
+
+    private readonly List<GameObject> previewObjects = new();
 
     public int Width => width;
     public int Height => height;
@@ -24,6 +34,10 @@ public class InventoryGrid : MonoBehaviour
         grid = new InventoryItem[width, height];
         BuildTileMap();
     }
+
+    // =====================================================
+    // TILE MAP
+    // =====================================================
 
     private void BuildTileMap()
     {
@@ -37,8 +51,7 @@ public class InventoryGrid : MonoBehaviour
             {
                 Transform child = gridRoot.GetChild(index);
 
-                InventoryTile tile =
-                    child.GetComponent<InventoryTile>();
+                InventoryTile tile = child.GetComponent<InventoryTile>();
 
                 if (tile == null)
                     tile = child.gameObject.AddComponent<InventoryTile>();
@@ -54,31 +67,188 @@ public class InventoryGrid : MonoBehaviour
     }
 
     // =====================================================
-    // REQUIRED FOR PREVIEW SYSTEM
+    // PREVIEW SYSTEM
     // =====================================================
-    public RectTransform GetTileRect(Vector2Int pos)
-    {
-        if (pos.x < 0 || pos.y < 0 || pos.x >= width || pos.y >= height)
-            return null;
 
-        return tiles[pos.x, pos.y].rect;
+    public void ShowPreview(Vector2Int origin, InventoryItem item)
+    {
+        ClearPreview();
+
+        Color previewColor =
+            CanPlaceItem(origin, item)
+                ? validPreviewColor
+                : invalidPreviewColor;
+
+        bool[,] previewMap = new bool[width, height];
+
+        // =========================
+        // CELLS
+        // =========================
+
+        for (int x = 0; x < item.Width; x++)
+        {
+            for (int y = 0; y < item.Height; y++)
+            {
+                if (!item.Shape[x, y])
+                    continue;
+
+                int gx = origin.x + x - item.Anchor.x;
+                int gy = origin.y + y - item.Anchor.y;
+
+                if (!IsValid(gx, gy))
+                    continue;
+
+                previewMap[gx, gy] = true;
+
+                CreateCellPreview(gx, gy, previewColor);
+            }
+        }
+
+        // =========================
+        // HORIZONTAL SPACING
+        // =========================
+
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width - 1; x++)
+            {
+                if (previewMap[x, y] && previewMap[x + 1, y])
+                {
+                    CreateSpacingPreview(
+                        tiles[x, y].rect,
+                        tiles[x + 1, y].rect,
+                        true,
+                        previewColor
+                    );
+                }
+            }
+        }
+
+        // =========================
+        // VERTICAL SPACING
+        // =========================
+
+        for (int y = 0; y < height - 1; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                if (previewMap[x, y] && previewMap[x, y + 1])
+                {
+                    CreateSpacingPreview(
+                        tiles[x, y].rect,
+                        tiles[x, y + 1].rect,
+                        false,
+                        previewColor
+                    );
+                }
+            }
+        }
+    }
+
+    private void CreateCellPreview(int x, int y, Color color)
+    {
+        RectTransform tile = tiles[x, y].rect;
+
+        GameObject go = new GameObject(
+            $"Preview_{x}_{y}",
+            typeof(RectTransform),
+            typeof(Image)
+        );
+
+        go.transform.SetParent(previewLayer, false);
+
+        RectTransform rt = go.GetComponent<RectTransform>();
+
+        rt.position = tile.position;
+        rt.sizeDelta = tile.sizeDelta;
+
+        go.GetComponent<Image>().color = color;
+
+        previewObjects.Add(go);
+    }
+
+    private void CreateSpacingPreview(
+        RectTransform first,
+        RectTransform second,
+        bool horizontal,
+        Color color)
+    {
+        GameObject go = new GameObject(
+            "PreviewSpacing",
+            typeof(RectTransform),
+            typeof(Image)
+        );
+
+        go.transform.SetParent(previewLayer, false);
+
+        RectTransform rt = go.GetComponent<RectTransform>();
+
+        Vector2 midpoint =
+            ((Vector2)first.position + (Vector2)second.position) * 0.5f;
+
+        rt.position = midpoint;
+
+        if (horizontal)
+        {
+            rt.sizeDelta = new Vector2(
+                Spacing.x,
+                CellSize.y
+            );
+        }
+        else
+        {
+            rt.sizeDelta = new Vector2(
+                CellSize.x,
+                Spacing.y
+            );
+        }
+
+        go.GetComponent<Image>().color = color;
+
+        previewObjects.Add(go);
+    }
+
+    public void ClearPreview()
+    {
+        foreach (GameObject obj in previewObjects)
+        {
+            if (obj != null)
+                Destroy(obj);
+        }
+
+        previewObjects.Clear();
+    }
+
+    // =====================================================
+    // GRID VALIDATION
+    // =====================================================
+
+    private bool IsValid(int x, int y)
+    {
+        return x >= 0 &&
+               y >= 0 &&
+               x < width &&
+               y < height;
     }
 
     public bool CanPlaceItem(Vector2Int position, InventoryItem item)
     {
         for (int x = 0; x < item.Width; x++)
-        for (int y = 0; y < item.Height; y++)
         {
-            if (!item.Shape[x, y]) continue;
+            for (int y = 0; y < item.Height; y++)
+            {
+                if (!item.Shape[x, y])
+                    continue;
 
-            int gx = position.x + x - item.Anchor.x;
-            int gy = position.y + y - item.Anchor.y;
+                int gx = position.x + x - item.Anchor.x;
+                int gy = position.y + y - item.Anchor.y;
 
-            if (gx < 0 || gy < 0 || gx >= width || gy >= height)
-                return false;
+                if (!IsValid(gx, gy))
+                    return false;
 
-            if (grid[gx, gy] != null)
-                return false;
+                if (grid[gx, gy] != null)
+                    return false;
+            }
         }
 
         return true;
@@ -92,31 +262,55 @@ public class InventoryGrid : MonoBehaviour
         RemoveItem(item);
 
         for (int x = 0; x < item.Width; x++)
-        for (int y = 0; y < item.Height; y++)
         {
-            if (!item.Shape[x, y]) continue;
+            for (int y = 0; y < item.Height; y++)
+            {
+                if (!item.Shape[x, y])
+                    continue;
 
-            int gx = position.x + x - item.Anchor.x;
-            int gy = position.y + y - item.Anchor.y;
+                int gx = position.x + x - item.Anchor.x;
+                int gy = position.y + y - item.Anchor.y;
 
-            grid[gx, gy] = item;
+                grid[gx, gy] = item;
+            }
         }
 
         item.SetGridPosition(position);
+
         return true;
     }
 
     public void RemoveItem(InventoryItem item)
     {
         for (int x = 0; x < width; x++)
-        for (int y = 0; y < height; y++)
-            if (grid[x, y] == item)
-                grid[x, y] = null;
+        {
+            for (int y = 0; y < height; y++)
+            {
+                if (grid[x, y] == item)
+                    grid[x, y] = null;
+            }
+        }
     }
 
-    public Vector2 GetItemWorldPosition(Vector2Int gridPosition, InventoryItem item, RectTransform itemLayer)
+    // =====================================================
+    // TILE ACCESS
+    // =====================================================
+
+    public RectTransform GetTileRect(Vector2Int pos)
     {
-        RectTransform tileRect = tiles[gridPosition.x, gridPosition.y].rect;
+        if (!IsValid(pos.x, pos.y))
+            return null;
+
+        return tiles[pos.x, pos.y].rect;
+    }
+
+    public Vector2 GetItemWorldPosition(
+        Vector2Int gridPosition,
+        InventoryItem item,
+        RectTransform itemLayer)
+    {
+        RectTransform tileRect =
+            tiles[gridPosition.x, gridPosition.y].rect;
 
         Vector2 local =
             itemLayer.InverseTransformPoint(tileRect.position);
@@ -135,9 +329,11 @@ public class InventoryGrid : MonoBehaviour
             new Vector2(item.Width, item.Height) * 0.5f;
 
         Vector2 anchorCenter =
-            new Vector2(item.Anchor.x + 0.5f, item.Anchor.y + 0.5f);
+            new Vector2(item.Anchor.x + 0.5f,
+                        item.Anchor.y + 0.5f);
 
-        Vector2 diff = itemCenter - anchorCenter;
+        Vector2 diff =
+            itemCenter - anchorCenter;
 
         return Vector2.Scale(diff, cell);
     }
