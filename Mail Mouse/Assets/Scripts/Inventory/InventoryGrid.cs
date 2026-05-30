@@ -322,19 +322,31 @@ public class InventoryGrid : MonoBehaviour
     }
 
     private Vector2 CalculateVisualOffset(InventoryItem item)
-    {
-        Vector2 cell = CellSize;
+{
+    Vector2 cell = CellSize;
+    Vector2 spacing = Spacing;
 
-        Vector2 itemCenter =
-            new Vector2(item.Width, item.Height) * 0.5f;
+    float stepX = cell.x + spacing.x;
+    float stepY = cell.y + spacing.y;
 
-        Vector2 anchorCenter =
-            new Vector2(item.Anchor.x + 0.5f,
-                        item.Anchor.y + 0.5f);
+    float totalWidth =
+        item.Width * cell.x +
+        (item.Width - 1) * spacing.x;
 
-        Vector2 diff =
-            itemCenter - anchorCenter;
+    float totalHeight =
+        item.Height * cell.y +
+        (item.Height - 1) * spacing.y;
 
-        return Vector2.Scale(diff, cell);
-    }
+    float anchorX =
+        -totalWidth * 0.5f +
+        item.Anchor.x * stepX +
+        cell.x * 0.5f;
+
+    float anchorY =
+         totalHeight * 0.5f -
+         item.Anchor.y * stepY -
+         cell.y * 0.5f;
+
+    return new Vector2(anchorX, anchorY);
+}
 }

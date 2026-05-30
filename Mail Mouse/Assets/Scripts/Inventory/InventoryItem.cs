@@ -259,8 +259,8 @@ public class InventoryItem :
 
         rectTransform.rotation = Quaternion.Euler(0, 0, -rotation);
 
-        UpdateRectSize();
-        BuildBackgroundVisual();
+        //UpdateRectSize();
+        //BuildBackgroundVisual();
     }
 
     private bool[,] RotateShape(bool[,] original)
@@ -302,5 +302,36 @@ public class InventoryItem :
         }
 
         anchor = bestCell;
+    }
+
+    [ContextMenu("Debug Shape")]
+    public void DebugShape()
+    {
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+        sb.AppendLine($"=== {name} ===");
+        sb.AppendLine($"Width: {Width}");
+        sb.AppendLine($"Height: {Height}");
+        sb.AppendLine($"Anchor: {Anchor}");
+        sb.AppendLine($"Rotation: {Rotation}");
+
+        for (int y = 0; y < Height; y++)
+        {
+            for (int x = 0; x < Width; x++)
+            {
+                if (Anchor.x == x && Anchor.y == y)
+                {
+                    sb.Append("A ");
+                }
+                else
+                {
+                    sb.Append(shape[x, y] ? "X " : ". ");
+                }
+            }
+
+            sb.AppendLine();
+        }
+
+        Debug.Log(sb.ToString());
     }
 }
