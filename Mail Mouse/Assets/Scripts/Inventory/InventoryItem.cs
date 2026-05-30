@@ -1,67 +1,147 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class InventoryItem : MonoBehaviour
+public class InventoryItem :
+    MonoBehaviour,
+    IPointerDownHandler,
+    IBeginDragHandler,
+    IDragHandler,
+    IEndDragHandler
 {
-    public bool[,] shape;
+    // =====================================================
+    // INSPECTOR DATA (DESIGNER-EDITABLE ONLY)
+    // =====================================================
 
-    public Vector2Int gridPosition;
+    [Header("Mail Data")]
+    [SerializeField] private MailData mailData;
 
-    public Vector2Int anchor;
+    [Header("Shape Definition")]
+    [TextArea(3, 10)]
+    [SerializeField] private string shapeDefinition = @"X";
 
-    [SerializeField] private int rotation = 0;
+    // =====================================================
+    // RUNTIME STATE (NOT EDITOR ACCESSIBLE)
+    // =====================================================
 
-    public RectTransform rectTransform;
+    private bool[,] shape;
+
+    private Vector2Int anchor;
+    private Vector2Int gridPosition;
+
+    private int rotation = 0;
+
+    private RectTransform rectTransform;
+    private InventoryDragController dragController;
+
+    // =====================================================
+    // PUBLIC READ-ONLY ACCESS (SAFE FOR OTHER SYSTEMS)
+    // =====================================================
+
+    public MailData MailData => mailData;
+
+    public Vector2Int GridPosition => gridPosition;
+
+    public int Rotation => rotation;
+
+    public RectTransform RectTransform => rectTransform;
+
+    public bool[,] Shape => shape;
+
+    public Vector2Int Anchor => anchor;
+
+    public int Width => shape.GetLength(0);
+
+    public int Height => shape.GetLength(1);
+
+    // =====================================================
+    // INITIALIZATION
+    // =====================================================
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+        dragController = FindFirstObjectByType<InventoryDragController>();
 
-        // TEMP TEST SHAPE
-        shape = new bool[3, 3]
-        {
-            { false, true, false},
-            {false, true, true},
-            {true, true, false}
-        };
-        
-
+        BuildShapeFromDefinition();
         CalculateAnchor();
+
         DebugPrintShape();
     }
 
-    public int GetWidth()
+    // =====================================================
+    // SHAPE PARSING
+    // =====================================================
+
+    private void BuildShapeFromDefinition()
     {
-        return shape.GetLength(0);
+        string[] rows =
+            shapeDefinition
+            .Replace("\r", "")
+            .Split('\n');
+
+        int height = rows.Length;
+        int width = rows[0].Length;
+
+        shape = new bool[width, height];
+
+        for (int y = 0; y < height; y++)
+        {
+            string row = rows[y];
+
+            for (int x = 0; x < width; x++)
+            {
+                shape[x, y] = row[x] == 'X';
+            }
+        }
     }
 
-    public int GetHeight()
+    // =====================================================
+    // GRID POSITION CONTROL (ONLY GRID CAN SET THIS)
+    // =====================================================
+
+    public void SetGridPosition(Vector2Int newPos)
     {
-        return shape.GetLength(1);
+        gridPosition = newPos;
     }
 
-    public int GetRotation()
+    // =====================================================
+    // DRAG EVENTS
+    // =====================================================
+
+    public void OnPointerDown(PointerEventData eventData)
     {
-        return rotation;
+        // optional debug
     }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        dragController.BeginDrag(this);
+    }
+
+    public void OnDrag(PointerEventData eventData) { }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        dragController.EndDrag();
+    }
+
+    // =====================================================
+    // ROTATION (CONTROLLED INTERNAL STATE)
+    // =====================================================
 
     public void RotateClockwise()
     {
         int oldHeight = shape.GetLength(1);
 
         rotation += 90;
-
         if (rotation >= 360)
             rotation = 0;
 
         shape = RotateShape(shape);
-
         anchor = RotateAnchor(anchor, oldHeight);
 
-        DebugPrintShape();
-
-        if (rectTransform != null)
-            rectTransform.rotation =
-                Quaternion.Euler(0, 0, -rotation);
+        rectTransform.rotation =
+            Quaternion.Euler(0, 0, -rotation);
     }
 
     private bool[,] RotateShape(bool[,] original)
@@ -75,7 +155,6 @@ public class InventoryItem : MonoBehaviour
         {
             for (int y = 0; y < h; y++)
             {
-                // CLOCKWISE ROTATION
                 rotated[h - 1 - y, x] = original[x, y];
             }
         }
@@ -91,18 +170,19 @@ public class InventoryItem : MonoBehaviour
         );
     }
 
+    // =====================================================
+    // ANCHOR CALCULATION (INTERNAL ONLY)
+    // =====================================================
+
     private void CalculateAnchor()
     {
         int w = shape.GetLength(0);
         int h = shape.GetLength(1);
 
-        Vector2 center = new Vector2(
-            (w - 1) / 2f,
-            (h - 1) / 2f
-        );
+        Vector2 center =
+            new Vector2((w - 1) / 2f, (h - 1) / 2f);
 
         float bestDistance = float.MaxValue;
-
         Vector2Int bestCell = Vector2Int.zero;
 
         for (int x = 0; x < w; x++)
@@ -126,16 +206,13 @@ public class InventoryItem : MonoBehaviour
         }
 
         anchor = bestCell;
-
-        Debug.Log($"Anchor: {anchor}");
     }
 
-    public bool[,] GetShape()
-    {
-        return shape;
-    }
+    // =====================================================
+    // DEBUG
+    // =====================================================
 
-    public void DebugPrintShape()
+    private void DebugPrintShape()
     {
         Debug.Log("===== ITEM SHAPE =====");
 
@@ -151,12 +228,19 @@ public class InventoryItem : MonoBehaviour
                 if (anchor.x == x && anchor.y == y)
                     row += "[A]";
                 else
-                    row += shape[x, y] ? "[X]" : "[ ]";
+                    row += shape[x, y] ? "[X]" : "[_]";
             }
 
             Debug.Log(row);
         }
 
-        Debug.Log($"Width: {w} Height: {h}");
+        Debug.Log($"Size: {w}x{h} | Rot: {rotation}");
     }
+
+    // =====================================================
+    // HELPER ACCESSORS (ONLY IF NEEDED)
+    // =====================================================
+
+    public string GetRecipient() => mailData?.recipient ?? "";
+    public string GetAddress() => mailData?.address ?? "";
 }
