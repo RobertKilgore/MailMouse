@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InventoryItem :
     MonoBehaviour,
@@ -8,10 +9,6 @@ public class InventoryItem :
     IDragHandler,
     IEndDragHandler
 {
-    // =====================================================
-    // INSPECTOR DATA (DESIGNER-EDITABLE ONLY)
-    // =====================================================
-
     [Header("Mail Data")]
     [SerializeField] private MailData mailData;
 
@@ -19,65 +16,69 @@ public class InventoryItem :
     [TextArea(3, 10)]
     [SerializeField] private string shapeDefinition = @"X";
 
-    // =====================================================
-    // RUNTIME STATE (NOT EDITOR ACCESSIBLE)
-    // =====================================================
+    [Header("Tile Visual")]
+    [SerializeField] private Color tileColor = new Color(1f, 1f, 1f, 0.35f);
 
     private bool[,] shape;
-
     private Vector2Int anchor;
     private Vector2Int gridPosition;
-
     private int rotation = 0;
 
     private RectTransform rectTransform;
     private InventoryDragController dragController;
+    private InventoryGrid grid;
 
-    // =====================================================
-    // PUBLIC READ-ONLY ACCESS (SAFE FOR OTHER SYSTEMS)
-    // =====================================================
+    private RectTransform backgroundRoot;
 
     public MailData MailData => mailData;
-
     public Vector2Int GridPosition => gridPosition;
-
     public int Rotation => rotation;
-
     public RectTransform RectTransform => rectTransform;
-
     public bool[,] Shape => shape;
-
     public Vector2Int Anchor => anchor;
 
     public int Width => shape.GetLength(0);
-
     public int Height => shape.GetLength(1);
-
-    // =====================================================
-    // INITIALIZATION
-    // =====================================================
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        dragController = FindFirstObjectByType<InventoryDragController>();
 
+        dragController = FindFirstObjectByType<InventoryDragController>();
+        grid = FindFirstObjectByType<InventoryGrid>();
+
+        AlignRoot();
         BuildShapeFromDefinition();
         CalculateAnchor();
-
-        DebugPrintShape();
+        UpdateRectSize();
+        BuildBackgroundVisual();
     }
 
-    // =====================================================
-    // SHAPE PARSING
-    // =====================================================
+    private void AlignRoot()
+    {
+        rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+        rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+        rectTransform.pivot = new Vector2(0.5f, 0.5f);
+    }
+
+    private void UpdateRectSize()
+    {
+        Vector2 cell = grid.CellSize;
+        Vector2 spacing = grid.Spacing;
+
+        int w = Width;
+        int h = Height;
+
+        float totalWidth = w * cell.x + (w - 1) * spacing.x;
+        float totalHeight = h * cell.y + (h - 1) * spacing.y;
+
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, totalWidth);
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, totalHeight);
+    }
 
     private void BuildShapeFromDefinition()
     {
-        string[] rows =
-            shapeDefinition
-            .Replace("\r", "")
-            .Split('\n');
+        string[] rows = shapeDefinition.Replace("\r", "").Split('\n');
 
         int height = rows.Length;
         int width = rows[0].Length;
@@ -86,32 +87,146 @@ public class InventoryItem :
 
         for (int y = 0; y < height; y++)
         {
-            string row = rows[y];
-
             for (int x = 0; x < width; x++)
             {
-                shape[x, y] = row[x] == 'X';
+                shape[x, y] = rows[y][x] == 'X';
             }
         }
     }
 
-    // =====================================================
-    // GRID POSITION CONTROL (ONLY GRID CAN SET THIS)
-    // =====================================================
+    private void BuildBackgroundVisual()
+    {
+        if (backgroundRoot != null)
+            Destroy(backgroundRoot.gameObject);
+
+        backgroundRoot = new GameObject("BackgroundRoot", typeof(RectTransform))
+            .GetComponent<RectTransform>();
+
+        backgroundRoot.SetParent(rectTransform, false);
+        backgroundRoot.anchorMin = Vector2.zero;
+        backgroundRoot.anchorMax = Vector2.one;
+        backgroundRoot.offsetMin = Vector2.zero;
+        backgroundRoot.offsetMax = Vector2.zero;
+
+        backgroundRoot.SetAsFirstSibling();
+
+        Vector2 cell = grid.CellSize;
+        Vector2 spacing = grid.Spacing;
+
+        int w = Width;
+        int h = Height;
+
+        float totalWidth = w * cell.x + (w - 1) * spacing.x;
+        float totalHeight = h * cell.y + (h - 1) * spacing.y;
+
+        float startX = -totalWidth * 0.5f;
+        float startY = totalHeight * 0.5f;
+
+        // =========================
+        // MAIN TILES
+        // =========================
+        for (int y = 0; y < h; y++)
+        {
+            for (int x = 0; x < w; x++)
+            {
+                if (!shape[x, y])
+                    continue;
+
+                CreateTile(x, y, startX, startY, cell, spacing);
+            }
+        }
+
+        // =========================
+        // SPACING ONLY BETWEEN FILLED CELLS
+        // =========================
+        BuildSpacingFill(startX, startY, cell, spacing, w, h);
+    }
+
+    private void CreateTile(
+        int x, int y,
+        float startX, float startY,
+        Vector2 cell,
+        Vector2 spacing)
+    {
+        GameObject tile = new GameObject($"Tile_{x}_{y}", typeof(RectTransform), typeof(Image));
+
+        RectTransform rt = tile.GetComponent<RectTransform>();
+        rt.SetParent(backgroundRoot, false);
+
+        rt.sizeDelta = cell;
+
+        rt.anchoredPosition = new Vector2(
+            startX + x * (cell.x + spacing.x) + cell.x * 0.5f,
+            startY - y * (cell.y + spacing.y) - cell.y * 0.5f
+        );
+
+        tile.GetComponent<Image>().color = tileColor;
+    }
+
+    // =========================
+    // FIXED SPACING LOGIC
+    // =========================
+    private void BuildSpacingFill(
+        float startX,
+        float startY,
+        Vector2 cell,
+        Vector2 spacing,
+        int w,
+        int h)
+    {
+        // horizontal spacing ONLY between two filled cells
+        for (int y = 0; y < h; y++)
+        {
+            for (int x = 0; x < w - 1; x++)
+            {
+                if (!shape[x, y] || !shape[x + 1, y])
+                    continue;
+
+                CreateSpacingTile(
+                    startX + x * (cell.x + spacing.x) + cell.x + spacing.x * 0.5f,
+                    startY - y * (cell.y + spacing.y) - cell.y * 0.5f,
+                    new Vector2(spacing.x, cell.y)
+                );
+            }
+        }
+
+        // vertical spacing ONLY between two filled cells
+        for (int y = 0; y < h - 1; y++)
+        {
+            for (int x = 0; x < w; x++)
+            {
+                if (!shape[x, y] || !shape[x, y + 1])
+                    continue;
+
+                CreateSpacingTile(
+                    startX + x * (cell.x + spacing.x) + cell.x * 0.5f,
+                    startY - y * (cell.y + spacing.y) - cell.y - spacing.y * 0.5f,
+                    new Vector2(cell.x, spacing.y)
+                );
+            }
+        }
+    }
+
+    private void CreateSpacingTile(float x, float y, Vector2 size)
+    {
+        GameObject tile = new GameObject("Spacing", typeof(RectTransform), typeof(Image));
+
+        RectTransform rt = tile.GetComponent<RectTransform>();
+        rt.SetParent(backgroundRoot, false);
+
+        rt.sizeDelta = size;
+        rt.anchoredPosition = new Vector2(x, y);
+
+        // SAME COLOR AS TILE (IMPORTANT CHANGE)
+        tile.GetComponent<Image>().color = tileColor;
+    }
 
     public void SetGridPosition(Vector2Int newPos)
     {
         gridPosition = newPos;
     }
 
-    // =====================================================
-    // DRAG EVENTS
-    // =====================================================
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        // optional debug
-    }
+    public void OnPointerDown(PointerEventData eventData) { }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -125,10 +240,6 @@ public class InventoryItem :
         dragController.EndDrag();
     }
 
-    // =====================================================
-    // ROTATION (CONTROLLED INTERNAL STATE)
-    // =====================================================
-
     public void RotateClockwise()
     {
         int oldHeight = shape.GetLength(1);
@@ -138,10 +249,12 @@ public class InventoryItem :
             rotation = 0;
 
         shape = RotateShape(shape);
-        anchor = RotateAnchor(anchor, oldHeight);
+        anchor = new Vector2Int(oldHeight - 1 - anchor.y, anchor.x);
 
-        rectTransform.rotation =
-            Quaternion.Euler(0, 0, -rotation);
+        rectTransform.rotation = Quaternion.Euler(0, 0, -rotation);
+
+        UpdateRectSize();
+        BuildBackgroundVisual();
     }
 
     private bool[,] RotateShape(bool[,] original)
@@ -152,95 +265,36 @@ public class InventoryItem :
         bool[,] rotated = new bool[h, w];
 
         for (int x = 0; x < w; x++)
-        {
             for (int y = 0; y < h; y++)
-            {
                 rotated[h - 1 - y, x] = original[x, y];
-            }
-        }
 
         return rotated;
     }
-
-    private Vector2Int RotateAnchor(Vector2Int oldAnchor, int oldHeight)
-    {
-        return new Vector2Int(
-            oldHeight - 1 - oldAnchor.y,
-            oldAnchor.x
-        );
-    }
-
-    // =====================================================
-    // ANCHOR CALCULATION (INTERNAL ONLY)
-    // =====================================================
 
     private void CalculateAnchor()
     {
         int w = shape.GetLength(0);
         int h = shape.GetLength(1);
 
-        Vector2 center =
-            new Vector2((w - 1) / 2f, (h - 1) / 2f);
+        Vector2 center = new Vector2((w - 1) / 2f, (h - 1) / 2f);
 
-        float bestDistance = float.MaxValue;
+        float best = float.MaxValue;
         Vector2Int bestCell = Vector2Int.zero;
 
         for (int x = 0; x < w; x++)
+        for (int y = 0; y < h; y++)
         {
-            for (int y = 0; y < h; y++)
+            if (!shape[x, y]) continue;
+
+            float d = Vector2.Distance(new Vector2(x, y), center);
+
+            if (d < best)
             {
-                if (!shape[x, y])
-                    continue;
-
-                float dist = Vector2.Distance(
-                    new Vector2(x, y),
-                    center
-                );
-
-                if (dist < bestDistance)
-                {
-                    bestDistance = dist;
-                    bestCell = new Vector2Int(x, y);
-                }
+                best = d;
+                bestCell = new Vector2Int(x, y);
             }
         }
 
         anchor = bestCell;
     }
-
-    // =====================================================
-    // DEBUG
-    // =====================================================
-
-    private void DebugPrintShape()
-    {
-        Debug.Log("===== ITEM SHAPE =====");
-
-        int w = shape.GetLength(0);
-        int h = shape.GetLength(1);
-
-        for (int y = 0; y < h; y++)
-        {
-            string row = "";
-
-            for (int x = 0; x < w; x++)
-            {
-                if (anchor.x == x && anchor.y == y)
-                    row += "[A]";
-                else
-                    row += shape[x, y] ? "[X]" : "[_]";
-            }
-
-            Debug.Log(row);
-        }
-
-        Debug.Log($"Size: {w}x{h} | Rot: {rotation}");
-    }
-
-    // =====================================================
-    // HELPER ACCESSORS (ONLY IF NEEDED)
-    // =====================================================
-
-    public string GetRecipient() => mailData?.recipient ?? "";
-    public string GetAddress() => mailData?.address ?? "";
 }

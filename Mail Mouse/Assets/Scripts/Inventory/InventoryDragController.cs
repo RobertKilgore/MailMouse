@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections.Generic;
 
 public class InventoryDragController : MonoBehaviour
 {
@@ -9,7 +8,6 @@ public class InventoryDragController : MonoBehaviour
     public RectTransform itemLayer;
 
     private InventoryItem heldItem;
-    private InventoryTile hoveredTile;
 
     private Vector2 originalLocalPos;
     private Vector2Int originalGridPos;
@@ -18,39 +16,11 @@ public class InventoryDragController : MonoBehaviour
 
     private void Update()
     {
-        HandleHover();
-
         if (!dragging || heldItem == null)
             return;
 
         HandleDragMovement();
         HandleRotationInput();
-    }
-
-    // =====================================================
-    // HOVER SYSTEM
-    // =====================================================
-
-    private void HandleHover()
-    {
-        PointerEventData eventData = new PointerEventData(EventSystem.current)
-        {
-            position = Input.mousePosition
-        };
-
-        List<RaycastResult> results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventData, results);
-
-        InventoryTile found = null;
-
-        foreach (var r in results)
-        {
-            found = r.gameObject.GetComponent<InventoryTile>();
-            if (found != null)
-                break;
-        }
-
-        hoveredTile = found;
     }
 
     // =====================================================
@@ -80,7 +50,7 @@ public class InventoryDragController : MonoBehaviour
     }
 
     // =====================================================
-    // ROTATION
+    // ROTATION INPUT
     // =====================================================
 
     private void HandleRotationInput()
@@ -101,6 +71,8 @@ public class InventoryDragController : MonoBehaviour
 
         if (heldItem == null)
             return;
+
+        InventoryTile hoveredTile = GetHoveredTile();
 
         if (hoveredTile == null)
         {
@@ -124,7 +96,31 @@ public class InventoryDragController : MonoBehaviour
     }
 
     // =====================================================
-    // SNAP
+    // HOVER DETECTION (SIMPLE SAFE VERSION)
+    // =====================================================
+
+    private InventoryTile GetHoveredTile()
+    {
+        PointerEventData eventData = new PointerEventData(EventSystem.current)
+        {
+            position = Input.mousePosition
+        };
+
+        var results = new System.Collections.Generic.List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+
+        foreach (var r in results)
+        {
+            InventoryTile tile = r.gameObject.GetComponent<InventoryTile>();
+            if (tile != null)
+                return tile;
+        }
+
+        return null;
+    }
+
+    // =====================================================
+    // SNAP TO GRID
     // =====================================================
 
     private void SnapToGrid(Vector2Int pos)
