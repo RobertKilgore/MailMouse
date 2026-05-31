@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000024796, y: 0.00000095367}
-  m_SizeDelta: {x: 107.9689, y: 108.7225}
+  m_AnchoredPosition: {x: 0.000015259, y: -0.0000038147}
+  m_SizeDelta: {x: 96.7789, y: 97.458}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1893932746932012881
 CanvasRenderer:
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -84,8 +84,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 146762010114939864}
-  - component: {fileID: 1282841733650522405}
-  - component: {fileID: 4914355760586325315}
   - component: {fileID: 2061139224687475083}
   m_Layer: 5
   m_Name: LShapePlus1 Package
@@ -114,44 +112,6 @@ RectTransform:
   m_AnchoredPosition: {x: 417.14194, y: 69.3}
   m_SizeDelta: {x: 122, y: 122}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1282841733650522405
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2294907003569113716}
-  m_CullTransparentMesh: 1
---- !u!114 &4914355760586325315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2294907003569113716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.033241354, g: 0.13669778, b: 0.7830189, a: 0.7529412}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &2061139224687475083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +124,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8a2160548b8724986da1651fab2198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryItem
-  gridPosition: {x: 0, y: 0}
-  anchor: {x: 0, y: 0}
-  rotation: 0
-  rectTransform: {fileID: 0}
+  mailData:
+    recipient: 
+    address: 
+  shapeDefinition: '__X
+
+    XXX
+
+    _X_'
+  tileColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 0.7019608}

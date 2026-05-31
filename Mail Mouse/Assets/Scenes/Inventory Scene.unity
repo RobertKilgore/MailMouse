@@ -142,32 +142,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 1x4 Package
       objectReference: {fileID: 0}
-    - target: {fileID: 4435333985960163064, guid: 71b225ac80517b0479317adcd8537037, type: 3}
-      propertyPath: tileColor.a
-      value: 0.7019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 4435333985960163064, guid: 71b225ac80517b0479317adcd8537037, type: 3}
-      propertyPath: tileColor.b
-      value: 0.34509805
-      objectReference: {fileID: 0}
-    - target: {fileID: 4435333985960163064, guid: 71b225ac80517b0479317adcd8537037, type: 3}
-      propertyPath: tileColor.g
-      value: 0.34509805
-      objectReference: {fileID: 0}
-    - target: {fileID: 4435333985960163064, guid: 71b225ac80517b0479317adcd8537037, type: 3}
-      propertyPath: tileColor.r
-      value: 0.34509805
-      objectReference: {fileID: 0}
-    - target: {fileID: 4435333985960163064, guid: 71b225ac80517b0479317adcd8537037, type: 3}
-      propertyPath: shapeDefinition
-      value: 'X
-
-        X
-
-        X
-
-        X'
-      objectReference: {fileID: 0}
     - target: {fileID: 8458960895131149960, guid: 71b225ac80517b0479317adcd8537037, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -248,9 +222,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3756151553489810885, guid: 71b225ac80517b0479317adcd8537037, type: 3}
-    - {fileID: 7899737053606409016, guid: 71b225ac80517b0479317adcd8537037, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -526,26 +498,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 791785803}
     m_Modifications:
-    - target: {fileID: 3459433522484800912, guid: a3cb1068807658d49a52d1da207f4149, type: 3}
-      propertyPath: tileColor.a
-      value: 0.7019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 3459433522484800912, guid: a3cb1068807658d49a52d1da207f4149, type: 3}
-      propertyPath: tileColor.b
-      value: 0.34509805
-      objectReference: {fileID: 0}
-    - target: {fileID: 3459433522484800912, guid: a3cb1068807658d49a52d1da207f4149, type: 3}
-      propertyPath: tileColor.g
-      value: 0.34509805
-      objectReference: {fileID: 0}
-    - target: {fileID: 3459433522484800912, guid: a3cb1068807658d49a52d1da207f4149, type: 3}
-      propertyPath: tileColor.r
-      value: 0.34509805
-      objectReference: {fileID: 0}
-    - target: {fileID: 3459433522484800912, guid: a3cb1068807658d49a52d1da207f4149, type: 3}
-      propertyPath: shapeDefinition
-      value: XX
-      objectReference: {fileID: 0}
     - target: {fileID: 7892607137899933299, guid: a3cb1068807658d49a52d1da207f4149, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -630,9 +582,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2x1 Mail
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7890044623082567010, guid: a3cb1068807658d49a52d1da207f4149, type: 3}
-    - {fileID: 2896531127403073203, guid: a3cb1068807658d49a52d1da207f4149, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1347,53 +1297,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 959664959160846514, guid: a8e68da77ee27ca49b78bf6ec9c4dc0f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 96.7789
-      objectReference: {fileID: 0}
-    - target: {fileID: 959664959160846514, guid: a8e68da77ee27ca49b78bf6ec9c4dc0f, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 97.458
-      objectReference: {fileID: 0}
-    - target: {fileID: 959664959160846514, guid: a8e68da77ee27ca49b78bf6ec9c4dc0f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.000015259
-      objectReference: {fileID: 0}
-    - target: {fileID: 959664959160846514, guid: a8e68da77ee27ca49b78bf6ec9c4dc0f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.0000038147
-      objectReference: {fileID: 0}
-    - target: {fileID: 2061139224687475083, guid: a8e68da77ee27ca49b78bf6ec9c4dc0f, type: 3}
-      propertyPath: tileColor.a
-      value: 0.7019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 2061139224687475083, guid: a8e68da77ee27ca49b78bf6ec9c4dc0f, type: 3}
-      propertyPath: tileColor.b
-      value: 0.34509805
-      objectReference: {fileID: 0}
-    - target: {fileID: 2061139224687475083, guid: a8e68da77ee27ca49b78bf6ec9c4dc0f, type: 3}
-      propertyPath: tileColor.g
-      value: 0.34509805
-      objectReference: {fileID: 0}
-    - target: {fileID: 2061139224687475083, guid: a8e68da77ee27ca49b78bf6ec9c4dc0f, type: 3}
-      propertyPath: tileColor.r
-      value: 0.34509805
-      objectReference: {fileID: 0}
-    - target: {fileID: 2061139224687475083, guid: a8e68da77ee27ca49b78bf6ec9c4dc0f, type: 3}
-      propertyPath: shapeDefinition
-      value: '__X
-
-        XXX
-
-        _X_'
-      objectReference: {fileID: 0}
     - target: {fileID: 2294907003569113716, guid: a8e68da77ee27ca49b78bf6ec9c4dc0f, type: 3}
       propertyPath: m_Name
       value: LShapePlus1 Package
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4914355760586325315, guid: a8e68da77ee27ca49b78bf6ec9c4dc0f, type: 3}
-    - {fileID: 1282841733650522405, guid: a8e68da77ee27ca49b78bf6ec9c4dc0f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

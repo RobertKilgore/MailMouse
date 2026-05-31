@@ -11,6 +11,7 @@ public class InventoryDragController : MonoBehaviour
 
     private Vector2 originalLocalPos;
     private Vector2Int originalGridPos;
+    private int originalRotation;
 
     private bool dragging;
 
@@ -29,8 +30,11 @@ public class InventoryDragController : MonoBehaviour
         heldItem = item;
         dragging = true;
 
+        item.transform.SetAsLastSibling();
+
         originalLocalPos = item.RectTransform.localPosition;
         originalGridPos = item.GridPosition;
+        originalRotation = item.Rotation;
 
         grid.RemoveItem(item);
 
@@ -131,6 +135,8 @@ public class InventoryDragController : MonoBehaviour
 
     private void ReturnItem()
     {
+        heldItem.RotateTo(originalRotation);
+
         grid.PlaceItem(originalGridPos, heldItem);
 
         heldItem.RectTransform.localPosition = originalLocalPos;

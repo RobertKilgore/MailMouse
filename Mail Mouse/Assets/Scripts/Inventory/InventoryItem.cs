@@ -246,6 +246,16 @@ public class InventoryItem :
         dragController.EndDrag();
     }
 
+    public void RotateTo(int targetRotation)
+    {
+        targetRotation %= 360;
+
+        while (rotation != targetRotation)
+        {
+            RotateClockwise();
+        }
+    }
+
     public void RotateClockwise()
     {
         int oldHeight = shape.GetLength(1);
