@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class InventoryDragController : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class InventoryDragController : MonoBehaviour
     private Vector2 originalLocalPos;
     private Vector2Int originalGridPos;
     private int originalRotation;
+
+    private InventoryInstance sourceInventory;
+    private InventoryInstance currentInventory;
 
     private bool dragging;
 
@@ -30,15 +34,18 @@ public class InventoryDragController : MonoBehaviour
         heldItem = item;
         dragging = true;
 
+        sourceInventory = item.OwnerInventory;
+        currentInventory = sourceInventory;
+
         item.transform.SetAsLastSibling();
 
         originalLocalPos = item.RectTransform.localPosition;
         originalGridPos = item.GridPosition;
         originalRotation = item.Rotation;
 
-        grid.RemoveItem(item);
+        sourceInventory.grid.RemoveItem(item);
 
-        item.RectTransform.SetParent(itemLayer, true);
+        item.RectTransform.SetParent(item.OwnerInventory.itemLayer, true);
         item.SetBackgroundVisible(false);
     }
 
@@ -55,28 +62,28 @@ public class InventoryDragController : MonoBehaviour
         }
     }
 
-    // =========================
-    // PREVIEW (SAFE VERSION)
-    // =========================
     private void HandlePreview()
     {
         InventoryTile hoveredTile = GetHoveredTile();
 
         if (hoveredTile == null)
         {
-            grid.ClearPreview();
+            currentInventory.grid.ClearPreview();
             return;
         }
 
         Vector2Int target = hoveredTile.gridPosition;
-        grid.ShowPreview(target, heldItem);
+
+        currentInventory = sourceInventory;
+
+        currentInventory.grid.ShowPreview(target, heldItem);
     }
 
     public void EndDrag()
     {
         dragging = false;
 
-        grid.ClearPreview();
+        currentInventory.grid.ClearPreview();
 
         if (heldItem == null)
             return;
@@ -91,7 +98,7 @@ public class InventoryDragController : MonoBehaviour
 
         Vector2Int target = hoveredTile.gridPosition;
 
-        bool success = grid.PlaceItem(target, heldItem);
+        bool success = currentInventory.grid.PlaceItem(target, heldItem);
 
         if (!success)
         {
@@ -112,7 +119,7 @@ public class InventoryDragController : MonoBehaviour
             position = Input.mousePosition
         };
 
-        var results = new System.Collections.Generic.List<RaycastResult>();
+        var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
 
         foreach (var r in results)
@@ -137,7 +144,7 @@ public class InventoryDragController : MonoBehaviour
     {
         heldItem.RotateTo(originalRotation);
 
-        grid.PlaceItem(originalGridPos, heldItem);
+        sourceInventory.grid.PlaceItem(originalGridPos, heldItem);
 
         heldItem.RectTransform.localPosition = originalLocalPos;
 

@@ -24,6 +24,10 @@ public class InventoryGrid : MonoBehaviour
 
     private readonly List<GameObject> previewObjects = new();
 
+    // NEW: owning instance reference
+    [Header("Instance")]
+    public InventoryInstance owner;
+
     public int Width => width;
     public int Height => height;
     public Vector2 CellSize => gridLayout.cellSize;
@@ -35,9 +39,9 @@ public class InventoryGrid : MonoBehaviour
         BuildTileMap();
     }
 
-    // =====================================================
+    // =========================
     // TILE MAP
-    // =====================================================
+    // =========================
 
     private void BuildTileMap()
     {
@@ -66,9 +70,9 @@ public class InventoryGrid : MonoBehaviour
         }
     }
 
-    // =====================================================
+    // =========================
     // PREVIEW SYSTEM
-    // =====================================================
+    // =========================
 
     public void ShowPreview(Vector2Int origin, InventoryItem item)
     {
@@ -81,66 +85,47 @@ public class InventoryGrid : MonoBehaviour
 
         bool[,] previewMap = new bool[width, height];
 
-        // =========================
-        // CELLS
-        // =========================
-
         for (int x = 0; x < item.Width; x++)
+        for (int y = 0; y < item.Height; y++)
         {
-            for (int y = 0; y < item.Height; y++)
-            {
-                if (!item.Shape[x, y])
-                    continue;
+            if (!item.Shape[x, y]) continue;
 
-                int gx = origin.x + x - item.Anchor.x;
-                int gy = origin.y + y - item.Anchor.y;
+            int gx = origin.x + x - item.Anchor.x;
+            int gy = origin.y + y - item.Anchor.y;
 
-                if (!IsValid(gx, gy))
-                    continue;
+            if (!IsValid(gx, gy))
+                continue;
 
-                previewMap[gx, gy] = true;
+            previewMap[gx, gy] = true;
 
-                CreateCellPreview(gx, gy, previewColor);
-            }
+            CreateCellPreview(gx, gy, previewColor);
         }
-
-        // =========================
-        // HORIZONTAL SPACING
-        // =========================
 
         for (int y = 0; y < height; y++)
+        for (int x = 0; x < width - 1; x++)
         {
-            for (int x = 0; x < width - 1; x++)
+            if (previewMap[x, y] && previewMap[x + 1, y])
             {
-                if (previewMap[x, y] && previewMap[x + 1, y])
-                {
-                    CreateSpacingPreview(
-                        tiles[x, y].rect,
-                        tiles[x + 1, y].rect,
-                        true,
-                        previewColor
-                    );
-                }
+                CreateSpacingPreview(
+                    tiles[x, y].rect,
+                    tiles[x + 1, y].rect,
+                    true,
+                    previewColor
+                );
             }
         }
 
-        // =========================
-        // VERTICAL SPACING
-        // =========================
-
         for (int y = 0; y < height - 1; y++)
+        for (int x = 0; x < width; x++)
         {
-            for (int x = 0; x < width; x++)
+            if (previewMap[x, y] && previewMap[x, y + 1])
             {
-                if (previewMap[x, y] && previewMap[x, y + 1])
-                {
-                    CreateSpacingPreview(
-                        tiles[x, y].rect,
-                        tiles[x, y + 1].rect,
-                        false,
-                        previewColor
-                    );
-                }
+                CreateSpacingPreview(
+                    tiles[x, y].rect,
+                    tiles[x, y + 1].rect,
+                    false,
+                    previewColor
+                );
             }
         }
     }
@@ -190,17 +175,11 @@ public class InventoryGrid : MonoBehaviour
 
         if (horizontal)
         {
-            rt.sizeDelta = new Vector2(
-                Spacing.x,
-                CellSize.y
-            );
+            rt.sizeDelta = new Vector2(Spacing.x, CellSize.y);
         }
         else
         {
-            rt.sizeDelta = new Vector2(
-                CellSize.x,
-                Spacing.y
-            );
+            rt.sizeDelta = new Vector2(CellSize.x, Spacing.y);
         }
 
         go.GetComponent<Image>().color = color;
@@ -211,44 +190,36 @@ public class InventoryGrid : MonoBehaviour
     public void ClearPreview()
     {
         foreach (GameObject obj in previewObjects)
-        {
             if (obj != null)
                 Destroy(obj);
-        }
 
         previewObjects.Clear();
     }
 
-    // =====================================================
-    // GRID VALIDATION
-    // =====================================================
+    // =========================
+    // GRID LOGIC
+    // =========================
 
     private bool IsValid(int x, int y)
     {
-        return x >= 0 &&
-               y >= 0 &&
-               x < width &&
-               y < height;
+        return x >= 0 && y >= 0 && x < width && y < height;
     }
 
     public bool CanPlaceItem(Vector2Int position, InventoryItem item)
     {
         for (int x = 0; x < item.Width; x++)
+        for (int y = 0; y < item.Height; y++)
         {
-            for (int y = 0; y < item.Height; y++)
-            {
-                if (!item.Shape[x, y])
-                    continue;
+            if (!item.Shape[x, y]) continue;
 
-                int gx = position.x + x - item.Anchor.x;
-                int gy = position.y + y - item.Anchor.y;
+            int gx = position.x + x - item.Anchor.x;
+            int gy = position.y + y - item.Anchor.y;
 
-                if (!IsValid(gx, gy))
-                    return false;
+            if (!IsValid(gx, gy))
+                return false;
 
-                if (grid[gx, gy] != null)
-                    return false;
-            }
+            if (grid[gx, gy] != null)
+                return false;
         }
 
         return true;
@@ -262,17 +233,14 @@ public class InventoryGrid : MonoBehaviour
         RemoveItem(item);
 
         for (int x = 0; x < item.Width; x++)
+        for (int y = 0; y < item.Height; y++)
         {
-            for (int y = 0; y < item.Height; y++)
-            {
-                if (!item.Shape[x, y])
-                    continue;
+            if (!item.Shape[x, y]) continue;
 
-                int gx = position.x + x - item.Anchor.x;
-                int gy = position.y + y - item.Anchor.y;
+            int gx = position.x + x - item.Anchor.x;
+            int gy = position.y + y - item.Anchor.y;
 
-                grid[gx, gy] = item;
-            }
+            grid[gx, gy] = item;
         }
 
         item.SetGridPosition(position);
@@ -283,18 +251,14 @@ public class InventoryGrid : MonoBehaviour
     public void RemoveItem(InventoryItem item)
     {
         for (int x = 0; x < width; x++)
-        {
-            for (int y = 0; y < height; y++)
-            {
-                if (grid[x, y] == item)
-                    grid[x, y] = null;
-            }
-        }
+        for (int y = 0; y < height; y++)
+            if (grid[x, y] == item)
+                grid[x, y] = null;
     }
 
-    // =====================================================
+    // =========================
     // TILE ACCESS
-    // =====================================================
+    // =========================
 
     public RectTransform GetTileRect(Vector2Int pos)
     {
@@ -322,31 +286,31 @@ public class InventoryGrid : MonoBehaviour
     }
 
     private Vector2 CalculateVisualOffset(InventoryItem item)
-{
-    Vector2 cell = CellSize;
-    Vector2 spacing = Spacing;
+    {
+        Vector2 cell = CellSize;
+        Vector2 spacing = Spacing;
 
-    float stepX = cell.x + spacing.x;
-    float stepY = cell.y + spacing.y;
+        float stepX = cell.x + spacing.x;
+        float stepY = cell.y + spacing.y;
 
-    float totalWidth =
-        item.Width * cell.x +
-        (item.Width - 1) * spacing.x;
+        float totalWidth =
+            item.Width * cell.x +
+            (item.Width - 1) * spacing.x;
 
-    float totalHeight =
-        item.Height * cell.y +
-        (item.Height - 1) * spacing.y;
+        float totalHeight =
+            item.Height * cell.y +
+            (item.Height - 1) * spacing.y;
 
-    float anchorX =
-        -totalWidth * 0.5f +
-        item.Anchor.x * stepX +
-        cell.x * 0.5f;
+        float anchorX =
+            -totalWidth * 0.5f +
+            item.Anchor.x * stepX +
+            cell.x * 0.5f;
 
-    float anchorY =
-         totalHeight * 0.5f -
-         item.Anchor.y * stepY -
-         cell.y * 0.5f;
+        float anchorY =
+            totalHeight * 0.5f -
+            item.Anchor.y * stepY -
+            cell.y * 0.5f;
 
-    return new Vector2(anchorX, anchorY);
-}
+        return new Vector2(anchorX, anchorY);
+    }
 }

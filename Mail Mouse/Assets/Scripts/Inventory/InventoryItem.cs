@@ -24,7 +24,9 @@ public class InventoryItem :
 
     private RectTransform rectTransform;
     private InventoryDragController dragController;
-    private InventoryGrid grid;
+
+    // NEW: owning inventory instance
+    private InventoryInstance ownerInventory;
 
     private RectTransform backgroundRoot;
 
@@ -38,12 +40,16 @@ public class InventoryItem :
     public int Width => shape.GetLength(0);
     public int Height => shape.GetLength(1);
 
+    public InventoryInstance OwnerInventory => ownerInventory;
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
 
         dragController = FindFirstObjectByType<InventoryDragController>();
-        grid = FindFirstObjectByType<InventoryGrid>();
+
+        // NEW: assign owner inventory from hierarchy
+        ownerInventory = GetComponentInParent<InventoryInstance>();
 
         AlignRoot();
         BuildShapeFromDefinition();
@@ -61,8 +67,8 @@ public class InventoryItem :
 
     private void UpdateRectSize()
     {
-        Vector2 cell = grid.CellSize;
-        Vector2 spacing = grid.Spacing;
+        Vector2 cell = ownerInventory.grid.CellSize;
+        Vector2 spacing = ownerInventory.grid.Spacing;
 
         int w = Width;
         int h = Height;
@@ -108,8 +114,8 @@ public class InventoryItem :
 
         backgroundRoot.SetAsFirstSibling();
 
-        Vector2 cell = grid.CellSize;
-        Vector2 spacing = grid.Spacing;
+        Vector2 cell = ownerInventory.grid.CellSize;
+        Vector2 spacing = ownerInventory.grid.Spacing;
 
         int w = Width;
         int h = Height;
@@ -120,9 +126,6 @@ public class InventoryItem :
         float startX = -totalWidth * 0.5f;
         float startY = totalHeight * 0.5f;
 
-        // =========================
-        // MAIN TILES
-        // =========================
         for (int y = 0; y < h; y++)
         {
             for (int x = 0; x < w; x++)
@@ -134,9 +137,6 @@ public class InventoryItem :
             }
         }
 
-        // =========================
-        // SPACING ONLY BETWEEN FILLED CELLS
-        // =========================
         BuildSpacingFill(startX, startY, cell, spacing, w, h);
     }
 
@@ -161,9 +161,6 @@ public class InventoryItem :
         tile.GetComponent<Image>().color = tileColor;
     }
 
-    // =========================
-    // FIXED SPACING LOGIC
-    // =========================
     private void BuildSpacingFill(
         float startX,
         float startY,
@@ -172,7 +169,6 @@ public class InventoryItem :
         int w,
         int h)
     {
-        // horizontal spacing ONLY between two filled cells
         for (int y = 0; y < h; y++)
         {
             for (int x = 0; x < w - 1; x++)
@@ -188,7 +184,6 @@ public class InventoryItem :
             }
         }
 
-        // vertical spacing ONLY between two filled cells
         for (int y = 0; y < h - 1; y++)
         {
             for (int x = 0; x < w; x++)
@@ -215,7 +210,6 @@ public class InventoryItem :
         rt.sizeDelta = size;
         rt.anchoredPosition = new Vector2(x, y);
 
-        // SAME COLOR AS TILE (IMPORTANT CHANGE)
         tile.GetComponent<Image>().color = tileColor;
     }
 
@@ -256,6 +250,7 @@ public class InventoryItem :
         }
     }
 
+
     public void RotateClockwise()
     {
         int oldHeight = shape.GetLength(1);
@@ -268,9 +263,6 @@ public class InventoryItem :
         anchor = new Vector2Int(oldHeight - 1 - anchor.y, anchor.x);
 
         rectTransform.rotation = Quaternion.Euler(0, 0, -rotation);
-
-        //UpdateRectSize();
-        //BuildBackgroundVisual();
     }
 
     private bool[,] RotateShape(bool[,] original)
@@ -298,21 +290,27 @@ public class InventoryItem :
         Vector2Int bestCell = Vector2Int.zero;
 
         for (int x = 0; x < w; x++)
-        for (int y = 0; y < h; y++)
         {
-            if (!shape[x, y]) continue;
-
-            float d = Vector2.Distance(new Vector2(x, y), center);
-
-            if (d < best)
+            for (int y = 0; y < h; y++)
             {
-                best = d;
-                bestCell = new Vector2Int(x, y);
+                if (!shape[x, y]) continue;
+
+                float d = Vector2.Distance(new Vector2(x, y), center);
+
+                if (d < best)
+                {
+                    best = d;
+                    bestCell = new Vector2Int(x, y);
+                }
             }
         }
 
         anchor = bestCell;
     }
+
+    // =========================
+    // DEBUG (PRESERVED)
+    // =========================
 
     [ContextMenu("Debug Shape")]
     public void DebugShape()
@@ -330,15 +328,10 @@ public class InventoryItem :
             for (int x = 0; x < Width; x++)
             {
                 if (Anchor.x == x && Anchor.y == y)
-                {
                     sb.Append("A ");
-                }
                 else
-                {
                     sb.Append(shape[x, y] ? "X " : ". ");
-                }
             }
-
             sb.AppendLine();
         }
 
