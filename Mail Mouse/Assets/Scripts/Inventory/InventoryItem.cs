@@ -10,7 +10,7 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     [SerializeField] private string shapeDefinition = "X";
 
     [Header("Tile Visual")]
-    [SerializeField] private Color tileColor = new Color(1f, 1f, 1f, 0.35f);
+    [SerializeField] private Color tileColor = new Color32(88, 88, 88, 179);
 
     private bool[,] shape;
     private Vector2Int anchor;

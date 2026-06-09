@@ -16,8 +16,10 @@ public class InventoryGrid : MonoBehaviour
     [SerializeField] private RectTransform previewLayer;
 
     [Header("Preview Colors")]
-    [SerializeField] private Color validPreviewColor = new Color(0f, 1f, 0f, 0.35f);
-    [SerializeField] private Color invalidPreviewColor = new Color(1f, 0f, 0f, 0.35f);
+    [SerializeField] private Color validPreviewColor = new Color32(0, 255, 0, 89);
+    [SerializeField] private Color invalidPreviewColor = new Color32(255, 0, 0, 89);
+
+
 
     [Header("Instance")]
     [SerializeField] private InventoryInstance owner;
