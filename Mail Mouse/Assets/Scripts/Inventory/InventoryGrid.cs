@@ -1,32 +1,46 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Text;
 
+/// <summary>
+/// Manages the inventory grid, tile mapping, previews, and placement logic.
+/// Each InventoryGrid belongs to a single InventoryInstance.
+/// </summary>
 public class InventoryGrid : MonoBehaviour
 {
     [Header("Grid Size (Authoritative Source)")]
-    [SerializeField] private int width = 8;
-    [SerializeField] private int height = 6;
+    [SerializeField]
+    private int width = 8; // Number of tiles horizontally.
+
+    [SerializeField]
+    private int height = 6; // Number of tiles vertically.
 
     [Header("References")]
-    [SerializeField] private GridLayoutGroup gridLayout;
-    [SerializeField] private RectTransform gridRoot;
+    [SerializeField]
+    private GridLayoutGroup gridLayout; // Optional reference to the layout for cell sizing.
+
+    [SerializeField]
+    private RectTransform gridRoot; // Transform containing all tile UI elements.
 
     [Header("Preview Layer")]
-    [SerializeField] private RectTransform previewLayer;
+    [SerializeField]
+    private RectTransform previewLayer; // Parent for preview objects when dragging.
 
     [Header("Preview Colors")]
-    [SerializeField] private Color validPreviewColor = new Color32(0, 255, 0, 89);
-    [SerializeField] private Color invalidPreviewColor = new Color32(255, 0, 0, 89);
+    [SerializeField]
+    private Color validPreviewColor = new Color32(0, 255, 0, 89); // Color used when item placement is valid.
 
-
+    [SerializeField]
+    private Color invalidPreviewColor = new Color32(255, 0, 0, 89); // Color used when placement is invalid.
 
     [Header("Instance")]
-    [SerializeField] private InventoryInstance owner;
+    [SerializeField]
+    private InventoryInstance owner; // Owning inventory instance.
 
-    private InventoryTile[,] tiles;
-    private InventoryItem[,] occupancy;
-    private readonly List<GameObject> previewObjects = new();
+    private InventoryTile[,] tiles; // Tile metadata for each grid coordinate.
+    private InventoryItem[,] occupancy; // Tracks which item occupies each grid cell.
+    private readonly List<GameObject> previewObjects = new(); // Runtime preview objects.
 
     public int Width => width;
     public int Height => height;
@@ -34,8 +48,13 @@ public class InventoryGrid : MonoBehaviour
     public Vector2 Spacing => gridLayout.spacing;
     public InventoryInstance Owner => owner;
 
+    /// <summary>
+    /// Editor-time auto-wire for common references when the component is reset.
+    /// This helps reduce manual setup in the inspector.
+    /// </summary>
     private void Reset()
     {
+        // Editor reset path: auto-wire references if possible.
         if (gridLayout == null)
             gridLayout = GetComponent<GridLayoutGroup>();
 
@@ -49,8 +68,13 @@ public class InventoryGrid : MonoBehaviour
             owner.SetGrid(this);
     }
 
+    /// <summary>
+    /// Runtime initialization for the inventory grid.
+    /// Ensures references are valid and builds the tile lookup table.
+    /// </summary>
     private void Awake()
     {
+        // Runtime initialization and fallback wiring.
         if (gridLayout == null)
             gridLayout = GetComponent<GridLayoutGroup>();
 
@@ -70,8 +94,12 @@ public class InventoryGrid : MonoBehaviour
         BuildTileMap();
     }
 
+    /// <summary>
+    /// Editor validation hook that keeps references synchronized when values change.
+    /// </summary>
     private void OnValidate()
     {
+        // Keep references consistent while editing in the Unity inspector.
         if (gridLayout == null)
             gridLayout = GetComponent<GridLayoutGroup>();
 
@@ -85,30 +113,111 @@ public class InventoryGrid : MonoBehaviour
             owner.SetGrid(this);
     }
 
+    /// <summary>
+    /// Prints a debug summary of the current grid occupancy to the console.
+    /// Includes a line-by-line grid map and anchor positions for placed items.
+    /// </summary>
     [ContextMenu("Debug Grid State")]
     public void DebugGridState()
     {
-        int occupiedCount = 0;
-        if (occupancy != null)
+        if (occupancy == null)
         {
-            for (int x = 0; x < width; x++)
-                for (int y = 0; y < height; y++)
-                    if (occupancy[x, y] != null)
-                        occupiedCount++;
+            Debug.Log($"InventoryGrid '{owner?.InventoryId ?? name}' has no occupancy data.", this);
+            return;
         }
 
-        Debug.Log($"InventoryGrid '{owner?.InventoryId ?? name}' {width}x{height} occupied={occupiedCount}", this);
+        int occupiedCount = 0;
+        HashSet<InventoryItem> itemSet = new HashSet<InventoryItem>();
+
+        for (int x = 0; x < width; x++)
+        for (int y = 0; y < height; y++)
+        {
+            InventoryItem item = occupancy[x, y];
+            if (item != null)
+            {
+                occupiedCount++;
+                itemSet.Add(item);
+            }
+        }
+
+        string header = $"InventoryGrid '{owner?.InventoryId ?? name}' {width}x{height} occupied={occupiedCount}";
+        string gridText = BuildDebugGridText();
+        string itemText = BuildItemAnchorText(itemSet);
+
+        Debug.Log(header + "\n" + gridText + itemText, this);
     }
 
+    private string BuildDebugGridText()
+    {
+        var lineBuilder = new System.Text.StringBuilder();
+        lineBuilder.AppendLine("Grid:");
+
+        for (int y = 0; y < height; y++)
+        {
+            lineBuilder.Append("[");
+            for (int x = 0; x < width; x++)
+            {
+                InventoryItem item = occupancy[x, y];
+                char symbol = item == null ? '.' : (item.GridPosition == new Vector2Int(x, y) ? 'A' : 'X');
+                lineBuilder.Append('[').Append(symbol).Append(']');
+
+                if (x < width - 1)
+                    lineBuilder.Append(' ');
+            }
+            lineBuilder.AppendLine("]");
+        }
+
+        return lineBuilder.ToString();
+    }
+
+    private string BuildItemAnchorText(HashSet<InventoryItem> itemSet)
+    {
+        if (itemSet.Count == 0)
+            return "No items placed.\n";
+
+        var itemBuilder = new System.Text.StringBuilder();
+        itemBuilder.AppendLine("Placed Items:");
+
+        foreach (InventoryItem item in itemSet)
+        {
+            itemBuilder.AppendLine($" - {item.name} at {item.GridPosition} anchor={item.Anchor}");
+        }
+
+        return itemBuilder.ToString();
+    }
+
+    /// <summary>
+    /// Assigns the owning InventoryInstance, allowing the grid to resolve UI layers.
+    /// </summary>
     public void SetOwner(InventoryInstance inventory)
     {
         owner = inventory;
     }
 
+    /// <summary>
+    /// Logs a hover event for the given tile when global hover debug is enabled.
+    /// </summary>
+    public void LogHoverTile(InventoryTile tile)
+    {
+        if (tile == null || tile.Grid == null || tile.Grid.Owner == null)
+            return;
+
+        InventoryDragController controller = InventoryDragController.Instance;
+        if (controller == null || !controller.DebugHover)
+            return;
+
+        InventoryInstance inv = tile.Grid.Owner;
+        Debug.Log($"Hover tile {tile.gridPosition} on inventory '{inv.name}' id='{inv.InventoryId}' frame={Time.frameCount}", tile);
+    }
+
+    /// <summary>
+    /// Creates the internal lookup table for every grid cell by scanning child tiles.
+    /// Each tile receives a grid coordinate and a cached RectTransform.
+    /// </summary>
     private void BuildTileMap()
     {
+        // Build the 2D tile array from the child objects in the grid root.
         tiles = new InventoryTile[width, height];
-
         int index = 0;
 
         for (int y = 0; y < height; y++)
@@ -128,10 +237,14 @@ public class InventoryGrid : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Renders a placement preview for the dragged item at the target origin.
+    /// Uses valid/invalid colors depending on whether the item can be placed.
+    /// </summary>
     public void ShowPreview(Vector2Int origin, InventoryItem item)
     {
+        // Display a preview of where the item will land at the hovered grid position.
         ClearPreview();
-
         Color previewColor = CanPlaceItem(origin, item) ? validPreviewColor : invalidPreviewColor;
         bool[,] previewMap = new bool[width, height];
 
@@ -151,6 +264,7 @@ public class InventoryGrid : MonoBehaviour
             CreateCellPreview(gx, gy, previewColor);
         }
 
+        // Add spacing previews between adjacent preview cells for a connected appearance.
         for (int y = 0; y < height; y++)
         for (int x = 0; x < width - 1; x++)
             if (previewMap[x, y] && previewMap[x + 1, y])
@@ -162,20 +276,26 @@ public class InventoryGrid : MonoBehaviour
                 CreateSpacingPreview(tiles[x, y].rect, tiles[x, y + 1].rect, false, previewColor);
     }
 
+    /// <summary>
+    /// Creates a preview tile image at the specified grid coordinate.
+    /// </summary>
     private void CreateCellPreview(int x, int y, Color color)
     {
-        RectTransform tile = tiles[x, y].rect;
         GameObject go = new GameObject($"Preview_{x}_{y}", typeof(RectTransform), typeof(Image));
         go.transform.SetParent(previewLayer, false);
 
         RectTransform rt = go.GetComponent<RectTransform>();
-        rt.position = tile.position;
-        rt.sizeDelta = tile.sizeDelta;
+        rt.position = tiles[x, y].rect.position;
+        rt.sizeDelta = tiles[x, y].rect.sizeDelta;
 
         go.GetComponent<Image>().color = color;
         previewObjects.Add(go);
     }
 
+    /// <summary>
+    /// Creates a visual preview spacer between adjacent preview tiles.
+    /// This smooths the preview representation for multi-cell items.
+    /// </summary>
     private void CreateSpacingPreview(RectTransform first, RectTransform second, bool horizontal, Color color)
     {
         GameObject go = new GameObject("PreviewSpacing", typeof(RectTransform), typeof(Image));
@@ -190,6 +310,9 @@ public class InventoryGrid : MonoBehaviour
         previewObjects.Add(go);
     }
 
+    /// <summary>
+    /// Removes all preview visualization objects from the preview layer.
+    /// </summary>
     public void ClearPreview()
     {
         foreach (GameObject obj in previewObjects)
@@ -199,11 +322,18 @@ public class InventoryGrid : MonoBehaviour
         previewObjects.Clear();
     }
 
+    /// <summary>
+    /// Checks whether a coordinate is within the bounds of the grid.
+    /// </summary>
     private bool IsValid(int x, int y)
     {
         return x >= 0 && y >= 0 && x < width && y < height;
     }
 
+    /// <summary>
+    /// Determines whether the item can be placed at the target grid position.
+    /// Validates bounds and absence of existing occupancy.
+    /// </summary>
     public bool CanPlaceItem(Vector2Int position, InventoryItem item)
     {
         for (int x = 0; x < item.Width; x++)
@@ -222,6 +352,10 @@ public class InventoryGrid : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// Attempts to place the item in the grid and updates occupancy if successful.
+    /// Removes any previous occupancy that belonged to the same item first.
+    /// </summary>
     public bool PlaceItem(Vector2Int position, InventoryItem item)
     {
         if (!CanPlaceItem(position, item))
@@ -245,6 +379,10 @@ public class InventoryGrid : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// Clears any occupancy entries for the specified item.
+    /// This is used before re-placing the item elsewhere.
+    /// </summary>
     public void RemoveItem(InventoryItem item)
     {
         for (int x = 0; x < width; x++)
@@ -253,6 +391,9 @@ public class InventoryGrid : MonoBehaviour
                 occupancy[x, y] = null;
     }
 
+    /// <summary>
+    /// Returns the RectTransform of the tile at the given grid position.
+    /// </summary>
     public RectTransform GetTileRect(Vector2Int pos)
     {
         if (!IsValid(pos.x, pos.y))
@@ -261,6 +402,9 @@ public class InventoryGrid : MonoBehaviour
         return tiles[pos.x, pos.y].rect;
     }
 
+    /// <summary>
+    /// Computes the local position for an item based on the anchor cell and the tile position.
+    /// </summary>
     public Vector2 GetItemWorldPosition(Vector2Int gridPosition, InventoryItem item, RectTransform itemLayer)
     {
         RectTransform tileRect = tiles[gridPosition.x, gridPosition.y].rect;
@@ -269,6 +413,10 @@ public class InventoryGrid : MonoBehaviour
         return local - offset;
     }
 
+    /// <summary>
+    /// Calculates the pixel offset needed to align the item visuals to the grid tile.
+    /// Uses the item anchor and the cell spacing to determine the correct origin.
+    /// </summary>
     private Vector2 CalculateVisualOffset(InventoryItem item)
     {
         Vector2 cell = CellSize;

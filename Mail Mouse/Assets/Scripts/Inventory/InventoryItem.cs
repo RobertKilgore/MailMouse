@@ -4,13 +4,16 @@ using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [SerializeField] private MailData mailData;
+    [SerializeField]
+    private MailData mailData;
 
     [TextArea(3, 10)]
-    [SerializeField] private string shapeDefinition = "X";
+    [SerializeField]
+    private string shapeDefinition = "X"; // ASCII-art shape definition using X for filled tiles.
 
     [Header("Tile Visual")]
-    [SerializeField] private Color tileColor = new Color32(88, 88, 88, 179);
+    [SerializeField]
+    private Color tileColor = new Color32(88, 88, 88, 179);
 
     private bool[,] shape;
     private Vector2Int anchor;
@@ -31,6 +34,9 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     public int Height => shape.GetLength(1);
     public InventoryInstance OwnerInventory => ownerInventory;
 
+    /// <summary>
+    /// Initializes runtime references, parses item shape data, and builds the visual representation.
+    /// </summary>
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -53,12 +59,18 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         BuildBackgroundVisual();
     }
 
+    /// <summary>
+    /// Editor-time validation to ensure the RectTransform and owner reference remain current.
+    /// </summary>
     private void OnValidate()
     {
         rectTransform = GetComponent<RectTransform>();
         ownerInventory ??= GetComponentInParent<InventoryInstance>();
     }
 
+    /// <summary>
+    /// Ensures the item rect transform is centered for consistent placement calculations.
+    /// </summary>
     private void AlignRoot()
     {
         rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
@@ -66,6 +78,9 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         rectTransform.pivot = new Vector2(0.5f, 0.5f);
     }
 
+    /// <summary>
+    /// Resizes the item UI to fit the defined tile shape and spacing.
+    /// </summary>
     private void UpdateRectSize()
     {
         Vector2 cell = ownerInventory.Grid.CellSize;
@@ -78,6 +93,10 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, totalHeight);
     }
 
+    /// <summary>
+    /// Parses the ASCII-art shape definition into a boolean occupancy map.
+    /// 'X' characters are treated as filled tiles.
+    /// </summary>
     private void BuildShapeFromDefinition()
     {
         string[] rows = shapeDefinition.Replace("\r", "").Split('\n');
@@ -95,6 +114,10 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         }
     }
 
+    /// <summary>
+    /// Builds the item background grid that visually represents its shape.
+    /// Individual tiles are created for each filled cell in the shape map.
+    /// </summary>
     private void BuildBackgroundVisual()
     {
         if (backgroundRoot != null)
@@ -130,6 +153,9 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         BuildSpacingFill(startX, startY, cell, spacing, Width, Height);
     }
 
+    /// <summary>
+    /// Creates a single filled tile visual for the item's background.
+    /// </summary>
     private void CreateTile(int x, int y, float startX, float startY, Vector2 cell, Vector2 spacing)
     {
         GameObject tile = new GameObject($"Tile_{x}_{y}", typeof(RectTransform), typeof(Image));
@@ -143,6 +169,9 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         tile.GetComponent<Image>().color = tileColor;
     }
 
+    /// <summary>
+    /// Adds spacing tiles between adjacent shape cells to visually connect them.
+    /// </summary>
     private void BuildSpacingFill(float startX, float startY, Vector2 cell, Vector2 spacing, int w, int h)
     {
         for (int y = 0; y < h; y++)
@@ -176,6 +205,9 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         }
     }
 
+    /// <summary>
+    /// Creates an invisible spacing tile used to bridge adjacent filled cells.
+    /// </summary>
     private void CreateSpacingTile(float x, float y, Vector2 size)
     {
         GameObject tile = new GameObject("Spacing", typeof(RectTransform), typeof(Image));
@@ -186,16 +218,25 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         tile.GetComponent<Image>().color = tileColor;
     }
 
+    /// <summary>
+    /// Stores the item's current grid coordinate.
+    /// </summary>
     public void SetGridPosition(Vector2Int newPos)
     {
         gridPosition = newPos;
     }
 
+    /// <summary>
+    /// Updates the current owning inventory instance reference.
+    /// </summary>
     public void SetOwnerInventory(InventoryInstance inventory)
     {
         ownerInventory = inventory;
     }
 
+    /// <summary>
+    /// Toggles the background visual for this item.
+    /// </summary>
     public void SetBackgroundVisible(bool visible)
     {
         if (backgroundRoot == null)
@@ -204,20 +245,37 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         backgroundRoot.gameObject.SetActive(visible);
     }
 
+    /// <summary>
+    /// Required interface implementation for pointer down.
+    /// Left empty because only drag behavior is needed.
+    /// </summary>
     public void OnPointerDown(PointerEventData eventData) { }
 
+    /// <summary>
+    /// Notifies the drag controller that this item has started being dragged.
+    /// </summary>
     public void OnBeginDrag(PointerEventData eventData)
     {
         dragController?.BeginDrag(this);
     }
 
+    /// <summary>
+    /// Required interface implementation for drag events.
+    /// No action needed because movement is handled globally.
+    /// </summary>
     public void OnDrag(PointerEventData eventData) { }
 
+    /// <summary>
+    /// Notifies the drag controller that the drag has ended.
+    /// </summary>
     public void OnEndDrag(PointerEventData eventData)
     {
         dragController?.EndDrag();
     }
 
+    /// <summary>
+    /// Rotates the item to the target orientation by repeatedly applying clockwise rotation.
+    /// </summary>
     public void RotateTo(int targetRotation)
     {
         targetRotation %= 360;
@@ -225,6 +283,9 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
             RotateClockwise();
     }
 
+    /// <summary>
+    /// Rotates the item shape and anchor clockwise by 90 degrees.
+    /// </summary>
     public void RotateClockwise()
     {
         int oldHeight = shape.GetLength(1);
@@ -234,6 +295,9 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         rectTransform.rotation = Quaternion.Euler(0, 0, -rotation);
     }
 
+    /// <summary>
+    /// Returns a 90-degree clockwise rotated boolean shape array.
+    /// </summary>
     private bool[,] RotateShape(bool[,] original)
     {
         int w = original.GetLength(0);
@@ -247,6 +311,10 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         return rotated;
     }
 
+    /// <summary>
+    /// Picks the best anchor tile for the item by choosing the filled cell closest to center.
+    /// This determines how the item aligns to grid cells during placement.
+    /// </summary>
     private void CalculateAnchor()
     {
         int w = shape.GetLength(0);
@@ -271,6 +339,9 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         anchor = bestCell;
     }
 
+    /// <summary>
+    /// Prints the item's current placement state and owner for debugging.
+    /// </summary>
     [ContextMenu("Debug Item State")]
     public void DebugItemState()
     {

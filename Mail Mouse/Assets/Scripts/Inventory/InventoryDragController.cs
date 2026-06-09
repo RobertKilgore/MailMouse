@@ -2,24 +2,37 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
+/// <summary>
+/// Handles drag-and-drop interaction for inventory items across inventory grids.
+/// Keeps a single shared controller for the scene and manages preview display.
+/// </summary>
 public class InventoryDragController : MonoBehaviour
 {
     public static InventoryDragController Instance { get; private set; }
 
     [Header("Drag Layer")]
-    [SerializeField] private RectTransform dragLayer;
+    [SerializeField]
+    private RectTransform dragLayer; // The layer used to hold the item while dragging.
 
     [Header("Debug")]
-    [SerializeField] private bool debugLogs = true;
+    [SerializeField]
+    private bool debugLogs = true; // Toggle for runtime debug messages.
 
-    private InventoryItem heldItem;
-    private Vector2 originalLocalPos;
-    private Vector2Int originalGridPos;
-    private int originalRotation;
-    private InventoryInstance sourceInventory;
-    private InventoryGrid currentPreviewGrid;
-    private bool dragging;
+    [SerializeField]
+    private bool debugHover = false; // Toggle for hover logging on all inventory tiles.
 
+    private InventoryItem heldItem; // Currently dragged item.
+    private Vector2 originalLocalPos; // Local position before drag.
+    private Vector2Int originalGridPos; // Original grid cell before drag.
+    private int originalRotation; // Original rotation before drag.
+    private InventoryInstance sourceInventory; // Inventory item came from.
+    private InventoryGrid currentPreviewGrid; // Currently active preview grid.
+    private bool dragging; // Whether a drag is active.
+
+    /// <summary>
+    /// Initialize the singleton and prepare the drag layer.
+    /// This makes sure only one controller is active in the scene.
+    /// </summary>
     private void Awake()
     {
         if (Instance == null)
@@ -32,6 +45,10 @@ public class InventoryDragController : MonoBehaviour
         Debug.LogWarning($"Multiple {nameof(InventoryDragController)} instances found. Using the first one.", this);
     }
 
+    /// <summary>
+    /// Ensures the drag layer exists and is the last child of the inventory system parent.
+    /// This keeps dragged items rendered above sibling inventory UI.
+    /// </summary>
     private void InitializeDragLayer()
     {
         if (dragLayer == null)
@@ -55,6 +72,10 @@ public class InventoryDragController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Runs each frame while an item is being dragged.
+    /// Updates position, rotation input, and preview state.
+    /// </summary>
     private void Update()
     {
         if (!dragging || heldItem == null)
@@ -65,6 +86,10 @@ public class InventoryDragController : MonoBehaviour
         HandlePreview();
     }
 
+    /// <summary>
+    /// Begins dragging the provided inventory item.
+    /// Removes it from the source grid and stores its original state.
+    /// </summary>
     public void BeginDrag(InventoryItem item)
     {
         heldItem = item;
@@ -85,23 +110,34 @@ public class InventoryDragController : MonoBehaviour
         originalRotation = item.Rotation;
 
         sourceInventory.Grid.RemoveItem(item);
-        item.RectTransform.SetParent(dragLayer, true);
+        if (dragLayer != null)
+            item.RectTransform.SetParent(dragLayer, true);
         item.SetBackgroundVisible(false);
 
         DebugLog($"BeginDrag {item.name} from {sourceInventory.InventoryId}");
     }
 
+    /// <summary>
+    /// Makes the dragged item follow the cursor.
+    /// </summary>
     private void HandleDragMovement()
     {
         heldItem.RectTransform.position = Input.mousePosition;
     }
 
+    /// <summary>
+    /// Rotates the dragged item when the R key is pressed.
+    /// </summary>
     private void HandleRotationInput()
     {
         if (Input.GetKeyDown(KeyCode.R))
             heldItem.RotateClockwise();
     }
 
+    /// <summary>
+    /// Updates placement preview on the currently hovered inventory grid.
+    /// Clears the previous preview when the hover target changes.
+    /// </summary>
     private void HandlePreview()
     {
         var hoveredTile = GetHoveredTile();
@@ -114,14 +150,16 @@ public class InventoryDragController : MonoBehaviour
         }
 
         if (currentPreviewGrid == null || hoveredTile == null)
-        {
             return;
-        }
 
         currentPreviewGrid.ShowPreview(hoveredTile.gridPosition, heldItem);
         DebugLog($"Preview on {currentPreviewGrid.Owner.InventoryId} at {hoveredTile.gridPosition}");
     }
 
+    /// <summary>
+    /// Completes the drag operation and attempts to place the item in the hovered inventory.
+    /// If placement fails, the item is returned to its original inventory.
+    /// </summary>
     public void EndDrag()
     {
         dragging = false;
@@ -160,6 +198,10 @@ public class InventoryDragController : MonoBehaviour
         currentPreviewGrid = null;
     }
 
+    /// <summary>
+    /// Returns the inventory tile currently under the mouse, if any.
+    /// Uses UI raycasting through the EventSystem.
+    /// </summary>
     private InventoryTile GetHoveredTile()
     {
         if (EventSystem.current == null)
@@ -185,12 +227,20 @@ public class InventoryDragController : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Aligns the dragged item visually with the destination grid cell.
+    /// This accounts for the item's anchor offset and target item layer.
+    /// </summary>
     private void SnapToGrid(Vector2Int pos, InventoryGrid targetGrid, RectTransform targetItemLayer)
     {
         Vector2 finalPos = targetGrid.GetItemWorldPosition(pos, heldItem, targetItemLayer);
         heldItem.RectTransform.localPosition = finalPos;
     }
 
+    /// <summary>
+    /// Restores the dragged item to its original inventory if placement fails.
+    /// Keeps the original rotation and position when returning.
+    /// </summary>
     private void ReturnItem()
     {
         if (heldItem == null)
@@ -214,17 +264,25 @@ public class InventoryDragController : MonoBehaviour
         heldItem = null;
     }
 
+    /// <summary>
+    /// Logs an informational message when debug logging is enabled.
+    /// </summary>
     private void DebugLog(string message)
     {
         if (debugLogs)
             Debug.Log(message, this);
     }
 
+    /// <summary>
+    /// Logs a warning when debug logging is enabled.
+    /// </summary>
     private void DebugLogWarning(string message)
     {
         if (debugLogs)
             Debug.LogWarning(message, this);
     }
+
+    public bool DebugHover => debugHover;
 
     [ContextMenu("Debug Drag Controller")]
     public void DebugControllerState()
