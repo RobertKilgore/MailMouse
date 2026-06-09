@@ -110,45 +110,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ZuPuno_0
+      name: ZuPuno_3
       rect:
         serializedVersion: 2
-        x: 294
-        y: 0
-        width: 8
-        height: 103
+        x: 144
+        y: 182
+        width: 116
+        height: 116
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8790806e360f38544b9491df9d27e2dc
-      internalID: 291175382
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ZuPuno_1
-      rect:
-        serializedVersion: 2
-        x: 141
-        y: 180
-        width: 121
-        height: 119
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bdf5143629675954aa1dd373b52acffe
-      internalID: 65642108
+      spriteID: 1409c91cdd6d6a14ea0f16b04caca317
+      internalID: 774240162
       vertices: []
       indices: 
       edges: []
@@ -169,6 +147,8 @@ TextureImporter:
     nameFileIdTable:
       ZuPuno_0: 291175382
       ZuPuno_1: 65642108
+      ZuPuno_2: 893121417
+      ZuPuno_3: 774240162
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -42,13 +42,17 @@ public class InventoryDragController : MonoBehaviour
                 DebugLogWarning("InventoryDragController needs a RectTransform or a dragLayer assigned.");
                 return;
             }
-
-            Canvas canvas = dragLayer.GetComponentInParent<Canvas>();
-            if (canvas != null)
-                dragLayer.SetParent(canvas.transform, false);
         }
 
-        dragLayer.SetAsLastSibling();
+        if (transform.parent != null)
+        {
+            dragLayer.SetParent(transform.parent, false);
+            dragLayer.SetAsLastSibling();
+        }
+        else
+        {
+            dragLayer.SetAsLastSibling();
+        }
     }
 
     private void Update()
