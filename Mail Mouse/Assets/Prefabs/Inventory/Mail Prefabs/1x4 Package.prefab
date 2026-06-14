@@ -52,6 +52,9 @@ MonoBehaviour:
   mailData:
     recipient: 
     address: 
+    packageScore: 0
+    packageModifier: 
+  prefabId: 1
   shapeDefinition: 'X
 
     X

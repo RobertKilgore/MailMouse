@@ -127,5 +127,8 @@ MonoBehaviour:
   mailData:
     recipient: 
     address: 
+    packageScore: 0
+    packageModifier: 
+  prefabId: 2
   shapeDefinition: XX
   tileColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 0.7019608}

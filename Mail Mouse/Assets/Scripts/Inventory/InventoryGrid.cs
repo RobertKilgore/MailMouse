@@ -9,7 +9,7 @@ using System.Text;
 /// </summary>
 public class InventoryGrid : MonoBehaviour
 {
-    [Header("Grid Size (Authoritative Source)")]
+    [Header("Grid Size")]
     [SerializeField]
     private int width = 8; // Number of tiles horizontally.
 
@@ -120,10 +120,16 @@ public class InventoryGrid : MonoBehaviour
     [ContextMenu("Debug Grid State")]
     public void DebugGridState()
     {
+        if (width <= 0 || height <= 0)
+        {
+            Debug.LogWarning($"InventoryGrid '{owner?.InventoryId ?? name}' has invalid size {width}x{height}.", this);
+            return;
+        }
+
         if (occupancy == null)
         {
-            Debug.Log($"InventoryGrid '{owner?.InventoryId ?? name}' has no occupancy data.", this);
-            return;
+            occupancy = new InventoryItem[width, height];
+            Debug.LogWarning($"InventoryGrid '{owner?.InventoryId ?? name}' had no occupancy data; created empty occupancy buffer.", this);
         }
 
         int occupiedCount = 0;
@@ -141,10 +147,17 @@ public class InventoryGrid : MonoBehaviour
         }
 
         string header = $"InventoryGrid '{owner?.InventoryId ?? name}' {width}x{height} occupied={occupiedCount}";
-        string gridText = BuildDebugGridText();
+        string gridText = GetDebugGridText();
         string itemText = BuildItemAnchorText(itemSet);
 
-        Debug.Log(header + "\n" + gridText + itemText, this);
+        Debug.Log(header, this);
+        Debug.Log(gridText, this);
+        Debug.Log(itemText, this);
+    }
+
+    public string GetDebugGridText()
+    {
+        return BuildDebugGridText();
     }
 
     private string BuildDebugGridText()
@@ -160,7 +173,6 @@ public class InventoryGrid : MonoBehaviour
                 InventoryItem item = occupancy[x, y];
                 char symbol = item == null ? '.' : (item.GridPosition == new Vector2Int(x, y) ? 'A' : 'X');
                 lineBuilder.Append('[').Append(symbol).Append(']');
-
                 if (x < width - 1)
                     lineBuilder.Append(' ');
             }
@@ -336,18 +348,69 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     public bool CanPlaceItem(Vector2Int position, InventoryItem item)
     {
+        return CanPlaceItem(position, item, 0);
+    }
+
+    /// <summary>
+    /// Debug-aware overload of CanPlaceItem. When debugLevel &gt; 0, logs the exact failure reason and cell.
+    /// </summary>
+    public bool CanPlaceItem(Vector2Int position, InventoryItem item, int debugLevel)
+    {
+        if (item == null)
+        {
+            if (debugLevel > 0)
+                Debug.LogWarning($"[Grid] CanPlaceItem: item is null at position {position}.", this);
+            return false;
+        }
+
+        if (item.Width <= 0 || item.Height <= 0)
+        {
+            if (debugLevel > 0)
+                Debug.LogWarning($"[Grid] CanPlaceItem: item '{item.name}' has invalid size {item.Width}x{item.Height}.", this);
+            return false;
+        }
+
+        if (debugLevel > 2)
+            Debug.Log($"[Grid] CanPlaceItem start for '{item.name}' at {position}, item size={item.Width}x{item.Height} anchor={item.Anchor}.", this);
+
+        bool sawTile = false;
         for (int x = 0; x < item.Width; x++)
         for (int y = 0; y < item.Height; y++)
         {
             if (!item.Shape[x, y])
                 continue;
 
+            sawTile = true;
             int gx = position.x + x - item.Anchor.x;
             int gy = position.y + y - item.Anchor.y;
 
-            if (!IsValid(gx, gy) || occupancy[gx, gy] != null)
+            if (!IsValid(gx, gy))
+            {
+                if (debugLevel > 0)
+                    Debug.LogWarning($"[Grid] CanPlaceItem: Cell out of bounds for item '{item.name}' at local ({x},{y}) -> grid ({gx},{gy}) anchor={item.Anchor} position={position}", this);
                 return false;
+            }
+
+            if (occupancy[gx, gy] != null)
+            {
+                if (debugLevel > 0)
+                    Debug.LogWarning($"[Grid] CanPlaceItem: Cell occupied at ({gx},{gy}) by '{occupancy[gx,gy].name}' blocking item '{item.name}' (local {x},{y})", this);
+                return false;
+            }
+
+            if (debugLevel > 2)
+                Debug.Log($"[Grid] CanPlaceItem: Candidate cell ({gx},{gy}) is free for item '{item.name}' (local {x},{y}).", this);
         }
+
+        if (!sawTile)
+        {
+            if (debugLevel > 0)
+                Debug.LogWarning($"[Grid] CanPlaceItem: item '{item.name}' has no occupied shape cells.", this);
+            return false;
+        }
+
+        if (debugLevel > 2)
+            Debug.Log($"[Grid] CanPlaceItem: item '{item.name}' can be placed at {position}.", this);
 
         return true;
     }
@@ -358,8 +421,20 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     public bool PlaceItem(Vector2Int position, InventoryItem item)
     {
-        if (!CanPlaceItem(position, item))
+        return PlaceItem(position, item, 0);
+    }
+
+    /// <summary>
+    /// Debug-aware overload of PlaceItem. When debugLevel &gt; 0, logs placement progress and failures.
+    /// </summary>
+    public bool PlaceItem(Vector2Int position, InventoryItem item, int debugLevel)
+    {
+        if (!CanPlaceItem(position, item, debugLevel))
+        {
+            if (debugLevel > 0)
+                Debug.LogWarning($"[Grid] PlaceItem: Cannot place item '{item?.name}' at {position} in inventory '{owner?.InventoryId ?? name}'", this);
             return false;
+        }
 
         RemoveItem(item);
 
@@ -372,10 +447,17 @@ public class InventoryGrid : MonoBehaviour
             int gx = position.x + x - item.Anchor.x;
             int gy = position.y + y - item.Anchor.y;
             occupancy[gx, gy] = item;
+            if (debugLevel > 1)
+                Debug.Log($"[Grid] Occupying cell ({gx},{gy}) for item '{item.name}'", this);
         }
 
         item.SetGridPosition(position);
         item.SetOwnerInventory(owner);
+        item.RectTransform.localPosition = GetItemWorldPosition(position, item, owner.ItemLayer);
+
+        if (debugLevel > 0)
+            Debug.Log($"[Grid] Placed item '{item.name}' at {position} (anchor={item.Anchor}) localPos={item.RectTransform.localPosition}", this);
+
         return true;
     }
 
@@ -389,6 +471,50 @@ public class InventoryGrid : MonoBehaviour
         for (int y = 0; y < height; y++)
             if (occupancy[x, y] == item)
                 occupancy[x, y] = null;
+    }
+
+    /// <summary>
+    /// Returns every unique item currently occupying this grid.
+    /// </summary>
+    public List<InventoryItem> GetAllItems()
+    {
+        List<InventoryItem> items = new List<InventoryItem>();
+
+        for (int x = 0; x < width; x++)
+        for (int y = 0; y < height; y++)
+        {
+            InventoryItem item = occupancy[x, y];
+            if (item != null && !items.Contains(item))
+                items.Add(item);
+        }
+
+        return items;
+    }
+
+    /// <summary>
+    /// Returns the serialized item data for every item in the grid.
+    /// </summary>
+    public List<InventoryItemData> GetAllItemData()
+    {
+        List<InventoryItemData> itemData = new List<InventoryItemData>();
+        foreach (InventoryItem item in GetAllItems())
+        {
+            itemData.Add(item.ToItemData());
+        }
+        return itemData;
+    }
+
+    /// <summary>
+    /// Removes all items from this grid and destroys their GameObjects.
+    /// </summary>
+    public void ClearAllItems()
+    {
+        foreach (InventoryItem item in GetAllItems())
+        {
+            RemoveItem(item);
+            if (item != null)
+                GameObject.Destroy(item.gameObject);
+        }
     }
 
     /// <summary>

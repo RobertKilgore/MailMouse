@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf2f8aa74bda4c544a822727d16a1b59, type: 3}
+  m_Name: MailAddressBook
+  m_EditorClassIdentifier: Assembly-CSharp::MailAddressBook
+  entries:
+  - address: Test Address 1
+    recipients:
+    - Test Recipient 1.1
+    - Test Recipient 1.2
+  - address: Test Address 2
+    recipients:
+    - Test Recipient 2.1
+  - address: Test Address 3
+    recipients:
+    - Test Recipient 3.1
+  - address: Test Address 4
+    recipients: []
+  - address: Test Address 5
+    recipients:
+    - Test Recipient 5.1
+    - Test Recipient 5.2
+    - Test Recipient 5.3

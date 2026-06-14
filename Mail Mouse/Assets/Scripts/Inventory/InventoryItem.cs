@@ -7,6 +7,9 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     [SerializeField]
     private MailData mailData;
 
+    [SerializeField]
+    private string prefabId;
+
     [TextArea(3, 10)]
     [SerializeField]
     private string shapeDefinition = "X"; // ASCII-art shape definition using X for filled tiles.
@@ -23,16 +26,42 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     private InventoryDragController dragController;
     private InventoryInstance ownerInventory;
     private RectTransform backgroundRoot;
+    private bool backgroundVisible = true;
 
     public MailData MailData => mailData;
+    public string PrefabId => prefabId;
     public Vector2Int GridPosition => gridPosition;
     public int Rotation => rotation;
     public RectTransform RectTransform => rectTransform;
     public bool[,] Shape => shape;
     public Vector2Int Anchor => anchor;
-    public int Width => shape.GetLength(0);
-    public int Height => shape.GetLength(1);
+    public int Width => shape != null ? shape.GetLength(0) : ComputeShapeWidth();
+    public int Height => shape != null ? shape.GetLength(1) : ComputeShapeHeight();
     public InventoryInstance OwnerInventory => ownerInventory;
+
+    /// <summary>
+    /// Safely computes shape width from shapeDefinition without requiring Awake to have run.
+    /// Used when the shape field hasn't been initialized yet (e.g., prefab asset references).
+    /// </summary>
+    public int ComputeShapeWidth()
+    {
+        if (string.IsNullOrEmpty(shapeDefinition))
+            return 0;
+        string[] rows = shapeDefinition.Replace("\r", "").Split('\n');
+        return rows.Length > 0 ? rows[0].Length : 0;
+    }
+
+    /// <summary>
+    /// Safely computes shape height from shapeDefinition without requiring Awake to have run.
+    /// Used when the shape field hasn't been initialized yet (e.g., prefab asset references).
+    /// </summary>
+    public int ComputeShapeHeight()
+    {
+        if (string.IsNullOrEmpty(shapeDefinition))
+            return 0;
+        string[] rows = shapeDefinition.Replace("\r", "").Split('\n');
+        return rows.Length;
+    }
 
     /// <summary>
     /// Initializes runtime references, parses item shape data, and builds the visual representation.
@@ -115,6 +144,46 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     }
 
     /// <summary>
+    /// Applies a raw rotation value to the current shape state without updating visuals.
+    /// </summary>
+    private void SetRotationState(int targetRotation)
+    {
+        targetRotation = ((targetRotation % 360) + 360) % 360;
+        while (rotation != targetRotation)
+            RotateShapeState();
+    }
+
+    /// <summary>
+    /// Rotates the shape and anchor state by 90 degrees without touching the transform.
+    /// </summary>
+    private void RotateShapeState()
+    {
+        int oldHeight = shape.GetLength(1);
+        shape = RotateShape(shape);
+        anchor = new Vector2Int(oldHeight - 1 - anchor.y, anchor.x);
+        rotation = (rotation + 90) % 360;
+    }
+
+    /// <summary>
+    /// Rebuilds the item visuals after the shape definition changes.
+    /// </summary>
+    private void RebuildVisuals()
+    {
+        if (ownerInventory == null)
+            ownerInventory = GetComponentInParent<InventoryInstance>();
+
+        if (rectTransform == null)
+            rectTransform = GetComponent<RectTransform>();
+
+        AlignRoot();
+        BuildShapeFromDefinition();
+        CalculateAnchor();
+        UpdateRectSize();
+        BuildBackgroundVisual();
+        rectTransform.rotation = Quaternion.Euler(0, 0, -rotation);
+    }
+
+    /// <summary>
     /// Builds the item background grid that visually represents its shape.
     /// Individual tiles are created for each filled cell in the shape map.
     /// </summary>
@@ -129,28 +198,37 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         backgroundRoot.anchorMax = Vector2.one;
         backgroundRoot.offsetMin = Vector2.zero;
         backgroundRoot.offsetMax = Vector2.zero;
+        backgroundRoot.pivot = rectTransform.pivot;
+        backgroundRoot.localRotation = Quaternion.identity;
+        backgroundRoot.localPosition = Vector3.zero;
+        backgroundRoot.localScale = Vector3.one;
         backgroundRoot.SetAsFirstSibling();
+        backgroundRoot.gameObject.SetActive(backgroundVisible);
+
+        bool[,] visualShape = GetVisualBackgroundShape();
+        int visualWidth = visualShape.GetLength(0);
+        int visualHeight = visualShape.GetLength(1);
 
         Vector2 cell = ownerInventory.Grid.CellSize;
         Vector2 spacing = ownerInventory.Grid.Spacing;
 
-        float totalWidth = Width * cell.x + (Width - 1) * spacing.x;
-        float totalHeight = Height * cell.y + (Height - 1) * spacing.y;
+        float totalWidth = visualWidth * cell.x + (visualWidth - 1) * spacing.x;
+        float totalHeight = visualHeight * cell.y + (visualHeight - 1) * spacing.y;
         float startX = -totalWidth * 0.5f;
         float startY = totalHeight * 0.5f;
 
-        for (int y = 0; y < Height; y++)
+        for (int y = 0; y < visualHeight; y++)
         {
-            for (int x = 0; x < Width; x++)
+            for (int x = 0; x < visualWidth; x++)
             {
-                if (!shape[x, y])
+                if (!visualShape[x, y])
                     continue;
 
                 CreateTile(x, y, startX, startY, cell, spacing);
             }
         }
 
-        BuildSpacingFill(startX, startY, cell, spacing, Width, Height);
+        BuildSpacingFill(startX, startY, cell, spacing, visualWidth, visualHeight, visualShape);
     }
 
     /// <summary>
@@ -172,13 +250,13 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     /// <summary>
     /// Adds spacing tiles between adjacent shape cells to visually connect them.
     /// </summary>
-    private void BuildSpacingFill(float startX, float startY, Vector2 cell, Vector2 spacing, int w, int h)
+    private void BuildSpacingFill(float startX, float startY, Vector2 cell, Vector2 spacing, int w, int h, bool[,] shapeMap)
     {
         for (int y = 0; y < h; y++)
         {
             for (int x = 0; x < w - 1; x++)
             {
-                if (!shape[x, y] || !shape[x + 1, y])
+                if (!shapeMap[x, y] || !shapeMap[x + 1, y])
                     continue;
 
                 CreateSpacingTile(
@@ -193,7 +271,7 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         {
             for (int x = 0; x < w; x++)
             {
-                if (!shape[x, y] || !shape[x, y + 1])
+                if (!shapeMap[x, y] || !shapeMap[x, y + 1])
                     continue;
 
                 CreateSpacingTile(
@@ -235,10 +313,69 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     }
 
     /// <summary>
+    /// Provides runtime access to the current shape definition.
+    /// </summary>
+    public string ShapeDefinition
+    {
+        get => shapeDefinition;
+        set
+        {
+            shapeDefinition = value;
+            RebuildVisuals();
+        }
+    }
+
+    /// <summary>
+    /// Exposes the prefab's default mail data so spawners can copy it.
+    /// </summary>
+    public MailData DefaultMailData => mailData;
+
+    /// <summary>
+    /// Serializes the current item into inventory-friendly item data.
+    /// </summary>
+    public InventoryItemData ToItemData()
+    {
+        return new InventoryItemData
+        {
+            itemId = name,
+            shapeDefinition = shapeDefinition,
+            rotation = rotation,
+            gridPosition = gridPosition,
+            mailData = mailData
+        };
+    }
+
+    /// <summary>
+    /// Reinitializes this item using saved inventory item data.
+    /// </summary>
+    public void InitializeFromData(InventoryItemData itemData, InventoryInstance owner)
+    {
+        ownerInventory = owner;
+        mailData = itemData.mailData;
+        shapeDefinition = itemData.shapeDefinition;
+        gridPosition = itemData.gridPosition;
+        rotation = 0;
+
+        AlignRoot();
+        BuildShapeFromDefinition();
+        CalculateAnchor();
+        SetRotationState(itemData.rotation);
+        UpdateRectSize();
+        BuildBackgroundVisual();
+
+        if (rectTransform == null)
+            rectTransform = GetComponent<RectTransform>();
+
+        rectTransform.rotation = Quaternion.Euler(0, 0, -rotation);
+    }
+
+    /// <summary>
     /// Toggles the background visual for this item.
     /// </summary>
     public void SetBackgroundVisible(bool visible)
     {
+        backgroundVisible = visible;
+
         if (backgroundRoot == null)
             return;
 
@@ -292,6 +429,9 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         rotation = (rotation + 90) % 360;
         shape = RotateShape(shape);
         anchor = new Vector2Int(oldHeight - 1 - anchor.y, anchor.x);
+
+        UpdateRectSize();
+        BuildBackgroundVisual();
         rectTransform.rotation = Quaternion.Euler(0, 0, -rotation);
     }
 
@@ -309,6 +449,25 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
                 rotated[h - 1 - y, x] = original[x, y];
 
         return rotated;
+    }
+
+    /// <summary>
+    /// Returns the background shape oriented for current UI rotation.
+    /// This avoids double-rotating the background when the item transform also rotates.
+    /// </summary>
+    private bool[,] GetVisualBackgroundShape()
+    {
+        if (shape == null)
+            return shape;
+
+        int normalizedRotation = ((rotation % 360) + 360) % 360;
+        int undoSteps = (4 - (normalizedRotation / 90)) % 4;
+        bool[,] visual = shape;
+
+        for (int i = 0; i < undoSteps; i++)
+            visual = RotateShape(visual);
+
+        return visual;
     }
 
     /// <summary>
