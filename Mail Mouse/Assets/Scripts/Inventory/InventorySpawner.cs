@@ -199,12 +199,20 @@ public class InventorySpawner : MonoBehaviour
             inventory.SetInventoryData(null);
         }
 
-        inventory.ClearInventory();
-        inventory.SetInventoryData(data);
-
-        foreach (InventoryItemData itemData in data.items)
+        inventory.Grid.BeginBatchUpdate();
+        try
         {
-            SpawnItemInInventory(inventory, itemData);
+            inventory.ClearInventory();
+            inventory.SetInventoryData(data);
+
+            foreach (InventoryItemData itemData in data.items)
+            {
+                SpawnItemInInventory(inventory, itemData);
+            }
+        }
+        finally
+        {
+            inventory.Grid.EndBatchUpdate(true);
         }
     }
 
@@ -216,7 +224,8 @@ public class InventorySpawner : MonoBehaviour
         if (inventory == null || inventory.InventoryData == null)
             return;
 
-        inventory.InventoryData.items = new System.Collections.Generic.List<InventoryItemData>(inventory.Grid.GetAllItemData());
+        // Delegate to the InventoryInstance so a single implementation owns persistence
+        inventory.SaveInventoryData();
     }
 
     /// <summary>
