@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3bbd1283d62e1458c132255e46fa22, type: 3}
+  m_Name: MailBox Inventory
+  m_EditorClassIdentifier: Assembly-CSharp::InventorySetDefinition
+  members:
+  - inventoryPrefab: {fileID: 7104818922750581170, guid: 5cdce84ef1301114e9db2cff611ef2c2, type: 3}
+    screenPosition: {x: -249, y: 0}
+  - inventoryPrefab: {fileID: 1730884908897475150, guid: bb5b28e0c79672242997d2893d4df0d9, type: 3}
+    screenPosition: {x: 278, y: 0}

@@ -7,6 +7,12 @@ using UnityEngine;
 /// </summary>
 public class InventoryInstance : MonoBehaviour
 {
+
+    [Header("Optional ID")]
+    [SerializeField]
+    private string inventoryId; // Optional identifier for debugging and display purposes.
+
+    
     [Header("Grid Data")]
     [SerializeField]
     private InventoryGrid grid; // The inventory grid component under this inventory instance.
@@ -18,9 +24,6 @@ public class InventoryInstance : MonoBehaviour
     [SerializeField]
     private RectTransform previewLayer; // The parent RectTransform for preview visuals while dragging.
 
-    [Header("Optional ID")]
-    [SerializeField]
-    private string inventoryId; // Optional identifier for debugging and display purposes.
 
     [Header("Inventory Data")]
     [SerializeField]

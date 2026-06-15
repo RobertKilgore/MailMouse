@@ -458,6 +458,7 @@ public class InventoryGrid : MonoBehaviour
         if (debugLevel > 0)
             Debug.Log($"[Grid] Placed item '{item.name}' at {position} (anchor={item.Anchor}) localPos={item.RectTransform.localPosition}", this);
 
+        SaveInventory();
         return true;
     }
 
@@ -467,10 +468,18 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     public void RemoveItem(InventoryItem item)
     {
+        bool itemWasOccupying = false;
+        
         for (int x = 0; x < width; x++)
         for (int y = 0; y < height; y++)
             if (occupancy[x, y] == item)
+            {
                 occupancy[x, y] = null;
+                itemWasOccupying = true;
+            }
+
+        if (itemWasOccupying)
+            SaveInventory();
     }
 
     /// <summary>
@@ -514,6 +523,21 @@ public class InventoryGrid : MonoBehaviour
             RemoveItem(item);
             if (item != null)
                 GameObject.Destroy(item.gameObject);
+        }
+    }
+
+    /// <summary>
+    /// Saves the current inventory state back to the owner's inventory data.
+    /// </summary>
+    private void SaveInventory()
+    {
+        if (owner == null || owner.InventoryData == null)
+            return;
+
+        InventorySpawner spawner = FindFirstObjectByType<InventorySpawner>();
+        if (spawner != null)
+        {
+            spawner.SaveInventoryData(owner);
         }
     }
 

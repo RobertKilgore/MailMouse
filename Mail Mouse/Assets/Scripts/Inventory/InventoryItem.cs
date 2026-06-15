@@ -19,6 +19,7 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     private Color tileColor = new Color32(88, 88, 88, 179);
 
     private bool[,] shape;
+    private bool[,] baseShape;
     private Vector2Int anchor;
     private Vector2Int gridPosition;
     private int rotation;
@@ -102,6 +103,15 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     /// </summary>
     private void AlignRoot()
     {
+        if (rectTransform == null)
+            rectTransform = GetComponent<RectTransform>();
+
+        if (rectTransform == null)
+        {
+            Debug.LogWarning($"{name}: missing RectTransform; cannot AlignRoot().", this);
+            return;
+        }
+
         rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
         rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
         rectTransform.pivot = new Vector2(0.5f, 0.5f);
@@ -132,15 +142,33 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         int height = rows.Length;
         int width = rows[0].Length;
 
-        shape = new bool[width, height];
+        baseShape = new bool[width, height];
 
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
             {
-                shape[x, y] = rows[y][x] == 'X';
+                baseShape[x, y] = rows[y][x] == 'X';
             }
         }
+
+        BuildRotatedShape();
+    }
+
+    /// <summary>
+    /// Builds the current rotated shape from the raw base definition.
+    /// </summary>
+    private void BuildRotatedShape()
+    {
+        if (baseShape == null)
+            return;
+
+        int normalizedRotation = ((rotation % 360) + 360) % 360;
+        int steps = normalizedRotation / 90;
+
+        shape = baseShape;
+        for (int i = 0; i < steps; i++)
+            shape = RotateShape(shape);
     }
 
     /// <summary>
@@ -148,20 +176,8 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     /// </summary>
     private void SetRotationState(int targetRotation)
     {
-        targetRotation = ((targetRotation % 360) + 360) % 360;
-        while (rotation != targetRotation)
-            RotateShapeState();
-    }
-
-    /// <summary>
-    /// Rotates the shape and anchor state by 90 degrees without touching the transform.
-    /// </summary>
-    private void RotateShapeState()
-    {
-        int oldHeight = shape.GetLength(1);
-        shape = RotateShape(shape);
-        anchor = new Vector2Int(oldHeight - 1 - anchor.y, anchor.x);
-        rotation = (rotation + 90) % 360;
+        rotation = ((targetRotation % 360) + 360) % 360;
+        BuildRotatedShape();
     }
 
     /// <summary>
@@ -180,7 +196,7 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         CalculateAnchor();
         UpdateRectSize();
         BuildBackgroundVisual();
-        rectTransform.rotation = Quaternion.Euler(0, 0, -rotation);
+        ApplyVisualRotation();
     }
 
     /// <summary>
@@ -229,6 +245,22 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         }
 
         BuildSpacingFill(startX, startY, cell, spacing, visualWidth, visualHeight, visualShape);
+        ApplyVisualRotation();
+    }
+
+    /// <summary>
+    /// Ensures the item transform is rotated to match the logical item orientation.
+    /// </summary>
+    private void ApplyVisualRotation()
+    {
+        if (rectTransform == null)
+            rectTransform = GetComponent<RectTransform>();
+
+        if (rectTransform != null)
+            rectTransform.localRotation = Quaternion.Euler(0, 0, -rotation);
+
+        if (backgroundRoot != null)
+            backgroundRoot.localRotation = Quaternion.identity;
     }
 
     /// <summary>
@@ -338,6 +370,7 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         return new InventoryItemData
         {
             itemId = name,
+            prefabId = prefabId,
             shapeDefinition = shapeDefinition,
             rotation = rotation,
             gridPosition = gridPosition,
@@ -356,17 +389,16 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         gridPosition = itemData.gridPosition;
         rotation = 0;
 
-        AlignRoot();
-        BuildShapeFromDefinition();
-        CalculateAnchor();
-        SetRotationState(itemData.rotation);
-        UpdateRectSize();
-        BuildBackgroundVisual();
-
         if (rectTransform == null)
             rectTransform = GetComponent<RectTransform>();
 
-        rectTransform.rotation = Quaternion.Euler(0, 0, -rotation);
+        AlignRoot();
+        BuildShapeFromDefinition();
+        SetRotationState(itemData.rotation);
+        CalculateAnchor();
+        UpdateRectSize();
+        BuildBackgroundVisual();
+        ApplyVisualRotation();
     }
 
     /// <summary>
@@ -425,14 +457,11 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     /// </summary>
     public void RotateClockwise()
     {
-        int oldHeight = shape.GetLength(1);
-        rotation = (rotation + 90) % 360;
-        shape = RotateShape(shape);
-        anchor = new Vector2Int(oldHeight - 1 - anchor.y, anchor.x);
-
+        SetRotationState(rotation + 90);
+        CalculateAnchor();
         UpdateRectSize();
         BuildBackgroundVisual();
-        rectTransform.rotation = Quaternion.Euler(0, 0, -rotation);
+        ApplyVisualRotation();
     }
 
     /// <summary>
