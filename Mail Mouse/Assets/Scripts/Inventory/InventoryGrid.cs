@@ -40,6 +40,7 @@ public class InventoryGrid : MonoBehaviour
 
     private InventoryTile[,] tiles; // Tile metadata for each grid coordinate.
     private InventoryItem[,] occupancy; // Tracks which item occupies each grid cell.
+    private int batchUpdateCount;
     private readonly List<GameObject> previewObjects = new(); // Runtime preview objects.
 
     public int Width => width;
@@ -204,6 +205,28 @@ public class InventoryGrid : MonoBehaviour
     public void SetOwner(InventoryInstance inventory)
     {
         owner = inventory;
+    }
+
+    /// <summary>
+    /// Begins a batch update that suppresses intermediate inventory persistence.
+    /// </summary>
+    public void BeginBatchUpdate()
+    {
+        batchUpdateCount++;
+    }
+
+    /// <summary>
+    /// Ends a batch update. If this is the last active batch and commitSave is true,
+    /// the grid will persist its current state back into the bound inventory data.
+    /// </summary>
+    public void EndBatchUpdate(bool commitSave = true)
+    {
+        if (batchUpdateCount <= 0)
+            return;
+
+        batchUpdateCount--;
+        if (batchUpdateCount == 0 && commitSave)
+            SaveInventory();
     }
 
     /// <summary>
@@ -531,14 +554,13 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     private void SaveInventory()
     {
+        if (batchUpdateCount > 0)
+            return;
+
         if (owner == null || owner.InventoryData == null)
             return;
 
-        InventorySpawner spawner = FindFirstObjectByType<InventorySpawner>();
-        if (spawner != null)
-        {
-            spawner.SaveInventoryData(owner);
-        }
+        owner.SaveInventoryData();
     }
 
     /// <summary>
