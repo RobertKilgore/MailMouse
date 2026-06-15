@@ -1,146 +1,157 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 /// <summary>
-/// Handles player input for opening the player inventory and interacting with nearby external inventories.
-/// Attach this component to the player GameObject and assign the player inventory and camera references.
+/// Main inventory controller for the player.
+/// Manages opening/closing the player inventory and mailbox inventories.
 /// </summary>
 public class PlayerInventoryController : MonoBehaviour
 {
-    [Header("Player Inventory")]
+    [Header("Inventory Sets")]
     [SerializeField]
-    private InventoryInstance playerInventory;
+    [Tooltip("The inventory set to open when pressing E (player inventory).")]
+    private InventorySetDefinition playerInventorySet;
 
-    [Header("Interaction")]
+    [Header("Mailbox UI Set")]
     [SerializeField]
-    private Camera playerCamera;
+    [Tooltip("The inventory set template to use for mailbox UIs. This is a UI layout (player + mailbox slots).")]
+    private InventorySetDefinition mailboxInventorySet;
 
+    [Header("Mailboxes")]
     [SerializeField]
-    private float interactDistance = 3f;
+    [Tooltip("Mailbox GameObjects that have an InventoryDataHolder attached. Index 0..9 maps to keys 1..0 respectively.")]
+    private InventoryDataHolder[] mailboxes = new InventoryDataHolder[10];
 
+    [Header("Player Data")]
     [SerializeField]
-    private LayerMask interactLayerMask = ~0;
+    [Tooltip("Optional InventoryData to populate the player UI slot when opening mailbox sets.")]
+    private InventoryData playerInventoryData;
 
     [Header("Input")]
     [SerializeField]
-    private KeyCode toggleInventoryKey = KeyCode.I;
+    private KeyCode toggleInventoryKey = KeyCode.E;
 
-    [SerializeField]
-    private KeyCode interactKey = KeyCode.E;
+    private InventorySetManager setManager;
 
-    private InventoryInstance activeExternalInventory;
-
-    private void Reset()
+    private void Start()
     {
-        if (playerCamera == null)
-            playerCamera = Camera.main;
-    }
-
-    private void Awake()
-    {
-        if (playerCamera == null)
-            playerCamera = Camera.main;
+        setManager = InventorySetManager.Instance ?? FindFirstObjectByType<InventorySetManager>();
+        if (setManager == null)
+            Debug.LogWarning("No InventorySetManager found in scene. Inventory management may not work.", this);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(toggleInventoryKey))
-            TogglePlayerInventory();
-
-        if (Input.GetKeyDown(interactKey))
-            TryInteractWithExternalInventory();
+        HandleToggleInventory();
+        HandleMailboxKeys();
     }
 
     /// <summary>
-    /// Toggles the player inventory GameObject active state.
+    /// Toggles the player inventory set (or closes it if already open).
     /// </summary>
-    public void TogglePlayerInventory()
+    private void HandleToggleInventory()
     {
-        if (playerInventory == null)
-        {
-            Debug.LogWarning("PlayerInventoryController has no playerInventory assigned.", this);
+        if (!Input.GetKeyDown(toggleInventoryKey))
             return;
-        }
 
-        bool isOpen = playerInventory.gameObject.activeSelf;
-        playerInventory.gameObject.SetActive(!isOpen);
-        Debug.Log($"Player inventory {(isOpen ? "closed" : "opened")}", this);
+        if (setManager == null)
+            return;
+
+        // If any set is open, close it
+        if (setManager.IsSetOpen)
+        {
+            setManager.CloseInventorySet();
+        }
+        else if (playerInventorySet != null)
+        {
+            // Otherwise open the player inventory set
+            setManager.OpenInventorySet(playerInventorySet);
+        }
+        else
+        {
+            Debug.LogWarning("Player inventory set not assigned.", this);
+        }
     }
 
     /// <summary>
-    /// Attempts to interact with an external inventory in front of the player.
-    /// If the same inventory is already open, it closes it instead.
+    /// Handles number key input to open mailbox inventories.
+    /// Keys 1-9 map to mailboxes 0-8, key 0 maps to mailbox 9.
     /// </summary>
-    public void TryInteractWithExternalInventory()
+    private void HandleMailboxKeys()
     {
-        if (playerCamera == null)
+        for (int i = 0; i < 10; i++)
         {
-            Debug.LogWarning("PlayerInventoryController requires a Camera reference.", this);
-            return;
-        }
+            KeyCode key = i == 0 ? KeyCode.Alpha0 : (KeyCode)(KeyCode.Alpha1 + i - 1);
 
-        Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width * 0.5f, Screen.height * 0.5f));
-        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactLayerMask))
-        {
-            InventoryInstance inventory = hit.collider.GetComponentInParent<InventoryInstance>();
-            if (inventory != null)
+            if (Input.GetKeyDown(key))
             {
-                ToggleExternalInventory(inventory);
-                return;
+                if (setManager.IsSetOpen)
+                {
+                    setManager.CloseInventorySet();
+                }
+                else
+                {
+                    OpenMailbox(i);
+                }
+
+                break;
             }
         }
-
-        Debug.Log("No external inventory found in range.", this);
     }
 
     /// <summary>
-    /// Opens or closes the targeted external inventory.
+    /// Opens a specific mailbox by index (0-9).
+    /// Populates the mailbox UI set in order: first available member gets player data, next gets mailbox data, etc.
     /// </summary>
-    private void ToggleExternalInventory(InventoryInstance inventory)
+    private void OpenMailbox(int mailboxIndex)
     {
-        if (inventory == activeExternalInventory)
+        if (setManager == null)
+            return;
+
+        if (mailboxIndex < 0 || mailboxIndex >= mailboxes.Length || mailboxes[mailboxIndex] == null)
         {
-            CloseExternalInventory();
+            Debug.LogWarning($"Mailbox {mailboxIndex} not assigned or out of range.", this);
             return;
         }
 
-        OpenExternalInventory(inventory);
-    }
-
-    /// <summary>
-    /// Opens the specified external inventory and closes any previously opened external inventory.
-    /// </summary>
-    private void OpenExternalInventory(InventoryInstance inventory)
-    {
-        CloseExternalInventory();
-
-        if (inventory == null)
+        if (mailboxInventorySet == null)
+        {
+            Debug.LogWarning("Mailbox inventory set template not assigned.", this);
             return;
+        }
 
-        activeExternalInventory = inventory;
-        activeExternalInventory.gameObject.SetActive(true);
-        Debug.Log($"Opened external inventory '{inventory.InventoryId}'", this);
+        InventoryDataHolder mailboxHolder = mailboxes[mailboxIndex];
+        InventoryData mailboxData = mailboxHolder.inventoryData;
+
+        // Build ordered data list: player data then mailbox data
+        List<InventoryData> orderedData = new List<InventoryData>();
+        if (playerInventoryData != null)
+            orderedData.Add(playerInventoryData);
+        if (mailboxData != null)
+            orderedData.Add(mailboxData);
+
+        setManager.OpenInventorySet(mailboxInventorySet, orderedData);
+        Debug.Log($"Opened mailbox {mailboxIndex}", this);
     }
 
     /// <summary>
-    /// Closes the currently active external inventory, if one is open.
+    /// Closes the currently active inventory set.
     /// </summary>
-    public void CloseExternalInventory()
+    public void CloseCurrentSet()
     {
-        if (activeExternalInventory == null)
-            return;
-
-        activeExternalInventory.gameObject.SetActive(false);
-        Debug.Log($"Closed external inventory '{activeExternalInventory.InventoryId}'", this);
-        activeExternalInventory = null;
+        if (setManager != null && setManager.IsSetOpen)
+            setManager.CloseInventorySet();
     }
 
-    /// <summary>
-    /// Returns true when the player inventory is currently open.
-    /// </summary>
-    public bool IsPlayerInventoryOpen => playerInventory != null && playerInventory.gameObject.activeSelf;
-
-    /// <summary>
-    /// Returns true when an external inventory is currently open.
-    /// </summary>
-    public bool IsExternalInventoryOpen => activeExternalInventory != null;
+    [ContextMenu("Debug Mailboxes")]
+    public void DebugMailboxes()
+    {
+        for (int i = 0; i < mailboxes.Length; i++)
+        {
+            if (mailboxes[i] != null)
+                Debug.Log($"Mailbox {i}: {mailboxes[i].inventoryData?.inventoryId ?? "no data"}", this);
+            else
+                Debug.Log($"Mailbox {i}: not assigned", this);
+        }
+    }
 }

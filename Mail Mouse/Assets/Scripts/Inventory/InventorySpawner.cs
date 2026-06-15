@@ -192,6 +192,13 @@ public class InventorySpawner : MonoBehaviour
         if (inventory == null || data == null)
             return;
 
+        // Prevent clearing the inventory from writing an empty state back into the
+        // same InventoryData object before the saved items are reloaded.
+        if (inventory.InventoryData == data)
+        {
+            inventory.SetInventoryData(null);
+        }
+
         inventory.ClearInventory();
         inventory.SetInventoryData(data);
 
@@ -209,7 +216,7 @@ public class InventorySpawner : MonoBehaviour
         if (inventory == null || inventory.InventoryData == null)
             return;
 
-        inventory.InventoryData.items = inventory.Grid.GetAllItemData();
+        inventory.InventoryData.items = new System.Collections.Generic.List<InventoryItemData>(inventory.Grid.GetAllItemData());
     }
 
     /// <summary>

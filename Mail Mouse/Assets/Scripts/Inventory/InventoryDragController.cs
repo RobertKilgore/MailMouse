@@ -104,6 +104,9 @@ public class InventoryDragController : MonoBehaviour
             return;
         }
 
+        if (dragLayer != null)
+            dragLayer.SetAsLastSibling();
+
         item.transform.SetAsLastSibling();
         originalLocalPos = item.RectTransform.localPosition;
         originalGridPos = item.GridPosition;
@@ -288,5 +291,27 @@ public class InventoryDragController : MonoBehaviour
     public void DebugControllerState()
     {
         Debug.Log($"Dragging={dragging}, HeldItem={(heldItem == null ? "none" : heldItem.name)}, CurrentPreviewGrid={(currentPreviewGrid == null ? "none" : currentPreviewGrid.Owner.InventoryId)}", this);
+    }
+
+    /// <summary>
+    /// Forcibly returns any currently held item back to its origin.
+    /// This is intended for cleanup paths where the UI is being torn down
+    /// and we must ensure no item remains in a transient dragged state.
+    /// </summary>
+    public void ForceReturnHeldItem()
+    {
+        // Clear any active placement preview first so it doesn't remain on closed inventories.
+        if (currentPreviewGrid != null)
+        {
+            currentPreviewGrid.ClearPreview();
+            currentPreviewGrid = null;
+        }
+
+        if (heldItem == null)
+            return;
+
+        // End drag state then return the item to its origin.
+        dragging = false;
+        ReturnItem();
     }
 }
