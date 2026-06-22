@@ -82,11 +82,7 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         if (dragController == null)
             Debug.LogWarning($"No InventoryDragController found in scene for {name}.", this);
 
-        AlignRoot();
-        BuildShapeFromDefinition();
-        CalculateAnchor();
-        UpdateRectSize();
-        BuildBackgroundVisual();
+        RefreshVisuals();
     }
 
     /// <summary>
@@ -185,11 +181,19 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     /// </summary>
     private void RebuildVisuals()
     {
-        if (ownerInventory == null)
-            ownerInventory = GetComponentInParent<InventoryInstance>();
+        RefreshVisuals();
+    }
 
+    /// <summary>
+    /// Refreshes shape, layout, and background visuals for the item.
+    /// </summary>
+    private void RefreshVisuals()
+    {
         if (rectTransform == null)
             rectTransform = GetComponent<RectTransform>();
+
+        if (ownerInventory == null)
+            ownerInventory = GetComponentInParent<InventoryInstance>();
 
         AlignRoot();
         BuildShapeFromDefinition();
@@ -387,18 +391,12 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         mailData = itemData.mailData;
         shapeDefinition = itemData.shapeDefinition;
         gridPosition = itemData.gridPosition;
-        rotation = 0;
+        rotation = itemData.rotation;
 
         if (rectTransform == null)
             rectTransform = GetComponent<RectTransform>();
 
-        AlignRoot();
-        BuildShapeFromDefinition();
-        SetRotationState(itemData.rotation);
-        CalculateAnchor();
-        UpdateRectSize();
-        BuildBackgroundVisual();
-        ApplyVisualRotation();
+        RefreshVisuals();
     }
 
     /// <summary>
@@ -447,7 +445,8 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     /// </summary>
     public void RotateTo(int targetRotation)
     {
-        targetRotation %= 360;
+        targetRotation = ((targetRotation % 360) + 360) % 360;
+
         while (rotation != targetRotation)
             RotateClockwise();
     }

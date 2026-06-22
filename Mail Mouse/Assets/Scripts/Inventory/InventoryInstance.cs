@@ -8,6 +8,9 @@ using UnityEngine;
 public class InventoryInstance : MonoBehaviour
 {
 
+    // Global toggle to enable logging when inventories are saved. Set to true during testing.
+    public static bool SaveLogging = true;
+
     [Header("Optional ID")]
     [SerializeField]
     private string inventoryId; // Optional identifier for debugging and display purposes.
@@ -101,7 +104,29 @@ public class InventoryInstance : MonoBehaviour
     /// </summary>
     public void ClearInventory()
     {
-        grid?.ClearAllItems();
+        if (grid == null)
+            return;
+
+        grid.BeginBatchUpdate();
+        grid.ClearAllItems();
+        grid.EndBatchUpdate(false);
+    }
+
+    /// <summary>
+    /// Writes the current grid state back into the bound inventory data object.
+    /// </summary>
+    public void SaveInventoryData()
+    {
+        if (grid == null || inventoryData == null)
+            return;
+
+        inventoryData.items = new List<InventoryItemData>(grid.GetAllItemData());
+
+        if (SaveLogging)
+        {
+            int count = inventoryData.items != null ? inventoryData.items.Count : 0;
+            Debug.Log($"[Inventory Save] Saved inventory '{InventoryId}' items={count}", this);
+        }
     }
 
     /// <summary>
