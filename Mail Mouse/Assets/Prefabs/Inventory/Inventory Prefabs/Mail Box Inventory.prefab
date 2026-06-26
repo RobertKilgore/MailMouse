@@ -1821,6 +1821,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27a1f46609a87d44b22327118f42a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryInstance
+  addressText: {fileID: 0}
+  addressTextTMP: {fileID: 2120537257931771551}
   inventoryId: 
   grid: {fileID: 6168876977057650334}
   itemLayer: {fileID: 2199831657773892260}

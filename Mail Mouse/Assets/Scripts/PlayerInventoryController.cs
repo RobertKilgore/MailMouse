@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Main inventory controller for the player.
@@ -27,11 +28,21 @@ public class PlayerInventoryController : MonoBehaviour
     [Tooltip("Optional InventoryData to populate the player UI slot when opening mailbox sets.")]
     private InventoryData playerInventoryData;
 
-    [Header("Input")]
-    [SerializeField]
-    private KeyCode toggleInventoryKey = KeyCode.E;
-
     private InventorySetManager setManager;
+    private InputSystem_Actions inputActions;
+
+    private void OnEnable()
+    {
+        if (inputActions == null)
+            inputActions = new InputSystem_Actions();
+        inputActions.Enable();
+    }
+
+    private void OnDisable()
+    {
+        if (inputActions != null)
+            inputActions.Disable();
+    }
 
     private void Start()
     {
@@ -51,7 +62,7 @@ public class PlayerInventoryController : MonoBehaviour
     /// </summary>
     private void HandleToggleInventory()
     {
-        if (!Input.GetKeyDown(toggleInventoryKey))
+        if (!inputActions.Player.Interact.WasPressedThisFrame())
             return;
 
         if (setManager == null)
@@ -74,16 +85,17 @@ public class PlayerInventoryController : MonoBehaviour
     }
 
     /// <summary>
-    /// Handles number key input to open mailbox inventories.
-    /// Keys 1-9 map to mailboxes 0-8, key 0 maps to mailbox 9.
+    /// Handles mailbox input to open mailbox inventories.
+    /// Mailbox0-9 actions map to keys 0-9 respectively.
     /// </summary>
     private void HandleMailboxKeys()
     {
         for (int i = 0; i < 10; i++)
         {
-            KeyCode key = i == 0 ? KeyCode.Alpha0 : (KeyCode)(KeyCode.Alpha1 + i - 1);
+            string actionName = $"Mailbox{i}";
+            InputAction action = inputActions.asset.FindAction(actionName);
 
-            if (Input.GetKeyDown(key))
+            if (action != null && action.WasPressedThisFrame())
             {
                 if (setManager.IsSetOpen)
                 {

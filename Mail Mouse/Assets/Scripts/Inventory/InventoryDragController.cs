@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using System.Collections.Generic;
 
 /// <summary>
@@ -28,6 +29,7 @@ public class InventoryDragController : MonoBehaviour
     private InventoryInstance sourceInventory; // Inventory item came from.
     private InventoryGrid currentPreviewGrid; // Currently active preview grid.
     private bool dragging; // Whether a drag is active.
+    private InputSystem_Actions inputActions; // Input system actions.
 
     /// <summary>
     /// Initialize the singleton and prepare the drag layer.
@@ -39,10 +41,23 @@ public class InventoryDragController : MonoBehaviour
         {
             Instance = this;
             InitializeDragLayer();
+            inputActions = new InputSystem_Actions();
             return;
         }
 
         Debug.LogWarning($"Multiple {nameof(InventoryDragController)} instances found. Using the first one.", this);
+    }
+
+    private void OnEnable()
+    {
+        if (inputActions != null)
+            inputActions.Enable();
+    }
+
+    private void OnDisable()
+    {
+        if (inputActions != null)
+            inputActions.Disable();
     }
 
     /// <summary>
@@ -125,15 +140,22 @@ public class InventoryDragController : MonoBehaviour
     /// </summary>
     private void HandleDragMovement()
     {
-        heldItem.RectTransform.position = Input.mousePosition;
+        Vector2 pointerPos = GetPointerPosition();
+        if (pointerPos == Vector2.zero)
+            return;
+
+        heldItem.RectTransform.position = pointerPos;
     }
 
     /// <summary>
-    /// Rotates the dragged item when the R key is pressed.
+    /// Rotates the dragged item when the Rotate action is pressed (R key).
     /// </summary>
     private void HandleRotationInput()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (inputActions == null)
+            return;
+
+        if (inputActions.Player.Rotate.WasPressedThisFrame())
             heldItem.RotateClockwise();
     }
 
@@ -215,7 +237,7 @@ public class InventoryDragController : MonoBehaviour
 
         var eventData = new PointerEventData(EventSystem.current)
         {
-            position = Input.mousePosition
+            position = GetPointerPosition()
         };
 
         var results = new List<RaycastResult>();
@@ -238,6 +260,15 @@ public class InventoryDragController : MonoBehaviour
     {
         Vector2 finalPos = targetGrid.GetItemWorldPosition(pos, heldItem, targetItemLayer);
         heldItem.RectTransform.localPosition = finalPos;
+    }
+
+    /// <summary>
+    /// Returns the current pointer position from the new Input System.
+    /// This supports mouse, touch, and pen pointers.
+    /// </summary>
+    private Vector2 GetPointerPosition()
+    {
+        return Pointer.current?.position.ReadValue() ?? Vector2.zero;
     }
 
     /// <summary>

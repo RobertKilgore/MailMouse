@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 /// <summary>
 /// Represents a single inventory instance.
@@ -9,7 +11,12 @@ public class InventoryInstance : MonoBehaviour
 {
 
     // Global toggle to enable logging when inventories are saved. Set to true during testing.
-    public static bool SaveLogging = true;
+    public static bool SaveLogging = false;
+
+    [Header("Address Display")]
+    [SerializeField]
+    [Tooltip("Optional TMP text object to display the currently bound inventory address.")]
+    private TMP_Text addressTextTMP;
 
     [Header("Optional ID")]
     [SerializeField]
@@ -131,10 +138,31 @@ public class InventoryInstance : MonoBehaviour
 
     /// <summary>
     /// Assigns the inventory data object used to drive this view.
+    /// Also updates the address display to match the new data.
     /// </summary>
     public void SetInventoryData(InventoryData data)
     {
         inventoryData = data;
+        SetAddressText(data?.address);
+    }
+
+    /// <summary>
+    /// Updates the bound address text object from the current inventory data.
+    /// </summary>
+    public void SetAddressText(string address)
+    {
+        if (addressTextTMP != null)
+        {
+            addressTextTMP.text = address ?? string.Empty;
+        }
+    }
+
+    /// <summary>
+    /// Updates the address display to match the currently bound inventory data.
+    /// </summary>
+    public void RefreshAddressDisplay()
+    {
+        SetAddressText(inventoryData?.address);
     }
 
     /// <summary>
