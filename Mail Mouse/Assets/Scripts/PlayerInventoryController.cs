@@ -13,25 +13,31 @@ public class PlayerInventoryController : MonoBehaviour
     [Tooltip("The inventory set to open when pressing E (player inventory).")]
     private InventorySetDefinition playerInventorySet;
 
-    [Header("Mailbox UI Set")]
+    [Header("Nearby Inventory UI Set")]
     [SerializeField]
-    [Tooltip("The inventory set template to use for mailbox UIs. This is a UI layout (player + mailbox slots).")]
-    private InventorySetDefinition mailboxInventorySet;
-
-    [Header("Mailboxes")]
-    [SerializeField]
-    [Tooltip("Mailbox GameObjects that have an InventoryDataHolder attached. Index 0..9 maps to keys 1..0 respectively.")]
-    private InventoryDataHolder[] mailboxes = new InventoryDataHolder[10];
+    [Tooltip("The inventory set template to use for nearby inventories. This is a UI layout (player + nearby inventory slots).")]
+    private InventorySetDefinition nearbyInventorySet;
 
     [Header("Player Data")]
     [SerializeField]
-    [Tooltip("Optional InventoryData to populate the player UI slot when opening mailbox sets.")]
+    [Tooltip("Optional InventoryData to populate the player UI slot when opening inventories.")]
     private InventoryDataHolder playerInventoryHolder;
+
+    [Header("Menu Control")]
+    [SerializeField]
+    [Tooltip("The MenuController component on the inventory UI GameObject.")]
+    private MenuController inventoryMenuController;
+
+    [Header("Interaction")]
+    [SerializeField]
+    [Tooltip("The detection collider (trigger) for finding nearby inventories.")]
+    private Collider detectionCollider;
 
     public InventoryData PlayerInventoryData => playerInventoryHolder != null ? playerInventoryHolder.inventoryData : null;
 
     private InventorySetManager setManager;
     private InputSystem_Actions inputActions;
+    private InventoryDataHolder currentClosestInventory;
 
     private void OnEnable()
     {
@@ -46,6 +52,13 @@ public class PlayerInventoryController : MonoBehaviour
             inputActions.Disable();
     }
 
+    private void OnDestroy()
+    {
+        // Clean up outline when controller is destroyed
+        if (currentClosestInventory != null)
+            OutlineManager.DisableOutline(currentClosestInventory.gameObject);
+    }
+
     private void Start()
     {
         setManager = InventorySetManager.Instance ?? FindFirstObjectByType<InventorySetManager>();
@@ -56,7 +69,8 @@ public class PlayerInventoryController : MonoBehaviour
     private void Update()
     {
         HandleToggleInventory();
-        HandleMailboxKeys();
+        HandleInteractWithClosestInventory();
+        UpdateOutlineVisualization();
     }
 
     /// <summary>
@@ -76,9 +90,15 @@ public class PlayerInventoryController : MonoBehaviour
         if (setManager.IsSetOpen)
         {
             setManager.CloseInventorySet();
+            if (inventoryMenuController != null)
+                inventoryMenuController.Close();
         }
         else if (playerInventorySet != null)
         {
+            // Open menu first to activate UI, then populate with InventorySetManager
+            if (inventoryMenuController != null)
+                inventoryMenuController.Open();
+
             // Otherwise open the player inventory set and bind the player data
             List<InventoryData> ordered = null;
             if (PlayerInventoryData != null)
@@ -95,65 +115,158 @@ public class PlayerInventoryController : MonoBehaviour
     }
 
     /// <summary>
-    /// Handles mailbox input to open mailbox inventories.
-    /// Mailbox0-9 actions map to keys 0-9 respectively.
+    /// Handles interaction with the closest nearby inventory when F is pressed.
     /// </summary>
-    private void HandleMailboxKeys()
+    private void HandleInteractWithClosestInventory()
     {
-        for (int i = 0; i < 10; i++)
+        if (!inputActions.Player.Interact2.WasPressedThisFrame())
+            return;
+
+        if (setManager == null || detectionCollider == null)
+            return;
+
+        // Close inventory if open
+        if (setManager.IsSetOpen)
         {
-            string actionName = $"Mailbox{i}";
-            InputAction action = inputActions.asset.FindAction(actionName);
+            setManager.CloseInventorySet();
+            if (inventoryMenuController != null)
+                inventoryMenuController.Close();
+            return;
+        }
 
-            if (action != null && action.WasPressedThisFrame())
+        // Find closest nearby inventory
+        InventoryDataHolder closestHolder = GetClosestNearbyInventory();
+        if (closestHolder == null)
+        {
+            Debug.Log("No nearby inventory found within detection range.");
+            return;
+        }
+
+        OpenNearbyInventory(closestHolder);
+    }
+
+    /// <summary>
+    /// Finds the closest InventoryDataHolder within the detection collider's range.
+    /// </summary>
+    private InventoryDataHolder GetClosestNearbyInventory()
+    {
+        if (detectionCollider == null)
+        {
+            Debug.LogWarning("Detection collider not assigned!", this);
+            return null;
+        }
+
+        // Get the bounds of the detection collider and use its radius/size
+        Bounds bounds = detectionCollider.bounds;
+        float detectionRadius = bounds.extents.magnitude; // Approximate radius for sphere checking
+
+        // Use Physics.OverlapSphere to find all colliders in range
+        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, detectionRadius);
+
+        InventoryDataHolder closest = null;
+        float closestDistance = float.MaxValue;
+        Vector3 playerPos = transform.position;
+
+        foreach (Collider col in collidersInRange)
+        {
+            InventoryDataHolder holder = col.GetComponent<InventoryDataHolder>();
+            if (holder == null || holder == playerInventoryHolder)
+                continue;
+
+            float distance = Vector3.Distance(playerPos, holder.transform.position);
+            if (distance < closestDistance)
             {
-                if (setManager.IsSetOpen)
-                {
-                    setManager.CloseInventorySet();
-                }
-                else
-                {
-                    OpenMailbox(i);
-                }
-
-                break;
+                closestDistance = distance;
+                closest = holder;
             }
+        }
+
+        int foundCount = closest != null ? 1 : 0;
+        Debug.Log($"Found {foundCount} inventory in range at distance {closestDistance}");
+
+        return closest;
+    }
+
+    /// <summary>
+    /// Updates the outline visualization based on the current closest inventory.
+    /// </summary>
+    private void UpdateOutlineVisualization()
+    {
+        if (detectionCollider == null)
+        {
+            Debug.LogWarning("Detection collider not assigned!", this);
+            return;
+        }
+
+        // Get the new closest inventory
+        Bounds bounds = detectionCollider.bounds;
+        float detectionRadius = bounds.extents.magnitude;
+        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, detectionRadius);
+
+        InventoryDataHolder newClosest = null;
+        float closestDistance = float.MaxValue;
+        Vector3 playerPos = transform.position;
+
+        foreach (Collider col in collidersInRange)
+        {
+            InventoryDataHolder holder = col.GetComponent<InventoryDataHolder>();
+            if (holder == null || holder == playerInventoryHolder)
+                continue;
+
+            float distance = Vector3.Distance(playerPos, holder.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                newClosest = holder;
+            }
+        }
+
+        // If the closest changed, update the outline
+        if (newClosest != currentClosestInventory)
+        {
+            Debug.Log($"Closest inventory changed from {(currentClosestInventory != null ? currentClosestInventory.gameObject.name : "none")} to {(newClosest != null ? newClosest.gameObject.name : "none")}", this);
+
+            // Remove outline from old closest
+            if (currentClosestInventory != null)
+                OutlineManager.DisableOutline(currentClosestInventory.gameObject);
+
+            // Add outline to new closest
+            currentClosestInventory = newClosest;
+            if (currentClosestInventory != null)
+                OutlineManager.EnableOutline(currentClosestInventory.gameObject);
         }
     }
 
     /// <summary>
-    /// Opens a specific mailbox by index (0-9).
-    /// Populates the mailbox UI set in order: first available member gets player data, next gets mailbox data, etc.
+    /// Opens a nearby inventory.
     /// </summary>
-    private void OpenMailbox(int mailboxIndex)
+    private void OpenNearbyInventory(InventoryDataHolder inventoryHolder)
     {
-        if (setManager == null)
-            return;
-
-        if (mailboxIndex < 0 || mailboxIndex >= mailboxes.Length || mailboxes[mailboxIndex] == null)
+        if (setManager == null || inventoryHolder == null || nearbyInventorySet == null)
         {
-            Debug.LogWarning($"Mailbox {mailboxIndex} not assigned or out of range.", this);
+            Debug.LogWarning("Cannot open nearby inventory: missing setManager, holder, or inventory set template.", this);
             return;
         }
 
-        if (mailboxInventorySet == null)
+        InventoryData nearbyData = inventoryHolder.inventoryData;
+        if (nearbyData == null)
         {
-            Debug.LogWarning("Mailbox inventory set template not assigned.", this);
+            Debug.LogWarning($"Inventory holder {inventoryHolder.gameObject.name} has no inventory data.", this);
             return;
         }
 
-        InventoryDataHolder mailboxHolder = mailboxes[mailboxIndex];
-        InventoryData mailboxData = mailboxHolder.inventoryData;
-
-        // Build ordered data list: player data then mailbox data
+        // Build ordered data list: player data then nearby inventory data
         List<InventoryData> orderedData = new List<InventoryData>();
         if (PlayerInventoryData != null)
             orderedData.Add(PlayerInventoryData);
-        if (mailboxData != null)
-            orderedData.Add(mailboxData);
+        orderedData.Add(nearbyData);
 
-        setManager.OpenInventorySet(mailboxInventorySet, orderedData);
-        Debug.Log($"Opened mailbox {mailboxIndex}", this);
+        // Open menu first to activate UI, then populate with InventorySetManager
+        if (inventoryMenuController != null)
+            inventoryMenuController.Open();
+
+        setManager.OpenInventorySet(nearbyInventorySet, orderedData);
+        Debug.Log($"Opened inventory at {inventoryHolder.gameObject.name}", this);
     }
 
     /// <summary>
@@ -165,15 +278,25 @@ public class PlayerInventoryController : MonoBehaviour
             setManager.CloseInventorySet();
     }
 
-    [ContextMenu("Debug Mailboxes")]
-    public void DebugMailboxes()
+    [ContextMenu("Debug Nearby Inventories")]
+    public void DebugNearbyInventories()
     {
-        for (int i = 0; i < mailboxes.Length; i++)
+        if (detectionCollider == null)
         {
-            if (mailboxes[i] != null)
-                Debug.Log($"Mailbox {i}: {mailboxes[i].inventoryData?.inventoryId ?? "no data"}", this);
-            else
-                Debug.Log($"Mailbox {i}: not assigned", this);
+            Debug.Log("Detection collider not assigned!", this);
+            return;
+        }
+
+        Bounds bounds = detectionCollider.bounds;
+        float detectionRadius = bounds.extents.magnitude;
+        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, detectionRadius);
+
+        Debug.Log($"Found {collidersInRange.Length} colliders in detection range.", this);
+        foreach (Collider col in collidersInRange)
+        {
+            InventoryDataHolder holder = col.GetComponent<InventoryDataHolder>();
+            if (holder != null && holder != playerInventoryHolder)
+                Debug.Log($"  - {holder.gameObject.name}: {holder.inventoryData?.inventoryId ?? "no data"}", this);
         }
         if (playerInventoryHolder != null)
             Debug.Log($"Player inventory holder: {playerInventoryHolder.inventoryData?.inventoryId ?? "no data"}", this);
