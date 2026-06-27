@@ -210,8 +210,9 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: Mailbox 6
+    address: Test Address 6
     items: []
+  ignoreForValidation: 0
 --- !u!65 &292179377
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -706,8 +707,9 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: Mailbox 10
+    address: Test Address 10
     items: []
+  ignoreForValidation: 0
 --- !u!65 &454686847
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -836,8 +838,9 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: Mailbox 1
+    address: Test Address 1
     items: []
+  ignoreForValidation: 0
 --- !u!65 &478848019
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1015,8 +1018,9 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: Mailbox 8
+    address: Test Address 8
     items: []
+  ignoreForValidation: 0
 --- !u!65 &845592490
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1145,8 +1149,9 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: Mailbox 3
+    address: Test Address 3
     items: []
+  ignoreForValidation: 0
 --- !u!65 &1053132093
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1275,8 +1280,9 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: Mailbox 7
+    address: Test Address 7
     items: []
+  ignoreForValidation: 0
 --- !u!65 &1172604793
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1484,8 +1490,9 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: Mailbox 9
+    address: Test Address 9
     items: []
+  ignoreForValidation: 0
 --- !u!65 &1481784028
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1614,8 +1621,9 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: Mailbox 5
+    address: Test Address 5
     items: []
+  ignoreForValidation: 0
 --- !u!65 &1487354283
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1744,8 +1752,9 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: Mailbox 4
+    address: Test Address 4
     items: []
+  ignoreForValidation: 0
 --- !u!65 &1601922711
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1837,6 +1846,7 @@ GameObject:
   - component: {fileID: 1758520126}
   - component: {fileID: 1758520125}
   - component: {fileID: 1758520129}
+  - component: {fileID: 1758520130}
   m_Layer: 0
   m_Name: Test Player
   m_TagString: Untagged
@@ -1964,11 +1974,25 @@ MonoBehaviour:
   - {fileID: 845592489}
   - {fileID: 1481784027}
   - {fileID: 454686846}
-  playerInventoryData:
-    inventoryId: 
-    displayName: 
+  playerInventoryHolder: {fileID: 1758520130}
+--- !u!114 &1758520130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758520124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
+  inventoryData:
+    inventoryId: 0
+    displayName: Player Inventory
     address: 
     items: []
+  ignoreForValidation: 0
 --- !u!1 &1911879054
 GameObject:
   m_ObjectHideFlags: 0
@@ -2132,8 +2156,9 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: Mailbox 2
+    address: Test Address 2
     items: []
+  ignoreForValidation: 0
 --- !u!65 &2105653364
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2313,6 +2338,7 @@ GameObject:
   - component: {fileID: 7927780167235424719}
   - component: {fileID: 3197592114291970818}
   - component: {fileID: 8859006964086084268}
+  - component: {fileID: 8859006964086084269}
   m_Layer: 5
   m_Name: Inventory Controller
   m_TagString: Untagged
@@ -2334,6 +2360,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventorySetManager
   maxSpawnedInventoryInstances: 8
   inventoryInstanceParent: {fileID: 7059869486091344954}
+--- !u!114 &8859006964086084269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8859006964086084267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1ccf5fd34ebbe44be6609a0aec1c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryValidationController
+  skipIgnoredInventories: 1
+  logDeliveryResults: 1
+  logPackageDetails: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

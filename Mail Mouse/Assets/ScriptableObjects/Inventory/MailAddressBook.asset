@@ -14,19 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MailAddressBook
   entries:
   - address: Test Address 1
-    recipients:
-    - Test Recipient 1.1
-    - Test Recipient 1.2
+    recipients: []
   - address: Test Address 2
-    recipients:
-    - Test Recipient 2.1
+    recipients: []
   - address: Test Address 3
-    recipients:
-    - Test Recipient 3.1
+    recipients: []
   - address: Test Address 4
     recipients: []
   - address: Test Address 5
-    recipients:
-    - Test Recipient 5.1
-    - Test Recipient 5.2
-    - Test Recipient 5.3
+    recipients: []
