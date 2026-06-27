@@ -210,7 +210,7 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: 
+    address: Mailbox 6
     items: []
 --- !u!65 &292179377
 BoxCollider:
@@ -706,7 +706,7 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: 
+    address: Mailbox 10
     items: []
 --- !u!65 &454686847
 BoxCollider:
@@ -836,7 +836,7 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: 
+    address: Mailbox 1
     items: []
 --- !u!65 &478848019
 BoxCollider:
@@ -1015,7 +1015,7 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: 
+    address: Mailbox 8
     items: []
 --- !u!65 &845592490
 BoxCollider:
@@ -1145,7 +1145,7 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: 
+    address: Mailbox 3
     items: []
 --- !u!65 &1053132093
 BoxCollider:
@@ -1275,7 +1275,7 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: 
+    address: Mailbox 7
     items: []
 --- !u!65 &1172604793
 BoxCollider:
@@ -1484,7 +1484,7 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: 
+    address: Mailbox 9
     items: []
 --- !u!65 &1481784028
 BoxCollider:
@@ -1614,7 +1614,7 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: 
+    address: Mailbox 5
     items: []
 --- !u!65 &1487354283
 BoxCollider:
@@ -1744,7 +1744,7 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: 
+    address: Mailbox 4
     items: []
 --- !u!65 &1601922711
 BoxCollider:
@@ -1969,7 +1969,6 @@ MonoBehaviour:
     displayName: 
     address: 
     items: []
-  toggleInventoryKey: 101
 --- !u!1 &1911879054
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,7 +2132,7 @@ MonoBehaviour:
   inventoryData:
     inventoryId: 
     displayName: 
-    address: 
+    address: Mailbox 2
     items: []
 --- !u!65 &2105653364
 BoxCollider:

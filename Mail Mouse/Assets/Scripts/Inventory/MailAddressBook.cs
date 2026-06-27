@@ -40,8 +40,18 @@ public class MailAddressBook : ScriptableObject
     public MailData GetRandomMailData()
     {
         MailAddressEntry entry = GetRandomEntry();
-        if (entry == null || entry.recipients == null || entry.recipients.Count == 0)
-            return new MailData();
+        if (entry == null)
+            return null;
+
+        // It's valid for an address to have no recipients; return the address and leave recipient null.
+        if (entry.recipients == null || entry.recipients.Count == 0)
+        {
+            return new MailData
+            {
+                address = entry.address,
+                recipient = null
+            };
+        }
 
         return new MailData
         {

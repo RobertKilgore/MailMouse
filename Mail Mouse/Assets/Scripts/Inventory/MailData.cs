@@ -17,6 +17,16 @@ public class MailData
     public string address;
 
     /// <summary>
+    /// Whether this item was placed by the player during runtime.
+    /// </summary>
+    public bool placedByPlayer;
+
+    /// <summary>
+    /// Complexity multiplier used for scoring deliveries.
+    /// </summary>
+    public float complexity = 1f;
+
+    /// <summary>
     /// Optional package score used by later delivery/quality systems.
     /// </summary>
     public int packageScore;

@@ -89,6 +89,7 @@ public class InventorySetManager : MonoBehaviour
                 inventoryInstance.SetInventoryData(inventoryData);
                 if (spawner != null)
                     spawner.LoadInventoryData(inventoryInstance, inventoryData);
+                Debug.Log($"InventorySetManager: bound inventory data '{inventoryData.inventoryId}' to member index {index} (set '{setDefinition.name}')", this);
             }
             else
             {

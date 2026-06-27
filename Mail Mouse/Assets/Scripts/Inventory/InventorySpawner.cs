@@ -286,7 +286,17 @@ public class InventorySpawner : MonoBehaviour
     private MailData ResolveMailData(MailData requestedMailData)
     {
         if (requestedMailData == null)
-            return addressBook != null ? addressBook.GetRandomMailData() : GenerateRandomMailData();
+        {
+            MailData candidate = addressBook != null ? addressBook.GetRandomMailData() : GenerateRandomMailData();
+            // Accept candidate if it has an address. Recipient may be null/empty (allowed).
+            if (candidate == null || string.IsNullOrWhiteSpace(candidate.address))
+            {
+                Debug.LogWarning($"InventorySpawner.ResolveMailData: address book returned no address; using generated fallback.", this);
+                candidate = GenerateRandomMailData();
+            }
+
+            return candidate;
+        }
 
         string address = requestedMailData.address;
         string recipient = requestedMailData.recipient;
@@ -303,20 +313,42 @@ public class InventorySpawner : MonoBehaviour
                 recipient = addressBook.GetRandomRecipientForAddress(address);
         }
 
-        if (string.IsNullOrWhiteSpace(address) || string.IsNullOrWhiteSpace(recipient))
+        // If address is missing, try to fill it; recipient may be omitted by design.
+        if (string.IsNullOrWhiteSpace(address))
         {
             MailData fallback = addressBook != null ? addressBook.GetRandomMailData() : GenerateRandomMailData();
-            address = string.IsNullOrWhiteSpace(address) ? fallback.address : address;
-            recipient = string.IsNullOrWhiteSpace(recipient) ? fallback.recipient : recipient;
+            address = string.IsNullOrWhiteSpace(address) ? fallback?.address : address;
+            if (string.IsNullOrWhiteSpace(address))
+                return null; // still no address available
         }
 
-        return new MailData
+        MailData resolved = new MailData
         {
             address = address,
             recipient = recipient,
+            placedByPlayer = requestedMailData.placedByPlayer,
+            complexity = requestedMailData.complexity,
             packageModifier = requestedMailData.packageModifier,
             packageScore = requestedMailData.packageScore
         };
+
+        if (string.IsNullOrWhiteSpace(resolved.address))
+        {
+            Debug.LogWarning($"InventorySpawner.ResolveMailData: resolved mail has no address; using fallback.", this);
+            MailData fallback = addressBook != null ? addressBook.GetRandomMailData() : GenerateRandomMailData();
+            if (fallback != null)
+            {
+                resolved.address = fallback.address;
+                if (resolved.complexity == 0f)
+                    resolved.complexity = fallback.complexity;
+            }
+        }
+
+        // It's acceptable for `recipient` to be null/empty: mail can be addressed to an address without a named recipient.
+        if (resolved.complexity == 0f)
+            resolved.complexity = 1f;
+
+        return resolved;
     }
 
     /// <summary>
@@ -446,7 +478,15 @@ public class InventorySpawner : MonoBehaviour
         if (addressBook != null)
             return addressBook.GetRandomMailData();
 
-        return null;
+        // Fallback when no address book is configured: generate a synthetic recipient/address
+        string rnd = System.Guid.NewGuid().ToString().Substring(0, 8);
+        return new MailData
+        {
+            recipient = $"Player_{rnd}",
+            address = $"Addr_{rnd}",
+            placedByPlayer = false,
+            complexity = 1f
+        };
     }
 
     /// <summary>

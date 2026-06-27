@@ -204,6 +204,9 @@ public class InventoryDragController : MonoBehaviour
         }
 
         Vector2Int target = hoveredTile.gridPosition;
+        if (heldItem?.MailData != null)
+            heldItem.MailData.placedByPlayer = true;
+
         bool success = targetGrid.PlaceItem(target, heldItem);
 
         if (!success)

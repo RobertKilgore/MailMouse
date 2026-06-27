@@ -8,4 +8,7 @@ public class InventoryDataHolder : MonoBehaviour
 {
     [Tooltip("Inventory data for this object.")]
     public InventoryData inventoryData;
+
+    [Tooltip("Ignore this inventory when running scene inventory validation.")]
+    public bool ignoreForValidation;
 }

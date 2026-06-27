@@ -26,7 +26,9 @@ public class PlayerInventoryController : MonoBehaviour
     [Header("Player Data")]
     [SerializeField]
     [Tooltip("Optional InventoryData to populate the player UI slot when opening mailbox sets.")]
-    private InventoryData playerInventoryData;
+    private InventoryDataHolder playerInventoryHolder;
+
+    public InventoryData PlayerInventoryData => playerInventoryHolder != null ? playerInventoryHolder.inventoryData : null;
 
     private InventorySetManager setManager;
     private InputSystem_Actions inputActions;
@@ -68,6 +70,8 @@ public class PlayerInventoryController : MonoBehaviour
         if (setManager == null)
             return;
 
+        Debug.Log("PlayerInventoryController: Interact pressed - toggling player inventory (E)");
+
         // If any set is open, close it
         if (setManager.IsSetOpen)
         {
@@ -75,8 +79,14 @@ public class PlayerInventoryController : MonoBehaviour
         }
         else if (playerInventorySet != null)
         {
-            // Otherwise open the player inventory set
-            setManager.OpenInventorySet(playerInventorySet);
+            // Otherwise open the player inventory set and bind the player data
+            List<InventoryData> ordered = null;
+            if (PlayerInventoryData != null)
+                ordered = new List<InventoryData> { PlayerInventoryData };
+            else
+                Debug.LogWarning("PlayerInventoryController: playerInventoryData is null when opening player inventory.", this);
+
+            setManager.OpenInventorySet(playerInventorySet, ordered);
         }
         else
         {
@@ -137,8 +147,8 @@ public class PlayerInventoryController : MonoBehaviour
 
         // Build ordered data list: player data then mailbox data
         List<InventoryData> orderedData = new List<InventoryData>();
-        if (playerInventoryData != null)
-            orderedData.Add(playerInventoryData);
+        if (PlayerInventoryData != null)
+            orderedData.Add(PlayerInventoryData);
         if (mailboxData != null)
             orderedData.Add(mailboxData);
 
@@ -165,5 +175,9 @@ public class PlayerInventoryController : MonoBehaviour
             else
                 Debug.Log($"Mailbox {i}: not assigned", this);
         }
+        if (playerInventoryHolder != null)
+            Debug.Log($"Player inventory holder: {playerInventoryHolder.inventoryData?.inventoryId ?? "no data"}", this);
+        else
+            Debug.Log("Player inventory holder: not assigned", this);
     }
 }
