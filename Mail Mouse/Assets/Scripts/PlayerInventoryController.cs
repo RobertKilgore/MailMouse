@@ -97,7 +97,10 @@ public class PlayerInventoryController : MonoBehaviour
         {
             // Open menu first to activate UI, then populate with InventorySetManager
             if (inventoryMenuController != null)
+            {
                 inventoryMenuController.Open();
+                inventoryMenuController.transform.SetAsLastSibling();
+            }
 
             // Otherwise open the player inventory set and bind the player data
             List<InventoryData> ordered = null;

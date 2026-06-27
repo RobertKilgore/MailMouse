@@ -15,6 +15,7 @@ public class MenuManager : MonoBehaviour
 
     public static bool WorldControlsEnabled => Instance?.AreWorldControlsEnabled ?? true;
     public static bool IsGamePaused => Instance != null && Instance.CurrentTimeScale <= 0f;
+    public static bool AnyMenuOpen => Instance?.IsAnyMenuOpen ?? false;
 
     private void Awake()
     {
@@ -87,6 +88,7 @@ public class MenuManager : MonoBehaviour
             SetTimeScale(previousTimeScale);
             AreWorldControlsEnabled = true;
             CurrentTimeScale = Time.timeScale;
+            UpdateCursorState();
             return;
         }
 
@@ -96,6 +98,20 @@ public class MenuManager : MonoBehaviour
         SetTimeScale(effectiveTimeScale);
         AreWorldControlsEnabled = effectiveControls;
         CurrentTimeScale = Time.timeScale;
+        UpdateCursorState();
+    }
+
+    private void UpdateCursorState()
+    {
+        if (activeMenus.Count > 0)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            return;
+        }
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void SetTimeScale(float value)

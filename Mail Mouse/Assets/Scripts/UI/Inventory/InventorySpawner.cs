@@ -123,8 +123,6 @@ public class InventorySpawner : MonoBehaviour
         else
             Debug.Log($"Attempting to spawn item in inventory '{inventory.InventoryId}'.", this);
 
-        MailData resolvedMailData = ResolveMailData(mailData);
-
         for (int candidateIndex = 0; candidateIndex < candidates.Count; candidateIndex++)
         {
             InventoryItem candidate = candidates[candidateIndex];
@@ -149,7 +147,7 @@ public class InventorySpawner : MonoBehaviour
                     if (debugLevel > 1)
                         Debug.Log($"    [Spawner] Testing position {position} rotation {nextRotation} for prefab '{candidate.name}'.", this);
 
-                    InventoryItemData itemData = CreateItemDataFromPrefab(candidate, position, nextRotation, resolvedMailData);
+                    InventoryItemData itemData = CreateItemDataFromPrefab(candidate, position, nextRotation, mailData);
                     if (itemData == null)
                     {
                         if (debugLevel > 0)
@@ -247,7 +245,7 @@ public class InventorySpawner : MonoBehaviour
             shapeDefinition = prefab.ShapeDefinition,
             rotation = NormalizeRotation(rotation),
             gridPosition = gridPosition,
-            mailData = mailData
+            mailData = ResolveMailData(prefab.DefaultMailData, mailData)
         };
     }
 
@@ -260,7 +258,7 @@ public class InventorySpawner : MonoBehaviour
         if (prefab == null)
             return null;
 
-        MailData randomMail = ResolveMailData(null);
+        MailData randomMail = ResolveMailData(prefab.DefaultMailData, null);
         if (randomMail == null)
             return null;
 
@@ -283,72 +281,79 @@ public class InventorySpawner : MonoBehaviour
     /// Ensures mail metadata is complete before item instantiation.
     /// If the caller provided partial data, this fills missing address or recipient values using the address book.
     /// </summary>
-    private MailData ResolveMailData(MailData requestedMailData)
+    private MailData ResolveMailData(MailData prefabMailData, MailData requestedMailData)
     {
-        if (requestedMailData == null)
-        {
-            MailData candidate = addressBook != null ? addressBook.GetRandomMailData() : GenerateRandomMailData();
-            // Accept candidate if it has an address. Recipient may be null/empty (allowed).
-            if (candidate == null || string.IsNullOrWhiteSpace(candidate.address))
-            {
-                Debug.LogWarning($"InventorySpawner.ResolveMailData: address book returned no address; using generated fallback.", this);
-                candidate = GenerateRandomMailData();
-            }
+        MailData resolved = CloneMailData(prefabMailData) ?? new MailData();
 
-            return candidate;
+        if (requestedMailData != null)
+        {
+            if (!string.IsNullOrWhiteSpace(requestedMailData.address))
+                resolved.address = requestedMailData.address;
+
+            if (!string.IsNullOrWhiteSpace(requestedMailData.recipient))
+                resolved.recipient = requestedMailData.recipient;
+
+            if (!string.IsNullOrWhiteSpace(requestedMailData.name))
+                resolved.name = requestedMailData.name;
+
+            if (requestedMailData.complexity != 0f)
+                resolved.complexity = requestedMailData.complexity;
+
+            resolved.placedByPlayer = requestedMailData.placedByPlayer;
+            resolved.packageModifier = requestedMailData.packageModifier;
+            resolved.packageScore = requestedMailData.packageScore;
         }
-
-        string address = requestedMailData.address;
-        string recipient = requestedMailData.recipient;
-
-        if (string.IsNullOrWhiteSpace(address))
-        {
-            MailAddressEntry randomEntry = addressBook != null ? addressBook.GetRandomEntry() : null;
-            address = randomEntry != null ? randomEntry.address : null;
-        }
-
-        if (string.IsNullOrWhiteSpace(recipient))
-        {
-            if (addressBook != null && !string.IsNullOrWhiteSpace(address))
-                recipient = addressBook.GetRandomRecipientForAddress(address);
-        }
-
-        // If address is missing, try to fill it; recipient may be omitted by design.
-        if (string.IsNullOrWhiteSpace(address))
-        {
-            MailData fallback = addressBook != null ? addressBook.GetRandomMailData() : GenerateRandomMailData();
-            address = string.IsNullOrWhiteSpace(address) ? fallback?.address : address;
-            if (string.IsNullOrWhiteSpace(address))
-                return null; // still no address available
-        }
-
-        MailData resolved = new MailData
-        {
-            address = address,
-            recipient = recipient,
-            placedByPlayer = requestedMailData.placedByPlayer,
-            complexity = requestedMailData.complexity,
-            packageModifier = requestedMailData.packageModifier,
-            packageScore = requestedMailData.packageScore
-        };
 
         if (string.IsNullOrWhiteSpace(resolved.address))
         {
-            Debug.LogWarning($"InventorySpawner.ResolveMailData: resolved mail has no address; using fallback.", this);
+            MailAddressEntry randomEntry = addressBook != null ? addressBook.GetRandomEntry() : null;
+            resolved.address = randomEntry != null ? randomEntry.address : null;
+        }
+
+        if (string.IsNullOrWhiteSpace(resolved.recipient) && !string.IsNullOrWhiteSpace(resolved.address) && addressBook != null)
+        {
+            resolved.recipient = addressBook.GetRandomRecipientForAddress(resolved.address);
+        }
+
+        if (string.IsNullOrWhiteSpace(resolved.address))
+        {
             MailData fallback = addressBook != null ? addressBook.GetRandomMailData() : GenerateRandomMailData();
             if (fallback != null)
             {
-                resolved.address = fallback.address;
+                resolved.address = string.IsNullOrWhiteSpace(resolved.address) ? fallback.address : resolved.address;
                 if (resolved.complexity == 0f)
                     resolved.complexity = fallback.complexity;
+                if (string.IsNullOrWhiteSpace(resolved.name))
+                    resolved.name = fallback.name;
             }
         }
 
-        // It's acceptable for `recipient` to be null/empty: mail can be addressed to an address without a named recipient.
         if (resolved.complexity == 0f)
             resolved.complexity = 1f;
 
         return resolved;
+    }
+
+    private MailData ResolveMailData(MailData requestedMailData)
+    {
+        return ResolveMailData(null, requestedMailData);
+    }
+
+    private MailData CloneMailData(MailData source)
+    {
+        if (source == null)
+            return null;
+
+        return new MailData
+        {
+            address = source.address,
+            recipient = source.recipient,
+            placedByPlayer = source.placedByPlayer,
+            complexity = source.complexity,
+            packageScore = source.packageScore,
+            packageModifier = source.packageModifier,
+            name = source.name
+        };
     }
 
     /// <summary>

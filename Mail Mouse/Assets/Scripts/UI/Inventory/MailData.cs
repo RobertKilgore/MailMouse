@@ -35,4 +35,9 @@ public class MailData
     /// Optional package modifier metadata, such as fragile, priority, or bonus.
     /// </summary>
     public string packageModifier;
+
+    /// <summary>
+    /// Optional mail item name for tooltip and display purposes.
+    /// </summary>
+    public string name;
 }

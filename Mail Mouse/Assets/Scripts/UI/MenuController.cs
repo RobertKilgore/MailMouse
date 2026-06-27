@@ -55,6 +55,8 @@ public class MenuController : MonoBehaviour
 
     public void Close()
     {
+        InventoryHoverTooltip.HideTooltip();
+
         if (!deactivateOnClose && MenuManager.Instance != null)
             MenuManager.Instance.CloseMenu(this);
 

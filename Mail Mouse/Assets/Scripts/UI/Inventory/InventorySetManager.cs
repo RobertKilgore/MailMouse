@@ -1,5 +1,6 @@
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// Manages inventory sets: opening, closing, saving, loading, and positioning inventories on screen.
@@ -49,6 +50,8 @@ public class InventorySetManager : MonoBehaviour
     /// </summary>
     public void OpenInventorySet(InventorySetDefinition setDefinition, List<InventoryData> orderedData = null)
     {
+        InventoryHoverTooltip.HideTooltip();
+
         if (setDefinition == null)
             return;
 
@@ -98,10 +101,12 @@ public class InventorySetManager : MonoBehaviour
                 inventoryInstance.ClearInventory();
             }
 
+            inventoryInstance.transform.SetAsLastSibling();
             inventoryInstance.gameObject.SetActive(true);
             activeInstances.Add(inventoryInstance);
         }
 
+        transform.SetAsLastSibling();
         Debug.Log($"Opened inventory set '{setDefinition.name}'", this);
     }
 
@@ -110,6 +115,8 @@ public class InventorySetManager : MonoBehaviour
     /// </summary>
     public void CloseInventorySet()
     {
+        InventoryHoverTooltip.HideTooltip();
+
         if (activeSet == null)
             return;
 

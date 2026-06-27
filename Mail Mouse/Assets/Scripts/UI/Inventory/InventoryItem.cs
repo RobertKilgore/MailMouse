@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField]
     private MailData mailData;
@@ -28,6 +29,8 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     private InventoryInstance ownerInventory;
     private RectTransform backgroundRoot;
     private bool backgroundVisible = true;
+    private bool ignorePointerEnterUntilMove;
+    private Vector2 enablePointerPosition;
 
     public MailData MailData => mailData;
     public string PrefabId => prefabId;
@@ -417,6 +420,54 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     /// Left empty because only drag behavior is needed.
     /// </summary>
     public void OnPointerDown(PointerEventData eventData) { }
+
+    private void OnEnable()
+    {
+        if (rectTransform == null)
+            rectTransform = GetComponent<RectTransform>();
+
+        enablePointerPosition = Mouse.current != null ? Mouse.current.position.ReadValue() : Vector2.zero;
+        ignorePointerEnterUntilMove = true;
+    }
+
+    private void OnDisable()
+    {
+        InventoryHoverTooltip.HideTooltip();
+    }
+
+    /// <summary>
+    /// Shows hover information when the pointer enters this inventory item.
+    /// </summary>
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Vector2 currentPointerPosition = Mouse.current != null ? Mouse.current.position.ReadValue() : Vector2.zero;
+        if (ignorePointerEnterUntilMove && currentPointerPosition == enablePointerPosition)
+        {
+            Debug.Log($"InventoryItem.OnPointerEnter ignored after enable: {name}", this);
+            return;
+        }
+
+        ignorePointerEnterUntilMove = false;
+        Debug.Log($"InventoryItem.OnPointerEnter: {name}", this);
+        ShowTooltipUnderPointer();
+    }
+
+    /// <summary>
+    /// Hides the hover tooltip when the pointer leaves this inventory item.
+    /// </summary>
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Debug.Log($"InventoryItem.OnPointerExit: {name}", this);
+        InventoryHoverTooltip.HideTooltip();
+    }
+
+    private void ShowTooltipUnderPointer()
+    {
+        string displayName = mailData != null && !string.IsNullOrWhiteSpace(mailData.name) ? mailData.name : name;
+        string address = mailData != null ? mailData.address : null;
+        string tooltip = string.IsNullOrWhiteSpace(address) ? displayName : $"{displayName}\n{address}";
+        InventoryHoverTooltip.ShowTooltip(tooltip);
+    }
 
     /// <summary>
     /// Notifies the drag controller that this item has started being dragged.

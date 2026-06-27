@@ -68,7 +68,8 @@ namespace StarterAssets
 		
 		private void OnApplicationFocus(bool hasFocus)
 		{
-			SetCursorState(cursorLocked);
+            bool shouldLock = cursorLocked && !MenuManager.AnyMenuOpen;
+            SetCursorState(shouldLock);
 		}
 
 		private void SetCursorState(bool newState)
@@ -76,5 +77,5 @@ namespace StarterAssets
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
 	}
-	
+
 }
