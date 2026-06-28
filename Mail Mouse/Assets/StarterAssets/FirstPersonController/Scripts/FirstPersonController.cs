@@ -131,7 +131,7 @@ namespace StarterAssets
 
 		private void CameraRotation()
 		{
-			if (MenuManager.AnyMenuOpen)
+			if (!MenuManager.LookingEnabled)
 			{
 				return;
 			}

@@ -50,6 +50,7 @@ public class InventorySetManager : MonoBehaviour
     /// </summary>
     public void OpenInventorySet(InventorySetDefinition setDefinition, List<InventoryData> orderedData = null)
     {
+        Debug.Log($"[InventorySetManager.OpenInventorySet] Opening set: {(setDefinition != null ? setDefinition.name : "NULL")}");
         InventoryHoverTooltip.HideTooltip();
 
         if (setDefinition == null)
@@ -72,6 +73,7 @@ public class InventorySetManager : MonoBehaviour
             if (inventoryInstance == null)
                 continue;
 
+            Debug.Log($"[InventorySetManager] Processing inventory instance: {inventoryInstance.gameObject.name}");
             SetInventoryPosition(inventoryInstance, member.screenPosition);
 
             InventoryData inventoryData = null;
@@ -101,8 +103,10 @@ public class InventorySetManager : MonoBehaviour
                 inventoryInstance.ClearInventory();
             }
 
+            Debug.Log($"[InventorySetManager] Before SetActive: {inventoryInstance.gameObject.name} active={inventoryInstance.gameObject.activeSelf}");
             inventoryInstance.transform.SetAsLastSibling();
             inventoryInstance.gameObject.SetActive(true);
+            Debug.Log($"[InventorySetManager] After SetActive: {inventoryInstance.gameObject.name} active={inventoryInstance.gameObject.activeSelf}, activeInHierarchy={inventoryInstance.gameObject.activeInHierarchy}");
             activeInstances.Add(inventoryInstance);
         }
 

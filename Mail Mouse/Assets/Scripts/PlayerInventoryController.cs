@@ -61,7 +61,7 @@ public class PlayerInventoryController : MonoBehaviour
 
     private void Start()
     {
-        setManager = InventorySetManager.Instance ?? FindFirstObjectByType<InventorySetManager>();
+        setManager = InventorySetManager.Instance ?? FindFirstObjectByType<InventorySetManager>(FindObjectsInactive.Include);
         if (setManager == null)
             Debug.LogWarning("No InventorySetManager found in scene. Inventory management may not work.", this);
     }
@@ -89,17 +89,25 @@ public class PlayerInventoryController : MonoBehaviour
         // If any set is open, close it
         if (setManager.IsSetOpen)
         {
+            Debug.Log("[PlayerInventoryController] Closing open inventory set");
             setManager.CloseInventorySet();
             if (inventoryMenuController != null)
                 inventoryMenuController.Close();
         }
         else if (playerInventorySet != null)
         {
+            Debug.Log("[PlayerInventoryController] Opening player inventory");
             // Open menu first to activate UI, then populate with InventorySetManager
             if (inventoryMenuController != null)
             {
+                Debug.Log($"[PlayerInventoryController] inventoryMenuController: {inventoryMenuController.gameObject.name}, active: {inventoryMenuController.gameObject.activeSelf}");
                 inventoryMenuController.Open();
+                Debug.Log($"[PlayerInventoryController] After Open(): active: {inventoryMenuController.gameObject.activeSelf}, activeInHierarchy: {inventoryMenuController.gameObject.activeInHierarchy}");
                 inventoryMenuController.transform.SetAsLastSibling();
+            }
+            else
+            {
+                Debug.LogError("[PlayerInventoryController] inventoryMenuController is NULL!");
             }
 
             // Otherwise open the player inventory set and bind the player data
@@ -109,6 +117,7 @@ public class PlayerInventoryController : MonoBehaviour
             else
                 Debug.LogWarning("PlayerInventoryController: playerInventoryData is null when opening player inventory.", this);
 
+            Debug.Log("[PlayerInventoryController] Calling setManager.OpenInventorySet()");
             setManager.OpenInventorySet(playerInventorySet, ordered);
         }
         else

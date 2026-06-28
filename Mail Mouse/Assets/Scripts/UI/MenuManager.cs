@@ -11,9 +11,11 @@ public class MenuManager : MonoBehaviour
 
     public bool IsAnyMenuOpen => activeMenus.Count > 0;
     public bool AreWorldControlsEnabled { get; private set; } = true;
+    public bool IsLookingEnabled { get; private set; } = true;
     public float CurrentTimeScale { get; private set; } = 1f;
 
     public static bool WorldControlsEnabled => Instance?.AreWorldControlsEnabled ?? true;
+    public static bool LookingEnabled => Instance?.IsLookingEnabled ?? true;
     public static bool IsGamePaused => Instance != null && Instance.CurrentTimeScale <= 0f;
     public static bool AnyMenuOpen => Instance?.IsAnyMenuOpen ?? false;
 
@@ -32,6 +34,7 @@ public class MenuManager : MonoBehaviour
 
         previousTimeScale = Time.timeScale;
         ApplyMenuState();
+        Debug.Log($"[MenuManager] Initialized. Active menus count: {activeMenus.Count}, IsAnyMenuOpen: {IsAnyMenuOpen}");
     }
 
     private void OnDestroy()
@@ -62,6 +65,7 @@ public class MenuManager : MonoBehaviour
         }
 
         activeMenus.Add(menu);
+        Debug.Log($"[MenuManager] Opened menu: {menu.gameObject.name}. Total active menus: {activeMenus.Count}");
         ApplyMenuState();
     }
 
@@ -73,6 +77,7 @@ public class MenuManager : MonoBehaviour
         if (!activeMenus.Remove(menu))
             return;
 
+        Debug.Log($"[MenuManager] Closed menu: {menu.gameObject.name}. Total active menus: {activeMenus.Count}");
         ApplyMenuState();
     }
 
@@ -87,6 +92,7 @@ public class MenuManager : MonoBehaviour
         {
             SetTimeScale(previousTimeScale);
             AreWorldControlsEnabled = true;
+            IsLookingEnabled = true;
             CurrentTimeScale = Time.timeScale;
             UpdateCursorState();
             return;
@@ -94,9 +100,11 @@ public class MenuManager : MonoBehaviour
 
         float effectiveTimeScale = activeMenus.Min(m => m.menuTimeScale);
         bool effectiveControls = activeMenus.All(m => m.allowWorldControls);
+        bool effectiveLooking = activeMenus.All(m => m.allowLooking);
 
         SetTimeScale(effectiveTimeScale);
         AreWorldControlsEnabled = effectiveControls;
+        IsLookingEnabled = effectiveLooking;
         CurrentTimeScale = Time.timeScale;
         UpdateCursorState();
     }
