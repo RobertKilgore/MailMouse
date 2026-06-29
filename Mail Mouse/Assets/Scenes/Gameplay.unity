@@ -1944,6 +1944,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7589280761257466709}
     m_Modifications:
+    - target: {fileID: 4613442422207383219, guid: 5b6c19037515eb94baae73a25cdf4564, type: 3}
+      propertyPath: openBehavior
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613442422207383219, guid: 5b6c19037515eb94baae73a25cdf4564, type: 3}
+      propertyPath: preventExternalClose
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5601314156297095242, guid: 5b6c19037515eb94baae73a25cdf4564, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2129,7 +2137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
   timerText: {fileID: 5370273488517588853}
-  timeRemaining: 30
+  timeRemaining: 3
 --- !u!224 &2005899350220404984
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2553,7 +2561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1186142227389859483, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.75
+      value: 0.41
       objectReference: {fileID: 0}
     - target: {fileID: 1186142227389859483, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
       propertyPath: m_LocalPosition.z
