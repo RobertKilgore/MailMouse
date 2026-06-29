@@ -29,8 +29,6 @@ public class Timer : MonoBehaviour
             {
                 Debug.Log("OUT OF TIME!");
                 OnEndGame();
-                timeRemaining = 0;
-                isTimerActive = false;
             }
 
         }
@@ -46,6 +44,7 @@ public class Timer : MonoBehaviour
     }
     private void DisplayTime(float timeToDisplay)
     {
+        timeToDisplay += 1; // Add 1 second to account for the current frame's time
         // Calculate minutes and seconds
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);

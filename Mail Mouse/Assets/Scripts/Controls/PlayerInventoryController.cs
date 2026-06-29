@@ -81,8 +81,27 @@ public class PlayerInventoryController : MonoBehaviour
         if (!inputActions.Player.Interact.WasPressedThisFrame())
             return;
 
+        // Ensure we have a reference to the InventorySetManager. If it's not present yet,
+        // try to find it (including inactive objects). If the inventory menu creates
+        // or activates the manager when opened, open the menu first and try again.
         if (setManager == null)
+            setManager = InventorySetManager.Instance ?? FindFirstObjectByType<InventorySetManager>(FindObjectsInactive.Include);
+
+        if (setManager == null && inventoryMenuController != null)
+        {
+            Debug.Log("PlayerInventoryController: InventorySetManager missing — opening inventory menu to ensure manager exists.");
+            inventoryMenuController.Open();
+            // Try again after opening the menu in case the manager is part of that UI hierarchy
+            setManager = InventorySetManager.Instance ?? FindFirstObjectByType<InventorySetManager>(FindObjectsInactive.Include);
+            Debug.Log($"PlayerInventoryController: InventorySetManager after menu open: {(setManager != null ? "found" : "still null")}"
+            );
+        }
+
+        if (setManager == null)
+        {
+            Debug.LogWarning("No InventorySetManager available when trying to toggle inventory.", this);
             return;
+        }
 
         Debug.Log("PlayerInventoryController: Interact pressed - toggling player inventory (E)");
 
@@ -134,8 +153,28 @@ public class PlayerInventoryController : MonoBehaviour
         if (!inputActions.Player.Interact2.WasPressedThisFrame())
             return;
 
-        if (setManager == null || detectionCollider == null)
+        if (detectionCollider == null)
+        {
+            Debug.LogWarning("Detection collider not assigned!", this);
             return;
+        }
+
+        // Ensure the InventorySetManager is resolved; if it's created when opening the menu,
+        // open the menu first and retry.
+        if (setManager == null)
+            setManager = InventorySetManager.Instance ?? FindFirstObjectByType<InventorySetManager>(FindObjectsInactive.Include);
+
+        if (setManager == null && inventoryMenuController != null)
+        {
+            inventoryMenuController.Open();
+            setManager = InventorySetManager.Instance ?? FindFirstObjectByType<InventorySetManager>(FindObjectsInactive.Include);
+        }
+
+        if (setManager == null)
+        {
+            Debug.LogWarning("Cannot interact with nearby inventory: InventorySetManager not found.", this);
+            return;
+        }
 
         // Close inventory if open
         if (setManager.IsSetOpen)

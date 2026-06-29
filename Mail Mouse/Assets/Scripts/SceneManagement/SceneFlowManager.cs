@@ -78,6 +78,19 @@ public class SceneFlowManager : MonoBehaviour
 
         Debug.Log($"SceneFlowManager: loading scene '{sceneName}'...");
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+
+        // Ensure cursor state is appropriate after loading menu or gameplay scenes.
+        // For menu scenes we'll make the cursor visible and confined so it doesn't leave the editor/game window.
+        if (sceneName == startSceneName || sceneName == endSceneName)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
+        else if (sceneName == gameplaySceneName)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     public void QuitGame()
