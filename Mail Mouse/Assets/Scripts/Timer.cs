@@ -4,6 +4,7 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
+    private SceneFlowManager sceneFlowManager;
     [SerializeField] private float timeRemaining = 300f;
     private bool isTimerActive = false;
 
@@ -27,11 +28,21 @@ public class Timer : MonoBehaviour
             else
             {
                 Debug.Log("OUT OF TIME!");
+                OnEndGame();
                 timeRemaining = 0;
                 isTimerActive = false;
             }
 
         }
+    }
+
+    public void OnEndGame()
+    {
+        if (sceneFlowManager == null)
+            sceneFlowManager = SceneFlowManager.GetOrCreateInstance();
+
+        if (sceneFlowManager != null)
+            sceneFlowManager.LoadEndScene();
     }
     private void DisplayTime(float timeToDisplay)
     {

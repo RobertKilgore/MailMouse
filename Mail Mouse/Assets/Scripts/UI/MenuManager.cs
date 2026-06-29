@@ -19,6 +19,17 @@ public class MenuManager : MonoBehaviour
     public static bool IsGamePaused => Instance != null && Instance.CurrentTimeScale <= 0f;
     public static bool AnyMenuOpen => Instance?.IsAnyMenuOpen ?? false;
 
+    [Tooltip("Optional gameplay UI root container that menus can hide visually while open.")]
+    public GameObject gameplayUIRoot;
+
+    [Tooltip("Optional full-screen backdrop GameObject used for menu fade overlays.")]
+    public GameObject backdropObject;
+
+    private CanvasGroup gameplayUICanvasGroup;
+    private float gameplayUIOriginalAlpha = 1f;
+    private bool gameplayUIOriginalInteractable = true;
+    private bool gameplayUIOriginalBlocksRaycasts = true;
+
     private void Awake()
     {
         if (Instance == null)
@@ -67,6 +78,8 @@ public class MenuManager : MonoBehaviour
         activeMenus.Add(menu);
         Debug.Log($"[MenuManager] Opened menu: {menu.gameObject.name}. Total active menus: {activeMenus.Count}");
         ApplyMenuState();
+        RefreshGameplayUIVisibility();
+        RefreshBackdropVisibility();
     }
 
     public void CloseMenu(MenuController menu)
@@ -79,6 +92,77 @@ public class MenuManager : MonoBehaviour
 
         Debug.Log($"[MenuManager] Closed menu: {menu.gameObject.name}. Total active menus: {activeMenus.Count}");
         ApplyMenuState();
+        RefreshGameplayUIVisibility();
+        RefreshBackdropVisibility();
+    }
+
+    public void RefreshGameplayUIVisibility()
+    {
+        if (gameplayUIRoot == null)
+            return;
+
+        CanvasGroup canvasGroup = GetGameplayUICanvasGroup();
+        if (canvasGroup == null)
+            return;
+
+        bool shouldHideGameplayUI = activeMenus.Any(m => m.hideGameplayUI);
+        if (shouldHideGameplayUI)
+        {
+            canvasGroup.alpha = 0f;
+            canvasGroup.interactable = false;
+            canvasGroup.blocksRaycasts = false;
+            return;
+        }
+
+        canvasGroup.alpha = gameplayUIOriginalAlpha;
+        canvasGroup.interactable = gameplayUIOriginalInteractable;
+        canvasGroup.blocksRaycasts = gameplayUIOriginalBlocksRaycasts;
+    }
+
+    public void RefreshBackdropVisibility()
+    {
+        GameObject backdrop = GetBackdropObject();
+        if (backdrop == null)
+            return;
+
+        bool shouldShowBackdrop = activeMenus.Any(m => m.useBackdrop);
+        backdrop.SetActive(shouldShowBackdrop);
+        if (shouldShowBackdrop)
+            backdrop.transform.SetAsFirstSibling();
+    }
+
+    private GameObject GetBackdropObject()
+    {
+        if (backdropObject != null)
+            return backdropObject;
+
+        if (gameplayUIRoot == null)
+            return null;
+
+        Transform found = gameplayUIRoot.transform.Find("Backdrop");
+        if (found != null)
+            backdropObject = found.gameObject;
+
+        return backdropObject;
+    }
+
+    private CanvasGroup GetGameplayUICanvasGroup()
+    {
+        if (gameplayUICanvasGroup != null)
+            return gameplayUICanvasGroup;
+
+        if (gameplayUIRoot == null)
+            return null;
+
+        gameplayUICanvasGroup = gameplayUIRoot.GetComponent<CanvasGroup>();
+        if (gameplayUICanvasGroup == null)
+            gameplayUICanvasGroup = gameplayUIRoot.AddComponent<CanvasGroup>();
+
+        gameplayUIOriginalAlpha = gameplayUICanvasGroup.alpha;
+        gameplayUIOriginalInteractable = gameplayUICanvasGroup.interactable;
+        gameplayUIOriginalBlocksRaycasts = gameplayUICanvasGroup.blocksRaycasts;
+
+        return gameplayUICanvasGroup;
     }
 
     public IReadOnlyList<MenuController> GetActiveMenus()
@@ -113,7 +197,7 @@ public class MenuManager : MonoBehaviour
     {
         if (activeMenus.Count > 0)
         {
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             return;
         }

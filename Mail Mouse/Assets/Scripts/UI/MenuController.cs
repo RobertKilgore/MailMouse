@@ -23,6 +23,12 @@ public class MenuController : MonoBehaviour
     [Tooltip("If true, this menu will close all other menus when opened.")]
     public bool forceExclusive = true;
 
+    [Tooltip("If true, this menu will open with a full-screen backdrop image behind its content.")]
+    public bool useBackdrop = false;
+
+    [Tooltip("If true, this menu will hide the gameplay UI root while the menu is open.")]
+    public bool hideGameplayUI = false;
+
     private CanvasGroup canvasGroup;
 
     private void Awake()
@@ -35,6 +41,16 @@ public class MenuController : MonoBehaviour
         Debug.Log($"[MenuController] OnEnable: {gameObject.name}, activeInHierarchy: {gameObject.activeInHierarchy}");
         // Don't automatically register with MenuManager on enable
         // Only register when explicitly opened via Open()
+    }
+
+    private void SetVisualState(bool visible)
+    {
+        if (canvasGroup == null)
+            return;
+
+        canvasGroup.alpha = visible ? 1f : 0f;
+        canvasGroup.interactable = visible;
+        canvasGroup.blocksRaycasts = visible;
     }
 
     private void OnDisable()
@@ -63,8 +79,7 @@ public class MenuController : MonoBehaviour
 
         if (canvasGroup != null)
         {
-            canvasGroup.interactable = true;
-            canvasGroup.blocksRaycasts = true;
+            SetVisualState(true);
             Debug.Log($"[MenuController.Open] CanvasGroup: interactable={canvasGroup.interactable}, blocksRaycasts={canvasGroup.blocksRaycasts}, alpha={canvasGroup.alpha}");
         }
     }
@@ -75,7 +90,9 @@ public class MenuController : MonoBehaviour
         InventoryHoverTooltip.HideTooltip();
 
         if (MenuManager.Instance != null)
+        {
             MenuManager.Instance.CloseMenu(this);
+        }
 
         if (canvasGroup != null)
         {
@@ -87,3 +104,4 @@ public class MenuController : MonoBehaviour
             gameObject.SetActive(false);
     }
 }
+
