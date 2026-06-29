@@ -114,38 +114,8 @@ public class InventoryValidationController : MonoBehaviour
 
     public DeliveryScoreSummary GetDeliveryScoreSummary(List<PackageDeliveryResult> results)
     {
-        DeliveryScoreSummary summary = new DeliveryScoreSummary();
-
-        if (results == null)
-            return summary;
-
-        summary.totalPackages = results.Count;
-
-        foreach (PackageDeliveryResult result in results)
-        {
-            if (result == null)
-                continue;
-
-            switch (result.status)
-            {
-                case MailDeliveryStatus.DeliveredCorrect:
-                    summary.correctPackages++;
-                    break;
-                case MailDeliveryStatus.DeliveredIncorrect:
-                    summary.incorrectPackages++;
-                    break;
-                case MailDeliveryStatus.Undelivered:
-                    summary.undeliveredPackages++;
-                    break;
-                case MailDeliveryStatus.Unaccepted:
-                    summary.unacceptedPackages++;
-                    break;
-            }
-
-            summary.totalScore += result.score;
-        }
-
-        return summary;
+        // Delegate to ScoringSystem for summary calculation
+        return ScoringSystem.GetDeliveryScoreSummary(results);
     }
 
     private PackageDeliveryResult CreatePackageResult(InventoryDataHolder holder, InventoryData inventoryData, InventoryItemData itemData)
@@ -159,7 +129,7 @@ public class InventoryValidationController : MonoBehaviour
         };
 
         result.status = CalculateDeliveryStatus(result);
-        result.score = CalculatePackageScore(result);
+        result.score = ScoringSystem.CalculatePackageScore(result);
 
         return result;
     }
@@ -194,47 +164,7 @@ public class InventoryValidationController : MonoBehaviour
         return MailDeliveryStatus.DeliveredIncorrect;
     }
 
-    private float CalculatePackageScore(PackageDeliveryResult result)
-    {
-        if (result == null || result.itemData?.mailData == null)
-            return 0f;
 
-        float size = GetPackageSize(result.itemData);
-        float complexity = Mathf.Max(1, result.itemData.mailData.complexity);
-
-        switch (result.status)
-        {
-            case MailDeliveryStatus.Undelivered:
-                return -1f;
-            case MailDeliveryStatus.DeliveredCorrect:
-                return size * complexity;
-            case MailDeliveryStatus.DeliveredIncorrect:
-                return -0.5f * size * complexity;
-            case MailDeliveryStatus.Unaccepted:
-                return 0f;
-            default:
-                return 0f;
-        }
-    }
-
-    private float GetPackageSize(InventoryItemData itemData)
-    {
-        if (itemData == null || string.IsNullOrWhiteSpace(itemData.shapeDefinition))
-            return 1f;
-
-        float count = 0f;
-        string[] rows = itemData.shapeDefinition.Replace("\r", "").Split('\n');
-        foreach (string row in rows)
-        {
-            foreach (char c in row)
-            {
-                if (c == 'X')
-                    count += 1f;
-            }
-        }
-
-        return Mathf.Max(1f, count);
-    }
 
     private bool IsPlayerInventory(InventoryData inventoryData)
     {
