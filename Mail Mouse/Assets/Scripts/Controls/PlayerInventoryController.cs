@@ -1,6 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.InputSystem;
+using System.Linq;
+using UnityEngine;
 
 /// <summary>
 /// Main inventory controller for the player.
@@ -36,24 +36,16 @@ public class PlayerInventoryController : MonoBehaviour
     public InventoryData PlayerInventoryData => playerInventoryHolder != null ? playerInventoryHolder.inventoryData : null;
 
     private InventorySetManager setManager;
-    private InputSystem_Actions inputActions;
     private InventoryDataHolder currentClosestInventory;
-
-    private void OnEnable()
-    {
-        if (inputActions == null)
-            inputActions = new InputSystem_Actions();
-        inputActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        if (inputActions != null)
-            inputActions.Disable();
-    }
 
     private void OnDestroy()
     {
+        if (inventoryMenuController != null)
+        {
+            inventoryMenuController.Opened -= HandleInventoryMenuOpened;
+            inventoryMenuController.Closed -= HandleInventoryMenuClosed;
+        }
+
         // Clean up outline when controller is destroyed
         if (currentClosestInventory != null)
             OutlineManager.DisableOutline(currentClosestInventory.gameObject);
@@ -61,88 +53,111 @@ public class PlayerInventoryController : MonoBehaviour
 
     private void Start()
     {
+        ResolveSetManager();
+        ResolveInventoryMenuController();
+    }
+
+    private void ResolveSetManager()
+    {
+        if (setManager != null)
+            return;
+
         setManager = InventorySetManager.Instance ?? FindFirstObjectByType<InventorySetManager>(FindObjectsInactive.Include);
         if (setManager == null)
             Debug.LogWarning("No InventorySetManager found in scene. Inventory management may not work.", this);
     }
 
-    private void Update()
+    private void ResolveInventoryMenuController()
     {
-        HandleToggleInventory();
-        HandleInteractWithClosestInventory();
-        UpdateOutlineVisualization();
+        if (inventoryMenuController != null)
+            return;
+
+        inventoryMenuController = GetComponentInChildren<MenuController>(true);
+        if (inventoryMenuController == null)
+            return;
+
+        inventoryMenuController.Opened -= HandleInventoryMenuOpened;
+        inventoryMenuController.Closed -= HandleInventoryMenuClosed;
+        inventoryMenuController.Opened += HandleInventoryMenuOpened;
+        inventoryMenuController.Closed += HandleInventoryMenuClosed;
     }
 
-    /// <summary>
-    /// Toggles the player inventory set (or closes it if already open).
-    /// </summary>
-    private void HandleToggleInventory()
+    private bool IsInventoryMenuOpen()
     {
-        if (!inputActions.Player.Interact.WasPressedThisFrame())
-            return;
-
-        // Ensure we have a reference to the InventorySetManager. If it's not present yet,
-        // try to find it (including inactive objects). If the inventory menu creates
-        // or activates the manager when opened, open the menu first and try again.
-        if (setManager == null)
-            setManager = InventorySetManager.Instance ?? FindFirstObjectByType<InventorySetManager>(FindObjectsInactive.Include);
-
-        if (setManager == null && inventoryMenuController != null)
+        if (inventoryMenuController != null)
         {
-            Debug.Log("PlayerInventoryController: InventorySetManager missing — opening inventory menu to ensure manager exists.");
-            inventoryMenuController.Open();
-            // Try again after opening the menu in case the manager is part of that UI hierarchy
-            setManager = InventorySetManager.Instance ?? FindFirstObjectByType<InventorySetManager>(FindObjectsInactive.Include);
-            Debug.Log($"PlayerInventoryController: InventorySetManager after menu open: {(setManager != null ? "found" : "still null")}"
-            );
+            if (inventoryMenuController.IsOpen)
+                return true;
+
+            if (MenuManager.Instance != null && MenuManager.Instance.GetActiveMenus().Any(menu => menu == inventoryMenuController))
+                return true;
         }
+
+        return setManager != null && setManager.IsSetOpen;
+    }
+
+    private void OpenInventoryMenuAndSet(InventorySetDefinition setDefinition, List<InventoryData> orderedData)
+    {
+        ResolveSetManager();
+        ResolveInventoryMenuController();
 
         if (setManager == null)
         {
-            Debug.LogWarning("No InventorySetManager available when trying to toggle inventory.", this);
+            Debug.LogWarning("Cannot open inventory: InventorySetManager not found.", this);
             return;
         }
 
-        Debug.Log("PlayerInventoryController: Interact pressed - toggling player inventory (E)");
+        bool menuIsOpen = inventoryMenuController != null &&
+            (inventoryMenuController.IsOpen || (MenuManager.Instance != null && MenuManager.Instance.GetActiveMenus().Any(menu => menu == inventoryMenuController)));
 
-        // If any set is open, close it
-        if (setManager.IsSetOpen)
+        if (!menuIsOpen)
         {
-            Debug.Log("[PlayerInventoryController] Closing open inventory set");
-            setManager.CloseInventorySet();
-            if (inventoryMenuController != null)
-                inventoryMenuController.Close();
+            Debug.Log("[PlayerInventoryController] Inventory menu is not open; skipping inventory set open from controller.");
+            return;
         }
-        else if (playerInventorySet != null)
-        {
-            Debug.Log("[PlayerInventoryController] Opening player inventory");
-            // Open menu first to activate UI, then populate with InventorySetManager
-            if (inventoryMenuController != null)
-            {
-                Debug.Log($"[PlayerInventoryController] inventoryMenuController: {inventoryMenuController.gameObject.name}, active: {inventoryMenuController.gameObject.activeSelf}");
-                inventoryMenuController.Open();
-                Debug.Log($"[PlayerInventoryController] After Open(): active: {inventoryMenuController.gameObject.activeSelf}, activeInHierarchy: {inventoryMenuController.gameObject.activeInHierarchy}");
-                inventoryMenuController.transform.SetAsLastSibling();
-            }
-            else
-            {
-                Debug.LogError("[PlayerInventoryController] inventoryMenuController is NULL!");
-            }
 
-            // Otherwise open the player inventory set and bind the player data
-            List<InventoryData> ordered = null;
-            if (PlayerInventoryData != null)
-                ordered = new List<InventoryData> { PlayerInventoryData };
-            else
-                Debug.LogWarning("PlayerInventoryController: playerInventoryData is null when opening player inventory.", this);
+        if (inventoryMenuController != null)
+            inventoryMenuController.transform.SetAsLastSibling();
 
-            Debug.Log("[PlayerInventoryController] Calling setManager.OpenInventorySet()");
-            setManager.OpenInventorySet(playerInventorySet, ordered);
-        }
+        if (setDefinition != null)
+            setManager.OpenInventorySet(setDefinition, orderedData);
         else
+            Debug.LogWarning("Inventory set definition not assigned.", this);
+    }
+
+    private void CloseInventoryMenuAndSet()
+    {
+        ResolveSetManager();
+
+        if (setManager != null && setManager.IsSetOpen)
+            setManager.CloseInventorySet();
+    }
+
+    private void HandleInventoryMenuOpened(MenuController menu)
+    {
+        if (menu != inventoryMenuController)
+            return;
+
+        if (inventoryMenuController != null)
+            inventoryMenuController.transform.SetAsLastSibling();
+    }
+
+    private void HandleInventoryMenuClosed(MenuController menu)
+    {
+        if (menu != inventoryMenuController)
+            return;
+
+        ResolveSetManager();
+        if (setManager != null && setManager.IsSetOpen)
         {
-            Debug.LogWarning("Player inventory set not assigned.", this);
+            Debug.Log("[PlayerInventoryController] Inventory menu closed; closing active inventory set.");
+            setManager.CloseInventorySet();
         }
+    }
+
+    private void Update()
+    {
+        UpdateOutlineVisualization();
     }
 
     /// <summary>
@@ -150,25 +165,14 @@ public class PlayerInventoryController : MonoBehaviour
     /// </summary>
     private void HandleInteractWithClosestInventory()
     {
-        if (!inputActions.Player.Interact2.WasPressedThisFrame())
-            return;
-
         if (detectionCollider == null)
         {
             Debug.LogWarning("Detection collider not assigned!", this);
             return;
         }
 
-        // Ensure the InventorySetManager is resolved; if it's created when opening the menu,
-        // open the menu first and retry.
-        if (setManager == null)
-            setManager = InventorySetManager.Instance ?? FindFirstObjectByType<InventorySetManager>(FindObjectsInactive.Include);
-
-        if (setManager == null && inventoryMenuController != null)
-        {
-            inventoryMenuController.Open();
-            setManager = InventorySetManager.Instance ?? FindFirstObjectByType<InventorySetManager>(FindObjectsInactive.Include);
-        }
+        ResolveSetManager();
+        ResolveInventoryMenuController();
 
         if (setManager == null)
         {
@@ -177,11 +181,9 @@ public class PlayerInventoryController : MonoBehaviour
         }
 
         // Close inventory if open
-        if (setManager.IsSetOpen)
+        if (IsInventoryMenuOpen())
         {
-            setManager.CloseInventorySet();
-            if (inventoryMenuController != null)
-                inventoryMenuController.Close();
+            CloseInventoryMenuAndSet();
             return;
         }
 
@@ -312,11 +314,7 @@ public class PlayerInventoryController : MonoBehaviour
             orderedData.Add(PlayerInventoryData);
         orderedData.Add(nearbyData);
 
-        // Open menu first to activate UI, then populate with InventorySetManager
-        if (inventoryMenuController != null)
-            inventoryMenuController.Open();
-
-        setManager.OpenInventorySet(nearbyInventorySet, orderedData);
+        OpenInventoryMenuAndSet(nearbyInventorySet, orderedData);
         Debug.Log($"Opened inventory at {inventoryHolder.gameObject.name}", this);
     }
 
@@ -325,8 +323,7 @@ public class PlayerInventoryController : MonoBehaviour
     /// </summary>
     public void CloseCurrentSet()
     {
-        if (setManager != null && setManager.IsSetOpen)
-            setManager.CloseInventorySet();
+        CloseInventoryMenuAndSet();
     }
 
     [ContextMenu("Debug Nearby Inventories")]

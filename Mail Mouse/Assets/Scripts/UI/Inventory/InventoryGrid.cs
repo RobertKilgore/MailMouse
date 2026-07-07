@@ -91,8 +91,7 @@ public class InventoryGrid : MonoBehaviour
         if (previewLayer == null)
             previewLayer = owner?.PreviewLayer;
 
-        occupancy = new InventoryItem[width, height];
-        BuildTileMap();
+        EnsureInitialized();
     }
 
     /// <summary>
@@ -114,6 +113,18 @@ public class InventoryGrid : MonoBehaviour
             owner.SetGrid(this);
     }
 
+    private void EnsureInitialized()
+    {
+        if (width <= 0 || height <= 0)
+            return;
+
+        if (occupancy == null)
+            occupancy = new InventoryItem[width, height];
+
+        if (tiles == null && gridRoot != null)
+            BuildTileMap();
+    }
+
     /// <summary>
     /// Prints a debug summary of the current grid occupancy to the console.
     /// Includes a line-by-line grid map and anchor positions for placed items.
@@ -127,11 +138,7 @@ public class InventoryGrid : MonoBehaviour
             return;
         }
 
-        if (occupancy == null)
-        {
-            occupancy = new InventoryItem[width, height];
-            Debug.LogWarning($"InventoryGrid '{owner?.InventoryId ?? name}' had no occupancy data; created empty occupancy buffer.", this);
-        }
+        EnsureInitialized();
 
         int occupiedCount = 0;
         HashSet<InventoryItem> itemSet = new HashSet<InventoryItem>();
@@ -510,6 +517,8 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     public List<InventoryItem> GetAllItems()
     {
+        EnsureInitialized();
+
         List<InventoryItem> items = new List<InventoryItem>();
 
         for (int x = 0; x < width; x++)
@@ -541,8 +550,13 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     public void ClearAllItems()
     {
+        EnsureInitialized();
+
         foreach (InventoryItem item in GetAllItems())
         {
+            if (item == null)
+                continue;
+
             RemoveItem(item);
             if (item != null)
                 GameObject.Destroy(item.gameObject);
