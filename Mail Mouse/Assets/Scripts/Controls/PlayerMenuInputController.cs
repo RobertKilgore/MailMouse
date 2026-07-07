@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,23 +7,17 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class PlayerMenuInputController : MonoBehaviour
 {
-    [Header("Menus")]
-    [SerializeField] private MenuController pauseMenu;
-    [SerializeField] private MenuController inventoryMenu;
-
-    [Header("Inventory")]
-    [SerializeField] private InventorySetDefinition playerInventorySet;
-    [SerializeField] private InventoryDataHolder playerInventoryHolder;
-    [SerializeField] private InventorySetDefinition nearbyInventorySet;
-    [SerializeField] private Collider detectionCollider;
+    [Header("Menu References")]
+    [SerializeField] private MenuController pauseMenuController;
+    [SerializeField] private MenuController inventoryMenuController;
+    [SerializeField] private InventoryPresentationController inventoryPresentationController;
 
     private InputSystem_Actions inputActions;
-    private InventorySetManager setManager;
-    private InventoryDataHolder currentClosestInventory;
 
     private void Awake()
     {
-        setManager = InventorySetManager.Instance ?? FindFirstObjectByType<InventorySetManager>(FindObjectsInactive.Include);
+        if (inventoryPresentationController == null)
+            inventoryPresentationController = FindFirstObjectByType<InventoryPresentationController>(FindObjectsInactive.Include);
     }
 
     private void OnEnable()
@@ -47,7 +40,7 @@ public class PlayerMenuInputController : MonoBehaviour
 
         if (inputActions.UI.Cancel.WasPressedThisFrame())
         {
-            RequestMenuToggle(pauseMenu);
+            RequestMenuToggle(pauseMenuController);
             return;
         }
 
@@ -56,13 +49,6 @@ public class PlayerMenuInputController : MonoBehaviour
             RequestInventoryToggle();
             return;
         }
-
-        if (inputActions.Player.Interact2.WasPressedThisFrame())
-        {
-            HandleNearbyInventoryInteraction();
-        }
-
-        UpdateOutlineVisualization();
     }
 
     public void RequestMenuToggle(MenuController menu)
@@ -89,150 +75,35 @@ public class PlayerMenuInputController : MonoBehaviour
         return menu.Open();
     }
 
-    public void RequestInventoryToggle()
+    public void RequestInventoryToggle(InventoryType inventoryType = InventoryType.Player, params InventoryData[] inventoryData)
     {
-        ResolveSetManager();
-        if (setManager == null)
+        if (inventoryMenuController == null)
+            return;
+
+        if (inventoryMenuController.IsOpen || MenuManager.Instance?.GetActiveMenus().Contains(inventoryMenuController) == true)
         {
-            Debug.LogWarning("InventorySetManager unavailable for inventory toggle.");
+            inventoryMenuController.Close();
             return;
         }
 
-        if (inventoryMenu == null)
-            return;
-
-        if (inventoryMenu.IsOpen || MenuManager.Instance?.GetActiveMenus().Contains(inventoryMenu) == true)
-        {
-            inventoryMenu.Close();
-            return;
-        }
-
-        bool menuOpened = TryOpenMenu(inventoryMenu);
+        bool menuOpened = TryOpenMenu(inventoryMenuController);
         if (!menuOpened)
         {
             Debug.Log("Inventory menu open request was rejected by the menu system; skipping inventory set open.");
             return;
         }
 
-        List<InventoryData> ordered = null;
-        if (playerInventoryHolder != null && playerInventoryHolder.inventoryData != null)
-            ordered = new List<InventoryData> { playerInventoryHolder.inventoryData };
-
-        if (setManager != null)
-            setManager.OpenInventorySet(playerInventorySet, ordered);
+        OpenInventorySet(inventoryType, inventoryData);
     }
 
-    public void HandleNearbyInventoryInteraction()
+    public void OpenInventorySet(InventoryType inventoryType, params InventoryData[] inventoryData)
     {
-        ResolveSetManager();
-        if (setManager == null)
-            return;
-
-        if (inventoryMenu != null && (inventoryMenu.IsOpen || MenuManager.Instance?.GetActiveMenus().Contains(inventoryMenu) == true))
-        {
-            inventoryMenu.Close();
-            return;
-        }
-
-        if (detectionCollider == null)
-            return;
-
-        bool menuOpened = TryOpenMenu(inventoryMenu);
-        if (!menuOpened)
-        {
-            Debug.Log("Nearby inventory menu open request was rejected by the menu system; skipping inventory set open.");
-            return;
-        }
-
-        InventoryDataHolder closestHolder = GetClosestNearbyInventory();
-        if (closestHolder == null)
-            return;
-
-        InventoryData nearbyData = closestHolder.inventoryData;
-        if (nearbyData == null)
-            return;
-
-        List<InventoryData> orderedData = new List<InventoryData>();
-        if (playerInventoryHolder != null && playerInventoryHolder.inventoryData != null)
-            orderedData.Add(playerInventoryHolder.inventoryData);
-        orderedData.Add(nearbyData);
-
-        setManager.OpenInventorySet(nearbyInventorySet, orderedData);
+        if (inventoryPresentationController != null)
+            inventoryPresentationController.TryOpenInventory(inventoryType, inventoryData);
     }
 
-    private void ResolveSetManager()
+    public bool WasInteractPressedThisFrame()
     {
-        if (setManager != null)
-            return;
-
-        setManager = InventorySetManager.Instance ?? FindFirstObjectByType<InventorySetManager>(FindObjectsInactive.Include);
-    }
-
-    private InventoryDataHolder GetClosestNearbyInventory()
-    {
-        if (detectionCollider == null)
-            return null;
-
-        Bounds bounds = detectionCollider.bounds;
-        float detectionRadius = bounds.extents.magnitude;
-        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, detectionRadius);
-
-        InventoryDataHolder closest = null;
-        float closestDistance = float.MaxValue;
-        Vector3 playerPos = transform.position;
-
-        foreach (Collider col in collidersInRange)
-        {
-            InventoryDataHolder holder = col.GetComponent<InventoryDataHolder>();
-            if (holder == null || holder == playerInventoryHolder)
-                continue;
-
-            float distance = Vector3.Distance(playerPos, holder.transform.position);
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                closest = holder;
-            }
-        }
-
-        return closest;
-    }
-
-    private void UpdateOutlineVisualization()
-    {
-        if (detectionCollider == null)
-            return;
-
-        Bounds bounds = detectionCollider.bounds;
-        float detectionRadius = bounds.extents.magnitude;
-        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, detectionRadius);
-
-        InventoryDataHolder newClosest = null;
-        float closestDistance = float.MaxValue;
-        Vector3 playerPos = transform.position;
-
-        foreach (Collider col in collidersInRange)
-        {
-            InventoryDataHolder holder = col.GetComponent<InventoryDataHolder>();
-            if (holder == null || holder == playerInventoryHolder)
-                continue;
-
-            float distance = Vector3.Distance(playerPos, holder.transform.position);
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                newClosest = holder;
-            }
-        }
-
-        if (newClosest != currentClosestInventory)
-        {
-            if (currentClosestInventory != null)
-                OutlineManager.DisableOutline(currentClosestInventory.gameObject);
-
-            currentClosestInventory = newClosest;
-            if (currentClosestInventory != null)
-                OutlineManager.EnableOutline(currentClosestInventory.gameObject);
-        }
+        return inputActions?.Player.Interact.WasPressedThisFrame() == true;
     }
 }

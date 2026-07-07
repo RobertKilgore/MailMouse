@@ -19,6 +19,7 @@ public class MenuManager : MonoBehaviour
     public static bool IsGamePaused => Instance != null && Instance.CurrentTimeScale <= 0f;
     public static bool AnyMenuOpen => Instance?.IsAnyMenuOpen ?? false;
 
+    [Header("Menu UI References")]
     [Tooltip("Optional gameplay UI root container that menus can hide visually while open.")]
     public GameObject gameplayUIRoot;
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class InventoryData
@@ -8,6 +9,8 @@ public class InventoryData
     public string inventoryId;
     public string displayName;
     public string address;
+    [FormerlySerializedAs("inventoryKind")]
+    public InventoryType inventoryType = InventoryType.Mailbox;
     public List<InventoryItemData> items = new List<InventoryItemData>();
 }
 

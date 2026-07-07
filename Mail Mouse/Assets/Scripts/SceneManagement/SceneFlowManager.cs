@@ -9,7 +9,7 @@ public class SceneFlowManager : MonoBehaviour
 {
     public static SceneFlowManager Instance { get; private set; }
 
-    [Header("Scene Names")]
+    [Header("Scene Configuration")]
     [Tooltip("Scene name used for the start menu.")]
     public string startSceneName = "Start Menu";
 

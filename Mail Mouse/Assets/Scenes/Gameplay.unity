@@ -211,6 +211,7 @@ MonoBehaviour:
     inventoryId: 
     displayName: 
     address: Test Address 6
+    inventoryType: 1
     items: []
   ignoreForValidation: 0
 --- !u!65 &292179377
@@ -469,6 +470,7 @@ MonoBehaviour:
     inventoryId: 
     displayName: 
     address: Test Address 10
+    inventoryType: 1
     items: []
   ignoreForValidation: 0
 --- !u!65 &454686847
@@ -600,6 +602,7 @@ MonoBehaviour:
     inventoryId: 
     displayName: 
     address: Test Address 1
+    inventoryType: 1
     items: []
   ignoreForValidation: 0
 --- !u!65 &478848019
@@ -780,6 +783,7 @@ MonoBehaviour:
     inventoryId: 
     displayName: 
     address: Test Address 8
+    inventoryType: 1
     items: []
   ignoreForValidation: 0
 --- !u!65 &845592490
@@ -911,6 +915,7 @@ MonoBehaviour:
     inventoryId: 
     displayName: 
     address: Test Address 3
+    inventoryType: 1
     items: []
   ignoreForValidation: 0
 --- !u!65 &1053132093
@@ -1042,6 +1047,7 @@ MonoBehaviour:
     inventoryId: 
     displayName: 
     address: Test Address 7
+    inventoryType: 1
     items: []
   ignoreForValidation: 0
 --- !u!65 &1172604793
@@ -1252,6 +1258,7 @@ MonoBehaviour:
     inventoryId: 
     displayName: 
     address: Test Address 9
+    inventoryType: 1
     items: []
   ignoreForValidation: 0
 --- !u!65 &1481784028
@@ -1383,6 +1390,7 @@ MonoBehaviour:
     inventoryId: 
     displayName: 
     address: Test Address 5
+    inventoryType: 1
     items: []
   ignoreForValidation: 0
 --- !u!65 &1487354283
@@ -1514,6 +1522,7 @@ MonoBehaviour:
     inventoryId: 
     displayName: 
     address: Test Address 4
+    inventoryType: 1
     items: []
   ignoreForValidation: 0
 --- !u!65 &1601922711
@@ -1599,7 +1608,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4923967379005198195, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
   m_PrefabInstance: {fileID: 7182004135053834702}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1694639481
+--- !u!114 &1694639490
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1608,9 +1617,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1694639472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6db0aad513e5d364495683e3c319c098, type: 3}
+  m_Script: {fileID: 11500000, guid: 86dfc486d2d134542afe7f56c044518b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerPauseController
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMenuInputController
+  pauseMenuController: {fileID: 6359680927241922957}
+  inventoryMenuController: {fileID: 5827341943455779743}
+  inventoryPresentationController: {fileID: 0}
+  interactionDetectionCollider: {fileID: 1856404589}
+--- !u!135 &1856404589 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 6791887099443149439, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+  m_PrefabInstance: {fileID: 7182004135053834702}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1911879054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,6 +1793,7 @@ MonoBehaviour:
     inventoryId: 
     displayName: 
     address: Test Address 2
+    inventoryType: 1
     items: []
   ignoreForValidation: 0
 --- !u!65 &2105653364
@@ -1945,12 +1964,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 7589280761257466709}
     m_Modifications:
     - target: {fileID: 4613442422207383219, guid: 5b6c19037515eb94baae73a25cdf4564, type: 3}
+      propertyPath: priority
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613442422207383219, guid: 5b6c19037515eb94baae73a25cdf4564, type: 3}
+      propertyPath: menuPriority
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613442422207383219, guid: 5b6c19037515eb94baae73a25cdf4564, type: 3}
       propertyPath: openBehavior
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4613442422207383219, guid: 5b6c19037515eb94baae73a25cdf4564, type: 3}
+      propertyPath: timeScaleWhenOpen
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613442422207383219, guid: 5b6c19037515eb94baae73a25cdf4564, type: 3}
       propertyPath: preventExternalClose
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613442422207383219, guid: 5b6c19037515eb94baae73a25cdf4564, type: 3}
+      propertyPath: showBackdropWhenOpen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613442422207383219, guid: 5b6c19037515eb94baae73a25cdf4564, type: 3}
+      propertyPath: hideGameplayUiWhenOpen
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5601314156297095242, guid: 5b6c19037515eb94baae73a25cdf4564, type: 3}
       propertyPath: m_Pivot.x
@@ -2401,7 +2440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &5370273488517588853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2514,14 +2553,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432109b896e11254ebf4c0ac3681b6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuController
-  menuTimeScale: 0
-  allowWorldControls: 0
-  allowLooking: 0
-  activateOnOpen: 1
-  deactivateOnClose: 1
-  forceExclusive: 1
-  useBackdrop: 0
-  hideGameplayUI: 0
+  timeScaleWhenOpen: 0
+  allowWorldControlsWhileOpen: 0
+  allowLookingWhileOpen: 0
+  closeOtherMenusOnOpen: 1
+  menuPriority: 1
+  showBackdropWhenOpen: 0
+  hideGameplayUiWhenOpen: 0
 --- !u!224 &5866119955867592223
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2547,6 +2585,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5601314156297095242, guid: 5b6c19037515eb94baae73a25cdf4564, type: 3}
   m_PrefabInstance: {fileID: 712025036288720894}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6359680927241922957 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4613442422207383219, guid: 5b6c19037515eb94baae73a25cdf4564, type: 3}
+  m_PrefabInstance: {fileID: 712025036288720894}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432109b896e11254ebf4c0ac3681b6b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuController
 --- !u!1001 &7182004135053834702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2596,6 +2645,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1243506612952019677, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243506612952019677, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
       propertyPath: inventoryMenuController
       value: 
       objectReference: {fileID: 5827341943455779743}
@@ -2603,13 +2656,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCapsule
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4923967379005198195, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1243506612952019677, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4923967379005198195, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1694639481}
+      addedObject: {fileID: 1694639490}
   m_SourcePrefab: {fileID: 100100000, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
 --- !u!114 &7222026412385900390
 MonoBehaviour:
@@ -2825,7 +2883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 375.1, y: 211.9}
+  m_AnchoredPosition: {x: 350.4, y: 211.9}
   m_SizeDelta: {x: 186.5734, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8858349685378733423

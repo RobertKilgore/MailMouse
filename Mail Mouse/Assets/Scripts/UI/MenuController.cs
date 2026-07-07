@@ -5,33 +5,30 @@ using UnityEngine;
 [RequireComponent(typeof(CanvasGroup))]
 public class MenuController : MonoBehaviour
 {
+    [Header("Menu Behavior")]
     [Tooltip("The time scale to apply while this menu is open. Set to 0 to pause the game.")]
     [Range(0f, 1f)]
-    public float menuTimeScale = 1f;
+    [SerializeField] private float timeScaleWhenOpen = 1f;
 
     [Tooltip("Whether world controls should remain enabled while this menu is open.")]
-    public bool allowWorldControls = false;
+    [SerializeField] private bool allowWorldControlsWhileOpen = false;
 
     [Tooltip("Whether player looking should remain enabled while this menu is open.")]
-    public bool allowLooking = false;
+    [SerializeField] private bool allowLookingWhileOpen = false;
 
-    [Tooltip("If true, opening this menu also enables its UI GameObject.")]
-    public bool activateOnOpen = true;
+    [Header("Menu Priority")]
+    [Tooltip("If true, opening this menu closes all other menus first.")]
+    [SerializeField] private bool closeOtherMenusOnOpen = true;
 
-    [Tooltip("If true, closing this menu also disables its UI GameObject.")]
-    public bool deactivateOnClose = true;
+    [Tooltip("Higher values can dismiss lower-priority menus. Same-priority menus are treated as competing.")]
+    [SerializeField] private int menuPriority = 0;
 
-    [Tooltip("If true, this menu will close all other menus when opened.")]
-    public bool forceExclusive = true;
-
-    [Tooltip("Priority of this menu. Higher values can dismiss lower-priority menus, while same-priority menus toggle closed before reopening.")]
-    public int priority = 0;
-
+    [Header("Visual Behavior")]
     [Tooltip("If true, this menu will open with a full-screen backdrop image behind its content.")]
-    public bool useBackdrop = false;
+    [SerializeField] private bool showBackdropWhenOpen = false;
 
     [Tooltip("If true, this menu will hide the gameplay UI root while the menu is open.")]
-    public bool hideGameplayUI = false;
+    [SerializeField] private bool hideGameplayUiWhenOpen = false;
 
     public event Action<MenuController> Opened;
     public event Action<MenuController> Closed;
@@ -40,6 +37,14 @@ public class MenuController : MonoBehaviour
 
     public System.Action<MenuController> OnOpenRequested { get; set; }
     public System.Action<MenuController> OnCloseRequested { get; set; }
+
+    public float menuTimeScale => timeScaleWhenOpen;
+    public bool allowWorldControls => allowWorldControlsWhileOpen;
+    public bool allowLooking => allowLookingWhileOpen;
+    public bool forceExclusive => closeOtherMenusOnOpen;
+    public int priority => menuPriority;
+    public bool useBackdrop => showBackdropWhenOpen;
+    public bool hideGameplayUI => hideGameplayUiWhenOpen;
 
     private CanvasGroup canvasGroup;
 
@@ -78,7 +83,7 @@ public class MenuController : MonoBehaviour
 
     public bool Open()
     {
-        Debug.Log($"[MenuController.Open] {gameObject.name}, activateOnOpen: {activateOnOpen}");
+        Debug.Log($"[MenuController.Open] {gameObject.name}");
         if (IsOpen && gameObject.activeSelf)
         {
             if (MenuManager.Instance != null && !MenuManager.Instance.GetActiveMenus().Any(m => m == this))
@@ -99,11 +104,8 @@ public class MenuController : MonoBehaviour
             return false;
         }
 
-        if (activateOnOpen)
-        {
-            gameObject.SetActive(true);
-            Debug.Log($"[MenuController.Open] SetActive(true), now active: {gameObject.activeSelf}");
-        }
+        gameObject.SetActive(true);
+        Debug.Log($"[MenuController.Open] SetActive(true), now active: {gameObject.activeSelf}");
 
         if (canvasGroup != null)
         {
@@ -133,8 +135,7 @@ public class MenuController : MonoBehaviour
             SetVisualState(false);
         }
 
-        if (deactivateOnClose)
-            gameObject.SetActive(false);
+        gameObject.SetActive(false);
 
         IsOpen = false;
         OnCloseRequested?.Invoke(this);

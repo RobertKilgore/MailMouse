@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public class PauseMenuController : MonoBehaviour
 {
-    [Header("Pause Menu")]
+    [Header("Menu References")]
     [SerializeField]
     [Tooltip("The MenuController used for the gameplay pause menu.")]
     private MenuController pauseMenuController;

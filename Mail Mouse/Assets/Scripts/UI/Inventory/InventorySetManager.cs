@@ -36,12 +36,13 @@ public class InventorySetManager : MonoBehaviour
             return;
         }
 
+        if (inventoryInstanceParent == null)
+            inventoryInstanceParent = transform;
+
         spawner = FindFirstObjectByType<InventorySpawner>();
         if (spawner == null)
             Debug.LogWarning("No InventorySpawner found in scene.", this);
 
-        if (inventoryInstanceParent == null)
-            inventoryInstanceParent = transform;
     }
 
     /// <summary>
@@ -72,6 +73,10 @@ public class InventorySetManager : MonoBehaviour
             InventoryInstance inventoryInstance = ResolveInventoryInstance(member);
             if (inventoryInstance == null)
                 continue;
+
+            inventoryInstance.transform.SetParent(inventoryInstanceParent, false);
+            inventoryInstance.transform.SetAsLastSibling();
+            inventoryInstance.gameObject.SetActive(false);
 
             Debug.Log($"[InventorySetManager] Processing inventory instance: {inventoryInstance.gameObject.name}");
             SetInventoryPosition(inventoryInstance, member.screenPosition);
