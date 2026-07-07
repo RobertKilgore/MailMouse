@@ -71,7 +71,7 @@ public class InventoryPresentationController : MonoBehaviour
 
         if (ShouldIncludePlayerInventory(inventoryType))
         {
-            AddInventoryDataIfNeeded(orderedData, GetPlayerInventoryData());
+            AddPlayerInventoryData(orderedData);
         }
 
         if (inventoryData != null)
@@ -93,6 +93,20 @@ public class InventoryPresentationController : MonoBehaviour
     private InventoryData GetPlayerInventoryData()
     {
         return playerInventoryDataHolder != null ? playerInventoryDataHolder.inventoryData : null;
+    }
+
+    private void AddPlayerInventoryData(List<InventoryData> orderedData)
+    {
+        InventoryData playerInventoryData = GetPlayerInventoryData();
+        if (playerInventoryData == null)
+            return;
+
+        if (orderedData.Contains(playerInventoryData))
+        {
+            orderedData.Remove(playerInventoryData);
+        }
+
+        orderedData.Insert(0, playerInventoryData);
     }
 
     private void AddInventoryDataIfNeeded(List<InventoryData> orderedData, InventoryData inventoryData)
