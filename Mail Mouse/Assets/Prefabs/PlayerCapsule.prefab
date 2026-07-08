@@ -151,8 +151,9 @@ GameObject:
   - component: {fileID: 3121711787580118894}
   - component: {fileID: 4438406720288443444}
   - component: {fileID: 4967715734428583796}
-  - component: {fileID: 1243506612952019677}
   - component: {fileID: 6237906194629481635}
+  - component: {fileID: 4902759244682042349}
+  - component: {fileID: 7099960268846709962}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -365,23 +366,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1243506612952019677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4923967379005198195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c1d47ad76c58a844a3594f5a203b1ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInventoryController
-  playerInventorySet: {fileID: 11400000, guid: de9d2fef9f43b3f49891c15cf867821f, type: 2}
-  nearbyInventorySet: {fileID: 11400000, guid: d096e9d187c1bb942a9f059d3ebc81e0, type: 2}
-  playerInventoryHolder: {fileID: 6237906194629481635}
-  inventoryMenuController: {fileID: 0}
-  detectionCollider: {fileID: 6791887099443149439}
 --- !u!114 &6237906194629481635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,12 +378,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
-  inventoryData:
-    inventoryId: 0
-    displayName: Player Inventory
+  inventoryDataList:
+  - inventoryId: 
+    displayName: 
     address: 
-    items: []
+    inventoryType: 0
+    width: 8
+    height: 6
+    allowItemPlacement: 1
+    allowItemSpawns: 0
+    showPlacementPreviews: 0
+    items:
+    - itemId: mail_2156
+      prefabId: 2
+      shapeDefinition: XX
+      rotation: 0
+      gridPosition: {x: 6, y: 0}
+      mailData:
+        recipient: 
+        address: 6 Breackneck Hill Rd
+        placedByPlayer: 0
+        complexity: 1
+        packageScore: 0
+        packageModifier: 
+        name: 
   ignoreForValidation: 0
+--- !u!114 &4902759244682042349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4923967379005198195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86dfc486d2d134542afe7f56c044518b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMenuInputController
+  pauseMenuController: {fileID: 0}
+  inventoryMenuController: {fileID: 0}
+  inventoryPresentationController: {fileID: 0}
+--- !u!114 &7099960268846709962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4923967379005198195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc3c8c56db705a4aa17df38ea0cb062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableObjectController
+  detectionCollider: {fileID: 6791887099443149439}
+  interactableLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  allowHighlight: 1
 --- !u!1 &5067167055487123418
 GameObject:
   m_ObjectHideFlags: 0

@@ -645,7 +645,7 @@ MonoBehaviour:
   inventoryDataList:
   - inventoryId: 
     displayName: 
-    address: 
+    address: awdawdaw
     inventoryType: 1
     width: 8
     height: 6
@@ -907,7 +907,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RestockManager
   inventoryDataHolder: {fileID: 690117257}
   inventorySpawner: {fileID: 0}
-  restockCheckInterval: 0.5
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

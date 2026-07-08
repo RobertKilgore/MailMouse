@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +21,13 @@ public class InventoryAddressValidator : MonoBehaviour
     private void Start()
     {
         if (validateOnStart)
-            ValidateInventoryAddresses();
+            StartCoroutine(ValidateAfterSceneInitialization());
+    }
+
+    private IEnumerator ValidateAfterSceneInitialization()
+    {
+        yield return null;
+        ValidateInventoryAddresses();
     }
 
     public void ValidateInventoryAddresses()
@@ -31,8 +38,27 @@ public class InventoryAddressValidator : MonoBehaviour
             return;
         }
 
-        InventoryDataHolder[] holders = FindObjectsByType<InventoryDataHolder>(FindObjectsSortMode.None);
-        if (holders == null || holders.Length == 0)
+        List<InventoryDataHolder> holders = new List<InventoryDataHolder>();
+        InventoryDataHolder[] sceneHolders = FindObjectsByType<InventoryDataHolder>(FindObjectsSortMode.None);
+        if (sceneHolders != null)
+        {
+            holders.AddRange(sceneHolders);
+        }
+
+        InventoryDataHolder[] allHolders = Resources.FindObjectsOfTypeAll<InventoryDataHolder>();
+        if (allHolders != null)
+        {
+            foreach (InventoryDataHolder holder in allHolders)
+            {
+                if (holder == null || holders.Contains(holder))
+                    continue;
+
+                if (holder.gameObject.scene.IsValid())
+                    holders.Add(holder);
+            }
+        }
+
+        if (holders.Count == 0)
             return;
 
         HashSet<string> sceneAddresses = new HashSet<string>(System.StringComparer.OrdinalIgnoreCase);
@@ -61,7 +87,15 @@ public class InventoryAddressValidator : MonoBehaviour
 
             foreach (InventoryData inventoryData in inventories)
             {
-                if (inventoryData == null || inventoryData.items == null)
+                if (inventoryData == null)
+                    continue;
+
+                if (!string.IsNullOrWhiteSpace(inventoryData.address))
+                {
+                    sceneAddresses.Add(inventoryData.address.Trim());
+                }
+
+                if (inventoryData.items == null)
                     continue;
 
                 foreach (InventoryItemData itemData in inventoryData.items)
@@ -96,13 +130,16 @@ public class InventoryAddressValidator : MonoBehaviour
         {
             string sceneMissingText = BuildJoinedList(sceneAddressesMissingFromBook);
             string bookMissingText = BuildJoinedList(bookAddressesMissingFromScene);
-            string message = "[AddressValidator] Address validation warning:";
-            if (sceneAddressesMissingFromBook.Count > 0)
-                message += $" {sceneAddressesMissingFromBook.Count} scene address(es) are missing from the address book ({sceneMissingText}).";
-            if (bookAddressesMissingFromScene.Count > 0)
-                message += $" {bookAddressesMissingFromScene.Count} address book address(es) are not present in the scene ({bookMissingText}).";
 
-            Debug.LogWarning(message, this);
+            if (sceneAddressesMissingFromBook.Count > 0)
+            {
+                Debug.LogWarning($"[AddressValidator] Scene addresses missing from the address book: {sceneAddressesMissingFromBook.Count} ({sceneMissingText})", this);
+            }
+
+            if (bookAddressesMissingFromScene.Count > 0)
+            {
+                Debug.LogWarning($"[AddressValidator] Address book entries missing from the scene: {bookAddressesMissingFromScene.Count} ({bookMissingText})", this);
+            }
         }
         else if (checkedItems > 0)
         {
