@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8701208794896193361}
   - component: {fileID: 4539845256286233851}
   m_Layer: 0
-  m_Name: GAMEMANGER
+  m_Name: SCENEMANAGER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3198d9b072295941b853c182bc33976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneFlowManager
-  startSceneName: StartScene
-  gameplaySceneName: SampleScene
-  endSceneName: EndScene
+  startSceneName: Start Menu
+  gameplaySceneName: Gameplay
+  endSceneName: End Menu

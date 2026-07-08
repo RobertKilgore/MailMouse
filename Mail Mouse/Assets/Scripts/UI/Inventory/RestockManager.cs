@@ -16,10 +16,6 @@ public class RestockManager : MonoBehaviour
     [SerializeField]
     private InventorySpawner inventorySpawner;
 
-    [SerializeField]
-    private float restockCheckInterval = 0.5f;
-
-    private float nextRestockCheckTime;
     private readonly List<InventoryDataHolder> managedDataHolders = new List<InventoryDataHolder>();
 
     private void Awake()
@@ -42,19 +38,6 @@ public class RestockManager : MonoBehaviour
         {
             inventorySpawner = FindFirstObjectByType<InventorySpawner>(FindObjectsInactive.Include);
         }
-
-        nextRestockCheckTime = Time.time + restockCheckInterval;
-    }
-
-    private void Update()
-    {
-        if (Time.time < nextRestockCheckTime)
-        {
-            return;
-        }
-
-        RestockEmptySlots();
-        nextRestockCheckTime = Time.time + restockCheckInterval;
     }
 
     /// <summary>
@@ -64,7 +47,6 @@ public class RestockManager : MonoBehaviour
     {
         Debug.Log("RestockManager: TriggerRestock called", this);
         RestockEmptySlots();
-        nextRestockCheckTime = Time.time + restockCheckInterval;
     }
 
     public void TriggerRestockForInventory(InventoryData inventoryData)

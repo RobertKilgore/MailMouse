@@ -209,13 +209,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
-  inventoryData:
-    inventoryId: 
+  inventoryDataList:
+  - inventoryId: 
     displayName: 
-    address: Test Address 6
+    address: 
     inventoryType: 1
+    width: 8
+    height: 6
+    allowItemPlacement: 1
+    allowItemSpawns: 1
+    showPlacementPreviews: 1
     items: []
-  inventoryDataSet: []
   ignoreForValidation: 0
 --- !u!65 &292179377
 BoxCollider:
@@ -485,13 +489,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
-  inventoryData:
-    inventoryId: 
+  inventoryDataList:
+  - inventoryId: 
     displayName: 
-    address: Test Address 10
+    address: 
     inventoryType: 1
+    width: 8
+    height: 6
+    allowItemPlacement: 1
+    allowItemSpawns: 1
+    showPlacementPreviews: 1
     items: []
-  inventoryDataSet: []
   ignoreForValidation: 0
 --- !u!65 &454686847
 BoxCollider:
@@ -584,7 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MailboxInteractable
   canInteract: 1
-  canHighlight: 0
+  canHighlight: 1
   playerMenuInputController: {fileID: 0}
 --- !u!1 &478848016
 GameObject:
@@ -634,13 +642,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
-  inventoryData:
-    inventoryId: 
+  inventoryDataList:
+  - inventoryId: 
     displayName: 
-    address: Test Address 1
+    address: 
     inventoryType: 1
+    width: 8
+    height: 6
+    allowItemPlacement: 1
+    allowItemSpawns: 1
+    showPlacementPreviews: 1
     items: []
-  inventoryDataSet: []
   ignoreForValidation: 0
 --- !u!65 &478848019
 BoxCollider:
@@ -749,6 +761,7 @@ GameObject:
   - component: {fileID: 690117258}
   - component: {fileID: 690117257}
   - component: {fileID: 690117256}
+  - component: {fileID: 690117261}
   m_Layer: 0
   m_Name: POSTOFFICE
   m_TagString: Untagged
@@ -787,7 +800,6 @@ MonoBehaviour:
   canHighlight: 1
   playerMenuInputController: {fileID: 0}
   slotCount: 4
-  autoPopulateEmptyInventories: 1
   inventoryDataHolder: {fileID: 0}
 --- !u!114 &690117257
 MonoBehaviour:
@@ -801,13 +813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
-  inventoryData:
-    inventoryId: 
-    displayName: 
-    address: POSTOFFICE
-    inventoryType: 2
-    items: []
-  inventoryDataSet: []
+  inventoryDataList: []
   ignoreForValidation: 1
 --- !u!65 &690117258
 BoxCollider:
@@ -887,6 +893,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690117254}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &690117261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690117254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b2fedd325c2a0947ba150083aacedb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RestockManager
+  inventoryDataHolder: {fileID: 690117257}
+  inventorySpawner: {fileID: 0}
+  restockCheckInterval: 0.5
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,13 +1005,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
-  inventoryData:
-    inventoryId: 
+  inventoryDataList:
+  - inventoryId: 
     displayName: 
-    address: Test Address 8
+    address: 
     inventoryType: 1
+    width: 8
+    height: 6
+    allowItemPlacement: 1
+    allowItemSpawns: 1
+    showPlacementPreviews: 1
     items: []
-  inventoryDataSet: []
   ignoreForValidation: 0
 --- !u!65 &845592490
 BoxCollider:
@@ -1133,13 +1158,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
-  inventoryData:
-    inventoryId: 
+  inventoryDataList:
+  - inventoryId: 
     displayName: 
-    address: Test Address 3
+    address: 
     inventoryType: 1
+    width: 8
+    height: 6
+    allowItemPlacement: 1
+    allowItemSpawns: 1
+    showPlacementPreviews: 1
     items: []
-  inventoryDataSet: []
   ignoreForValidation: 0
 --- !u!65 &1053132093
 BoxCollider:
@@ -1282,13 +1311,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
-  inventoryData:
-    inventoryId: 
+  inventoryDataList:
+  - inventoryId: 
     displayName: 
-    address: Test Address 7
+    address: 
     inventoryType: 1
+    width: 8
+    height: 6
+    allowItemPlacement: 1
+    allowItemSpawns: 1
+    showPlacementPreviews: 1
     items: []
-  inventoryDataSet: []
   ignoreForValidation: 0
 --- !u!65 &1172604793
 BoxCollider:
@@ -1510,13 +1543,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
-  inventoryData:
-    inventoryId: 
+  inventoryDataList:
+  - inventoryId: 
     displayName: 
-    address: Test Address 9
+    address: 
     inventoryType: 1
+    width: 8
+    height: 6
+    allowItemPlacement: 1
+    allowItemSpawns: 1
+    showPlacementPreviews: 1
     items: []
-  inventoryDataSet: []
   ignoreForValidation: 0
 --- !u!65 &1481784028
 BoxCollider:
@@ -1659,13 +1696,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
-  inventoryData:
-    inventoryId: 
+  inventoryDataList:
+  - inventoryId: 
     displayName: 
-    address: Test Address 5
+    address: 
     inventoryType: 1
+    width: 8
+    height: 6
+    allowItemPlacement: 1
+    allowItemSpawns: 1
+    showPlacementPreviews: 1
     items: []
-  inventoryDataSet: []
   ignoreForValidation: 0
 --- !u!65 &1487354283
 BoxCollider:
@@ -1808,13 +1849,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
-  inventoryData:
-    inventoryId: 
+  inventoryDataList:
+  - inventoryId: 
     displayName: 
-    address: Test Address 4
+    address: 
     inventoryType: 1
+    width: 8
+    height: 6
+    allowItemPlacement: 1
+    allowItemSpawns: 1
+    showPlacementPreviews: 1
     items: []
-  inventoryDataSet: []
   ignoreForValidation: 0
 --- !u!65 &1601922711
 BoxCollider:
@@ -1974,6 +2019,7 @@ GameObject:
   - component: {fileID: 1911879057}
   - component: {fileID: 1911879056}
   - component: {fileID: 1911879055}
+  - component: {fileID: 1911879059}
   m_Layer: 0
   m_Name: Test Ground
   m_TagString: Untagged
@@ -2075,6 +2121,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1911879059
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911879054}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 2.220446e-16, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2105653361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,13 +2190,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
-  inventoryData:
-    inventoryId: 
+  inventoryDataList:
+  - inventoryId: 
     displayName: 
-    address: Test Address 2
+    address: 
     inventoryType: 1
+    width: 8
+    height: 6
+    allowItemPlacement: 1
+    allowItemSpawns: 1
+    showPlacementPreviews: 1
     items: []
-  inventoryDataSet: []
   ignoreForValidation: 0
 --- !u!65 &2105653364
 BoxCollider:
@@ -3396,6 +3467,63 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1001 &4958623266715424485
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4688307558136506459, guid: c2887a88acc3fd24e870e733e9a1958c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.98583
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688307558136506459, guid: c2887a88acc3fd24e870e733e9a1958c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688307558136506459, guid: c2887a88acc3fd24e870e733e9a1958c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.84581
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688307558136506459, guid: c2887a88acc3fd24e870e733e9a1958c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688307558136506459, guid: c2887a88acc3fd24e870e733e9a1958c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688307558136506459, guid: c2887a88acc3fd24e870e733e9a1958c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688307558136506459, guid: c2887a88acc3fd24e870e733e9a1958c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688307558136506459, guid: c2887a88acc3fd24e870e733e9a1958c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688307558136506459, guid: c2887a88acc3fd24e870e733e9a1958c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688307558136506459, guid: c2887a88acc3fd24e870e733e9a1958c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727632557795724132, guid: c2887a88acc3fd24e870e733e9a1958c, type: 3}
+      propertyPath: m_Name
+      value: GAMEPLAYMANAGER
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c2887a88acc3fd24e870e733e9a1958c, type: 3}
 --- !u!224 &4966879652022934293
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4064,6 +4192,98 @@ PrefabInstance:
       propertyPath: inventoryData.inventoryType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].width
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[1].width
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].height
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[1].height
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].allowItemSpawns
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[1].items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].allowItemPlacement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[1].allowItemPlacement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].showPlacementPreviews
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].items.Array.data[0].itemId
+      value: mail_2156
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[1].items.Array.data[0].itemId
+      value: mail_2156
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].items.Array.data[0].prefabId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[1].items.Array.data[0].prefabId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].items.Array.data[0].gridPosition.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[1].items.Array.data[0].gridPosition.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].items.Array.data[0].shapeDefinition
+      value: XX
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[1].items.Array.data[0].shapeDefinition
+      value: XX
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].items.Array.data[0].mailData.address
+      value: 6 Breackneck Hill Rd
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[1].items.Array.data[0].mailData.address
+      value: 6 Breackneck Hill Rd
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].items.Array.data[0].mailData.complexity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237906194629481635, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
+      propertyPath: inventoryDataList.Array.data[1].items.Array.data[0].mailData.complexity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6380331710777263757, guid: dc4b4cb1f8d8dbe45a47437d02657f28, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -4403,8 +4623,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Time
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a54e89153727f2e4cae4871dae21ad8f, type: 2}
-  m_sharedMaterial: {fileID: -4913186504910834099, guid: a54e89153727f2e4cae4871dae21ad8f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0255b06d202ce974ca040c86960895d8, type: 2}
+  m_sharedMaterial: {fileID: -4797447439430283489, guid: 0255b06d202ce974ca040c86960895d8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4868,6 +5088,7 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 4958623266715424485}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1911879058}
