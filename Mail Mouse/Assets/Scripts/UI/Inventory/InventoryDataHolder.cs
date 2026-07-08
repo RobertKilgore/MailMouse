@@ -3,40 +3,94 @@ using UnityEngine;
 
 /// <summary>
 /// Component that can attach inventory data to a GameObject.
-/// Supports both a single primary inventory and a collection of inventory slots for cases like post office hubs.
+/// Maintains a single unified list of all inventory data (both primary and multi-slot entries).
 /// </summary>
 public class InventoryDataHolder : MonoBehaviour
 {
-    [Tooltip("Primary inventory data for this object.")]
-    public InventoryData inventoryData;
-
-    [Tooltip("Additional inventory data entries for multi-slot interactables such as post offices.")]
-    public List<InventoryData> inventoryDataSet = new List<InventoryData>();
+    [Tooltip("All inventory data entries for this object. First entry is the primary inventory.")]
+    public List<InventoryData> inventoryDataList = new List<InventoryData>();
 
     [Tooltip("Ignore this inventory when running scene inventory validation.")]
     public bool ignoreForValidation;
 
+    /// <summary>
+    /// Backward-compatibility property: returns the first inventory data in the list.
+    /// Hidden from inspector but accessible to code.
+    /// </summary>
+    [HideInInspector]
+    public InventoryData inventoryData
+    {
+        get { return GetPrimaryInventoryData(); }
+        set
+        {
+            if (inventoryDataList == null)
+                inventoryDataList = new List<InventoryData>();
+
+            if (inventoryDataList.Count == 0)
+                inventoryDataList.Add(value);
+            else
+                inventoryDataList[0] = value;
+        }
+    }
+
+    /// <summary>
+    /// Returns the first (primary) inventory data entry.
+    /// </summary>
     public InventoryData GetPrimaryInventoryData()
     {
-        return inventoryData;
+        if (inventoryDataList == null || inventoryDataList.Count == 0)
+            return null;
+        return inventoryDataList[0];
     }
 
+    /// <summary>
+    /// Returns all inventory data entries in the list.
+    /// </summary>
     public List<InventoryData> GetAllInventoryData()
     {
-        List<InventoryData> allData = new List<InventoryData>();
+        if (inventoryDataList == null)
+            return new List<InventoryData>();
+        return inventoryDataList;
+    }
 
-        if (inventoryData != null)
-            allData.Add(inventoryData);
-
-        if (inventoryDataSet != null)
+#if UNITY_EDITOR
+    /// <summary>
+    /// [EDITOR DEBUG ONLY] Spawns a random item into a random inventory data entry.
+    /// This is a context menu function for debugging purposes.
+    /// </summary>
+    [ContextMenu("Spawn Random Item Into Random Inventory")]
+    private void DebugSpawnRandomItemIntoRandomInventory()
+    {
+        if (inventoryDataList == null || inventoryDataList.Count == 0)
         {
-            foreach (InventoryData data in inventoryDataSet)
-            {
-                if (data != null && !allData.Contains(data))
-                    allData.Add(data);
-            }
+            Debug.LogWarning("InventoryDataHolder: No inventory data to spawn item into", this);
+            return;
         }
 
-        return allData;
+        InventorySpawner spawner = FindFirstObjectByType<InventorySpawner>(FindObjectsInactive.Include);
+        if (spawner == null)
+        {
+            Debug.LogWarning("InventoryDataHolder: No InventorySpawner found in scene (searched active and inactive)", this);
+            return;
+        }
+
+        // Pick a random inventory data
+        InventoryData randomInventory = inventoryDataList[Random.Range(0, inventoryDataList.Count)];
+        if (randomInventory == null)
+        {
+            Debug.LogWarning("InventoryDataHolder: Selected random inventory is null", this);
+            return;
+        }
+
+        bool success = spawner.SpawnRandomMailIntoInventoryData(randomInventory);
+        if (success)
+        {
+            Debug.Log($"InventoryDataHolder: Successfully spawned random item into '{randomInventory.inventoryId}'", this);
+        }
+        else
+        {
+            Debug.LogWarning($"InventoryDataHolder: Failed to spawn random item into '{randomInventory.inventoryId}'", this);
+        }
     }
+#endif
 }

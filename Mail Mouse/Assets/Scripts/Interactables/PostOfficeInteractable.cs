@@ -10,8 +10,6 @@ public class PostOfficeInteractable : InteractableObject
     [Header("Post Office Setup")]
     [SerializeField] private PlayerMenuInputController playerMenuInputController;
     [SerializeField] private int slotCount = 3;
-    [SerializeField] private bool autoPopulateEmptyInventories = true;
-    [SerializeField] private InventorySpawner inventorySpawner;
 
     [Header("Inventory Data")]
     [SerializeField] private InventoryDataHolder inventoryDataHolder;
@@ -20,9 +18,6 @@ public class PostOfficeInteractable : InteractableObject
     {
         if (playerMenuInputController == null)
             playerMenuInputController = FindFirstObjectByType<PlayerMenuInputController>(FindObjectsInactive.Include);
-
-        if (inventorySpawner == null)
-            inventorySpawner = FindFirstObjectByType<InventorySpawner>(FindObjectsInactive.Include);
 
         if (inventoryDataHolder == null)
             inventoryDataHolder = GetComponent<InventoryDataHolder>();
@@ -79,9 +74,6 @@ public class PostOfficeInteractable : InteractableObject
             if (slotData.items == null)
                 slotData.items = new List<InventoryItemData>();
 
-            if (autoPopulateEmptyInventories && slotData.items.Count == 0)
-                PopulateSlotWithRandomMail(slotData);
-
             slotData.inventoryType = InventoryType.PostOffice;
             slots.Add(slotData);
         }
@@ -96,32 +88,28 @@ public class PostOfficeInteractable : InteractableObject
 
         List<InventoryData> allData = inventoryDataHolder.GetAllInventoryData();
         if (index < allData.Count && allData[index] != null)
-            return allData[index];
+        {
+            InventoryData existingSlot = allData[index];
+            Debug.Log($"PostOfficeInteractable: Retrieved existing slot {index} with {existingSlot.items?.Count ?? 0} items", this);
+            return existingSlot;
+        }
 
         InventoryData generated = new InventoryData
         {
             inventoryId = $"post_office_slot_{index + 1}",
             displayName = $"Post Office Slot {index + 1}",
             inventoryType = InventoryType.PostOffice,
+            width = 5,
+            height = 5,
             items = new List<InventoryItemData>()
         };
 
-        while (inventoryDataHolder.inventoryDataSet.Count <= index)
-            inventoryDataHolder.inventoryDataSet.Add(null);
+        Debug.Log($"PostOfficeInteractable: Created new slot {index}", this);
 
-        inventoryDataHolder.inventoryDataSet[index] = generated;
+        while (inventoryDataHolder.inventoryDataList.Count <= index)
+            inventoryDataHolder.inventoryDataList.Add(null);
+
+        inventoryDataHolder.inventoryDataList[index] = generated;
         return generated;
-    }
-
-    private void PopulateSlotWithRandomMail(InventoryData slotData)
-    {
-        if (inventorySpawner == null)
-            return;
-
-        InventoryItemData itemData = inventorySpawner.CreateRandomMailItemData(Vector2Int.zero);
-        if (itemData == null)
-            return;
-
-        slotData.items.Add(itemData);
     }
 }

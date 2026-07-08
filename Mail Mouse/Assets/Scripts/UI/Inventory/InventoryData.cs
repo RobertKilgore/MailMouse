@@ -11,6 +11,8 @@ public class InventoryData
     public string address;
     [FormerlySerializedAs("inventoryKind")]
     public InventoryType inventoryType = InventoryType.Mailbox;
+    public int width = 8;  // Grid width in cells
+    public int height = 6;  // Grid height in cells
     public List<InventoryItemData> items = new List<InventoryItemData>();
 }
 

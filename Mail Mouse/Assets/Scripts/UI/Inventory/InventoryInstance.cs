@@ -127,6 +127,9 @@ public class InventoryInstance : MonoBehaviour
         if (grid == null || inventoryData == null)
             return;
 
+        if (!gameObject.activeInHierarchy || !enabled)
+            return;
+
         inventoryData.items = new List<InventoryItemData>(grid.GetAllItemData());
 
         if (SaveLogging)
@@ -142,7 +145,38 @@ public class InventoryInstance : MonoBehaviour
     /// </summary>
     public void SetInventoryData(InventoryData data)
     {
-        inventoryData = data;
+        RebindInventoryData(data);
+    }
+
+    /// <summary>
+    /// Rebinds this inventory instance to the given data object and clears any existing visuals.
+    /// This ensures the UI does not keep stale runtime state when the backing data changes.
+    /// </summary>
+    public void RebindInventoryData(InventoryData data)
+    {
+        if (inventoryData != data)
+        {
+            if (inventoryData != null && grid != null && gameObject.activeInHierarchy && enabled)
+            {
+                SaveInventoryData();
+            }
+
+            if (grid != null)
+            {
+                grid.BeginBatchUpdate();
+                try
+                {
+                    grid.ClearAllItems();
+                }
+                finally
+                {
+                    grid.EndBatchUpdate(false);
+                }
+            }
+
+            inventoryData = data;
+        }
+
         SetAddressText(data?.address);
     }
 

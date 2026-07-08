@@ -92,7 +92,9 @@ public class InventoryPresentationController : MonoBehaviour
 
     private InventoryData GetPlayerInventoryData()
     {
-        return playerInventoryDataHolder != null ? playerInventoryDataHolder.inventoryData : null;
+        if (playerInventoryDataHolder == null)
+            return null;
+        return playerInventoryDataHolder.GetPrimaryInventoryData();
     }
 
     private void AddPlayerInventoryData(List<InventoryData> orderedData)

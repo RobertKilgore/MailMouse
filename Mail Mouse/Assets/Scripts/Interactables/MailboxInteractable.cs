@@ -33,10 +33,14 @@ public class MailboxInteractable : InteractableObject
 
     public override void Interact()
     {
-        if (inventoryDataHolder == null || inventoryDataHolder.inventoryData == null)
+        if (inventoryDataHolder == null)
+            return;
+
+        InventoryData primaryInventory = inventoryDataHolder.GetPrimaryInventoryData();
+        if (primaryInventory == null)
             return;
 
         if (playerMenuInputController != null)
-            playerMenuInputController.RequestInventoryToggle(inventoryDataHolder.inventoryData.inventoryType, inventoryDataHolder.inventoryData);
+            playerMenuInputController.RequestInventoryToggle(primaryInventory.inventoryType, primaryInventory);
     }
 }

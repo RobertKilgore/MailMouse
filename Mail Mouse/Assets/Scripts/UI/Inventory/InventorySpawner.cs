@@ -102,6 +102,62 @@ public class InventorySpawner : MonoBehaviour
         return item;
     }
 
+    private InventoryItem TrySpawnItemInInventoryAtAlternatePosition(InventoryInstance inventory, InventoryItemData itemData, int debugLevel = 0)
+    {
+        if (inventory == null || itemData == null)
+            return null;
+
+        InventoryItem prefab = GetPrefabById(itemData.prefabId);
+        if (prefab == null)
+        {
+            Debug.LogWarning($"[Spawner] No prefab found with ID '{itemData.prefabId}' for fallback placement of item '{itemData.itemId}'.", this);
+            return null;
+        }
+
+        InventoryItem item = Instantiate(prefab, inventory.ItemLayer);
+        item.gameObject.SetActive(false);
+        item.name = string.IsNullOrWhiteSpace(itemData.itemId) ? $"MailItem_{System.DateTime.Now.Ticks}" : itemData.itemId;
+        item.InitializeFromData(itemData, inventory);
+
+        List<Vector2Int> candidatePositions = new List<Vector2Int>();
+        if (itemData.gridPosition != Vector2Int.zero)
+            candidatePositions.Add(itemData.gridPosition);
+
+        for (int y = 0; y < inventory.Grid.Height; y++)
+        {
+            for (int x = 0; x < inventory.Grid.Width; x++)
+            {
+                Vector2Int position = new Vector2Int(x, y);
+                if (!candidatePositions.Contains(position))
+                    candidatePositions.Add(position);
+            }
+        }
+
+        if (randomizePositionOrder)
+            Shuffle(candidatePositions);
+
+        foreach (Vector2Int position in candidatePositions)
+        {
+            try
+            {
+                if (inventory.Grid.PlaceItem(position, item, debugLevel))
+                {
+                    item.gameObject.SetActive(true);
+                    itemData.gridPosition = position;
+                    Debug.Log($"[Spawner] Fallback placement succeeded for '{item.name}' at {position} in inventory '{inventory.InventoryId}'.", this);
+                    return item;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogWarning($"[Spawner] Fallback placement failed at {position} for '{item.name}': {ex}", this);
+            }
+        }
+
+        Destroy(item.gameObject);
+        return null;
+    }
+
     /// <summary>
     /// Instantiates an inventory item using explicit spawn options.
     /// If a selected prefab is not specified, a random prefab is picked from the catalog.
@@ -190,27 +246,50 @@ public class InventorySpawner : MonoBehaviour
         if (inventory == null || data == null)
             return;
 
-        // Prevent clearing the inventory from writing an empty state back into the
-        // same InventoryData object before the saved items are reloaded.
-        if (inventory.InventoryData == data)
-        {
-            inventory.SetInventoryData(null);
-        }
+        List<InventoryItemData> itemsToLoad = data.items != null ? new List<InventoryItemData>(data.items) : new List<InventoryItemData>();
+        Debug.Log($"[InventorySpawner.LoadInventoryData] Loading {itemsToLoad.Count} items into inventory '{data.inventoryId}'", this);
 
         inventory.Grid.BeginBatchUpdate();
         try
         {
-            inventory.ClearInventory();
-            inventory.SetInventoryData(data);
+            inventory.RebindInventoryData(null);
+            inventory.RebindInventoryData(data);
 
-            foreach (InventoryItemData itemData in data.items)
+            List<InventoryItemData> loadedItems = new List<InventoryItemData>();
+            int successCount = 0;
+            int failCount = 0;
+            foreach (InventoryItemData itemData in itemsToLoad)
             {
-                SpawnItemInInventory(inventory, itemData);
+                InventoryItem spawnedItem = SpawnItemInInventory(inventory, itemData);
+                if (spawnedItem == null)
+                {
+                    spawnedItem = TrySpawnItemInInventoryAtAlternatePosition(inventory, itemData);
+                }
+
+                if (spawnedItem != null)
+                {
+                    loadedItems.Add(itemData);
+                    successCount++;
+                }
+                else
+                {
+                    failCount++;
+                    Debug.LogWarning($"[InventorySpawner] Failed to spawn item from data at position {itemData.gridPosition}", this);
+                }
             }
+
+            if (data.items == null)
+                data.items = new List<InventoryItemData>();
+            else
+                data.items.Clear();
+
+            data.items.AddRange(loadedItems);
+
+            Debug.Log($"[InventorySpawner.LoadInventoryData] Loaded inventory '{data.inventoryId}': {successCount} items spawned, {failCount} failed; stored={data.items.Count}", this);
         }
         finally
         {
-            inventory.Grid.EndBatchUpdate(true);
+            inventory.Grid.EndBatchUpdate(false);
         }
     }
 
@@ -554,5 +633,166 @@ public class InventorySpawner : MonoBehaviour
         if (normalized < 0)
             normalized += 360;
         return normalized;
+    }
+
+    /// <summary>
+    /// Spawns an item into an InventoryData without UI, checking for space.
+    /// Finds a valid position and adds the item to the data. Respects randomizePositionOrder setting.
+    /// </summary>
+    public bool SpawnItemIntoInventoryData(InventoryData inventoryData, InventoryItemData itemData)
+    {
+        if (inventoryData == null || itemData == null)
+        {
+            Debug.LogWarning("[Spawner] Cannot spawn item: inventoryData or itemData is null", this);
+            return false;
+        }
+
+        if (inventoryData.items == null)
+            inventoryData.items = new List<InventoryItemData>();
+
+        // Try to find a valid position
+        Vector2Int validPosition = FindValidPositionInData(inventoryData, itemData);
+        itemData.gridPosition = validPosition;
+
+        if (!CanPlaceItemAtInData(inventoryData, itemData, validPosition))
+        {
+            Debug.LogWarning($"[Spawner] No valid position found in inventory '{inventoryData.inventoryId}' for item shape: {itemData.shapeDefinition}", this);
+            return false;
+        }
+
+        inventoryData.items.Add(itemData);
+        Debug.Log($"[Spawner] Spawned item into inventory data '{inventoryData.inventoryId}' at position {validPosition}", this);
+        return true;
+    }
+
+    /// <summary>
+    /// Spawns a random mail item into an InventoryData without UI.
+    /// Always uses randomized position search for varied placement.
+    /// </summary>
+    public bool SpawnRandomMailIntoInventoryData(InventoryData inventoryData)
+    {
+        if (inventoryData == null)
+        {
+            Debug.LogWarning("[Spawner] Cannot spawn random mail: inventoryData is null", this);
+            return false;
+        }
+
+        InventoryItemData itemData = CreateRandomMailItemData(Vector2Int.zero);
+        if (itemData == null)
+        {
+            Debug.LogWarning("[Spawner] Failed to create random mail item data", this);
+            return false;
+        }
+
+        // Temporarily enable randomized position search for this spawn
+        bool originalRandomize = randomizePositionOrder;
+        randomizePositionOrder = true;
+        bool success = SpawnItemIntoInventoryData(inventoryData, itemData);
+        randomizePositionOrder = originalRandomize;
+
+        return success;
+    }
+
+    /// <summary>
+    /// Tries to find a valid grid position where an item can fit in an InventoryData.
+    /// If randomizePositionOrder is enabled, searches in random order; otherwise top-left to bottom-right.
+    /// </summary>
+    private Vector2Int FindValidPositionInData(InventoryData inventoryData, InventoryItemData itemData)
+    {
+        if (!TryGetItemDimensions(itemData.shapeDefinition, out int itemWidth, out int itemHeight))
+            return Vector2Int.zero;
+
+        // Build list of all possible positions
+        List<Vector2Int> positions = new List<Vector2Int>();
+        for (int y = 0; y < inventoryData.height; y++)
+        {
+            for (int x = 0; x < inventoryData.width; x++)
+            {
+                positions.Add(new Vector2Int(x, y));
+            }
+        }
+
+        // Randomize search order if enabled
+        if (randomizePositionOrder)
+            Shuffle(positions);
+
+        // Try each position until one works
+        foreach (Vector2Int position in positions)
+        {
+            if (CanPlaceItemAtInData(inventoryData, itemData, position))
+                return position;
+        }
+
+        return Vector2Int.zero;
+    }
+
+    /// <summary>
+    /// Checks if an item can be placed at a specific grid position in InventoryData without overlapping.
+    /// </summary>
+    private bool CanPlaceItemAtInData(InventoryData inventoryData, InventoryItemData itemData, Vector2Int position)
+    {
+        if (!TryGetItemDimensions(itemData.shapeDefinition, out int itemWidth, out int itemHeight))
+            return false;
+
+        // Check if item fits within grid bounds
+        if (position.x + itemWidth > inventoryData.width || position.y + itemHeight > inventoryData.height)
+            return false;
+
+        // Check for overlaps with existing items
+        foreach (InventoryItemData existingItem in inventoryData.items)
+        {
+            if (DoItemsOverlapInData(position, itemData, existingItem.gridPosition, existingItem))
+                return false;
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Gets the width and height of an item from its shape definition.
+    /// </summary>
+    private bool TryGetItemDimensions(string shapeDefinition, out int width, out int height)
+    {
+        width = 1;
+        height = 1;
+
+        if (string.IsNullOrWhiteSpace(shapeDefinition))
+            return true;
+
+        string[] rows = shapeDefinition.Replace("\r", "").Split('\n');
+        if (rows.Length == 0)
+            return true;
+
+        height = rows.Length;
+        width = 0;
+
+        foreach (string row in rows)
+        {
+            if (row.Length > width)
+                width = row.Length;
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Checks if two items would overlap at their given positions.
+    /// </summary>
+    private bool DoItemsOverlapInData(Vector2Int pos1, InventoryItemData item1, Vector2Int pos2, InventoryItemData item2)
+    {
+        if (!TryGetItemDimensions(item1.shapeDefinition, out int width1, out int height1) ||
+            !TryGetItemDimensions(item2.shapeDefinition, out int width2, out int height2))
+        {
+            return true; // Assume collision if we can't determine dimensions
+        }
+
+        // Check axis-aligned bounding box overlap
+        if (pos1.x + width1 <= pos2.x || pos2.x + width2 <= pos1.x)
+            return false; // No overlap on X axis
+
+        if (pos1.y + height1 <= pos2.y || pos2.y + height2 <= pos1.y)
+            return false; // No overlap on Y axis
+
+        return true; // Boxes overlap
     }
 }

@@ -574,6 +574,9 @@ public class InventoryGrid : MonoBehaviour
         if (owner == null || owner.InventoryData == null)
             return;
 
+        if (!owner.gameObject.activeInHierarchy || !owner.enabled)
+            return;
+
         owner.SaveInventoryData();
     }
 

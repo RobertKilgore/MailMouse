@@ -84,28 +84,21 @@ public class InventorySetManager : MonoBehaviour
             InventoryData inventoryData = null;
             if (orderedData != null && index < orderedData.Count)
                 inventoryData = orderedData[index];
-            // Release any previously held data before clearing visuals to avoid
-            // accidentally writing an empty inventory back into the old data object.
-            if (inventoryInstance.InventoryData != null)
-            {
-                inventoryInstance.SetInventoryData(null);
-                inventoryInstance.ClearInventory();
-            }
+
+            // Detach the instance from its old backing data and clear any old visuals
+            // before rebinding it to the new inventory data for this open.
+            inventoryInstance.RebindInventoryData(null);
 
             if (inventoryData != null)
             {
-                // Assign the target data and populate it via the spawner (which will
-                // clear and then instantiate items into the grid).
-                inventoryInstance.SetInventoryData(inventoryData);
+                Debug.Log($"[InventorySetManager] Rebinding member index {index} to inventory data '{inventoryData.inventoryId}' (set '{setDefinition.name}')", this);
+                inventoryInstance.RebindInventoryData(inventoryData);
                 if (spawner != null)
                     spawner.LoadInventoryData(inventoryInstance, inventoryData);
-                Debug.Log($"InventorySetManager: bound inventory data '{inventoryData.inventoryId}' to member index {index} (set '{setDefinition.name}')", this);
             }
             else
             {
-                // Ensure the instance is empty when there is no data to bind.
-                inventoryInstance.SetInventoryData(null);
-                inventoryInstance.ClearInventory();
+                inventoryInstance.RebindInventoryData(null);
             }
 
             Debug.Log($"[InventorySetManager] Before SetActive: {inventoryInstance.gameObject.name} active={inventoryInstance.gameObject.activeSelf}");
@@ -129,11 +122,8 @@ public class InventorySetManager : MonoBehaviour
         if (activeSet == null)
             return;
 
-        // Ensure any dragged item is returned to its origin before we save/close.
+        // Ensure any dragged item is returned to its origin before we close.
         InventoryDragController.Instance?.ForceReturnHeldItem();
-
-        // Save all currently active inventories
-        SaveInventorySet();
 
         foreach (InventoryInstance instance in activeInstances)
         {
@@ -145,8 +135,7 @@ public class InventorySetManager : MonoBehaviour
 
             // Release any binding to external InventoryData so clearing the UI
             // does not write empty state back into mailbox/player data objects.
-            instance.SetInventoryData(null);
-            instance.ClearInventory();
+            instance.RebindInventoryData(null);
 
             // Return to the pool for reuse
             ReturnInstanceToPool(instance);
@@ -157,23 +146,6 @@ public class InventorySetManager : MonoBehaviour
         activeSet = null;
 
         Debug.Log($"Closed inventory set '{closedSetName}'", this);
-    }
-
-    /// <summary>
-    /// Saves all currently active inventories back to their data objects.
-    /// </summary>
-    private void SaveInventorySet()
-    {
-        if (spawner == null)
-            return;
-
-        foreach (InventoryInstance instance in activeInstances)
-        {
-            if (instance == null || instance.InventoryData == null)
-                continue;
-
-            spawner.SaveInventoryData(instance);
-        }
     }
 
     private InventoryInstance ResolveInventoryInstance(InventorySetMember member)
