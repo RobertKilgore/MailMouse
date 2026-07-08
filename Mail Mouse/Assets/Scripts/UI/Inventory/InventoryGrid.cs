@@ -223,6 +223,34 @@ public class InventoryGrid : MonoBehaviour
     }
 
     /// <summary>
+    /// Forces the current layout state to refresh so tile positions are up to date before
+    /// items are rehydrated into the UI.
+    /// </summary>
+    public void RefreshLayout()
+    {
+        if (gridRoot == null)
+            return;
+
+        Canvas.ForceUpdateCanvases();
+        if (gridLayout != null)
+            LayoutRebuilder.ForceRebuildLayoutImmediate(gridRoot);
+        if (gridRoot != null)
+            LayoutRebuilder.ForceRebuildLayoutImmediate(gridRoot);
+    }
+
+    /// <summary>
+    /// Rebuilds the tile map from the current child tiles after the layout has settled.
+    /// </summary>
+    public void RebuildTileMap()
+    {
+        if (gridRoot == null)
+            return;
+
+        RefreshLayout();
+        BuildTileMap();
+    }
+
+    /// <summary>
     /// Ends a batch update. If this is the last active batch and commitSave is true,
     /// the grid will persist its current state back into the bound inventory data.
     /// </summary>

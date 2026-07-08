@@ -53,6 +53,22 @@ public class InventoryDataHolder : MonoBehaviour
         return inventoryDataList;
     }
 
+    /// <summary>
+    /// Spawns a random item into the primary inventory data entry.
+    /// </summary>
+    public bool SpawnRandomItemIntoFirstInventory()
+    {
+        InventoryData primaryInventory = GetPrimaryInventoryData();
+        if (primaryInventory == null)
+            return false;
+
+        InventorySpawner spawner = FindFirstObjectByType<InventorySpawner>(FindObjectsInactive.Include);
+        if (spawner == null)
+            return false;
+
+        return spawner.SpawnRandomMailIntoInventoryData(primaryInventory);
+    }
+
 #if UNITY_EDITOR
     /// <summary>
     /// [EDITOR DEBUG ONLY] Spawns a random item into a random inventory data entry.

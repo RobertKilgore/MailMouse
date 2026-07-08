@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -246,9 +247,21 @@ public class InventorySpawner : MonoBehaviour
         if (inventory == null || data == null)
             return;
 
+        StartCoroutine(LoadInventoryDataRoutine(inventory, data));
+    }
+
+    private IEnumerator LoadInventoryDataRoutine(InventoryInstance inventory, InventoryData data)
+    {
+        if (inventory == null || data == null)
+            yield break;
+
+        yield return null;
+        yield return new WaitForEndOfFrame();
+
         List<InventoryItemData> itemsToLoad = data.items != null ? new List<InventoryItemData>(data.items) : new List<InventoryItemData>();
         Debug.Log($"[InventorySpawner.LoadInventoryData] Loading {itemsToLoad.Count} items into inventory '{data.inventoryId}'", this);
 
+        inventory.Grid.RebuildTileMap();
         inventory.Grid.BeginBatchUpdate();
         try
         {
@@ -661,8 +674,37 @@ public class InventorySpawner : MonoBehaviour
         }
 
         inventoryData.items.Add(itemData);
+        SyncSpawnedItemToOpenInventoryUI(inventoryData, itemData);
         Debug.Log($"[Spawner] Spawned item into inventory data '{inventoryData.inventoryId}' at position {validPosition}", this);
         return true;
+    }
+
+    private void SyncSpawnedItemToOpenInventoryUI(InventoryData inventoryData, InventoryItemData itemData)
+    {
+        if (inventoryData == null || itemData == null)
+            return;
+
+        InventoryInstance openInstance = null;
+        foreach (InventoryInstance instance in FindObjectsOfType<InventoryInstance>())
+        {
+            if (instance == null || instance.InventoryData != inventoryData)
+                continue;
+
+            if (!instance.gameObject.activeInHierarchy || !instance.enabled || instance.Grid == null)
+                continue;
+
+            openInstance = instance;
+            break;
+        }
+
+        if (openInstance == null)
+            return;
+
+        InventoryItem spawnedItem = SpawnItemInInventory(openInstance, itemData, 0);
+        if (spawnedItem == null)
+        {
+            Debug.LogWarning($"[Spawner] Added item to data for '{inventoryData.inventoryId}', but the live UI inventory could not place it.", this);
+        }
     }
 
     /// <summary>
