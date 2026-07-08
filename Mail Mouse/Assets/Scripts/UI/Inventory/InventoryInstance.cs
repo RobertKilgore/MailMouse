@@ -48,6 +48,37 @@ public class InventoryInstance : MonoBehaviour
     public RectTransform ItemLayer => itemLayer;
     public RectTransform PreviewLayer => previewLayer;
     public InventoryData InventoryData => inventoryData;
+    public bool AllowItemPlacement
+    {
+        get => inventoryData != null ? inventoryData.allowItemPlacement : true;
+        set
+        {
+            if (inventoryData != null)
+                inventoryData.allowItemPlacement = value;
+        }
+    }
+
+    public bool AllowItemSpawns
+    {
+        get => inventoryData != null ? inventoryData.allowItemSpawns : true;
+        set
+        {
+            if (inventoryData != null)
+                inventoryData.allowItemSpawns = value;
+        }
+    }
+
+    public bool ShowPlacementPreviews
+    {
+        get => inventoryData != null ? inventoryData.showPlacementPreviews : true;
+        set
+        {
+            if (inventoryData != null)
+                inventoryData.showPlacementPreviews = value;
+        }
+    }
+
+    public bool IsReadOnly => !AllowItemPlacement;
 
     public string InventoryId
     {

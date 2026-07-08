@@ -8,6 +8,8 @@ using System.Collections.Generic;
 /// </summary>
 public class RestockManager : MonoBehaviour
 {
+    public static RestockManager Instance { get; private set; }
+
     [SerializeField]
     private InventoryDataHolder inventoryDataHolder;
 
@@ -18,6 +20,18 @@ public class RestockManager : MonoBehaviour
     private float restockCheckInterval = 0.5f;
 
     private float nextRestockCheckTime;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Debug.LogWarning("Multiple RestockManager instances found; keeping the first one.", this);
+        }
+    }
 
     private void Start()
     {
@@ -55,8 +69,50 @@ public class RestockManager : MonoBehaviour
         nextRestockCheckTime = Time.time + restockCheckInterval;
     }
 
+    public void TriggerRestockForInventory(InventoryData inventoryData)
+    {
+        if (inventoryData == null)
+        {
+            TriggerRestock();
+            return;
+        }
+
+        if (!CanRestockNow())
+            return;
+
+        if (inventoryData.items == null)
+            inventoryData.items = new List<InventoryItemData>();
+
+        if (inventoryData.items.Count != 0)
+            return;
+
+        if (inventorySpawner != null && inventorySpawner.SpawnRandomMailIntoInventoryData(inventoryData))
+        {
+            Debug.Log($"RestockManager: Restocked inventory '{inventoryData.inventoryId}'", this);
+        }
+    }
+
+    public void NotifyInventoryChanged(InventoryData inventoryData)
+    {
+        if (inventoryData == null)
+            return;
+
+        if (!CanRestockNow())
+            return;
+
+        TriggerRestockForInventory(inventoryData);
+    }
+
+    private bool CanRestockNow()
+    {
+        return InventoryDragController.Instance == null || !InventoryDragController.Instance.IsHoldingItem;
+    }
+
     private void RestockEmptySlots()
     {
+        if (!CanRestockNow())
+            return;
+
         if (inventoryDataHolder == null || inventorySpawner == null)
         {
             Debug.LogWarning("RestockManager: inventoryDataHolder or inventorySpawner is null", this);
@@ -79,7 +135,6 @@ public class RestockManager : MonoBehaviour
                 slotData.items = new List<InventoryItemData>();
             }
 
-            // Only restock empty slots
             if (slotData.items.Count == 0)
             {
                 if (inventorySpawner.SpawnRandomMailIntoInventoryData(slotData))

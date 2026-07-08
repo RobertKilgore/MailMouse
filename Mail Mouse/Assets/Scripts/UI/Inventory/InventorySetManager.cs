@@ -95,6 +95,8 @@ public class InventorySetManager : MonoBehaviour
                 inventoryInstance.RebindInventoryData(inventoryData);
                 if (spawner != null)
                     spawner.LoadInventoryData(inventoryInstance, inventoryData);
+
+                RestockManager.Instance?.TriggerRestockForInventory(inventoryData);
             }
             else
             {

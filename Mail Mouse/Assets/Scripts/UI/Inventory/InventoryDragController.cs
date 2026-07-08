@@ -224,6 +224,8 @@ public class InventoryDragController : MonoBehaviour
 
         heldItem = null;
         currentPreviewGrid = null;
+
+        RestockManager.Instance?.TriggerRestock();
     }
 
     /// <summary>
@@ -320,6 +322,7 @@ public class InventoryDragController : MonoBehaviour
     }
 
     public bool DebugHover => debugHover;
+    public bool IsHoldingItem => heldItem != null || dragging;
 
     [ContextMenu("Debug Drag Controller")]
     public void DebugControllerState()

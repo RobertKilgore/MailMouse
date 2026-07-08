@@ -13,6 +13,10 @@ public class InventoryData
     public InventoryType inventoryType = InventoryType.Mailbox;
     public int width = 8;  // Grid width in cells
     public int height = 6;  // Grid height in cells
+    public bool allowItemPlacement = true;
+    [FormerlySerializedAs("blockItemSpawns")]
+    public bool allowItemSpawns = true;
+    public bool showPlacementPreviews = true;
     public List<InventoryItemData> items = new List<InventoryItemData>();
 }
 

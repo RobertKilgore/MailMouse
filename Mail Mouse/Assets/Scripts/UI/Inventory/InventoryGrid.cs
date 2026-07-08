@@ -313,6 +313,12 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     public void ShowPreview(Vector2Int origin, InventoryItem item)
     {
+        if (owner != null && !owner.ShowPlacementPreviews)
+        {
+            ClearPreview();
+            return;
+        }
+
         // Display a preview of where the item will land at the hovered grid position.
         ClearPreview();
         Color previewColor = CanPlaceItem(origin, item) ? validPreviewColor : invalidPreviewColor;
@@ -406,7 +412,7 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     public bool CanPlaceItem(Vector2Int position, InventoryItem item)
     {
-        return CanPlaceItem(position, item, 0);
+        return CanPlaceItem(position, item, 0, true);
     }
 
     /// <summary>
@@ -414,6 +420,22 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     public bool CanPlaceItem(Vector2Int position, InventoryItem item, int debugLevel)
     {
+        return CanPlaceItem(position, item, debugLevel, true);
+    }
+
+    /// <summary>
+    /// Checks whether the item can be placed at the target grid position.
+    /// When respectPlacementPermission is false, the inventory's placement permission is ignored so scripted spawns can still populate the UI.
+    /// </summary>
+    public bool CanPlaceItem(Vector2Int position, InventoryItem item, int debugLevel, bool respectPlacementPermission)
+    {
+        if (respectPlacementPermission && owner != null && !owner.AllowItemPlacement)
+        {
+            if (debugLevel > 0)
+                Debug.LogWarning($"[Grid] Placement blocked for read-only inventory '{owner.InventoryId}'.", this);
+            return false;
+        }
+
         if (item == null)
         {
             if (debugLevel > 0)
@@ -479,7 +501,7 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     public bool PlaceItem(Vector2Int position, InventoryItem item)
     {
-        return PlaceItem(position, item, 0);
+        return PlaceItem(position, item, 0, true);
     }
 
     /// <summary>
@@ -487,7 +509,16 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     public bool PlaceItem(Vector2Int position, InventoryItem item, int debugLevel)
     {
-        if (!CanPlaceItem(position, item, debugLevel))
+        return PlaceItem(position, item, debugLevel, true);
+    }
+
+    /// <summary>
+    /// Attempts to place the item in the grid and updates occupancy if successful.
+    /// When respectPlacementPermission is false, the inventory's placement permission is ignored so scripted spawns can still populate the UI.
+    /// </summary>
+    public bool PlaceItem(Vector2Int position, InventoryItem item, int debugLevel, bool respectPlacementPermission)
+    {
+        if (!CanPlaceItem(position, item, debugLevel, respectPlacementPermission))
         {
             if (debugLevel > 0)
                 Debug.LogWarning($"[Grid] PlaceItem: Cannot place item '{item?.name}' at {position} in inventory '{owner?.InventoryId ?? name}'", this);
@@ -537,7 +568,13 @@ public class InventoryGrid : MonoBehaviour
             }
 
         if (itemWasOccupying)
+        {
             SaveInventory();
+            if (owner != null && owner.InventoryData != null)
+            {
+                RestockManager.Instance?.NotifyInventoryChanged(owner.InventoryData);
+            }
+        }
     }
 
     /// <summary>

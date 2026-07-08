@@ -78,7 +78,7 @@ public class InventorySpawner : MonoBehaviour
         bool placed = false;
         try
         {
-            placed = inventory.Grid.PlaceItem(itemData.gridPosition, item, debugLevel);
+            placed = inventory.Grid.PlaceItem(itemData.gridPosition, item, debugLevel, false);
         }
         catch (System.Exception ex)
         {
@@ -141,7 +141,7 @@ public class InventorySpawner : MonoBehaviour
         {
             try
             {
-                if (inventory.Grid.PlaceItem(position, item, debugLevel))
+                if (inventory.Grid.PlaceItem(position, item, debugLevel, false))
                 {
                     item.gameObject.SetActive(true);
                     itemData.gridPosition = position;
@@ -654,6 +654,12 @@ public class InventorySpawner : MonoBehaviour
     /// </summary>
     public bool SpawnItemIntoInventoryData(InventoryData inventoryData, InventoryItemData itemData)
     {
+        if (!CanSpawnItemNow(inventoryData))
+            return false;
+
+        if (!CanSpawnItemNow(inventoryData))
+            return false;
+
         if (inventoryData == null || itemData == null)
         {
             Debug.LogWarning("[Spawner] Cannot spawn item: inventoryData or itemData is null", this);
@@ -700,10 +706,21 @@ public class InventorySpawner : MonoBehaviour
         if (openInstance == null)
             return;
 
+        if (!openInstance.AllowItemSpawns)
+        {
+            Debug.LogWarning($"[Spawner] Skipping live UI sync for inventory '{inventoryData.inventoryId}' because item spawns are disabled for this inventory.", this);
+            return;
+        }
+
         InventoryItem spawnedItem = SpawnItemInInventory(openInstance, itemData, 0);
         if (spawnedItem == null)
         {
-            Debug.LogWarning($"[Spawner] Added item to data for '{inventoryData.inventoryId}', but the live UI inventory could not place it.", this);
+            spawnedItem = TrySpawnItemInInventoryAtAlternatePosition(openInstance, itemData, 0);
+        }
+
+        if (spawnedItem == null)
+        {
+            Debug.LogWarning($"[Spawner] Added item to data for '{inventoryData.inventoryId}', but the live UI inventory could not place it. Stored position={itemData.gridPosition}", this);
         }
     }
 
@@ -713,6 +730,9 @@ public class InventorySpawner : MonoBehaviour
     /// </summary>
     public bool SpawnRandomMailIntoInventoryData(InventoryData inventoryData)
     {
+        if (!CanSpawnItemNow(inventoryData))
+            return false;
+
         if (inventoryData == null)
         {
             Debug.LogWarning("[Spawner] Cannot spawn random mail: inventoryData is null", this);
@@ -733,6 +753,23 @@ public class InventorySpawner : MonoBehaviour
         randomizePositionOrder = originalRandomize;
 
         return success;
+    }
+
+    private bool CanSpawnItemNow(InventoryData inventoryData)
+    {
+        if (InventoryDragController.Instance != null && InventoryDragController.Instance.IsHoldingItem)
+        {
+            Debug.LogWarning($"[Spawner] Blocked spawn for inventory '{inventoryData?.inventoryId ?? "unknown"}' because an item is currently being held.", this);
+            return false;
+        }
+
+        if (inventoryData != null && !inventoryData.allowItemSpawns)
+        {
+            Debug.LogWarning($"[Spawner] Blocked spawn for inventory '{inventoryData.inventoryId}' because item spawns are disabled for this inventory.", this);
+            return false;
+        }
+
+        return true;
     }
 
     /// <summary>

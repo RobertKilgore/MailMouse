@@ -75,6 +75,7 @@ public class PostOfficeInteractable : InteractableObject
                 slotData.items = new List<InventoryItemData>();
 
             slotData.inventoryType = InventoryType.PostOffice;
+            slotData.allowItemPlacement = false;
             slots.Add(slotData);
         }
 
