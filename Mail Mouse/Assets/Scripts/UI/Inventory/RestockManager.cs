@@ -20,6 +20,7 @@ public class RestockManager : MonoBehaviour
     private float restockCheckInterval = 0.5f;
 
     private float nextRestockCheckTime;
+    private readonly List<InventoryDataHolder> managedDataHolders = new List<InventoryDataHolder>();
 
     private void Awake()
     {
@@ -35,10 +36,7 @@ public class RestockManager : MonoBehaviour
 
     private void Start()
     {
-        if (inventoryDataHolder == null)
-        {
-            inventoryDataHolder = GetComponentInChildren<InventoryDataHolder>();
-        }
+        RefreshManagedDataHolders();
 
         if (inventorySpawner == null)
         {
@@ -80,6 +78,12 @@ public class RestockManager : MonoBehaviour
         if (!CanRestockNow())
             return;
 
+        if (!IsManagedInventory(inventoryData))
+            return;
+
+        if (!CanRestockInventory(inventoryData))
+            return;
+
         if (inventoryData.items == null)
             inventoryData.items = new List<InventoryItemData>();
 
@@ -108,6 +112,69 @@ public class RestockManager : MonoBehaviour
         return InventoryDragController.Instance == null || !InventoryDragController.Instance.IsHoldingItem;
     }
 
+    private bool CanRestockInventory(InventoryData inventoryData)
+    {
+        if (inventoryData == null)
+            return false;
+
+        if (!inventoryData.allowItemSpawns)
+            return false;
+
+        return true;
+    }
+
+    private void RefreshManagedDataHolders()
+    {
+        managedDataHolders.Clear();
+
+        if (inventoryDataHolder != null && IsManagedHolder(inventoryDataHolder))
+        {
+            managedDataHolders.Add(inventoryDataHolder);
+        }
+
+        InventoryDataHolder[] holders = GetComponentsInChildren<InventoryDataHolder>(true);
+        foreach (InventoryDataHolder holder in holders)
+        {
+            if (holder == null || holder == inventoryDataHolder)
+                continue;
+
+            if (IsManagedHolder(holder))
+                managedDataHolders.Add(holder);
+        }
+
+        if (inventoryDataHolder == null && managedDataHolders.Count > 0)
+        {
+            inventoryDataHolder = managedDataHolders[0];
+        }
+    }
+
+    private bool IsManagedHolder(InventoryDataHolder holder)
+    {
+        if (holder == null)
+            return false;
+
+        Transform holderTransform = holder.transform;
+        return holderTransform == transform || holderTransform.IsChildOf(transform);
+    }
+
+    private bool IsManagedInventory(InventoryData inventoryData)
+    {
+        if (inventoryData == null)
+            return false;
+
+        foreach (InventoryDataHolder holder in managedDataHolders)
+        {
+            if (holder == null)
+                continue;
+
+            List<InventoryData> holderData = holder.GetAllInventoryData();
+            if (holderData != null && holderData.Contains(inventoryData))
+                return true;
+        }
+
+        return false;
+    }
+
     private void RestockEmptySlots()
     {
         if (!CanRestockNow())
@@ -119,7 +186,19 @@ public class RestockManager : MonoBehaviour
             return;
         }
 
-        List<InventoryData> allSlots = inventoryDataHolder.GetAllInventoryData();
+        List<InventoryData> allSlots = new List<InventoryData>();
+        foreach (InventoryDataHolder holder in managedDataHolders)
+        {
+            if (holder == null)
+                continue;
+
+            List<InventoryData> holderData = holder.GetAllInventoryData();
+            if (holderData == null)
+                continue;
+
+            allSlots.AddRange(holderData);
+        }
+
         Debug.Log($"RestockManager: Checking {allSlots.Count} slots for restocking", this);
 
         int restockedCount = 0;
@@ -129,6 +208,9 @@ public class RestockManager : MonoBehaviour
             {
                 continue;
             }
+
+            if (!CanRestockInventory(slotData))
+                continue;
 
             if (slotData.items == null)
             {
