@@ -691,7 +691,7 @@ public class InventorySpawner : MonoBehaviour
             return;
 
         InventoryInstance openInstance = null;
-        foreach (InventoryInstance instance in FindObjectsOfType<InventoryInstance>())
+        foreach (InventoryInstance instance in FindObjectsByType<InventoryInstance>(FindObjectsSortMode.None))
         {
             if (instance == null || instance.InventoryData != inventoryData)
                 continue;
