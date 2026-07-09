@@ -50,6 +50,11 @@ public class InventoryPresentationController : MonoBehaviour
         }
 
         List<InventoryData> orderedData = BuildOrderedData(inventoryType, inventoryData);
+        if (ShouldIncludePlayerInventory(inventoryType) && GetPlayerInventoryData() == null)
+        {
+            Debug.LogWarning("InventoryPresentationController: Player inventory data is missing. The inventory UI may open without the player inventory.");
+        }
+
         setManager.OpenInventorySet(setDefinition, orderedData);
         return true;
     }
