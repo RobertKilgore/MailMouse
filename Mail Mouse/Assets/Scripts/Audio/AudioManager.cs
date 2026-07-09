@@ -129,6 +129,12 @@ public class AudioManager : MonoBehaviour
         manager.PlayUIButtonClickSoundInternal();
     }
 
+    public static void PlayPackageSound()
+    {
+        AudioManager manager = EnsureInstance();
+        manager.PlayPackageSoundInternal();
+    }
+
     public static void PlaySFXAtPoint(AudioClip clip, Vector3 position, float volumeScale = 1f)
     {
         if (clip == null)
@@ -244,6 +250,18 @@ public class AudioManager : MonoBehaviour
         }
 
         Debug.LogWarning("[AudioManager] UI click sound clip is not assigned.");
+    }
+
+    private void PlayPackageSoundInternal()
+    {
+        if (audioClips != null && audioClips.packageSound != null)
+        {
+            Debug.Log("[AudioManager] Playing package sound.");
+            PlaySFX(audioClips.packageSound, channel: "inventory_ui");
+            return;
+        }
+
+        Debug.LogWarning("[AudioManager] Package sound clip is not assigned.");
     }
 
     private void PlaySFXInternal(AudioClip clip, float volumeScale, float pitch, string channel)

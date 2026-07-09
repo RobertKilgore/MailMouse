@@ -122,6 +122,8 @@ public class InventoryDragController : MonoBehaviour
         if (dragLayer != null)
             dragLayer.SetAsLastSibling();
 
+        AudioManager.PlayPackageSound();
+
         item.transform.SetAsLastSibling();
         originalLocalPos = item.RectTransform.localPosition;
         originalGridPos = item.GridPosition;
@@ -222,6 +224,8 @@ public class InventoryDragController : MonoBehaviour
 
         DebugLog($"Dropped {heldItem.name} into {targetGrid.Owner.InventoryId} at {target}");
 
+        AudioManager.PlayPackageSound();
+
         heldItem = null;
         currentPreviewGrid = null;
 
@@ -294,6 +298,7 @@ public class InventoryDragController : MonoBehaviour
             heldItem.RectTransform.localPosition = originalLocalPos;
             heldItem.SetBackgroundVisible(true);
             DebugLog($"Returned {heldItem.name} to {sourceInventory.InventoryId}");
+            AudioManager.PlayPackageSound();
         }
         else
         {
