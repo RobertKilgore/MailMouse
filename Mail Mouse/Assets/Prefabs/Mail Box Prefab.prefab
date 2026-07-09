@@ -77,9 +77,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
-  inventoryData:
-    inventoryId: 
-    displayName: 
-    address: 
-    items: []
+  inventoryDataList: []
   ignoreForValidation: 0
