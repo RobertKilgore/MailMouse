@@ -386,22 +386,9 @@ MonoBehaviour:
     width: 8
     height: 6
     allowItemPlacement: 1
-    allowItemSpawns: 0
-    showPlacementPreviews: 0
-    items:
-    - itemId: mail_2156
-      prefabId: 2
-      shapeDefinition: XX
-      rotation: 0
-      gridPosition: {x: 6, y: 0}
-      mailData:
-        recipient: 
-        address: 6 Breackneck Hill Rd
-        placedByPlayer: 0
-        complexity: 1
-        packageScore: 0
-        packageModifier: 
-        name: 
+    allowItemSpawns: 1
+    showPlacementPreviews: 1
+    items: []
   ignoreForValidation: 0
 --- !u!114 &4902759244682042349
 MonoBehaviour:
@@ -415,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86dfc486d2d134542afe7f56c044518b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMenuInputController
-  pauseMenuController: {fileID: 0}
+  pauseMenuHandler: {fileID: 0}
   inventoryMenuController: {fileID: 0}
   inventoryPresentationController: {fileID: 0}
 --- !u!114 &7099960268846709962
