@@ -73,23 +73,27 @@ public class PauseMenuHandler : MonoBehaviour
 
     public void OnContinueButtonPressed()
     {
+        AudioManager.PlayUIButtonClickSound();
         ClosePauseMenu();
     }
 
     public void OnRestartButtonPressed()
     {
+        AudioManager.PlayUIButtonClickSound();
         ClosePauseMenu();
         SceneFlowManager.GetOrCreateInstance()?.RestartGameplayScene();
     }
 
     public void OnQuitToTitleButtonPressed()
     {
+        AudioManager.PlayUIButtonClickSound();
         ClosePauseMenu();
         SceneFlowManager.GetOrCreateInstance()?.LoadStartScene();
     }
 
     public void OnQuitGameButtonPressed()
     {
+        AudioManager.PlayUIButtonClickSound();
         ClosePauseMenu();
         SceneFlowManager.GetOrCreateInstance()?.QuitGame();
     }

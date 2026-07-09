@@ -9,6 +9,8 @@ public class StartMenuController : MonoBehaviour
 
     public void OnPlayButtonPressed()
     {
+        AudioManager.PlayUIButtonClickSound();
+
         if (sceneFlowManager == null)
             sceneFlowManager = SceneFlowManager.GetOrCreateInstance();
 
@@ -18,6 +20,8 @@ public class StartMenuController : MonoBehaviour
 
     public void OnQuitButtonPressed()
     {
+        AudioManager.PlayUIButtonClickSound();
+
         if (sceneFlowManager == null)
             sceneFlowManager = SceneFlowManager.GetOrCreateInstance();
 

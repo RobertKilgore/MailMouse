@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   musicSource: {fileID: 0}
   sfxSource: {fileID: 0}
+  audioClips: {fileID: 11400000, guid: 0c73bb4bffae6cf4ba2dea89d278c2b0, type: 2}
   masterVolume: 1
   musicVolume: 1
   sfxVolume: 1

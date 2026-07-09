@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerMenuInputController : MonoBehaviour
 {
     [Header("Menu References")]
-    [SerializeField] private MenuController pauseMenuController;
+    [SerializeField] private PauseMenuHandler pauseMenuHandler;
     [SerializeField] private MenuController inventoryMenuController;
     [SerializeField] private InventoryPresentationController inventoryPresentationController;
 
@@ -18,6 +18,12 @@ public class PlayerMenuInputController : MonoBehaviour
     {
         if (inventoryPresentationController == null)
             inventoryPresentationController = FindFirstObjectByType<InventoryPresentationController>(FindObjectsInactive.Include);
+
+        if (pauseMenuHandler == null)
+            pauseMenuHandler = GetComponent<PauseMenuHandler>();
+
+        if (pauseMenuHandler == null)
+            pauseMenuHandler = FindFirstObjectByType<PauseMenuHandler>(FindObjectsInactive.Include);
     }
 
     private void OnEnable()
@@ -40,7 +46,7 @@ public class PlayerMenuInputController : MonoBehaviour
 
         if (inputActions.UI.Cancel.WasPressedThisFrame())
         {
-            RequestMenuToggle(pauseMenuController);
+            RequestPauseToggle();
             return;
         }
 
@@ -51,9 +57,9 @@ public class PlayerMenuInputController : MonoBehaviour
         }
     }
 
-    public void RequestMenuToggle(MenuController menu)
+    public void RequestPauseToggle()
     {
-        TryOpenMenu(menu);
+        pauseMenuHandler?.TogglePauseMenu();
     }
 
     private bool TryOpenMenu(MenuController menu)
@@ -82,15 +88,27 @@ public class PlayerMenuInputController : MonoBehaviour
 
         if (inventoryMenuController.IsOpen || MenuManager.Instance?.GetActiveMenus().Contains(inventoryMenuController) == true)
         {
+
+            if (inventoryType == InventoryType.Player)
+            {
+                AudioManager.PlayInventoryCloseSound();
+            }
             inventoryMenuController.Close();
             return;
         }
+
+        
 
         bool menuOpened = TryOpenMenu(inventoryMenuController);
         if (!menuOpened)
         {
             Debug.Log("Inventory menu open request was rejected by the menu system; skipping inventory set open.");
             return;
+        }
+
+        if (inventoryType == InventoryType.Player)
+        {
+            AudioManager.PlayInventoryOpenSound();
         }
 
         OpenInventorySet(inventoryType, inventoryData);

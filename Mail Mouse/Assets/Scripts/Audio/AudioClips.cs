@@ -8,16 +8,10 @@ public class AudioClips : ScriptableObject
     public AudioClip uiOpen;
     public AudioClip uiClose;
 
-    [Header("Interaction")]
-    public AudioClip interact;
-    public AudioClip pickup;
-    public AudioClip drop;
-
     [Header("Inventory")]
     public AudioClip inventoryOpen;
     public AudioClip inventoryClose;
-    public AudioClip itemPlace;
-    public AudioClip itemRemove;
+    public AudioClip packageSound;
 
     [Header("Music")]
     public AudioClip mainTheme;
