@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1060212}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Tail End Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,6 +205,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 5 Mus St
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -262,6 +266,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 8 Mus St
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -281,7 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 12043036}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Mischief Ave'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2160,7 +2168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 86598434}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Salacious Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2307,6 +2315,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 4 Letter Ln
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -3172,6 +3184,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 5 Breakneck Hill Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -3785,6 +3801,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 5 Salacious Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -4003,7 +4023,7 @@ GameObject:
   m_Component:
   - component: {fileID: 158220748}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Trackball Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4073,6 +4093,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Mus St
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -4368,6 +4392,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Tail End Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -4817,6 +4845,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 5 Left Click Ave
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -5000,7 +5032,7 @@ GameObject:
   m_Component:
   - component: {fileID: 186836106}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Cheddar Blvd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5306,7 +5338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 204646598}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Letter Ln'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5369,7 +5401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 226647853}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: Salacious Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5439,6 +5471,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Tutter Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -5536,7 +5572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 231355087}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 4 Pad Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5723,7 +5759,7 @@ GameObject:
   m_Component:
   - component: {fileID: 236772101}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Squeak St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6509,7 +6545,7 @@ GameObject:
   m_Component:
   - component: {fileID: 265255078}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 5 Tutter Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6980,6 +7016,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 10 Mus St
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -6999,7 +7039,7 @@ GameObject:
   m_Component:
   - component: {fileID: 269973096}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Ricotta Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7471,6 +7511,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Right Click Ave
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -7715,7 +7759,7 @@ GameObject:
   m_Component:
   - component: {fileID: 302408546}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Squeak Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8245,7 +8289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 330260390}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 4 Mus St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8356,7 +8400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 340173311}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Cheddar Blvd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8466,7 +8510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 341650314}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 6 Mus St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8542,6 +8586,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 4 Squeak Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -8561,7 +8609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 348249911}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Squeak St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8708,6 +8756,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Tail End Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -8916,6 +8968,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Pad Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -9049,6 +9105,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: '1 Cursor Rd '
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -9266,6 +9326,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Cookie Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -9327,6 +9391,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Electric Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -9503,7 +9571,7 @@ GameObject:
   m_Component:
   - component: {fileID: 377193503}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Tutter Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9583,6 +9651,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Rodent Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -9886,6 +9958,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Squeak St
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -10583,7 +10659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 404182406}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Toon St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10816,7 +10892,7 @@ GameObject:
   m_Component:
   - component: {fileID: 408012652}
   m_Layer: 0
-  m_Name: 'House: '
+  m_Name: 'House: 5 Breakneck Hill Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10891,6 +10967,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 6 Ricotta Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -11176,6 +11256,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Cookie Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -11277,7 +11361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 429622343}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Tail End Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11780,7 +11864,7 @@ GameObject:
   m_Component:
   - component: {fileID: 442774877}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 4 Ricotta Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12653,6 +12737,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Ricotta Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -12985,7 +13073,7 @@ GameObject:
   m_Component:
   - component: {fileID: 480490619}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Tunnel Ln'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13190,7 +13278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 494111156}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Tunnel Ln'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13536,7 +13624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 504282659}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 4 Electric Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13606,6 +13694,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 4 Toon St
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -13857,7 +13949,7 @@ GameObject:
   m_Component:
   - component: {fileID: 511360932}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Pad Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13900,7 +13992,7 @@ GameObject:
   m_Component:
   - component: {fileID: 518775020}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Scroll Wheel Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13933,7 +14025,7 @@ GameObject:
   m_Component:
   - component: {fileID: 520232092}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Breakneck Hill Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14707,6 +14799,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Squeak Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -14736,7 +14832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 539223037}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 6 Breakneck Hill Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14807,6 +14903,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Mus St
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -14863,6 +14963,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Salacious Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -15344,7 +15448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 552263619}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Mus St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15472,7 +15576,7 @@ GameObject:
   m_Component:
   - component: {fileID: 556312241}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Toon St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16064,7 +16168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 559295754}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 4 Breakneck Hill Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16435,6 +16539,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Left Click Ave
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -16738,6 +16846,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Squeak St
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -16830,7 +16942,7 @@ GameObject:
   m_Component:
   - component: {fileID: 582095917}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Tutter Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16997,6 +17109,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Letter Ln
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -17213,7 +17329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 608534232}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Chomp Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17246,7 +17362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 610557833}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Mus St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17284,7 +17400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 613109325}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 6 Ricotta Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17718,7 +17834,7 @@ GameObject:
   m_Component:
   - component: {fileID: 627674028}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Pad Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17866,6 +17982,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 4 Salacious Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -18005,6 +18125,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Squeak Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -18109,7 +18233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 640019105}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Right Click Ave'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18529,7 +18653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 648802478}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Letter Ln'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19218,7 +19342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 684864220}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Softpaw Ave'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19517,6 +19641,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 6 Tutter Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -19732,6 +19860,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 4 Breakneck Hill Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -20061,7 +20193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 709543432}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 4 Cheddar Blvd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20131,6 +20263,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 5 Ricotta Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -20233,7 +20369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 716323990}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 5 Left Click Ave'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20425,7 +20561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 727869571}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Ricotta Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20496,6 +20632,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Ricotta Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -20515,7 +20655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 734370954}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Chomp Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20590,6 +20730,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Chip St
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -20819,6 +20963,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Mus St
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -21904,7 +22052,7 @@ GameObject:
   m_Component:
   - component: {fileID: 769117653}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 4 Letter Ln'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22056,6 +22204,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Tunnel Ln
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -22406,7 +22558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 796185193}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Right Click Ave'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23390,6 +23542,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 5 Tutter Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -24409,6 +24565,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Squeak Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -24702,6 +24862,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Breakneck Hill Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -24758,6 +24922,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Cursor Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -25257,7 +25425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 904916144}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Chomp Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25310,7 +25478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 918876155}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 7 Mus St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25939,6 +26107,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Electric Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -26027,7 +26199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 960671313}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Salacious Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26185,6 +26357,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 5 Letter Ln
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -26281,7 +26457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 966254901}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Mus St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26314,7 +26490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 971790626}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Electric Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26703,6 +26879,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Cheddar Blvd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -26742,7 +26922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 989383710}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Cursor Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27252,7 +27432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1004144226}
   m_Layer: 0
-  m_Name: 'House: '
+  m_Name: 'House: 8 Mus St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27699,7 +27879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1019361746}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 4 Salacious Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27969,7 +28149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1027792573}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 9 Mus St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28121,6 +28301,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 6 Breakneck Hill Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -28556,7 +28740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1049561107}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Trackball Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28845,7 +29029,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1058374768}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Rodent Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29080,6 +29264,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Chomp Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -29136,6 +29324,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Right Click Ave
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -29194,6 +29386,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Tutter Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -29213,7 +29409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1077694922}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Squeak Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29415,7 +29611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1086438621}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 5 Letter Ln'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30106,7 +30302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1111724719}
   m_Layer: 0
-  m_Name: 'House: '
+  m_Name: 'House: 2 Electric Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30335,6 +30531,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 6 Letter Ln
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -31390,7 +31590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1138394151}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 5 Mus St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31717,6 +31917,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 6 Mus St
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -31810,7 +32014,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1152126936}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Trackball Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31912,7 +32116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1155337635}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 6 Left Click Ave'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31945,7 +32149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1159038791}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Cursor Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32483,6 +32687,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Tunnel Ln
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -32842,6 +33050,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Chomp Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -32938,7 +33150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1197534717}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Squeak St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33112,6 +33324,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Toon St
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -33131,7 +33347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1209239368}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Tutter Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33902,6 +34118,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 4 Electric Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -33921,7 +34141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1232998529}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Cheddar Blvd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34041,7 +34261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1236335222}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 4 Tutter Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34116,6 +34336,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Tunnel Ln
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -34319,6 +34543,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 7 Breakneck Hill Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -34982,6 +35210,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 4 Mus St
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -35362,6 +35594,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Breakneck Hill Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -35634,7 +35870,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1303010904}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Left Click Ave'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35788,6 +36024,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 6 Left Click Ave
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -36006,6 +36246,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Rodent Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -36254,6 +36498,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Breakneck Hill Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -36310,6 +36558,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Salacious Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -36368,6 +36620,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 7 Mus St
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -36387,7 +36643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1351614966}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Emile Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36493,7 +36749,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1355366262}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Mischief Ave'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36820,6 +37076,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Left Click Ave
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -36839,7 +37099,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1371385173}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Chip St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37031,7 +37291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1372698096}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 4 Chomp Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37691,6 +37951,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Ricotta Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -37824,6 +38088,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 4 Chomp Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -38003,7 +38271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1397755661}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 7 Letter Ln'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38084,6 +38352,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 4 Squeak St
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -38103,7 +38375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1399550078}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Ricotta Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38363,7 +38635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1407105851}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Cursor Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38488,7 +38760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1416756470}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Tail End Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38559,6 +38831,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Pad Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -38620,6 +38896,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Trackball Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -38774,6 +39054,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 7 Tutter Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -39031,7 +39315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1448515067}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 10 Mus St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39178,6 +39462,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 7 Letter Ln
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -39428,7 +39716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1476579057}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 4 Squeak Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39503,6 +39791,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Toon St
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -39720,6 +40012,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 4 Tutter Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -39854,6 +40150,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Cheddar Blvd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -39873,7 +40173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1487938568}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 5 Salacious Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40383,7 +40683,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1500502566}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Rodent Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40762,6 +41062,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Salacious Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -40998,6 +41302,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Cursor Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -41131,6 +41439,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Squeak St
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -41561,7 +41873,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1544656543}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 4 Toon St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41714,6 +42026,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 4 Pad Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -41770,6 +42086,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 4 Ricotta Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -41905,6 +42225,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Trackball Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -41962,6 +42286,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 4 Cheddar Blvd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -42018,6 +42346,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Cheddar Blvd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -42389,6 +42721,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Mischief Ave
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -42649,7 +42985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1567314907}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Toon St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42853,6 +43189,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Left Click Ave
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -42941,7 +43281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1585562518}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Chip St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43170,6 +43510,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Scroll Wheel Rd
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -43549,7 +43893,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1613543919}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 7 Breakneck Hill Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44056,7 +44400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1621481775}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 4 Left Click Ave'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44247,7 +44591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1627307577}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Softpaw Ave'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44349,7 +44693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1631686022}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Squeak Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44779,6 +45123,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Chomp Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -44803,7 +45151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1640132378}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Cookie Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44987,7 +45335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1644152346}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Tunnel Ln'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45166,7 +45514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1647083443}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 7 Tutter Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46169,7 +46517,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1682234198}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Pad Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46717,6 +47065,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Letter Ln
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -47656,6 +48008,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Tutter Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -47829,7 +48185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1747715804}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 4 Squeak St'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47862,7 +48218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1749684713}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Left Click Ave'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47992,7 +48348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1762612624}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Breakneck Hill Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48938,7 +49294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1800293277}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 6 Letter Ln'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50013,7 +50369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1847229670}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 5 Ricotta Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50046,7 +50402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1849698720}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 6 Tutter Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50330,7 +50686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1864917610}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Electric Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50406,6 +50762,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Softpaw Ave
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -50463,6 +50823,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Mischief Ave
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -50519,6 +50883,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Chip St
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -50653,6 +51021,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 9 Mus St
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -50954,6 +51326,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Emile Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -51021,6 +51397,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Pad Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -51045,7 +51425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1890856379}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 3 Letter Ln'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52325,6 +52705,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Tail End Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -52630,6 +53014,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Electric Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -52649,7 +53037,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1932332212}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Breakneck Hill Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52884,6 +53272,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Softpaw Ave
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -52956,6 +53348,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 3 Trackball Rd
+      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -53012,6 +53408,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 1 Letter Ln
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -54405,7 +54805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2007875603}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 1 Cookie Rd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55068,7 +55468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2019837321}
   m_Layer: 0
-  m_Name: 'House:'
+  m_Name: 'House: 2 Left Click Ave'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55297,6 +55697,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 2 Toon St
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
@@ -57263,6 +57667,10 @@ PrefabInstance:
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].address
+      value: 4 Left Click Ave
       objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
