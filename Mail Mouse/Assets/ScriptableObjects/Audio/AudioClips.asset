@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09c943747c2b2c4f9b32eefb1e989a6, type: 3}
+  m_Name: AudioClips
+  m_EditorClassIdentifier: Assembly-CSharp::AudioClips
+  uiClick: {fileID: 8300000, guid: a2759ac90f2a63240b8806447af9789c, type: 3}
+  uiOpen: {fileID: 8300000, guid: 7e990713fb0c71740a89a1c7d0413d08, type: 3}
+  uiClose: {fileID: 8300000, guid: 7e990713fb0c71740a89a1c7d0413d08, type: 3}
+  inventoryOpen: {fileID: 8300000, guid: b21523d9706e5eb4b9cb6776f03c37f3, type: 3}
+  inventoryClose: {fileID: 8300000, guid: 15487bcac8c2f474fb3aad9f595625c3, type: 3}
+  packageSound: {fileID: 8300000, guid: 41f4c084d99443f458f6df593822e783, type: 3}
+  mainTheme: {fileID: 0}

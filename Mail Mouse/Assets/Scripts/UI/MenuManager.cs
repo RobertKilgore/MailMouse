@@ -19,6 +19,7 @@ public class MenuManager : MonoBehaviour
     public static bool IsGamePaused => Instance != null && Instance.CurrentTimeScale <= 0f;
     public static bool AnyMenuOpen => Instance?.IsAnyMenuOpen ?? false;
 
+    [Header("Menu UI References")]
     [Tooltip("Optional gameplay UI root container that menus can hide visually while open.")]
     public GameObject gameplayUIRoot;
 
@@ -54,25 +55,41 @@ public class MenuManager : MonoBehaviour
             Instance = null;
     }
 
-    public void OpenMenu(MenuController menu)
+    public bool OpenMenu(MenuController menu)
     {
         if (menu == null)
-            return;
+            return false;
 
         if (activeMenus.Contains(menu))
-            return;
+        {
+            CloseMenu(menu);
+            return false;
+        }
 
         if (activeMenus.Count == 0)
             previousTimeScale = Time.timeScale;
 
-        // If this menu is exclusive, close all other menus first
-        if (menu.forceExclusive)
+        var samePriorityActive = activeMenus.Where(other => other != menu && other.priority == menu.priority).ToList();
+        if (samePriorityActive.Count > 0)
         {
-            var menusToClose = new List<MenuController>(activeMenus);
-            foreach (var otherMenu in menusToClose)
+            Debug.Log($"[MenuManager] Same-priority menu already active; closing the competing menu and leaving {menu.gameObject.name} closed.");
+            foreach (var otherMenu in samePriorityActive)
             {
                 otherMenu.Close();
             }
+            return false;
+        }
+
+        var menusToClose = activeMenus.Where(other => other != menu && ShouldCloseOtherMenu(menu, other)).ToList();
+        foreach (var otherMenu in menusToClose)
+        {
+            otherMenu.Close();
+        }
+
+        if (activeMenus.Any(other => other != menu && other.priority > menu.priority))
+        {
+            Debug.Log($"[MenuManager] Blocked opening {menu.gameObject.name} because a higher-priority menu remains active.");
+            return false;
         }
 
         activeMenus.Add(menu);
@@ -80,6 +97,38 @@ public class MenuManager : MonoBehaviour
         ApplyMenuState();
         RefreshGameplayUIVisibility();
         RefreshBackdropVisibility();
+        return true;
+    }
+
+    public bool ToggleMenu(MenuController menu)
+    {
+        if (menu == null)
+            return false;
+
+        if (activeMenus.Contains(menu) || menu.IsOpen)
+        {
+            menu.Close();
+            return false;
+        }
+
+        return menu.Open();
+    }
+
+    private bool ShouldCloseOtherMenu(MenuController openingMenu, MenuController otherMenu)
+    {
+        if (otherMenu == null || otherMenu == openingMenu)
+            return false;
+
+        if (otherMenu.priority > openingMenu.priority)
+            return false;
+
+        if (openingMenu.forceExclusive)
+            return true;
+
+        if (otherMenu.priority < openingMenu.priority)
+            return true;
+
+        return otherMenu.priority == openingMenu.priority;
     }
 
     public void CloseMenu(MenuController menu)

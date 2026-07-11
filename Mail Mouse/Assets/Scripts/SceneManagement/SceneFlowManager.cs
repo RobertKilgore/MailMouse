@@ -9,7 +9,7 @@ public class SceneFlowManager : MonoBehaviour
 {
     public static SceneFlowManager Instance { get; private set; }
 
-    [Header("Scene Names")]
+    [Header("Scene Configuration")]
     [Tooltip("Scene name used for the start menu.")]
     public string startSceneName = "Start Menu";
 
@@ -48,6 +48,16 @@ public class SceneFlowManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += HandleSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= HandleSceneLoaded;
+    }
+
     public void LoadStartScene()
     {
         LoadScene(startSceneName);
@@ -78,9 +88,15 @@ public class SceneFlowManager : MonoBehaviour
 
         Debug.Log($"SceneFlowManager: loading scene '{sceneName}'...");
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+    }
 
-        // Ensure cursor state is appropriate after loading menu or gameplay scenes.
-        // For menu scenes we'll make the cursor visible and confined so it doesn't leave the editor/game window.
+    private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ApplyCursorForScene(scene.name);
+    }
+
+    private void ApplyCursorForScene(string sceneName)
+    {
         if (sceneName == startSceneName || sceneName == endSceneName)
         {
             Cursor.lockState = CursorLockMode.Confined;

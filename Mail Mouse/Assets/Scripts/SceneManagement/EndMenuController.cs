@@ -9,6 +9,8 @@ public class EndMenuController : MonoBehaviour
 
     public void OnQuitButtonPressed()
     {
+        AudioManager.PlayUIButtonClickSound();
+
         if (sceneFlowManager == null)
             sceneFlowManager = SceneFlowManager.GetOrCreateInstance();
 
@@ -17,6 +19,8 @@ public class EndMenuController : MonoBehaviour
     }
     public void OnMainMenuButtonPressed()
     {
+        AudioManager.PlayUIButtonClickSound();
+
         if (sceneFlowManager == null)
             sceneFlowManager = SceneFlowManager.GetOrCreateInstance();
 

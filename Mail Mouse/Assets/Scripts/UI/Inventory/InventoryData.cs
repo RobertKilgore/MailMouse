@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class InventoryData
@@ -8,6 +9,14 @@ public class InventoryData
     public string inventoryId;
     public string displayName;
     public string address;
+    [FormerlySerializedAs("inventoryKind")]
+    public InventoryType inventoryType = InventoryType.Mailbox;
+    public int width = 8;  // Grid width in cells
+    public int height = 6;  // Grid height in cells
+    public bool allowItemPlacement = true;
+    [FormerlySerializedAs("blockItemSpawns")]
+    public bool allowItemSpawns = true;
+    public bool showPlacementPreviews = true;
     public List<InventoryItemData> items = new List<InventoryItemData>();
 }
 

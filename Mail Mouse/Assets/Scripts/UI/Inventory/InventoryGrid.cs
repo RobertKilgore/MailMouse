@@ -91,8 +91,7 @@ public class InventoryGrid : MonoBehaviour
         if (previewLayer == null)
             previewLayer = owner?.PreviewLayer;
 
-        occupancy = new InventoryItem[width, height];
-        BuildTileMap();
+        EnsureInitialized();
     }
 
     /// <summary>
@@ -114,6 +113,18 @@ public class InventoryGrid : MonoBehaviour
             owner.SetGrid(this);
     }
 
+    private void EnsureInitialized()
+    {
+        if (width <= 0 || height <= 0)
+            return;
+
+        if (occupancy == null)
+            occupancy = new InventoryItem[width, height];
+
+        if (tiles == null && gridRoot != null)
+            BuildTileMap();
+    }
+
     /// <summary>
     /// Prints a debug summary of the current grid occupancy to the console.
     /// Includes a line-by-line grid map and anchor positions for placed items.
@@ -127,11 +138,7 @@ public class InventoryGrid : MonoBehaviour
             return;
         }
 
-        if (occupancy == null)
-        {
-            occupancy = new InventoryItem[width, height];
-            Debug.LogWarning($"InventoryGrid '{owner?.InventoryId ?? name}' had no occupancy data; created empty occupancy buffer.", this);
-        }
+        EnsureInitialized();
 
         int occupiedCount = 0;
         HashSet<InventoryItem> itemSet = new HashSet<InventoryItem>();
@@ -216,6 +223,34 @@ public class InventoryGrid : MonoBehaviour
     }
 
     /// <summary>
+    /// Forces the current layout state to refresh so tile positions are up to date before
+    /// items are rehydrated into the UI.
+    /// </summary>
+    public void RefreshLayout()
+    {
+        if (gridRoot == null)
+            return;
+
+        Canvas.ForceUpdateCanvases();
+        if (gridLayout != null)
+            LayoutRebuilder.ForceRebuildLayoutImmediate(gridRoot);
+        if (gridRoot != null)
+            LayoutRebuilder.ForceRebuildLayoutImmediate(gridRoot);
+    }
+
+    /// <summary>
+    /// Rebuilds the tile map from the current child tiles after the layout has settled.
+    /// </summary>
+    public void RebuildTileMap()
+    {
+        if (gridRoot == null)
+            return;
+
+        RefreshLayout();
+        BuildTileMap();
+    }
+
+    /// <summary>
     /// Ends a batch update. If this is the last active batch and commitSave is true,
     /// the grid will persist its current state back into the bound inventory data.
     /// </summary>
@@ -278,6 +313,12 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     public void ShowPreview(Vector2Int origin, InventoryItem item)
     {
+        if (owner != null && !owner.ShowPlacementPreviews)
+        {
+            ClearPreview();
+            return;
+        }
+
         // Display a preview of where the item will land at the hovered grid position.
         ClearPreview();
         Color previewColor = CanPlaceItem(origin, item) ? validPreviewColor : invalidPreviewColor;
@@ -371,7 +412,7 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     public bool CanPlaceItem(Vector2Int position, InventoryItem item)
     {
-        return CanPlaceItem(position, item, 0);
+        return CanPlaceItem(position, item, 0, true);
     }
 
     /// <summary>
@@ -379,6 +420,22 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     public bool CanPlaceItem(Vector2Int position, InventoryItem item, int debugLevel)
     {
+        return CanPlaceItem(position, item, debugLevel, true);
+    }
+
+    /// <summary>
+    /// Checks whether the item can be placed at the target grid position.
+    /// When respectPlacementPermission is false, the inventory's placement permission is ignored so scripted spawns can still populate the UI.
+    /// </summary>
+    public bool CanPlaceItem(Vector2Int position, InventoryItem item, int debugLevel, bool respectPlacementPermission)
+    {
+        if (respectPlacementPermission && owner != null && !owner.AllowItemPlacement)
+        {
+            if (debugLevel > 0)
+                Debug.LogWarning($"[Grid] Placement blocked for read-only inventory '{owner.InventoryId}'.", this);
+            return false;
+        }
+
         if (item == null)
         {
             if (debugLevel > 0)
@@ -444,7 +501,7 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     public bool PlaceItem(Vector2Int position, InventoryItem item)
     {
-        return PlaceItem(position, item, 0);
+        return PlaceItem(position, item, 0, true);
     }
 
     /// <summary>
@@ -452,7 +509,16 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     public bool PlaceItem(Vector2Int position, InventoryItem item, int debugLevel)
     {
-        if (!CanPlaceItem(position, item, debugLevel))
+        return PlaceItem(position, item, debugLevel, true);
+    }
+
+    /// <summary>
+    /// Attempts to place the item in the grid and updates occupancy if successful.
+    /// When respectPlacementPermission is false, the inventory's placement permission is ignored so scripted spawns can still populate the UI.
+    /// </summary>
+    public bool PlaceItem(Vector2Int position, InventoryItem item, int debugLevel, bool respectPlacementPermission)
+    {
+        if (!CanPlaceItem(position, item, debugLevel, respectPlacementPermission))
         {
             if (debugLevel > 0)
                 Debug.LogWarning($"[Grid] PlaceItem: Cannot place item '{item?.name}' at {position} in inventory '{owner?.InventoryId ?? name}'", this);
@@ -502,7 +568,13 @@ public class InventoryGrid : MonoBehaviour
             }
 
         if (itemWasOccupying)
+        {
             SaveInventory();
+            if (owner != null && owner.InventoryData != null)
+            {
+                RestockManager.Instance?.NotifyInventoryChanged(owner.InventoryData);
+            }
+        }
     }
 
     /// <summary>
@@ -510,6 +582,8 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     public List<InventoryItem> GetAllItems()
     {
+        EnsureInitialized();
+
         List<InventoryItem> items = new List<InventoryItem>();
 
         for (int x = 0; x < width; x++)
@@ -541,8 +615,13 @@ public class InventoryGrid : MonoBehaviour
     /// </summary>
     public void ClearAllItems()
     {
+        EnsureInitialized();
+
         foreach (InventoryItem item in GetAllItems())
         {
+            if (item == null)
+                continue;
+
             RemoveItem(item);
             if (item != null)
                 GameObject.Destroy(item.gameObject);
@@ -558,6 +637,9 @@ public class InventoryGrid : MonoBehaviour
             return;
 
         if (owner == null || owner.InventoryData == null)
+            return;
+
+        if (!owner.gameObject.activeInHierarchy || !owner.enabled)
             return;
 
         owner.SaveInventoryData();

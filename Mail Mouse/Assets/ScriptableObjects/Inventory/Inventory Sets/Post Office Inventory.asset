@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3bbd1283d62e1458c132255e46fa22, type: 3}
+  m_Name: Post Office Inventory
+  m_EditorClassIdentifier: Assembly-CSharp::InventorySetDefinition
+  members:
+  - inventoryPrefab: {fileID: 7104818922750581170, guid: 5cdce84ef1301114e9db2cff611ef2c2, type: 3}
+    screenPosition: {x: 20, y: 0}
+  - inventoryPrefab: {fileID: 2247107171158621113, guid: 8ea84a58b9277c44a910616dec7568b3, type: 3}
+    screenPosition: {x: -394, y: 150}
+  - inventoryPrefab: {fileID: 2247107171158621113, guid: 8ea84a58b9277c44a910616dec7568b3, type: 3}
+    screenPosition: {x: -394, y: -125}
+  - inventoryPrefab: {fileID: 2247107171158621113, guid: 8ea84a58b9277c44a910616dec7568b3, type: 3}
+    screenPosition: {x: 397, y: 150}
+  - inventoryPrefab: {fileID: 2247107171158621113, guid: 8ea84a58b9277c44a910616dec7568b3, type: 3}
+    screenPosition: {x: 396, y: -129}

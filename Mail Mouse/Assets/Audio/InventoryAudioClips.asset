@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+---
+!u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: InventoryAudioClips
+  m_EditorClassIdentifier: {fileID: 11500000, guid: 07f6457c2714142449c0f5f6f7a1d1d2, type: 3}
+  uiClick: {fileID: 0}
+  uiOpen: {fileID: 0}
+  uiClose: {fileID: 0}
+  interact: {fileID: 0}
+  pickup: {fileID: 0}
+  drop: {fileID: 0}
+  inventoryOpen: {fileID: 0}
+  inventoryClose: {fileID: 0}
+  itemPlace: {fileID: 0}
+  itemRemove: {fileID: 0}
+  mainTheme: {fileID: 0}

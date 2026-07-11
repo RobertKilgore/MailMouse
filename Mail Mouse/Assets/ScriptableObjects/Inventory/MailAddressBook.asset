@@ -13,13 +13,193 @@ MonoBehaviour:
   m_Name: MailAddressBook
   m_EditorClassIdentifier: Assembly-CSharp::MailAddressBook
   entries:
-  - address: Test Address 1
+  - address: 1 Breackneck Hill Rd
     recipients: []
-  - address: Test Address 2
+  - address: 2 Breackneck Hill Rd
     recipients: []
-  - address: Test Address 3
+  - address: 3 Breackneck Hill Rd
     recipients: []
-  - address: Test Address 4
+  - address: 4 Breackneck Hill Rd
     recipients: []
-  - address: Test Address 5
+  - address: 5 Breackneck Hill Rd
+    recipients: []
+  - address: 6 Breackneck Hill Rd
+    recipients: []
+  - address: 7 Breackneck Hill Rd
+    recipients: []
+  - address: 1 Toon St
+    recipients: []
+  - address: 2 Toon St
+    recipients: []
+  - address: 3 Toon St
+    recipients: []
+  - address: 4 Toon St
+    recipients: []
+  - address: 1 Tutter Rd
+    recipients: []
+  - address: 2 Tutter Rd
+    recipients: []
+  - address: 3 Tutter Rd
+    recipients: []
+  - address: 4 Tutter Rd
+    recipients: []
+  - address: 5 Tutter Rd
+    recipients: []
+  - address: 6 Tutter Rd
+    recipients: []
+  - address: 1 Cookie Rd
+    recipients: []
+  - address: 2 Cookie Rd
+    recipients: []
+  - address: 1 Scroll Wheel Rd
+    recipients: []
+  - address: 1 Right Click Ave
+    recipients: []
+  - address: 2 Right Click Ave
+    recipients: []
+  - address: 1 Rodent Rd
+    recipients: []
+  - address: 2 Rodent Rd
+    recipients: []
+  - address: 1 Tail End Rd
+    recipients: []
+  - address: 2 Tail End Rd
+    recipients: []
+  - address: 3 Tail End Rd
+    recipients: []
+  - address: 1 Trackball Rd
+    recipients: []
+  - address: 1 Ricotta Rd
+    recipients: []
+  - address: 2 Ricotta Rd
+    recipients: []
+  - address: 3 Ricotta Rd
+    recipients: []
+  - address: 4 Ricotta Rd
+    recipients: []
+  - address: 5 Ricotta Rd
+    recipients: []
+  - address: 6 Ricotta Rd
+    recipients: []
+  - address: 1 Softpaw Ave
+    recipients: []
+  - address: 2 Softpaw Ave
+    recipients: []
+  - address: 1 Emile Rd
+    recipients: []
+  - address: 1 Squeak St
+    recipients: []
+  - address: 2 Squeak St
+    recipients: []
+  - address: 3 Squeak St
+    recipients: []
+  - address: 4 Squeak St
+    recipients: []
+  - address: 1 Chomp Rd
+    recipients: []
+  - address: 2 Chomp Rd
+    recipients: []
+  - address: 3 Chomp Rd
+    recipients: []
+  - address: 4 Chomp Rd
+    recipients: []
+  - address: 1 Squeak Rd
+    recipients: []
+  - address: 2 Squeak Rd
+    recipients: []
+  - address: 3 Squeak Rd
+    recipients: []
+  - address: 4 Squeak Rd
+    recipients: []
+  - address: 1 Mischief Ave
+    recipients: []
+  - address: 2 Mischief Ave
+    recipients: []
+  - address: 1 Pad Rd
+    recipients: []
+  - address: 2 Pad Rd
+    recipients: []
+  - address: 3 Pad Rd
+    recipients: []
+  - address: 4 Pad Rd
+    recipients: []
+  - address: 1 Salacious Rd
+    recipients: []
+  - address: 2 Salacious Rd
+    recipients: []
+  - address: 3 Salacious Rd
+    recipients: []
+  - address: 4 Salacious Rd
+    recipients: []
+  - address: 5 Salacious Rd
+    recipients: []
+  - address: 1 Electric Rd
+    recipients: []
+  - address: 2 Electric Rd
+    recipients: []
+  - address: 3 Electric Rd
+    recipients: []
+  - address: 4 Electric Rd
+    recipients: []
+  - address: 1 Chip St
+    recipients: []
+  - address: 2 Chip St
+    recipients: []
+  - address: 1 Left Click Ave
+    recipients: []
+  - address: 2 Left Click Ave
+    recipients: []
+  - address: 3 Left Click Ave
+    recipients: []
+  - address: 4 Left Click Ave
+    recipients: []
+  - address: 5 Left Click Ave
+    recipients: []
+  - address: 6 Left Click Ave
+    recipients: []
+  - address: 1 Letter Lane
+    recipients: []
+  - address: 2 Letter Lane
+    recipients: []
+  - address: 3 Letter Lane
+    recipients: []
+  - address: 4 Letter Lane
+    recipients: []
+  - address: 5 Letter Lane
+    recipients: []
+  - address: 6 Letter Lane
+    recipients: []
+  - address: 7 Letter Lane
+    recipients: []
+  - address: 1 Tunnel Lane
+    recipients: []
+  - address: 2 Tunnel Lane
+    recipients: []
+  - address: 3 Tunnel Lane
+    recipients: []
+  - address: 1 Mus St
+    recipients: []
+  - address: 2 Mus St
+    recipients: []
+  - address: 3 Mus St
+    recipients: []
+  - address: 4 Mus St
+    recipients: []
+  - address: 5 Mus St
+    recipients: []
+  - address: 6 Mus St
+    recipients: []
+  - address: 7 Mus St
+    recipients: []
+  - address: 8 Mus St
+    recipients: []
+  - address: 1 Cursor Rd
+    recipients: []
+  - address: 1 Cheddar Blvd
+    recipients: []
+  - address: 2 Cheddar Blvd
+    recipients: []
+  - address: 3 Cheddar Blvd
+    recipients: []
+  - address: 4 Cheddar Blvd
     recipients: []

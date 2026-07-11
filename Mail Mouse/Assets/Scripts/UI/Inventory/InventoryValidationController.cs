@@ -168,14 +168,7 @@ public class InventoryValidationController : MonoBehaviour
 
     private bool IsPlayerInventory(InventoryData inventoryData)
     {
-        if (inventoryData == null)
-            return false;
-
-        PlayerInventoryController playerController = FindFirstObjectByType<PlayerInventoryController>();
-        if (playerController == null)
-            return false;
-
-        return inventoryData == playerController.PlayerInventoryData;
+        return inventoryData != null && inventoryData.inventoryType == InventoryType.Player;
     }
 
     private void LogPackageDetails(List<PackageDeliveryResult> results)
