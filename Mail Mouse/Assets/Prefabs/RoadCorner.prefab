@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 5165488695221595478}
   - component: {fileID: 3175734367767907876}
   - component: {fileID: 5827289084081092572}
-  - component: {fileID: 849832416681780775}
+  - component: {fileID: 8865990439705530329}
   m_Layer: 0
   m_Name: RoadCorner
   m_TagString: Untagged
@@ -140,7 +140,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5101285124378976651}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.38677576, z: -0, w: 0.9221738}
+  m_LocalRotation: {x: 0, y: 0.38677537, z: 0, w: 0.922174}
   m_LocalPosition: {x: -24.89, y: -4.03, z: 15.77}
   m_LocalScale: {x: 10, y: 0.01, z: 10}
   m_ConstrainProportionsScale: 0
@@ -206,8 +206,8 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &849832416681780775
-CapsuleCollider:
+--- !u!64 &8865990439705530329
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -224,11 +224,10 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7550200058244578556
 GameObject:
   m_ObjectHideFlags: 0
