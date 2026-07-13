@@ -1185,7 +1185,7 @@ Transform:
   m_GameObject: {fileID: 1568508932}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1521234, y: 0, z: 0, w: 0.98836154}
-  m_LocalPosition: {x: 2.63, y: 4.733529, z: -5.8285847}
+  m_LocalPosition: {x: 10.69, y: 4.733529, z: -5.8285847}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1447,7 +1447,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3306672837755009743, guid: 40d2c375f78b344458d210daf38d844d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.63
+      value: 10.69
       objectReference: {fileID: 0}
     - target: {fileID: 3306672837755009743, guid: 40d2c375f78b344458d210daf38d844d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1485,9 +1485,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4219924752801374381, guid: 40d2c375f78b344458d210daf38d844d, type: 3}
+      propertyPath: m_Mass
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 6928744051595104245, guid: 40d2c375f78b344458d210daf38d844d, type: 3}
       propertyPath: m_Name
       value: MailTruck Attempt #2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361591899319993790, guid: 40d2c375f78b344458d210daf38d844d, type: 3}
+      propertyPath: drag
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361591899319993790, guid: 40d2c375f78b344458d210daf38d844d, type: 3}
+      propertyPath: maxSpeed
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361591899319993790, guid: 40d2c375f78b344458d210daf38d844d, type: 3}
+      propertyPath: brakeForce
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361591899319993790, guid: 40d2c375f78b344458d210daf38d844d, type: 3}
+      propertyPath: motorForce
+      value: 3200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361591899319993790, guid: 40d2c375f78b344458d210daf38d844d, type: 3}
+      propertyPath: inputResponse
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361591899319993790, guid: 40d2c375f78b344458d210daf38d844d, type: 3}
+      propertyPath: maxSteerAngle
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361591899319993790, guid: 40d2c375f78b344458d210daf38d844d, type: 3}
+      propertyPath: steeringSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361591899319993790, guid: 40d2c375f78b344458d210daf38d844d, type: 3}
+      propertyPath: speedForMaxSteer
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361591899319993790, guid: 40d2c375f78b344458d210daf38d844d, type: 3}
+      propertyPath: reverseMultiplier
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361591899319993790, guid: 40d2c375f78b344458d210daf38d844d, type: 3}
+      propertyPath: rollingResistance
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
