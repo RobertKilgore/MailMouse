@@ -18,8 +18,6 @@ public class CarTwo : MonoBehaviour
     [SerializeField] private float maxSteerAngle = 20f;
     [Tooltip("Speed at which steering starts to reduce for stability.")]
     [SerializeField] private float maxSpeed = 55f;
-    [Tooltip("Speed threshold used to reduce steering angle at higher speeds.")]
-    [SerializeField] private float speedForMaxSteer = 16f;
     [Tooltip("How strong reverse drive is compared to forward drive.")]
     [SerializeField] private float reverseMultiplier = 0.9f;
     [Tooltip("How quickly input values respond and smooth out.")]
@@ -30,6 +28,8 @@ public class CarTwo : MonoBehaviour
     [SerializeField] private float drag = 0.6f;
     [Tooltip("Extra rolling resistance that slows the car while moving.")]
     [SerializeField] private float rollingResistance = 0.2f;
+    [Tooltip("Downforce coefficient to keep wheels grounded at high speed.")]
+    [SerializeField] private float downforceCoefficient = 0.15f;
 
     private float throttleInput;
     private float steeringInput;
@@ -79,6 +79,7 @@ public class CarTwo : MonoBehaviour
         ApplySteering();
         ApplyBraking();
         ApplyDrag();
+        ApplyDownforce();
         UpdateWheelMeshes();
     }
 
@@ -98,21 +99,21 @@ public class CarTwo : MonoBehaviour
             return;
         }
 
-        // Increase the wheel grip so the car has better traction.
+        // Increase the wheel grip so the car has better traction and resists skidding at speed.
         WheelFrictionCurve forwardFriction = wheel.forwardFriction;
-        forwardFriction.stiffness = 1.6f;
+        forwardFriction.stiffness = 2.5f;
         wheel.forwardFriction = forwardFriction;
 
         WheelFrictionCurve sidewaysFriction = wheel.sidewaysFriction;
-        sidewaysFriction.stiffness = 1.4f;
+        sidewaysFriction.stiffness = 2.2f;
         wheel.sidewaysFriction = sidewaysFriction;
 
-        // Make the suspension a bit stiffer so the car feels less bouncy and less likely to tip.
+        // Tune suspension for better weight transfer and ground contact at high speed.
         JointSpring suspensionSpring = wheel.suspensionSpring;
-        suspensionSpring.spring = 45000f;
-        suspensionSpring.damper = 6000f;
+        suspensionSpring.spring = 55000f;
+        suspensionSpring.damper = 7000f;
         wheel.suspensionSpring = suspensionSpring;
-        wheel.suspensionDistance = 0.18f;
+        wheel.suspensionDistance = 0.15f;
         wheel.radius = 0.34f;
     }
 
@@ -158,10 +159,8 @@ public class CarTwo : MonoBehaviour
 
     private void ApplySteering()
     {
-        // Reduce steering angle as speed increases so the car stays stable at higher speeds.
-        float speedFactor = Mathf.Clamp01(Mathf.Abs(GetForwardSpeed()) / speedForMaxSteer);
-        float effectiveSteerAngle = maxSteerAngle * (1f - (speedFactor * 0.6f));
-        float targetAngle = smoothedSteering * effectiveSteerAngle;
+        // Apply steering angle smoothly without speed-based reduction.
+        float targetAngle = smoothedSteering * maxSteerAngle;
         float smoothAngle = Mathf.Lerp(frontLeftColl.steerAngle, targetAngle, steeringSpeed * Time.fixedDeltaTime);
 
         frontLeftColl.steerAngle = smoothAngle;
@@ -192,6 +191,19 @@ public class CarTwo : MonoBehaviour
         Vector3 dragForce = -carRigidbody.linearVelocity.normalized * drag;
         Vector3 rollingForce = -carRigidbody.linearVelocity * rollingResistance;
         carRigidbody.AddForce((dragForce + rollingForce) * Time.fixedDeltaTime, ForceMode.Acceleration);
+    }
+
+    private void ApplyDownforce()
+    {
+        if (carRigidbody == null)
+        {
+            return;
+        }
+
+        // Apply downforce proportional to speed squared to keep wheels grounded at high speed.
+        float speed = carRigidbody.linearVelocity.magnitude;
+        float downforce = speed * speed * downforceCoefficient;
+        carRigidbody.AddForce(Vector3.down * downforce * Time.fixedDeltaTime, ForceMode.Acceleration);
     }
 
     private float GetForwardSpeed()

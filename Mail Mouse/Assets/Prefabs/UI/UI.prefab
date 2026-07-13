@@ -365,6 +365,7 @@ MonoBehaviour:
   - {fileID: 4435333985960163064, guid: 71b225ac80517b0479317adcd8537037, type: 3}
   - {fileID: 3459433522484800912, guid: a3cb1068807658d49a52d1da207f4149, type: 3}
   - {fileID: 4632725907966989330, guid: a8e68da77ee27ca49b78bf6ec9c4dc0f, type: 3}
+  - {fileID: 7410174776593424427, guid: 0d9969e8ce7a9524a96d36c2a65b5240, type: 3}
   addressBook: {fileID: 11400000, guid: 7da85f49d6873b04286b5b5a7b9e564a, type: 2}
   randomizePositionOrder: 1
   randomizeRotationOrder: 1

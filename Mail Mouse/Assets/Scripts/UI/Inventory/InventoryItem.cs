@@ -76,15 +76,10 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         dragController = InventoryDragController.Instance ?? FindFirstObjectByType<InventoryDragController>();
         ownerInventory = GetComponentInParent<InventoryInstance>();
 
-        if (ownerInventory == null)
-        {
-            Debug.LogWarning($"{name} is not parented under an InventoryInstance.", this);
-            return;
-        }
-
         if (dragController == null)
             Debug.LogWarning($"No InventoryDragController found in scene for {name}.", this);
 
+        // Still build visuals even if owner inventory isn't found yet (might be parented later)
         RefreshVisuals();
     }
 
@@ -95,6 +90,23 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         rectTransform = GetComponent<RectTransform>();
         ownerInventory ??= GetComponentInParent<InventoryInstance>();
+    }
+
+    /// <summary>
+    /// Called when the transform parent changes; rebuilds visuals if now parented under an InventoryInstance.
+    /// </summary>
+    private void OnTransformParentChanged()
+    {
+        // Try to find owner inventory in case it was reparented after Awake
+        InventoryInstance newOwner = GetComponentInParent<InventoryInstance>();
+        if (newOwner != ownerInventory)
+        {
+            ownerInventory = newOwner;
+            if (ownerInventory != null && rectTransform != null)
+            {
+                RefreshVisuals();
+            }
+        }
     }
 
     /// <summary>
@@ -188,6 +200,15 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
 
     /// <summary>
+    /// Editor-only context menu method to rebuild visuals from the inspector.
+    /// </summary>
+    [ContextMenu("Rebuild Visuals")]
+    public void RebuildVisualsFromEditor()
+    {
+        RefreshVisuals();
+    }
+
+    /// <summary>
     /// Refreshes shape, layout, and background visuals for the item.
     /// </summary>
     private void RefreshVisuals()
@@ -212,6 +233,10 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     /// </summary>
     private void BuildBackgroundVisual()
     {
+        // Can't build visuals without the grid configuration from owner inventory
+        if (ownerInventory == null)
+            return;
+
         if (backgroundRoot != null)
             Destroy(backgroundRoot.gameObject);
 
