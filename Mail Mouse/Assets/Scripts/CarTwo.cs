@@ -56,7 +56,7 @@ public class CarTwo : MonoBehaviour
       
             Rigidbody carRigidbody = GetComponent<Rigidbody>();
         
-        carRigidbody.maxLinearVelocity = 10f;
+        carRigidbody.maxLinearVelocity = 8f;
         
     }
 
