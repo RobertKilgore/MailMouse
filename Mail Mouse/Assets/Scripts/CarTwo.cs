@@ -52,6 +52,12 @@ public class CarTwo : MonoBehaviour
     {
         // Set up the wheel colliders with better grip and suspension values.
         ConfigureWheelColliders();
+
+      
+            Rigidbody carRigidbody = GetComponent<Rigidbody>();
+        
+        carRigidbody.maxLinearVelocity = 10f;
+        
     }
 
     public void OnMovement(InputAction.CallbackContext context)
