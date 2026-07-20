@@ -924,6 +924,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -941,6 +945,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 12043036}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31a00d8c42576e44d92aa98a7db47b86, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -1265,6 +1273,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 989ff8c8fc892184da6811b693a32711, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2016,6 +2028,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 518775020}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 989ff8c8fc892184da6811b693a32711, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -3547,6 +3563,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 504282659}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d06c820acaf4cc4438a7bb333fca8b05, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -3691,6 +3711,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 094e4560b9f7db340beaeb6fb85ea1e2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5004,6 +5028,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -6701,6 +6729,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1647083443}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 094e4560b9f7db340beaeb6fb85ea1e2, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -7659,6 +7691,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 989ff8c8fc892184da6811b693a32711, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -8485,6 +8521,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31a00d8c42576e44d92aa98a7db47b86, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13319,6 +13359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c4afa88a491553c45b375c971514c3a3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14167,6 +14211,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -14444,6 +14492,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 989ff8c8fc892184da6811b693a32711, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -14511,7 +14563,7 @@ PrefabInstance:
     - target: {fileID: 1703069768633704326, guid: 992c21b70e348134093e2d357837b373, type: 3}
       propertyPath: playerInventoryDataHolder
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1408414318}
     - target: {fileID: 2366621088698021851, guid: 992c21b70e348134093e2d357837b373, type: 3}
       propertyPath: timeScaleWhenOpen
       value: 1
@@ -14524,6 +14576,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 4081326756206532423, guid: 992c21b70e348134093e2d357837b373, type: 3}
+      propertyPath: allowWorldControlsWhileOpen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7064379670305551974, guid: 992c21b70e348134093e2d357837b373, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7064379670305551974, guid: 992c21b70e348134093e2d357837b373, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7064379670305551974, guid: 992c21b70e348134093e2d357837b373, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7064379670305551974, guid: 992c21b70e348134093e2d357837b373, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7064379670305551974, guid: 992c21b70e348134093e2d357837b373, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 368.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7064379670305551974, guid: 992c21b70e348134093e2d357837b373, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 216.4
+      objectReference: {fileID: 0}
     - target: {fileID: 7270029799629446647, guid: 992c21b70e348134093e2d357837b373, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -14535,6 +14615,30 @@ PrefabInstance:
     - target: {fileID: 7984473328101939885, guid: 992c21b70e348134093e2d357837b373, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039130867985386650, guid: 992c21b70e348134093e2d357837b373, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039130867985386650, guid: 992c21b70e348134093e2d357837b373, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039130867985386650, guid: 992c21b70e348134093e2d357837b373, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039130867985386650, guid: 992c21b70e348134093e2d357837b373, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039130867985386650, guid: 992c21b70e348134093e2d357837b373, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -984
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039130867985386650, guid: 992c21b70e348134093e2d357837b373, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -470
       objectReference: {fileID: 0}
     - target: {fileID: 8362364180827069204, guid: 992c21b70e348134093e2d357837b373, type: 3}
       propertyPath: m_Pivot.x
@@ -14681,6 +14785,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d06c820acaf4cc4438a7bb333fca8b05, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -15333,6 +15441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 94580d36ab9bfb043b97d8e508c7e189, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16092,6 +16204,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c4afa88a491553c45b375c971514c3a3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16883,6 +16999,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 94580d36ab9bfb043b97d8e508c7e189, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -18682,6 +18802,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6620894199062078825, guid: de51dafc5ec958345a00b6e56a669126, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 094e4560b9f7db340beaeb6fb85ea1e2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19443,6 +19567,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31a00d8c42576e44d92aa98a7db47b86, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20480,6 +20608,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1749684713}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31a00d8c42576e44d92aa98a7db47b86, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -20845,6 +20977,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 94580d36ab9bfb043b97d8e508c7e189, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21503,6 +21639,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 989ff8c8fc892184da6811b693a32711, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22635,6 +22775,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 094e4560b9f7db340beaeb6fb85ea1e2, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -28115,6 +28259,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 716323990}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c4afa88a491553c45b375c971514c3a3, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -28892,6 +29040,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d06c820acaf4cc4438a7bb333fca8b05, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29590,6 +29742,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 989ff8c8fc892184da6811b693a32711, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30453,6 +30609,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 94580d36ab9bfb043b97d8e508c7e189, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31758,6 +31918,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31a00d8c42576e44d92aa98a7db47b86, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31771,6 +31935,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1631686022}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -32790,6 +32958,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 989ff8c8fc892184da6811b693a32711, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -32869,6 +33041,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f246359a45c6aa4f88d4fa667695fa9, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -33063,6 +33239,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 094e4560b9f7db340beaeb6fb85ea1e2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33561,6 +33741,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -33919,6 +34103,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35746,6 +35934,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c4afa88a491553c45b375c971514c3a3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35759,6 +35951,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1448515067}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f246359a45c6aa4f88d4fa667695fa9, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -35982,6 +36178,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 971790626}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 94580d36ab9bfb043b97d8e508c7e189, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -36310,11 +36510,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1188541626259106861, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.35
+      value: -5.7
       objectReference: {fileID: 0}
     - target: {fileID: 1188541626259106861, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1188541626259106861, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -36344,6 +36544,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 94580d36ab9bfb043b97d8e508c7e189, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -36751,6 +36955,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 648802478}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -37366,6 +37574,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f246359a45c6aa4f88d4fa667695fa9, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -37565,6 +37777,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d06c820acaf4cc4438a7bb333fca8b05, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -38040,6 +38256,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31a00d8c42576e44d92aa98a7db47b86, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -38444,6 +38664,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1500502566}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -39953,6 +40177,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 989ff8c8fc892184da6811b693a32711, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -40185,6 +40413,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f246359a45c6aa4f88d4fa667695fa9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -40705,6 +40937,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1058374768}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31a00d8c42576e44d92aa98a7db47b86, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -41549,6 +41785,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31a00d8c42576e44d92aa98a7db47b86, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -43084,6 +43324,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f246359a45c6aa4f88d4fa667695fa9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -43469,6 +43713,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -44616,6 +44864,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -44945,6 +45197,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -47689,6 +47945,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1621481775}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 94580d36ab9bfb043b97d8e508c7e189, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -48128,6 +48388,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1355366262}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c4afa88a491553c45b375c971514c3a3, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -51184,6 +51448,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 494111156}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c4afa88a491553c45b375c971514c3a3, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -52399,6 +52667,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -53851,6 +54123,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -54161,6 +54437,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d06c820acaf4cc4438a7bb333fca8b05, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -54749,6 +55029,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1942231118}
     m_Modifications:
+    - target: {fileID: 1663052340144856949, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
+      propertyPath: m_Name
+      value: Camera Brain
+      objectReference: {fileID: 0}
     - target: {fileID: 2333557446264944107, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -54783,7 +55067,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5608983501539812993, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 28.2
+      value: -2.3
       objectReference: {fileID: 0}
     - target: {fileID: 5608983501539812993, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -54838,7 +55122,8 @@ PrefabInstance:
       value: MailTruck
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2617818306161758504, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
@@ -55171,6 +55456,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d06c820acaf4cc4438a7bb333fca8b05, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -55431,6 +55720,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31a00d8c42576e44d92aa98a7db47b86, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -57047,6 +57340,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1004144226}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -57842,6 +58139,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 989ff8c8fc892184da6811b693a32711, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -58350,6 +58651,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31a00d8c42576e44d92aa98a7db47b86, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -58578,6 +58883,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f246359a45c6aa4f88d4fa667695fa9, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -59766,6 +60075,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1627307577}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c4afa88a491553c45b375c971514c3a3, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -60510,6 +60823,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1644152346}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 094e4560b9f7db340beaeb6fb85ea1e2, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -60987,6 +61304,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 094e4560b9f7db340beaeb6fb85ea1e2, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -62909,6 +63230,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 552263619}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 094e4560b9f7db340beaeb6fb85ea1e2, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -64084,6 +64409,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c4afa88a491553c45b375c971514c3a3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -64600,6 +64929,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 094e4560b9f7db340beaeb6fb85ea1e2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -65689,6 +66022,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -65825,6 +66162,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca4510e397daa64284a30a0b7653414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarArcade
+--- !u!114 &1408414318 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8465059978005637790, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
+  m_PrefabInstance: {fileID: 1171296482}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
 --- !u!1001 &1408817579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66605,6 +66953,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1197534717}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f246359a45c6aa4f88d4fa667695fa9, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -67333,6 +67685,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 989ff8c8fc892184da6811b693a32711, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -67754,6 +68110,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1407105851}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c4afa88a491553c45b375c971514c3a3, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -69011,6 +69371,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f246359a45c6aa4f88d4fa667695fa9, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -73189,6 +73553,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -75121,6 +75489,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 989ff8c8fc892184da6811b693a32711, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -75633,6 +76005,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 94580d36ab9bfb043b97d8e508c7e189, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -75707,6 +76083,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 989ff8c8fc892184da6811b693a32711, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -75819,6 +76199,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 094e4560b9f7db340beaeb6fb85ea1e2, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -76379,6 +76763,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f246359a45c6aa4f88d4fa667695fa9, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -76563,6 +76951,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -78040,6 +78432,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 094e4560b9f7db340beaeb6fb85ea1e2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -78643,6 +79039,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1236335222}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d06c820acaf4cc4438a7bb333fca8b05, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -79395,6 +79795,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1152126936}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 989ff8c8fc892184da6811b693a32711, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -79598,6 +80002,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 094e4560b9f7db340beaeb6fb85ea1e2, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -81023,6 +81431,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31a00d8c42576e44d92aa98a7db47b86, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -82872,6 +83284,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c4afa88a491553c45b375c971514c3a3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -83186,6 +83602,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c4afa88a491553c45b375c971514c3a3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -83698,6 +84118,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d06c820acaf4cc4438a7bb333fca8b05, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -85595,6 +86019,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -87961,6 +88389,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31a00d8c42576e44d92aa98a7db47b86, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -89650,6 +90082,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 582095917}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c4afa88a491553c45b375c971514c3a3, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -90300,6 +90736,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 094e4560b9f7db340beaeb6fb85ea1e2, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -90866,6 +91306,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -92452,6 +92896,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c4afa88a491553c45b375c971514c3a3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -94120,6 +94568,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Proto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143052124153814730, guid: 8497e72ee9dd97a4cb6aaf650f544cb4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 094e4560b9f7db340beaeb6fb85ea1e2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -94495,6 +94947,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 94580d36ab9bfb043b97d8e508c7e189, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -95535,6 +95991,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 989383710}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 989ff8c8fc892184da6811b693a32711, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -95686,6 +96146,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1027792573}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d06c820acaf4cc4438a7bb333fca8b05, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -97933,6 +98397,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 966254901}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d06c820acaf4cc4438a7bb333fca8b05, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -98002,6 +98470,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1487938568}
     m_Modifications:
+    - target: {fileID: 3584919979807051961, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 094e4560b9f7db340beaeb6fb85ea1e2, type: 2}
     - target: {fileID: 4326976539403160653, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
       propertyPath: m_Name
       value: House Proto 3
@@ -98681,6 +99153,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a78f92ca1a906c479b10a5e9ea1d9b7, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -98755,6 +99231,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518837794206326743, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d06c820acaf4cc4438a7bb333fca8b05, type: 2}
     - target: {fileID: 8365688545331289824, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
       propertyPath: m_Name
       value: House Proto 1
@@ -99505,7 +99985,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3033667219593020291, guid: 004e1154e7d29e344b655ea1bf81f436, type: 3}
+  - {fileID: 2100000, guid: 3999951858cce5a4482f17b69af7f605, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

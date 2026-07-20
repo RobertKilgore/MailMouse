@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 /// <summary>
@@ -47,6 +49,20 @@ public class InventoryValidationController : MonoBehaviour
         public float totalScore;
     }
 
+    [Serializable]
+    public class ScoreSaveData
+    {
+        public float highestScore;
+        public float mostRecentScore;
+        public string lastSavedAt;
+    }
+
+    [Header("Persistence")]
+    [Tooltip("File name used to persist validation scores between play sessions.")]
+    public string saveFileName = "inventory-validation-scores.json";
+
+    private string SavePath => Path.Combine(Application.persistentDataPath, saveFileName);
+
     /// <summary>
     /// Validates every InventoryDataHolder in the active scene.
     /// </summary>
@@ -55,6 +71,7 @@ public class InventoryValidationController : MonoBehaviour
     {
         List<PackageDeliveryResult> results = GetAllPackageDeliveryResults(skipIgnoredInventories);
         DeliveryScoreSummary summary = GetDeliveryScoreSummary(results);
+        SaveScore(summary.totalScore);
 
         if (!logDeliveryResults)
             return;
@@ -68,7 +85,7 @@ public class InventoryValidationController : MonoBehaviour
     public List<PackageDeliveryResult> GetAllPackageDeliveryResults(bool skipIgnored = true)
     {
         List<PackageDeliveryResult> results = new List<PackageDeliveryResult>();
-        InventoryDataHolder[] holders = Object.FindObjectsByType<InventoryDataHolder>(FindObjectsSortMode.None);
+        InventoryDataHolder[] holders = UnityEngine.Object.FindObjectsByType<InventoryDataHolder>(FindObjectsSortMode.None);
 
         foreach (InventoryDataHolder holder in holders)
         {
@@ -116,6 +133,42 @@ public class InventoryValidationController : MonoBehaviour
     {
         // Delegate to ScoringSystem for summary calculation
         return ScoringSystem.GetDeliveryScoreSummary(results);
+    }
+
+    public ScoreSaveData LoadSavedScores()
+    {
+        if (!File.Exists(SavePath))
+            return new ScoreSaveData();
+
+        try
+        {
+            string json = File.ReadAllText(SavePath);
+            return JsonUtility.FromJson<ScoreSaveData>(json) ?? new ScoreSaveData();
+        }
+        catch (Exception ex)
+        {
+            Debug.LogWarning($"Failed to load score save data from {SavePath}: {ex.Message}");
+            return new ScoreSaveData();
+        }
+    }
+
+    public void SaveScore(float score)
+    {
+        ScoreSaveData saveData = LoadSavedScores();
+        saveData.mostRecentScore = score;
+        saveData.highestScore = Mathf.Max(saveData.highestScore, score);
+        saveData.lastSavedAt = DateTime.UtcNow.ToString("o");
+
+        try
+        {
+            string json = JsonUtility.ToJson(saveData, true);
+            File.WriteAllText(SavePath, json);
+            Debug.Log($"Score persisted to {SavePath}. Highest={saveData.highestScore}, Recent={saveData.mostRecentScore}");
+        }
+        catch (Exception ex)
+        {
+            Debug.LogWarning($"Failed to save score data to {SavePath}: {ex.Message}");
+        }
     }
 
     private PackageDeliveryResult CreatePackageResult(InventoryDataHolder holder, InventoryData inventoryData, InventoryItemData itemData)

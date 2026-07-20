@@ -160,6 +160,9 @@ public class CarArcade : MonoBehaviour
 
     public void OnMovement(InputAction.CallbackContext context)
     {
+        if (!MenuManager.WorldControlsEnabled)
+            return;
+
         Vector2 input = context.ReadValue<Vector2>();
         steerInput = input.x;
         throttleInput = input.y;
@@ -167,11 +170,17 @@ public class CarArcade : MonoBehaviour
 
     public void OnBraking(InputAction.CallbackContext context)
     {
+        if (!MenuManager.WorldControlsEnabled)
+            return;
+
         isBraking = context.ReadValueAsButton();
     }
 
     public void OnReverse(InputAction.CallbackContext context)
     {
+        if (!MenuManager.WorldControlsEnabled)
+            return;
+
         if (context.phase != InputActionPhase.Performed)
             return;
 
@@ -183,6 +192,16 @@ public class CarArcade : MonoBehaviour
     {
         if (carRigidbody == null)
             return;
+
+        if (!MenuManager.WorldControlsEnabled)
+        {
+            ResetInputState();
+            ApplyBraking();
+            ApplyDownforce();
+            ApplyDrag();
+            UpdateWheelMeshes();
+            return;
+        }
 
         float currentSpeed = GetForwardSpeed();
         float deltaSpeed = currentSpeed - previousSpeed;

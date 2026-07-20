@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class MenuManager : MonoBehaviour
@@ -227,6 +228,7 @@ public class MenuManager : MonoBehaviour
             AreWorldControlsEnabled = true;
             IsLookingEnabled = true;
             CurrentTimeScale = Time.timeScale;
+            RefreshCinemachineInputState();
             UpdateCursorState();
             return;
         }
@@ -239,7 +241,17 @@ public class MenuManager : MonoBehaviour
         AreWorldControlsEnabled = effectiveControls;
         IsLookingEnabled = effectiveLooking;
         CurrentTimeScale = Time.timeScale;
+        RefreshCinemachineInputState();
         UpdateCursorState();
+    }
+
+    private void RefreshCinemachineInputState()
+    {
+        foreach (var controller in UnityEngine.Object.FindObjectsByType<CinemachineInputAxisController>(FindObjectsSortMode.None))
+        {
+            if (controller != null)
+                controller.enabled = IsLookingEnabled;
+        }
     }
 
     private void UpdateCursorState()

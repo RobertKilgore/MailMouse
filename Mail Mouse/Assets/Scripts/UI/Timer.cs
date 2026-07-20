@@ -36,11 +36,30 @@ public class Timer : MonoBehaviour
 
     public void OnEndGame()
     {
+        if (isTimerActive)
+            isTimerActive = false;
+
+        SaveFinalScore();
+
         if (sceneFlowManager == null)
             sceneFlowManager = SceneFlowManager.GetOrCreateInstance();
 
         if (sceneFlowManager != null)
             sceneFlowManager.LoadEndScene();
+    }
+
+    private void SaveFinalScore()
+    {
+        InventoryValidationController validator = FindFirstObjectByType<InventoryValidationController>(FindObjectsInactive.Include);
+        if (validator == null)
+        {
+            Debug.LogWarning("Timer could not find an InventoryValidationController to save the final score.");
+            return;
+        }
+
+        var results = validator.GetAllPackageDeliveryResults(true);
+        var summary = validator.GetDeliveryScoreSummary(results);
+        validator.SaveScore(summary.totalScore);
     }
     private void DisplayTime(float timeToDisplay)
     {
