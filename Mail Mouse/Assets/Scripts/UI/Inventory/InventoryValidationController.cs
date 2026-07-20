@@ -76,7 +76,7 @@ public class InventoryValidationController : MonoBehaviour
         if (!logDeliveryResults)
             return;
 
-        Debug.Log($"Scene delivery summary complete. Total packages={summary.totalPackages}, correct={summary.correctPackages}, incorrect={summary.incorrectPackages}, undelivered={summary.undeliveredPackages}, unaccepted={summary.unacceptedPackages}, total score={summary.totalScore}.");
+        Debug.Log($"Scene delivery summary complete. Total packages={summary.totalPackages}, correct={summary.correctPackages}, incorrect={summary.incorrectPackages}, undelivered={summary.undeliveredPackages}, unaccepted={summary.unacceptedPackages}, total score={summary.totalScore}.\nFormula: score = size * complexity for DeliveredCorrect, score = -0.5 * size * complexity for DeliveredIncorrect, score = -1 for Undelivered, score = 0 for Unaccepted.");
 
         if (logPackageDetails)
             LogPackageDetails(results);
@@ -235,7 +235,18 @@ public class InventoryValidationController : MonoBehaviour
                 continue;
 
             string containerId = result.inventoryData?.inventoryId ?? result.container?.name ?? "unknown container";
-            Debug.Log($"Package in '{containerId}': item='{result.itemData?.itemId ?? "unknown"}', status='{result.status}', score={result.score}, playerPlaced={result.playerPlaced}", result.container);
+            float size = result.itemData?.GetSize() ?? 1f;
+            int complexity = Mathf.Max(1, Mathf.RoundToInt(result.itemData?.mailData?.complexity ?? 1f));
+            string formula = result.status switch
+            {
+                MailDeliveryStatus.Undelivered => $"-1 (because undelivered, formula: -1)",
+                MailDeliveryStatus.DeliveredCorrect => $"{size} * {complexity} = {result.score}",
+                MailDeliveryStatus.DeliveredIncorrect => $"-0.5 * {size} * {complexity} = {result.score}",
+                MailDeliveryStatus.Unaccepted => "0 (because unaccepted)",
+                _ => "0"
+            };
+
+            Debug.Log($"Package in '{containerId}': item='{result.itemData?.itemId ?? "unknown"}', status='{result.status}', size={size}, complexity={complexity}, formula='{formula}', playerPlaced={result.playerPlaced}, finalScore={result.score}", result.container);
         }
     }
 }
