@@ -13093,6 +13093,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1448515067}
     m_Modifications:
+    - target: {fileID: 4706279005820469188, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7691ad09642da1c43ae90b33910926e1, type: 2}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -51
@@ -55121,6 +55125,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MailTruck
       objectReference: {fileID: 0}
+    - target: {fileID: 8617939929227272230, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617939929227272230, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7691ad09642da1c43ae90b33910926e1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2617818306161758504, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
