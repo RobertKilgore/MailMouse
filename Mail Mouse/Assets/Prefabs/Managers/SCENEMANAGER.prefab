@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneFlowManager
   startSceneName: Start Menu
-  gameplaySceneName: Gameplay
+  gameplaySceneName: Map Design
   endSceneName: End Menu

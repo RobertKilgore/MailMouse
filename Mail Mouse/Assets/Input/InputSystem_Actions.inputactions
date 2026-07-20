@@ -42,6 +42,33 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Brake",
+                    "type": "Button",
+                    "id": "7e1f4c09-67e1-4498-a874-5d8b7d3f71d2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Reverse",
+                    "type": "Button",
+                    "id": "9440d893-0e2d-4e88-bd4d-2f1606af7f40",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MapMenu",
+                    "type": "Button",
+                    "id": "c61b7f64-4a79-4ac0-8e2c-bf4d42e5da7b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Interact2",
                     "type": "Button",
                     "id": "f52a98c3-8d4f-4a2e-9b1c-e7f3d5a1b9c2",
@@ -380,6 +407,39 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da6e4f73-1432-4d33-bb69-9824b1d8dd40",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Brake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fdcb3b68-b46c-4882-b550-2f7bab9818cf",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Reverse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a3c2b8f5-7d1e-4c3a-9b84-05e3cf2a72c1",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "MapMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

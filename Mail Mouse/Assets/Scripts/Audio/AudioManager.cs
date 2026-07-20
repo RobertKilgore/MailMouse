@@ -31,6 +31,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private float sfxVolume = 1f;
 
     private readonly Dictionary<string, float> lastPlayedTimes = new Dictionary<string, float>();
+    private bool musicPausedByTimeScale;
 
     private void Awake()
     {
@@ -162,6 +163,28 @@ public class AudioManager : MonoBehaviour
             return;
 
         Instance.musicSource?.Stop();
+    }
+
+    private void Update()
+    {
+        if (musicSource == null)
+            return;
+
+        if (Time.timeScale <= 0f)
+        {
+            if (musicSource.isPlaying)
+            {
+                musicSource.Pause();
+                musicPausedByTimeScale = true;
+            }
+            return;
+        }
+
+        if (musicPausedByTimeScale && musicSource.clip != null && !musicSource.isPlaying)
+        {
+            musicSource.UnPause();
+            musicPausedByTimeScale = false;
+        }
     }
 
     public void SetMasterVolume(float value)
@@ -296,6 +319,17 @@ public class AudioManager : MonoBehaviour
         musicSource.loop = loop;
         musicSource.volume = GetEffectiveMusicVolume();
         musicSource.Play();
+
+        if (Time.timeScale <= 0f)
+        {
+            musicSource.Pause();
+            musicPausedByTimeScale = true;
+        }
+        else
+        {
+            musicPausedByTimeScale = false;
+        }
+
         Debug.Log($"[AudioManager] Music playback started: '{clip.name}', loop={loop}");
     }
 

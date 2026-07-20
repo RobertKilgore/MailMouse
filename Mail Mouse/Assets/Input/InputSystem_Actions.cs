@@ -129,6 +129,33 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Brake"",
+                    ""type"": ""Button"",
+                    ""id"": ""7e1f4c09-67e1-4498-a874-5d8b7d3f71d2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reverse"",
+                    ""type"": ""Button"",
+                    ""id"": ""9440d893-0e2d-4e88-bd4d-2f1606af7f40"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MapMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""c61b7f64-4a79-4ac0-8e2c-bf4d42e5da7b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Interact2"",
                     ""type"": ""Button"",
                     ""id"": ""f52a98c3-8d4f-4a2e-9b1c-e7f3d5a1b9c2"",
@@ -467,6 +494,39 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da6e4f73-1432-4d33-bb69-9824b1d8dd40"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Brake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fdcb3b68-b46c-4882-b550-2f7bab9818cf"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Reverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a3c2b8f5-7d1e-4c3a-9b84-05e3cf2a72c1"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""MapMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -926,6 +986,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_Brake = m_Player.FindAction("Brake", throwIfNotFound: true);
+        m_Player_Reverse = m_Player.FindAction("Reverse", throwIfNotFound: true);
+        m_Player_MapMenu = m_Player.FindAction("MapMenu", throwIfNotFound: true);
         m_Player_Interact2 = m_Player.FindAction("Interact2", throwIfNotFound: true);
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
@@ -1040,6 +1103,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_Brake;
+    private readonly InputAction m_Player_Reverse;
+    private readonly InputAction m_Player_MapMenu;
     private readonly InputAction m_Player_Interact2;
     private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_Jump;
@@ -1084,6 +1150,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Interact".
         /// </summary>
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Brake".
+        /// </summary>
+        public InputAction @Brake => m_Wrapper.m_Player_Brake;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Reverse".
+        /// </summary>
+        public InputAction @Reverse => m_Wrapper.m_Player_Reverse;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/MapMenu".
+        /// </summary>
+        public InputAction @MapMenu => m_Wrapper.m_Player_MapMenu;
         /// <summary>
         /// Provides access to the underlying input action "Player/Interact2".
         /// </summary>
@@ -1190,6 +1268,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @Brake.started += instance.OnBrake;
+            @Brake.performed += instance.OnBrake;
+            @Brake.canceled += instance.OnBrake;
+            @Reverse.started += instance.OnReverse;
+            @Reverse.performed += instance.OnReverse;
+            @Reverse.canceled += instance.OnReverse;
+            @MapMenu.started += instance.OnMapMenu;
+            @MapMenu.performed += instance.OnMapMenu;
+            @MapMenu.canceled += instance.OnMapMenu;
             @Interact2.started += instance.OnInteract2;
             @Interact2.performed += instance.OnInteract2;
             @Interact2.canceled += instance.OnInteract2;
@@ -1264,6 +1351,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @Brake.started -= instance.OnBrake;
+            @Brake.performed -= instance.OnBrake;
+            @Brake.canceled -= instance.OnBrake;
+            @Reverse.started -= instance.OnReverse;
+            @Reverse.performed -= instance.OnReverse;
+            @Reverse.canceled -= instance.OnReverse;
+            @MapMenu.started -= instance.OnMapMenu;
+            @MapMenu.performed -= instance.OnMapMenu;
+            @MapMenu.canceled -= instance.OnMapMenu;
             @Interact2.started -= instance.OnInteract2;
             @Interact2.performed -= instance.OnInteract2;
             @Interact2.canceled -= instance.OnInteract2;
@@ -1643,6 +1739,27 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Brake" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnBrake(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Reverse" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnReverse(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MapMenu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMapMenu(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Interact2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

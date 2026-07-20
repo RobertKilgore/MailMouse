@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(PlayerInput))]
 public class CarArcade : MonoBehaviour
 {
     [Header("Wheel References")]
@@ -11,6 +12,7 @@ public class CarArcade : MonoBehaviour
     [SerializeField] private float acceleration = 50f;
     [SerializeField] private float maxSpeed = 120f;
     [SerializeField] private float brakePower = 80f;
+    [SerializeField] private float maxWheelRpm = 650f;
 
     [Header("Steering")]
     [SerializeField] private float maxSteerAngle = 30f;
@@ -25,6 +27,7 @@ public class CarArcade : MonoBehaviour
     [Header("Feel")]
     [SerializeField] private float downforce = 1f;
     [SerializeField] private float airDrag = 0.1f; // Light air resistance only
+    [SerializeField] private float reverseDelay = 0.25f;
 
     private float throttleInput;
     private float steerInput;
@@ -33,17 +36,126 @@ public class CarArcade : MonoBehaviour
     private bool isBraking;
     private float previousSpeed;
     private float currentAcceleration;
+    private float accelerationSampleTimer;
+    private float accelerationSampleWindow = 0.2f;
+    private bool isReversing;
+    private float reverseDelayTimer;
+    private PlayerInput playerInput;
+    private InputAction movementAction;
+    private InputAction brakingAction;
+    private InputAction reverseAction;
 
     private void Awake()
     {
         carRigidbody = GetComponent<Rigidbody>();
         if (carRigidbody == null)
             carRigidbody = GetComponentInParent<Rigidbody>();
+
+        playerInput = GetComponent<PlayerInput>();
+        if (playerInput == null)
+            playerInput = GetComponentInParent<PlayerInput>();
+    }
+
+    private void OnEnable()
+    {
+        BindInputActions();
+        if (playerInput?.actions != null)
+            playerInput.actions.Enable();
+
+        ResetInputState();
+    }
+
+    private void OnDisable()
+    {
+        UnbindInputActions();
+        if (playerInput?.actions != null)
+            playerInput.actions.Disable();
+
+        ResetInputState();
     }
 
     private void Start()
     {
         ConfigureWheels();
+    }
+
+    private void BindInputActions()
+    {
+        if (playerInput?.actions == null)
+        {
+            Debug.LogWarning("CarArcade requires a PlayerInput component with an assigned action asset.", this);
+            return;
+        }
+
+        UnbindInputActions();
+
+        movementAction = playerInput.actions.FindAction("Movement");
+        if (movementAction == null)
+            movementAction = playerInput.actions.FindAction("Move");
+
+        brakingAction = playerInput.actions.FindAction("Braking");
+        if (brakingAction == null)
+            brakingAction = playerInput.actions.FindAction("Brake");
+
+        reverseAction = playerInput.actions.FindAction("Reverse");
+
+        if (movementAction != null)
+        {
+            movementAction.started += OnMovement;
+            movementAction.performed += OnMovement;
+            movementAction.canceled += OnMovement;
+        }
+
+        if (brakingAction != null)
+        {
+            brakingAction.started += OnBraking;
+            brakingAction.performed += OnBraking;
+            brakingAction.canceled += OnBraking;
+        }
+
+        if (reverseAction != null)
+        {
+            reverseAction.started += OnReverse;
+            reverseAction.performed += OnReverse;
+            reverseAction.canceled += OnReverse;
+        }
+    }
+
+    private void UnbindInputActions()
+    {
+        if (movementAction != null)
+        {
+            movementAction.started -= OnMovement;
+            movementAction.performed -= OnMovement;
+            movementAction.canceled -= OnMovement;
+        }
+
+        if (brakingAction != null)
+        {
+            brakingAction.started -= OnBraking;
+            brakingAction.performed -= OnBraking;
+            brakingAction.canceled -= OnBraking;
+        }
+
+        if (reverseAction != null)
+        {
+            reverseAction.started -= OnReverse;
+            reverseAction.performed -= OnReverse;
+            reverseAction.canceled -= OnReverse;
+        }
+
+        movementAction = null;
+        brakingAction = null;
+        reverseAction = null;
+    }
+
+    private void ResetInputState()
+    {
+        throttleInput = 0f;
+        steerInput = 0f;
+        isBraking = false;
+        isReversing = false;
+        reverseDelayTimer = 0f;
     }
 
     public void OnMovement(InputAction.CallbackContext context)
@@ -58,16 +170,33 @@ public class CarArcade : MonoBehaviour
         isBraking = context.ReadValueAsButton();
     }
 
+    public void OnReverse(InputAction.CallbackContext context)
+    {
+        if (context.phase != InputActionPhase.Performed)
+            return;
+
+        isReversing = !isReversing;
+        reverseDelayTimer = 0f;
+    }
+
     private void FixedUpdate()
     {
         if (carRigidbody == null)
             return;
 
         float currentSpeed = GetForwardSpeed();
-        currentAcceleration = (currentSpeed - previousSpeed) / Time.fixedDeltaTime;
-        previousSpeed = currentSpeed;
+        float deltaSpeed = currentSpeed - previousSpeed;
+        accelerationSampleTimer += Time.fixedDeltaTime;
+
+        if (accelerationSampleTimer >= accelerationSampleWindow)
+        {
+            currentAcceleration = deltaSpeed / accelerationSampleTimer;
+            accelerationSampleTimer = 0f;
+            previousSpeed = currentSpeed;
+        }
         
         ApplySteering(currentSpeed);
+        ApplyReverseLogic(currentSpeed);
         ApplyThrottle(currentSpeed);
         ApplyBraking();
         ApplyDownforce();
@@ -129,19 +258,73 @@ public class CarArcade : MonoBehaviour
         }
     }
 
+    private void ApplyReverseLogic(float currentSpeed)
+    {
+        if (!isReversing)
+            return;
+
+        bool isStopped = Mathf.Abs(currentSpeed) < 0.5f;
+
+        if (!isStopped)
+        {
+            isBraking = true;
+            reverseDelayTimer = 0f;
+            return;
+        }
+
+        reverseDelayTimer += Time.fixedDeltaTime;
+        if (reverseDelayTimer < reverseDelay)
+            return;
+
+        throttleInput = -1f;
+    }
+
     private void ApplyThrottle(float currentSpeed)
     {
         float throttle = isBraking ? 0f : throttleInput;
 
+        if (isReversing && Mathf.Abs(currentSpeed) < 0.5f && reverseDelayTimer >= reverseDelay)
+            throttle = -1f;
+
+        // Drive torque should be zero whenever the player is not actively requesting acceleration.
+        if (Mathf.Abs(throttle) < 0.01f)
+        {
+            backLeftColl.motorTorque = 0f;
+            backRightColl.motorTorque = 0f;
+            return;
+        }
+
         // Don't accelerate beyond max speed
         if (throttle > 0 && currentSpeed >= maxSpeed)
-            throttle = 0f;
-        else if (throttle < 0 && currentSpeed <= -maxSpeed * 0.6f)
-            throttle = 0f;
+        {
+            backLeftColl.motorTorque = 0f;
+            backRightColl.motorTorque = 0f;
+            return;
+        }
+
+        if (throttle < 0 && currentSpeed <= -maxSpeed * 0.6f)
+        {
+            backLeftColl.motorTorque = 0f;
+            backRightColl.motorTorque = 0f;
+            return;
+        }
 
         float motorTorque = throttle * acceleration * 100f;
-        backLeftColl.motorTorque = motorTorque;
-        backRightColl.motorTorque = motorTorque;
+        backLeftColl.motorTorque = GetLimitedMotorTorque(motorTorque, backLeftColl);
+        backRightColl.motorTorque = GetLimitedMotorTorque(motorTorque, backRightColl);
+    }
+
+    private float GetLimitedMotorTorque(float desiredTorque, WheelCollider wheel)
+    {
+        if (wheel == null)
+            return 0f;
+
+        float wheelRpm = Mathf.Abs(wheel.rpm);
+        if (wheelRpm <= 0f)
+            return desiredTorque;
+
+        float rpmFactor = Mathf.Clamp01(maxWheelRpm / wheelRpm);
+        return desiredTorque * rpmFactor;
     }
 
     private void ApplyBraking()
@@ -223,13 +406,10 @@ public class CarArcade : MonoBehaviour
 
     private void OnGUI()
     {
-        float currentSpeed = GetForwardSpeed();
-
-
-        string debugText = 
-            $"Speed: {currentSpeed:F1}\n" +
-            $"Acceleration: {acceleration:F1}";
-        
-        GUI.Label(new Rect(10, 10, 200, 100), debugText);
+        GUI.Label(
+            new Rect(10, 10, 300, 120),
+            $"Speed: {GetForwardSpeed():F1}\n" +
+            $"Acceleration: {currentAcceleration:F2}"
+        );
     }
 }

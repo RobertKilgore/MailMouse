@@ -10,6 +10,7 @@ public class PlayerMenuInputController : MonoBehaviour
     [Header("Menu References")]
     [SerializeField] private PauseMenuHandler pauseMenuHandler;
     [SerializeField] private MenuController inventoryMenuController;
+    [SerializeField] private MenuController mapMenuController;
     [SerializeField] private InventoryPresentationController inventoryPresentationController;
 
     private InputSystem_Actions inputActions;
@@ -55,6 +56,12 @@ public class PlayerMenuInputController : MonoBehaviour
             RequestInventoryToggle();
             return;
         }
+
+        if (GetMapMenuAction()?.WasPressedThisFrame() == true)
+        {
+            RequestMapMenuToggle();
+            return;
+        }
     }
 
     public void RequestPauseToggle()
@@ -79,6 +86,24 @@ public class PlayerMenuInputController : MonoBehaviour
         }
 
         return menu.Open();
+    }
+
+    public void RequestMapMenuToggle()
+    {
+        if (mapMenuController == null)
+            return;
+
+        if (mapMenuController.IsOpen || mapMenuController.gameObject.activeSelf)
+        {
+            mapMenuController.Close();
+            return;
+        }
+
+        bool menuOpened = TryOpenMenu(mapMenuController);
+        if (!menuOpened)
+        {
+            Debug.Log("Map menu open request was rejected by the menu system; skipping map menu toggle.");
+        }
     }
 
     public void RequestInventoryToggle(InventoryType inventoryType = InventoryType.Player, params InventoryData[] inventoryData)
@@ -118,6 +143,14 @@ public class PlayerMenuInputController : MonoBehaviour
     {
         if (inventoryPresentationController != null)
             inventoryPresentationController.TryOpenInventory(inventoryType, inventoryData);
+    }
+
+    private InputAction GetMapMenuAction()
+    {
+        if (inputActions?.asset == null)
+            return null;
+
+        return inputActions.asset.FindActionMap("Player")?.FindAction("MapMenu");
     }
 
     public bool WasInteractPressedThisFrame()
