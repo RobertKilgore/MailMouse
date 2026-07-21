@@ -42,14 +42,35 @@ public static class OutlineManager
                 outlineMF.mesh = meshFilter.mesh;
             }
 
-            // Create white material using custom outline shader
+            // Create a material using a guaranteed shader so builds do not end up with pink materials.
             var outlineRenderer = outlineObj.AddComponent<MeshRenderer>();
-            Material outlineMat = new Material(Shader.Find("Custom/SimpleOutline"));
-            outlineRenderer.material = outlineMat;
+            Material outlineMat = CreateOutlineMaterial();
+            if (outlineMat != null)
+                outlineRenderer.material = outlineMat;
 
             outlineObjects[renderer] = outlineObj;
             Debug.Log($"  Created outline for {renderer.gameObject.name}");
         }
+    }
+
+    private static Material CreateOutlineMaterial()
+    {
+        Shader outlineShader = Shader.Find("Custom/SimpleOutline");
+        if (outlineShader == null)
+            outlineShader = Shader.Find("Unlit/Color");
+        if (outlineShader == null)
+            outlineShader = Shader.Find("Standard");
+
+        if (outlineShader == null)
+        {
+            Debug.LogWarning("OutlineManager could not find a usable outline shader.");
+            return null;
+        }
+
+        Material material = new Material(outlineShader);
+        material.SetColor("_Color", Color.white);
+        material.color = Color.white;
+        return material;
     }
 
     /// <summary>

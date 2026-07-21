@@ -15,7 +15,7 @@ public class InventoryHoverTooltip : MonoBehaviour
     private RectTransform backgroundRect;
 
     [SerializeField]
-    private Vector2 tooltipOffset = new Vector2(16f, -16f);
+    private Vector2 tooltipOffset = new Vector2(12f, -12f);
 
     [SerializeField]
     private bool clampToScreen = true;
@@ -38,10 +38,23 @@ public class InventoryHoverTooltip : MonoBehaviour
 
         Instance = this;
         canvasGroup = GetComponent<CanvasGroup>();
-        tooltipRootRect = GetComponent<RectTransform>();
-        tooltipCanvas = GetComponentInParent<Canvas>();
-        tooltipCanvasRect = tooltipCanvas != null ? tooltipCanvas.transform as RectTransform : null;
+        if (canvasGroup == null)
+            canvasGroup = gameObject.AddComponent<CanvasGroup>();
 
+        tooltipRootRect = GetComponent<RectTransform>();
+        if (tooltipRootRect == null)
+            tooltipRootRect = gameObject.AddComponent<RectTransform>();
+
+        tooltipCanvas = GetComponentInParent<Canvas>();
+        if (tooltipCanvas == null)
+        {
+            tooltipCanvas = gameObject.AddComponent<Canvas>();
+            tooltipCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            gameObject.AddComponent<GraphicRaycaster>();
+        }
+
+        tooltipCanvasRect = tooltipCanvas != null ? tooltipCanvas.transform as RectTransform : null;
+        EnsureTooltipSetup();
         SetVisibility(false);
     }
 
@@ -146,6 +159,65 @@ public class InventoryHoverTooltip : MonoBehaviour
             transform.SetAsLastSibling();
     }
 
+    private void EnsureTooltipSetup()
+    {
+        if (backgroundRect == null)
+        {
+            GameObject backgroundGo = transform.Find("Background")?.gameObject ?? new GameObject("Background");
+            backgroundGo.transform.SetParent(transform, false);
+            backgroundRect = backgroundGo.GetComponent<RectTransform>() ?? backgroundGo.AddComponent<RectTransform>();
+
+            Image image = backgroundGo.GetComponent<Image>();
+            if (image == null)
+                image = backgroundGo.AddComponent<Image>();
+
+            image.color = new Color(0.08f, 0.08f, 0.08f, 0.95f);
+            image.raycastTarget = false;
+            image.type = Image.Type.Sliced;
+        }
+
+        if (tooltipText == null)
+        {
+            TextMeshProUGUI existingText = transform.GetComponentInChildren<TextMeshProUGUI>(true);
+            if (existingText != null && existingText != this.tooltipText)
+                tooltipText = existingText;
+
+            if (tooltipText == null)
+            {
+                GameObject textGo = transform.Find("Text")?.gameObject ?? new GameObject("Text");
+                textGo.transform.SetParent(backgroundRect != null ? backgroundRect : transform, false);
+                tooltipText = textGo.GetComponent<TextMeshProUGUI>() ?? textGo.AddComponent<TextMeshProUGUI>();
+            }
+
+            if (tooltipText != null)
+            {
+                tooltipText.text = string.Empty;
+                tooltipText.fontSize = 14f;
+                tooltipText.alignment = TextAlignmentOptions.Center;
+                tooltipText.color = Color.white;
+                tooltipText.raycastTarget = false;
+                tooltipText.enableAutoSizing = false;
+
+                RectTransform textRect = tooltipText.GetComponent<RectTransform>();
+                if (textRect != null)
+                {
+                    textRect.anchorMin = Vector2.zero;
+                    textRect.anchorMax = Vector2.one;
+                    textRect.offsetMin = new Vector2(8f, 6f);
+                    textRect.offsetMax = new Vector2(-8f, -6f);
+                }
+            }
+        }
+
+        if (backgroundRect != null)
+        {
+            backgroundRect.anchorMin = Vector2.zero;
+            backgroundRect.anchorMax = Vector2.zero;
+            backgroundRect.sizeDelta = new Vector2(180f, 38f);
+            backgroundRect.pivot = new Vector2(0.5f, 0.5f);
+        }
+    }
+
     private Vector2 GetCurrentPointerPosition()
     {
         if (Mouse.current != null)
@@ -201,8 +273,13 @@ public class InventoryHoverTooltip : MonoBehaviour
 
         InventoryHoverTooltip found = FindFirstTooltipInScene();
         if (found != null)
+        {
             Instance = found;
+            return Instance;
+        }
 
+        GameObject tooltipGo = new GameObject("InventoryHoverTooltip", typeof(RectTransform), typeof(CanvasGroup), typeof(InventoryHoverTooltip));
+        Instance = tooltipGo.GetComponent<InventoryHoverTooltip>();
         return Instance;
     }
 
