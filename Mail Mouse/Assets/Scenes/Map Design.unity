@@ -54815,120 +54815,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de51dafc5ec958345a00b6e56a669126, type: 3}
---- !u!1001 &1171296482
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1942231118}
-    m_Modifications:
-    - target: {fileID: 1663052340144856949, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_Name
-      value: Camera Brain
-      objectReference: {fileID: 0}
-    - target: {fileID: 2333557446264944107, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2333557446264944107, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2333557446264944107, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2333557446264944107, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1408414317}
-    - target: {fileID: 2333557446264944107, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1408414317}
-    - target: {fileID: 2333557446264944107, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CarArcade, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2333557446264944107, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CarArcade, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5608983501539812993, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5608983501539812993, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5608983501539812993, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 114
-      objectReference: {fileID: 0}
-    - target: {fileID: 5608983501539812993, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5608983501539812993, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5608983501539812993, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5608983501539812993, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5608983501539812993, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5608983501539812993, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5608983501539812993, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6254184718456162599, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: pauseMenuHandler
-      value: 
-      objectReference: {fileID: 8529380576542202426}
-    - target: {fileID: 6254184718456162599, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: mapMenuController
-      value: 
-      objectReference: {fileID: 846629099608312988}
-    - target: {fileID: 6254184718456162599, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: inventoryMenuController
-      value: 
-      objectReference: {fileID: 1426498650449538048}
-    - target: {fileID: 6254184718456162599, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: inventoryPresentationController
-      value: 
-      objectReference: {fileID: 2647722198781592669}
-    - target: {fileID: 8536624980525067896, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_Name
-      value: MailTruck
-      objectReference: {fileID: 0}
-    - target: {fileID: 8617939929227272230, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8617939929227272230, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 7691ad09642da1c43ae90b33910926e1, type: 2}
-    m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 2617818306161758504, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
 --- !u!1001 &1175296781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65937,33 +65823,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5299110815774170979, guid: de51dafc5ec958345a00b6e56a669126, type: 3}
   m_PrefabInstance: {fileID: 2136195253}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1408414314 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5608983501539812993, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-  m_PrefabInstance: {fileID: 1171296482}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1408414317 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1417574781664079564, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-  m_PrefabInstance: {fileID: 1171296482}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca4510e397daa64284a30a0b7653414, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CarArcade
---- !u!114 &1408414318 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8465059978005637790, guid: c2892ba6128289349ace177bf7647b0e, type: 3}
-  m_PrefabInstance: {fileID: 1171296482}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
 --- !u!1001 &1408817579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89120,7 +88979,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1408414314}
+  - {fileID: 4448625214700793841}
   - {fileID: 1379458233}
   - {fileID: 204536179}
   - {fileID: 1912587392}
@@ -99901,6 +99760,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432109b896e11254ebf4c0ac3681b6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuController
+--- !u!1001 &1439121595083322390
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1942231118}
+    m_Modifications:
+    - target: {fileID: 1073046896392292345, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073046896392292345, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073046896392292345, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 114
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073046896392292345, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073046896392292345, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073046896392292345, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073046896392292345, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073046896392292345, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073046896392292345, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073046896392292345, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635687522667942942, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
+      propertyPath: inventoryDataList.Array.data[0].inventoryId
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683391843459068673, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
+      propertyPath: m_Name
+      value: MailTruck
+      objectReference: {fileID: 0}
+    - target: {fileID: 7827892283002128377, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
+      propertyPath: pauseMenuHandler
+      value: 
+      objectReference: {fileID: 8529380576542202426}
+    - target: {fileID: 7827892283002128377, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
+      propertyPath: mapMenuController
+      value: 
+      objectReference: {fileID: 846629099608312988}
+    - target: {fileID: 7827892283002128377, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
+      propertyPath: inventoryMenuController
+      value: 
+      objectReference: {fileID: 1426498650449538048}
+    - target: {fileID: 7827892283002128377, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
+      propertyPath: inventoryPresentationController
+      value: 
+      objectReference: {fileID: 2647722198781592669}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
 --- !u!23 &1587545474291253940
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -100072,7 +100008,7 @@ PrefabInstance:
     - target: {fileID: 1703069768633704326, guid: 992c21b70e348134093e2d357837b373, type: 3}
       propertyPath: playerInventoryDataHolder
       value: 
-      objectReference: {fileID: 1408414318}
+      objectReference: {fileID: 0}
     - target: {fileID: 2774318988443663716, guid: 992c21b70e348134093e2d357837b373, type: 3}
       propertyPath: m_Name
       value: UI
@@ -100162,6 +100098,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 992c21b70e348134093e2d357837b373, type: 3}
+--- !u!4 &4448625214700793841 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1073046896392292345, guid: 106264c5b3769ec4d9982d4185336fdb, type: 3}
+  m_PrefabInstance: {fileID: 1439121595083322390}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &4706279006488746944
 MeshRenderer:
   m_ObjectHideFlags: 0

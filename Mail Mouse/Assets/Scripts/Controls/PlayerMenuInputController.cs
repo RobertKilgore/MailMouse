@@ -53,6 +53,13 @@ public class PlayerMenuInputController : MonoBehaviour
 
         if (inputActions.Player.Interact.WasPressedThisFrame())
         {
+            if (IsInventoryMenuOpen())
+            {
+                AudioManager.PlayInventoryCloseSound();
+                inventoryMenuController.Close();
+                return;
+            }
+
             RequestInventoryToggle();
             return;
         }
@@ -111,9 +118,8 @@ public class PlayerMenuInputController : MonoBehaviour
         if (inventoryMenuController == null)
             return;
 
-        if (inventoryMenuController.IsOpen || MenuManager.Instance?.GetActiveMenus().Contains(inventoryMenuController) == true)
+        if (IsInventoryMenuOpen())
         {
-
             if (inventoryType == InventoryType.Player)
             {
                 AudioManager.PlayInventoryCloseSound();
@@ -121,8 +127,6 @@ public class PlayerMenuInputController : MonoBehaviour
             inventoryMenuController.Close();
             return;
         }
-
-        
 
         bool menuOpened = TryOpenMenu(inventoryMenuController);
         if (!menuOpened)
@@ -156,5 +160,13 @@ public class PlayerMenuInputController : MonoBehaviour
     public bool WasInteractPressedThisFrame()
     {
         return inputActions?.Player.Interact.WasPressedThisFrame() == true;
+    }
+
+    private bool IsInventoryMenuOpen()
+    {
+        if (inventoryMenuController == null)
+            return false;
+
+        return inventoryMenuController.IsOpen || MenuManager.Instance?.GetActiveMenus().Contains(inventoryMenuController) == true;
     }
 }
