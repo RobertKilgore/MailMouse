@@ -480,6 +480,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1138394151}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -23.100018
@@ -528,10 +532,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &8044160
 PrefabInstance:
@@ -541,6 +552,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1004144226}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -45.099976
@@ -589,10 +604,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &10082747
 GameObject:
@@ -4471,6 +4493,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 769117653}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -23.5
@@ -4519,10 +4545,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &96202104 stripped
 Transform:
@@ -5543,67 +5576,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5299110815774170979, guid: de51dafc5ec958345a00b6e56a669126, type: 3}
   m_PrefabInstance: {fileID: 447938619}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &120526545
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 408012652}
-    m_Modifications:
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -22.3243
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.1075432
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -25.100002
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: inventoryDataList.Array.data[0].address
-      value: 5 Breakneck Hill Rd
-      objectReference: {fileID: 0}
-    - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_Name
-      value: Mail Box Prefab
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &121670467 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8756059891301847653, guid: 138437711c3994a48905ae831b01037f, type: 3}
@@ -7005,6 +6977,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1487938568}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.400002
@@ -7053,10 +7029,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &143733245 stripped
 Transform:
@@ -7549,10 +7532,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &159400838
 PrefabInstance:
@@ -8085,10 +8075,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: inventoryDataList.Array.data[0].address
-      value: 3 Tail End Rd
-      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -8096,7 +8082,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &167538196
 PrefabInstance:
@@ -8615,6 +8604,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 716323990}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.700012
@@ -8663,10 +8656,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &183822379 stripped
 Transform:
@@ -10356,6 +10356,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 582095917}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.348755
@@ -10404,10 +10408,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &230071873
 PrefabInstance:
@@ -13093,6 +13104,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1448515067}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4706279005820469188, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -13145,10 +13160,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &269973095
 GameObject:
@@ -14025,6 +14047,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 640019105}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27.610916
@@ -14073,10 +14099,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &295031848
 PrefabInstance:
@@ -15662,6 +15695,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1476579057}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.099976
@@ -15710,10 +15747,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &348249910
 GameObject:
@@ -15881,10 +15925,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &349148225
 PrefabInstance:
@@ -16096,10 +16147,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &353953773
 PrefabInstance:
@@ -16186,6 +16244,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 989383710}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.700012
@@ -16234,10 +16296,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &355883458
 PrefabInstance:
@@ -16647,6 +16716,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2007875603}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 31.260025
@@ -16695,10 +16768,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &359519922 stripped
 Transform:
@@ -16713,6 +16793,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1864917610}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13
@@ -16761,10 +16845,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &367631327
 PrefabInstance:
@@ -17444,6 +17535,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1500502566}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 100.4512
@@ -17492,10 +17587,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &383735958 stripped
 Transform:
@@ -17789,6 +17891,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 236772101}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18
@@ -17837,10 +17943,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &394320300
 PrefabInstance:
@@ -18786,7 +18899,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 543450653181903229}
-  - {fileID: 6681814991796874577}
+  - {fileID: 5823909261233456531}
   m_Father: {fileID: 548159705}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &409615883
@@ -19119,6 +19232,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 613109325}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.200012
@@ -19167,10 +19284,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &418617241
 PrefabInstance:
@@ -19571,10 +19695,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &425106214
 PrefabInstance:
@@ -21940,6 +22071,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 727869571}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.799988
@@ -21988,10 +22123,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &473095840
 GameObject:
@@ -23612,6 +23754,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1544656543}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -23.431793
@@ -23660,10 +23806,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &507542071
 PrefabInstance:
@@ -26012,10 +26165,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &537822699 stripped
 Transform:
@@ -26068,6 +26228,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 552263619}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.4
@@ -26116,10 +26280,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &540072556
 GameObject:
@@ -26289,10 +26460,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &542606177 stripped
 Transform:
@@ -28225,6 +28403,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1303010904}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -23.300003
@@ -28273,10 +28455,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &564678197
 PrefabInstance:
@@ -28735,6 +28924,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1197534717}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.299988
@@ -28783,10 +28976,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &581829105
 PrefabInstance:
@@ -29368,10 +29568,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &600378540 stripped
 Transform:
@@ -30629,6 +30836,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1019361746}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.900002
@@ -30677,10 +30888,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &631050209
 PrefabInstance:
@@ -30975,6 +31193,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1631686022}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11
@@ -31023,10 +31245,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &636369668
 PrefabInstance:
@@ -33578,6 +33807,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1849698720}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.240921
@@ -33626,10 +33859,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &697590378
 PrefabInstance:
@@ -33798,6 +34038,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 559295754}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 34.9
@@ -33846,10 +34090,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &708010739
 PrefabInstance:
@@ -34205,6 +34456,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1847229670}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.400024
@@ -34253,10 +34508,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &710756239 stripped
 Transform:
@@ -34979,6 +35241,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1399550078}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.200012
@@ -35027,10 +35293,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &731107882
 GameObject:
@@ -35116,6 +35389,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1585562518}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.599998
@@ -35164,10 +35441,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &739196168
 PrefabInstance:
@@ -35552,6 +35836,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 966254901}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25
@@ -35600,10 +35888,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &748539052
 PrefabInstance:
@@ -36963,6 +37258,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 480490619}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23
@@ -37011,10 +37310,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &779250131
 GameObject:
@@ -39823,6 +40129,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 265255078}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.2
@@ -39871,10 +40181,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &859687888
 GameObject:
@@ -41007,6 +41324,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 302408546}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.099976
@@ -41055,10 +41376,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &887048701
 PrefabInstance:
@@ -41416,6 +41744,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 520232092}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 46
@@ -41464,10 +41796,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &891707227
 PrefabInstance:
@@ -41477,6 +41816,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1407105851}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27.200012
@@ -41525,10 +41868,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &896310293
 PrefabInstance:
@@ -44918,10 +45268,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: inventoryDataList.Array.data[0].address
-      value: 2 Electric Rd
-      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -44929,7 +45275,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &960651943
 PrefabInstance:
@@ -45132,6 +45481,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1086438621}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27.199997
@@ -45180,10 +45533,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &964326714
 GameObject:
@@ -45930,10 +46290,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &984912119 stripped
 Transform:
@@ -48691,6 +49058,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 539223037}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -40.91865
@@ -48739,10 +49110,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1032725831
 PrefabInstance:
@@ -49765,6 +50143,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 608534232}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13
@@ -49813,10 +50195,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1071557406
 PrefabInstance:
@@ -49874,10 +50263,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1074827023
 PrefabInstance:
@@ -49887,6 +50283,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1209239368}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.606407
@@ -49935,10 +50335,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &1077694921
 GameObject:
@@ -51982,6 +52389,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1800293277}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.699997
@@ -52030,10 +52441,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1117312029
 PrefabInstance:
@@ -53804,6 +54222,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 341650314}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.199997
@@ -53852,10 +54274,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1151308010
 PrefabInstance:
@@ -54937,6 +55366,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1644152346}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.700012
@@ -54985,10 +55418,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &1176070042
 GameObject:
@@ -55625,6 +56065,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 904916144}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.099976
@@ -55673,10 +56117,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1191849909
 PrefabInstance:
@@ -56647,6 +57098,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 556312241}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.342773
@@ -56695,10 +57150,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &1209239367
 GameObject:
@@ -57445,6 +57907,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 504282659}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -56.100006
@@ -57493,10 +57959,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &1232851376
 GameObject:
@@ -57788,10 +58261,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1242081624
 PrefabInstance:
@@ -57951,6 +58431,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1613543919}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -40.189945
@@ -57999,10 +58483,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1248536716
 PrefabInstance:
@@ -58887,6 +59378,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 330260390}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.100006
@@ -58935,10 +59430,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1272691809
 PrefabInstance:
@@ -59560,10 +60062,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &1289745008 stripped
 Transform:
@@ -60900,6 +61409,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1155337635}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.200012
@@ -60948,10 +61461,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &1321127937 stripped
 Transform:
@@ -61286,10 +61806,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &1336610655
 GameObject:
@@ -62045,6 +62572,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1762612624}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 36
@@ -62093,10 +62624,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1343091407
 PrefabInstance:
@@ -62106,6 +62644,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 86598434}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.800003
@@ -62154,10 +62696,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &1346745506
 GameObject:
@@ -62573,6 +63122,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 918876155}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -23.100006
@@ -62621,10 +63174,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &1350383487
 GameObject:
@@ -63902,10 +64462,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &1371385172
 GameObject:
@@ -63937,7 +64504,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 543450653420296728}
-  - {fileID: 5823909260643894199}
+  - {fileID: 5823909260552977025}
   m_Father: {fileID: 548159705}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1372086681
@@ -64988,10 +65555,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1388059888
 PrefabInstance:
@@ -65078,6 +65652,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1372698096}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.599976
@@ -65126,10 +65704,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1391761256
 PrefabInstance:
@@ -65582,6 +66167,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1747715804}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21
@@ -65630,10 +66219,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &1399550077
 GameObject:
@@ -66423,6 +67019,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 627674028}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.5
@@ -66471,10 +67071,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &1419569740 stripped
 Transform:
@@ -66489,6 +67096,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 158220748}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29.399963
@@ -66537,10 +67148,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &1421869241 stripped
 Transform:
@@ -66647,6 +67265,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1647083443}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -47.735657
@@ -66695,10 +67317,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1431968309
 PrefabInstance:
@@ -66941,6 +67570,187 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6c05f26975caf4f9a969e8d00d07d9, type: 3}
+--- !u!1 &1443587346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1443587347}
+  - component: {fileID: 1443587349}
+  - component: {fileID: 1443587348}
+  m_Layer: 0
+  m_Name: Label
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1443587347
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443587346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.64}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5823909261233456531}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -8.5, y: 7.92}
+  m_SizeDelta: {x: 20, y: 5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1443587348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443587346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshPro
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: '            5'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 0
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 17.549973, y: -3.344959, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 1443587349}
+  m_maskType: 0
+--- !u!23 &1443587349
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443587346}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1448515066
 GameObject:
   m_ObjectHideFlags: 0
@@ -67171,6 +67981,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1397755661}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.5
@@ -67219,10 +68033,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &1456249552
 GameObject:
@@ -68140,6 +68961,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1567314907}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.820618
@@ -68188,10 +69013,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1480311365
 PrefabInstance:
@@ -68360,6 +69192,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1236335222}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22
@@ -68408,10 +69244,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1483064149
 PrefabInstance:
@@ -68498,6 +69341,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 186836106}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35.5
@@ -68546,10 +69393,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &1487938567
 GameObject:
@@ -69881,6 +70735,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 960671313}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.099998
@@ -69929,10 +70787,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &1516592899 stripped
 Transform:
@@ -70281,10 +71146,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &1530303257
 GameObject:
@@ -70531,10 +71403,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &1532235679
 GameObject:
@@ -71475,6 +72354,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 231355087}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17
@@ -71523,10 +72406,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1548925949
 PrefabInstance:
@@ -71536,6 +72426,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 442774877}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.600037
@@ -71584,10 +72478,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1552334595
 PrefabInstance:
@@ -71722,10 +72623,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1556304728
 PrefabInstance:
@@ -71735,6 +72643,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 709543432}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 73
@@ -71783,10 +72695,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &1556733206
 GameObject:
@@ -71999,6 +72918,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 340173311}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.399963
@@ -72047,10 +72970,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1560410999
 PrefabInstance:
@@ -72624,10 +73554,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1562733977
 PrefabInstance:
@@ -73287,10 +74224,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: inventoryDataList.Array.data[0].address
-      value: 1 Left Click Ave
-      objectReference: {fileID: 0}
     - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_Name
       value: Mail Box Prefab
@@ -73298,7 +74231,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &1580890414
 GameObject:
@@ -74497,6 +75433,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 518775020}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.61145
@@ -74545,10 +75485,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1598004282
 PrefabInstance:
@@ -76579,10 +77526,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &1639741352 stripped
 Transform:
@@ -79035,6 +79989,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1890856379}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 56.5
@@ -79083,10 +80041,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &1703717078 stripped
 Transform:
@@ -80236,10 +81201,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &1737084479 stripped
 Transform:
@@ -85613,10 +86585,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1869861354
 PrefabInstance:
@@ -85626,6 +86605,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1355366262}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.187027
@@ -85674,71 +86657,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
---- !u!1001 &1872538051
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1371385173}
-    m_Modifications:
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -23.899998
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.1075463
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 20.200012
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6302005137315856432, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: inventoryDataList.Array.data[0].address
-      value: 2 Chip St
-      objectReference: {fileID: 0}
-    - target: {fileID: 6600445478921488888, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-      propertyPath: m_Name
-      value: Mail Box Prefab
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1874716850
 PrefabInstance:
@@ -85825,6 +86754,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1027792573}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -64
@@ -85873,10 +86806,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1875709591
 PrefabInstance:
@@ -86133,6 +87073,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1351614966}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 76.5
@@ -86181,10 +87125,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &1884839609 stripped
 Transform:
@@ -86204,6 +87155,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1682234198}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23
@@ -86252,10 +87207,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &1890421675 stripped
 Transform:
@@ -88180,6 +89142,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1060212}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -26.5
@@ -88228,10 +89194,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &1922096130 stripped
 Transform:
@@ -88846,6 +89819,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 971790626}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.5
@@ -88894,10 +89871,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1 &1932332211
 GameObject:
@@ -89142,6 +90126,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1627307577}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.230469
@@ -89190,10 +90178,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &1946689264 stripped
 Transform:
@@ -89218,6 +90213,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1152126936}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.198975
@@ -89266,10 +90265,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!1001 &1952541440
 PrefabInstance:
@@ -89279,6 +90285,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 648802478}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 104.7
@@ -89327,10 +90337,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &1956059264 stripped
 Transform:
@@ -93350,10 +94367,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &2024378365 stripped
 Transform:
@@ -96591,6 +97615,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1621481775}
     m_Modifications:
+    - target: {fileID: 2263510906305604153, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.90001
@@ -96639,10 +97667,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Box Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6688281836165051135, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5302173583072037465, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
 --- !u!4 &2094880617 stripped
 Transform:
@@ -99848,6 +100883,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1188541626259106861, guid: fc8d93cf4ed2c444588a599409857dcd, type: 3}
   m_PrefabInstance: {fileID: 23483718}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &545134393333160141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600445478577266747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022ded20c9720ce409195de318a2748c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MailboxInteractable
+  canInteract: 1
+  canHighlight: 1
+  playerMenuInputController: {fileID: 0}
+--- !u!114 &545134393741223903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600445478970449705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022ded20c9720ce409195de318a2748c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MailboxInteractable
+  canInteract: 1
+  canHighlight: 1
+  playerMenuInputController: {fileID: 0}
 --- !u!114 &846629099608312988 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4081326756206532423, guid: 992c21b70e348134093e2d357837b373, type: 3}
@@ -99890,6 +100955,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 543450653199232562}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1321156804625418298
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600445478970449705}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0124474, y: 1.8918152, z: 4.524555}
+  m_Center: {x: -0.0014753342, y: 4.526268, z: -0.009450436}
+--- !u!65 &1321156805308086056
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600445478577266747}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0124474, y: 1.8918152, z: 4.524555}
+  m_Center: {x: -0.0014753342, y: 4.526268, z: -0.009450436}
 --- !u!114 &1426498650449538048 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2366621088698021851, guid: 992c21b70e348134093e2d357837b373, type: 3}
@@ -100030,6 +101137,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38fbf6110d45a994e861c6e027b54253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryPresentationController
+--- !u!1 &2744017982442088432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6386837299742684363}
+  - component: {fileID: 8103583160647978369}
+  - component: {fileID: 4706279005838485781}
+  m_Layer: 0
+  m_Name: default
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &2744017983905781029
 GameObject:
   m_ObjectHideFlags: 0
@@ -100053,6 +101178,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &2744017983906846946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6386837298005347289}
+  - component: {fileID: 8103583161330512531}
+  - component: {fileID: 4706279006500165127}
+  m_Layer: 0
+  m_Name: default
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!33 &2823090746289808928
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -100061,6 +101204,66 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8164078558868130897}
   m_Mesh: {fileID: -2432090755550338912, guid: 004e1154e7d29e344b655ea1bf81f436, type: 3}
+--- !u!65 &3596532406746987904
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600445478577266747}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6593156, y: 7.0473676, z: 0.6182374}
+  m_Center: {x: 0.008941412, y: -0.033432484, z: 0.028914511}
+--- !u!65 &3596532407159095954
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600445478970449705}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6593156, y: 7.0473676, z: 0.6182374}
+  m_Center: {x: 0.008941412, y: -0.033432484, z: 0.028914511}
+--- !u!114 &3758818691034697618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600445478577266747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 128433075f3775b47828fa3bb0a9095c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MailboxAddressLabel
+  inventoryDataHolder: {fileID: 6302005135496882675}
+  addressText: {fileID: 6600445478577266748}
+  addressBook: {fileID: 11400000, guid: 7da85f49d6873b04286b5b5a7b9e564a, type: 2}
+  prefix: 
+  suffix: 
+  keepOnlyNumericDigits: 1
 --- !u!1001 &4097625733656184781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100162,6 +101365,55 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 992c21b70e348134093e2d357837b373, type: 3}
+--- !u!23 &4706279005838485781
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2744017982442088432}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7691ad09642da1c43ae90b33910926e1, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!23 &4706279006488746944
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -100188,6 +101440,55 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -3033667219593020291, guid: a087d7aa240eb3842a0bb6dd8a6b25ea, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!23 &4706279006500165127
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2744017983906846946}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7691ad09642da1c43ae90b33910926e1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100427,6 +101728,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
   m_PrefabInstance: {fileID: 1150841148}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &5823909260552977025
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600445478577266747}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 20.200012}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6386837298005347289}
+  m_Father: {fileID: 1371385173}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -23.899998, y: -2.1075463}
+  m_SizeDelta: {x: 20, y: 5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &5823909260558926600 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
@@ -100446,11 +101767,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
   m_PrefabInstance: {fileID: 1554051833}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &5823909260643894199 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-  m_PrefabInstance: {fileID: 1872538051}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5823909260644504156 stripped
 Transform:
@@ -100602,6 +101918,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
   m_PrefabInstance: {fileID: 709866485}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &5823909261233456531
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600445478970449705}
+  m_LocalRotation: {x: -0, y: -0.54341656, z: -0, w: 0.83946323}
+  m_LocalPosition: {x: 0, y: 0, z: -24.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6386837299742684363}
+  - {fileID: 1443587347}
+  m_Father: {fileID: 408012652}
+  m_LocalEulerAnglesHint: {x: 0, y: -65.833, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -23, y: -1.64}
+  m_SizeDelta: {x: 20, y: 5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &5823909261234297946 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
@@ -100732,6 +102069,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
   m_PrefabInstance: {fileID: 1454501156}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6302005135496882675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600445478577266747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
+  inventoryDataList:
+  - inventoryId: 
+    displayName: 
+    address: 2 Chip St
+    inventoryType: 1
+    width: 8
+    height: 6
+    allowItemPlacement: 1
+    allowItemSpawns: 1
+    showPlacementPreviews: 1
+    items: []
+  ignoreForValidation: 0
+--- !u!114 &6302005137230075617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600445478970449705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c177f889e82a99749b62803ea267303a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryDataHolder
+  inventoryDataList:
+  - inventoryId: 
+    displayName: 
+    address: 5 Breakneck Hill Rd
+    inventoryType: 1
+    width: 8
+    height: 6
+    allowItemPlacement: 1
+    allowItemSpawns: 1
+    showPlacementPreviews: 1
+    items: []
+  ignoreForValidation: 0
+--- !u!4 &6386837298005347289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2744017983906846946}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5823909260552977025}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6386837298077681182
 Transform:
   m_ObjectHideFlags: 0
@@ -100746,6 +102146,21 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5823909260440893254}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &6386837299742684363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2744017982442088432}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5823909261233456531}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6600445478513389052
 GameObject:
@@ -100763,11 +102178,278 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6681814991796874577 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5823909261113201474, guid: 55df464c4fa5ee549a1baf78130acfcd, type: 3}
-  m_PrefabInstance: {fileID: 120526545}
+--- !u!1 &6600445478577266747
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5823909260552977025}
+  - component: {fileID: 6302005135496882675}
+  - component: {fileID: 545134393333160141}
+  - component: {fileID: 3596532406746987904}
+  - component: {fileID: 1321156805308086056}
+  - component: {fileID: 3758818691034697618}
+  - component: {fileID: 6600445478577266749}
+  - component: {fileID: 6600445478577266748}
+  m_Layer: 0
+  m_Name: Mail Box Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &6600445478577266748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600445478577266747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshPro
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 2
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 0
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 9.045966, y: -6.576128, z: 8.810107, w: 7.9170294}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 6600445478577266749}
+  m_maskType: 0
+--- !u!23 &6600445478577266749
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600445478577266747}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6600445478970449705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5823909261233456531}
+  - component: {fileID: 6302005137230075617}
+  - component: {fileID: 545134393741223903}
+  - component: {fileID: 3596532407159095954}
+  - component: {fileID: 1321156804625418298}
+  - component: {fileID: 6600445478970449707}
+  - component: {fileID: 6600445478970449706}
+  m_Layer: 0
+  m_Name: Mail Box Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &6600445478970449706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600445478970449705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 128433075f3775b47828fa3bb0a9095c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MailboxAddressLabel
+  inventoryDataHolder: {fileID: 6302005137230075617}
+  addressText: {fileID: 1443587348}
+  addressBook: {fileID: 11400000, guid: 7da85f49d6873b04286b5b5a7b9e564a, type: 2}
+  prefix: '            '
+  suffix: 
+  keepOnlyNumericDigits: 1
+--- !u!23 &6600445478970449707
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600445478970449705}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &8103583160647978369
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2744017982442088432}
+  m_Mesh: {fileID: -2432090755550338912, guid: a087d7aa240eb3842a0bb6dd8a6b25ea, type: 3}
+--- !u!33 &8103583161330512531
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2744017983906846946}
+  m_Mesh: {fileID: -2432090755550338912, guid: a087d7aa240eb3842a0bb6dd8a6b25ea, type: 3}
 --- !u!33 &8103583161365102420
 MeshFilter:
   m_ObjectHideFlags: 0
