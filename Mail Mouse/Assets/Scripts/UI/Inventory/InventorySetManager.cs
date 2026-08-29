@@ -91,7 +91,7 @@ public class InventorySetManager : MonoBehaviour
 
             if (inventoryData != null)
             {
-                Debug.Log($"[InventorySetManager] Rebinding member index {index} to inventory data '{inventoryData.inventoryId}' (set '{setDefinition.name}')", this);
+                Debug.Log($"[InventorySetManager] Binding UI inventory | inventoryId={inventoryData.inventoryId} | dataHolderObject={inventoryDataHolderName(inventoryData)} | displayName={inventoryData.displayName} | targetInstance={inventoryInstance.name} | set={setDefinition.name} | inventoryType={inventoryData.inventoryType}", this);
                 inventoryInstance.RebindInventoryData(inventoryData);
                 if (spawner != null)
                     spawner.LoadInventoryData(inventoryInstance, inventoryData);
@@ -228,6 +228,25 @@ public class InventorySetManager : MonoBehaviour
     private bool IsSpawnLimitReached()
     {
         return totalSpawnedInstances >= maxSpawnedInventoryInstances;
+    }
+
+    private static string inventoryDataHolderName(InventoryData inventoryData)
+    {
+        if (inventoryData == null)
+            return "null";
+
+        InventoryDataHolder[] holders = FindObjectsByType<InventoryDataHolder>(FindObjectsSortMode.None);
+        foreach (InventoryDataHolder holder in holders)
+        {
+            if (holder == null)
+                continue;
+
+            List<InventoryData> dataList = holder.GetAllInventoryData();
+            if (dataList != null && dataList.Contains(inventoryData))
+                return holder.gameObject.name;
+        }
+
+        return "Unknown";
     }
 
     /// <summary>

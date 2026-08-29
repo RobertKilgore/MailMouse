@@ -293,7 +293,12 @@ public class InventoryDragController : MonoBehaviour
 
         if (sourceInventory != null)
         {
-            sourceInventory.Grid.PlaceItem(originalGridPos, heldItem);
+            bool reinserted = sourceInventory.Grid.PlaceItem(originalGridPos, heldItem, 0, false);
+            if (!reinserted)
+            {
+                DebugLogWarning($"ReturnItem: failed to reinsert {heldItem.name} into source inventory '{sourceInventory.InventoryId}' even with placement permission ignored.");
+            }
+
             heldItem.RectTransform.SetParent(sourceInventory.ItemLayer, false);
             heldItem.RectTransform.localPosition = originalLocalPos;
             heldItem.SetBackgroundVisible(true);

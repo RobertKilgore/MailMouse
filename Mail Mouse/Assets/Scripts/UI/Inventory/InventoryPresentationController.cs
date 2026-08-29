@@ -49,12 +49,12 @@ public class InventoryPresentationController : MonoBehaviour
             return false;
         }
 
-        List<InventoryData> orderedData = BuildOrderedData(inventoryType, inventoryData);
-        if (ShouldIncludePlayerInventory(inventoryType) && GetPlayerInventoryData() == null)
+        if (ShouldIncludePlayerInventory(inventoryType))
         {
-            Debug.LogWarning("InventoryPresentationController: Player inventory data is missing. The inventory UI may open without the player inventory.");
+            EnsurePlayerInventoryDataHolder();
         }
 
+        List<InventoryData> orderedData = BuildOrderedData(inventoryType, inventoryData);
         setManager.OpenInventorySet(setDefinition, orderedData);
         return true;
     }
@@ -95,11 +95,63 @@ public class InventoryPresentationController : MonoBehaviour
         return inventoryType == InventoryType.Player || inventoryType == InventoryType.Mailbox || inventoryType == InventoryType.PostOffice;
     }
 
+    private void EnsurePlayerInventoryDataHolder()
+    {
+        if (GetPlayerInventoryData() != null)
+            return;
+
+        Debug.LogWarning("InventoryPresentationController: Player inventory data is missing. Looking for a player inventory data holder in the scene.");
+
+        InventoryDataHolder fallbackHolder = FindPlayerInventoryDataHolder();
+        if (fallbackHolder != null)
+        {
+            playerInventoryDataHolder = fallbackHolder;
+            Debug.LogWarning($"InventoryPresentationController: Found fallback player inventory holder '{fallbackHolder.name}'.", this);
+            return;
+        }
+
+        Debug.LogWarning("InventoryPresentationController: No player inventory data holder was found in the scene.");
+    }
+
     private InventoryData GetPlayerInventoryData()
     {
         if (playerInventoryDataHolder == null)
             return null;
-        return playerInventoryDataHolder.GetPrimaryInventoryData();
+
+        InventoryData primaryInventory = playerInventoryDataHolder.GetPrimaryInventoryData();
+        if (primaryInventory != null)
+            return primaryInventory;
+
+        InventoryDataHolder fallbackHolder = FindPlayerInventoryDataHolder();
+        if (fallbackHolder != null)
+        {
+            playerInventoryDataHolder = fallbackHolder;
+            return playerInventoryDataHolder.GetPrimaryInventoryData();
+        }
+
+        return null;
+    }
+
+    private InventoryDataHolder FindPlayerInventoryDataHolder()
+    {
+        InventoryDataHolder[] holders = FindObjectsByType<InventoryDataHolder>(FindObjectsSortMode.None);
+        foreach (InventoryDataHolder holder in holders)
+        {
+            if (holder == null)
+                continue;
+
+            List<InventoryData> inventoryDataList = holder.GetAllInventoryData();
+            if (inventoryDataList == null)
+                continue;
+
+            foreach (InventoryData inventoryData in inventoryDataList)
+            {
+                if (inventoryData != null && inventoryData.inventoryType == InventoryType.Player)
+                    return holder;
+            }
+        }
+
+        return null;
     }
 
     private void AddPlayerInventoryData(List<InventoryData> orderedData)

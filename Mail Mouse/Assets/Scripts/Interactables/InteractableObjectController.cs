@@ -33,6 +33,9 @@ public class InteractableObjectController : MonoBehaviour
     {
         if (inputActions?.Player.Interact2.WasPressedThisFrame() == true)
         {
+            if (TryCloseOpenInventoryMenu())
+                return;
+
             TryInteractWithCurrentObject();
             return;
         }
@@ -98,6 +101,26 @@ public class InteractableObjectController : MonoBehaviour
             return;
 
         currentInteractable.Interact();
+    }
+
+    private bool TryCloseOpenInventoryMenu()
+    {
+        if (MenuManager.Instance == null)
+            return false;
+
+        foreach (MenuController menu in MenuManager.Instance.GetActiveMenus())
+        {
+            if (menu == null || !menu.IsOpen)
+                continue;
+
+            if (menu.gameObject.name.ToLower().Contains("inventory"))
+            {
+                menu.Close();
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void ClearCurrentHighlight()

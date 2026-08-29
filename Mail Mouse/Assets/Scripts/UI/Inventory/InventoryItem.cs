@@ -99,7 +99,7 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         // Try to find owner inventory in case it was reparented after Awake
         InventoryInstance newOwner = GetComponentInParent<InventoryInstance>();
-        if (newOwner != ownerInventory)
+        if (newOwner != null && newOwner != ownerInventory)
         {
             ownerInventory = newOwner;
             if (ownerInventory != null && rectTransform != null)
@@ -133,6 +133,9 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     /// </summary>
     private void UpdateRectSize()
     {
+        if (ownerInventory == null || ownerInventory.Grid == null || rectTransform == null)
+            return;
+
         Vector2 cell = ownerInventory.Grid.CellSize;
         Vector2 spacing = ownerInventory.Grid.Spacing;
 
