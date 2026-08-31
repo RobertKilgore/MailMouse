@@ -153,12 +153,12 @@ public class InventoryInstance : MonoBehaviour
     /// <summary>
     /// Writes the current grid state back into the bound inventory data object.
     /// </summary>
-    public void SaveInventoryData()
+    public void SaveInventoryData(bool force = false)
     {
         if (grid == null || inventoryData == null)
             return;
 
-        if (!gameObject.activeInHierarchy || !enabled)
+        if (!force && (!gameObject.activeInHierarchy || !enabled))
             return;
 
         inventoryData.items = new List<InventoryItemData>(grid.GetAllItemData());

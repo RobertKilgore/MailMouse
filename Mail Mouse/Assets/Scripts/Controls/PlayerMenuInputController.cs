@@ -25,6 +25,9 @@ public class PlayerMenuInputController : MonoBehaviour
 
         if (pauseMenuHandler == null)
             pauseMenuHandler = FindFirstObjectByType<PauseMenuHandler>(FindObjectsInactive.Include);
+
+        if (inventoryMenuController != null)
+            inventoryMenuController.Closed += HandleInventoryMenuClosed;
     }
 
     private void OnEnable()
@@ -120,6 +123,11 @@ public class PlayerMenuInputController : MonoBehaviour
 
         if (IsInventoryMenuOpen())
         {
+            if (InventoryDragController.Instance != null && InventoryDragController.Instance.IsHoldingItem)
+            {
+                InventoryDragController.Instance.ForceReturnHeldItem();
+            }
+
             if (inventoryType == InventoryType.Player)
             {
                 AudioManager.PlayInventoryCloseSound();
@@ -141,6 +149,14 @@ public class PlayerMenuInputController : MonoBehaviour
         }
 
         OpenInventorySet(inventoryType, inventoryData);
+    }
+
+    private void HandleInventoryMenuClosed(MenuController menu)
+    {
+        if (menu == null || menu != inventoryMenuController)
+            return;
+
+        InventorySetManager.Instance?.CloseInventorySet();
     }
 
     public void OpenInventorySet(InventoryType inventoryType, params InventoryData[] inventoryData)

@@ -111,6 +111,7 @@ public class InventorySetManager : MonoBehaviour
         }
 
         transform.SetAsLastSibling();
+        RefreshDeliveryListPanels();
         Debug.Log($"Opened inventory set '{setDefinition.name}'", this);
     }
 
@@ -124,22 +125,17 @@ public class InventorySetManager : MonoBehaviour
         if (activeSet == null)
             return;
 
-        // Ensure any dragged item is returned to its origin before we close.
-        InventoryDragController.Instance?.ForceReturnHeldItem();
+        if (InventoryDragController.Instance != null && InventoryDragController.Instance.IsHoldingItem)
+        {
+            InventoryDragController.Instance.ForceReturnHeldItem();
+        }
 
         foreach (InventoryInstance instance in activeInstances)
         {
             if (instance == null)
                 continue;
 
-            // Hide UI first
             instance.gameObject.SetActive(false);
-
-            // Release any binding to external InventoryData so clearing the UI
-            // does not write empty state back into mailbox/player data objects.
-            instance.RebindInventoryData(null);
-
-            // Return to the pool for reuse
             ReturnInstanceToPool(instance);
         }
 
@@ -147,7 +143,18 @@ public class InventorySetManager : MonoBehaviour
         activeInstances.Clear();
         activeSet = null;
 
+        RefreshDeliveryListPanels();
         Debug.Log($"Closed inventory set '{closedSetName}'", this);
+    }
+
+    private void RefreshDeliveryListPanels()
+    {
+        DeliveryListController[] deliveryLists = Resources.FindObjectsOfTypeAll<DeliveryListController>();
+        foreach (DeliveryListController deliveryList in deliveryLists)
+        {
+            if (deliveryList != null)
+                deliveryList.RefreshFromPlayerInventory();
+        }
     }
 
     private InventoryInstance ResolveInventoryInstance(InventorySetMember member)

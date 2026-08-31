@@ -54,6 +54,81 @@ public class InventoryDataHolder : MonoBehaviour
     }
 
     /// <summary>
+    /// Returns every package item currently stored across all inventory entries.
+    /// </summary>
+    public List<InventoryItemData> GetAllPackages()
+    {
+        List<InventoryItemData> packages = new List<InventoryItemData>();
+        if (inventoryDataList == null)
+            return packages;
+
+        foreach (InventoryData inventory in inventoryDataList)
+        {
+            if (inventory == null || inventory.items == null)
+                continue;
+
+            foreach (InventoryItemData item in inventory.items)
+            {
+                if (item != null)
+                    packages.Add(item);
+            }
+        }
+
+        return packages;
+    }
+
+    /// <summary>
+    /// Returns every unique package delivery address with the number of packages at that address,
+    /// sorted by package count descending and then alphabetically by address.
+    /// </summary>
+    public List<KeyValuePair<string, int>> GetAllPackageDeliveryAddressCounts()
+    {
+        Dictionary<string, int> addressCounts = new Dictionary<string, int>(System.StringComparer.OrdinalIgnoreCase);
+
+        foreach (InventoryItemData package in GetAllPackages())
+        {
+            if (package == null || package.mailData == null)
+                continue;
+
+            string address = package.mailData.address;
+            if (string.IsNullOrWhiteSpace(address))
+                continue;
+
+            string trimmedAddress = address.Trim();
+            if (!addressCounts.TryGetValue(trimmedAddress, out int count))
+                addressCounts[trimmedAddress] = 0;
+
+            addressCounts[trimmedAddress] = count + 1;
+        }
+
+        List<KeyValuePair<string, int>> results = new List<KeyValuePair<string, int>>(addressCounts);
+        results.Sort((left, right) =>
+        {
+            int countComparison = right.Value.CompareTo(left.Value);
+            if (countComparison != 0)
+                return countComparison;
+
+            return string.Compare(left.Key, right.Key, System.StringComparison.OrdinalIgnoreCase);
+        });
+
+        return results;
+    }
+
+    /// <summary>
+    /// Returns the unique delivery addresses only, ordered by package count descending and then alphabetically.
+    /// </summary>
+    public List<string> GetAllPackageDeliveryAddresses()
+    {
+        List<string> addresses = new List<string>();
+        foreach (KeyValuePair<string, int> addressCount in GetAllPackageDeliveryAddressCounts())
+        {
+            addresses.Add(addressCount.Key);
+        }
+
+        return addresses;
+    }
+
+    /// <summary>
     /// Spawns a random item into the primary inventory data entry.
     /// </summary>
     public bool SpawnRandomItemIntoFirstInventory()
