@@ -1,9 +1,8 @@
 import os
-from datetime import datetime
-from typing import Optional
 
 from sqlalchemy import Boolean, DateTime, String, create_engine, select
-from sqlalchemy.orm import DeclarativeBase, Mapped, Session, mapped_column
+from sqlalchemy import Integer
+from sqlalchemy.orm import DeclarativeBase, Session, mapped_column
 
 
 def database_url() -> str:
@@ -22,11 +21,11 @@ class Base(DeclarativeBase):
 class AccessCode(Base):
     __tablename__ = "access_codes"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
-    code: Mapped[str] = mapped_column(String(128), index=True)
-    product_id: Mapped[str] = mapped_column(String(128), index=True)
-    active: Mapped[bool] = mapped_column(Boolean, default=True)
-    expires_at: Mapped[Optional[datetime]] = mapped_column(DateTime(timezone=True), nullable=True)
+    id = mapped_column(Integer, primary_key=True)
+    code = mapped_column(String(128), index=True)
+    product_id = mapped_column(String(128), index=True)
+    active = mapped_column(Boolean, default=True)
+    expires_at = mapped_column(DateTime(timezone=True), nullable=True)
 
 
 engine = create_engine(database_url(), pool_pre_ping=True)
