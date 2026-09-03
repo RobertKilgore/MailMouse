@@ -4,10 +4,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
-try:
-    from .database import find_access_code, initialize_database
-except ImportError:
-    from database import find_access_code, initialize_database
+from database import find_access_code, initialize_database
 
 app = FastAPI(title="Mail Mouse Access API", version="1.0.0")
 

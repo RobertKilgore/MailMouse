@@ -1,9 +1,6 @@
 from datetime import datetime, timedelta, timezone
 
-try:
-    from .database import AccessCode, Session, engine, initialize_database
-except ImportError:
-    from database import AccessCode, Session, engine, initialize_database
+from database import AccessCode, Session, engine, initialize_database
 
 
 initialize_database()

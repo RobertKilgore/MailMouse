@@ -6,12 +6,8 @@ from fastapi.testclient import TestClient
 
 from sqlalchemy import delete
 
-try:
-    from .app import app
-    from .database import AccessCode, Session, engine, initialize_database
-except ImportError:
-    from app import app
-    from database import AccessCode, Session, engine, initialize_database
+from app import app
+from database import AccessCode, Session, engine, initialize_database
 
 initialize_database()
 with Session(engine) as session:

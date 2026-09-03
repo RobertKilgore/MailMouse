@@ -2,10 +2,7 @@ import argparse
 from datetime import datetime
 from typing import Optional
 
-try:
-    from .database import AccessCode, Session, engine, initialize_database
-except ImportError:
-    from database import AccessCode, Session, engine, initialize_database
+from database import AccessCode, Session, engine, initialize_database
 
 
 def add_code(code: str, product_id: str, expires_at: Optional[datetime]) -> None:
