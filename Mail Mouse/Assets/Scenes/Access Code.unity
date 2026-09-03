@@ -657,8 +657,8 @@ RectTransform:
   m_Children:
   - {fileID: 75195905}
   - {fileID: 1766828530}
-  - {fileID: 2139226019}
   - {fileID: 845680507}
+  - {fileID: 2139226019}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -680,6 +680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AccessCodePrompt
   accessCodeInput: {fileID: 1766828531}
   messageText: {fileID: 2139226020}
+  submitButton: {fileID: 845680508}
   codeRequiredMessage: Enter an access code.
   checkingMessage: Checking access code...
   codeNotFoundMessage: That access code does not exist.
@@ -1195,7 +1196,7 @@ GameObject:
   - component: {fileID: 1614379577}
   - component: {fileID: 1614379576}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ACCESSCONTROLMANAGER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

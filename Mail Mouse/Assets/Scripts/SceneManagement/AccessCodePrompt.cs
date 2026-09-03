@@ -7,6 +7,7 @@ public class AccessCodePrompt : MonoBehaviour
     [Header("Scene UI")]
     [SerializeField] private TMP_InputField accessCodeInput;
     [SerializeField] private TMP_Text messageText;
+    [SerializeField] private Button submitButton;
 
     [Header("Messages")]
     [SerializeField] private string codeRequiredMessage = "Enter an access code.";
@@ -15,6 +16,23 @@ public class AccessCodePrompt : MonoBehaviour
     [SerializeField] private string codeDeactivatedMessage = "That access code has expired.";
     [SerializeField] private string invalidCodeMessage = "That access code is not valid.";
     [SerializeField] private string connectionErrorMessage = "Could not verify the access code. Check your connection and try again.";
+
+    private void Awake()
+    {
+        SceneFlowManager.GetOrCreateInstance();
+    }
+
+    public void ShowConnecting()
+    {
+        SetInputVisible(false);
+        ShowMessage(checkingMessage);
+    }
+
+    public void ShowEnterCode()
+    {
+        SetInputVisible(true);
+        ShowMessage(codeRequiredMessage);
+    }
 
     public void SubmitAccessCode()
     {
@@ -33,6 +51,15 @@ public class AccessCodePrompt : MonoBehaviour
 
         ShowMessage(checkingMessage);
         AccessControlManager.Instance.SubmitAccessCode(code, HandleValidationResult);
+    }
+
+    private void SetInputVisible(bool visible)
+    {
+        if (accessCodeInput != null)
+            accessCodeInput.gameObject.SetActive(visible);
+
+        if (submitButton != null)
+            submitButton.gameObject.SetActive(visible);
     }
 
     private void HandleValidationResult(AccessCodeValidationResult result)

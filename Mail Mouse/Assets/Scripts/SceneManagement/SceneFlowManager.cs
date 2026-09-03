@@ -50,7 +50,12 @@ public class SceneFlowManager : MonoBehaviour
             return;
         }
 
-        AccessControlManager.GetOrCreateInstance().ValidateAtBoot(HandleBootAccessCheck);
+        if (SceneManager.GetActiveScene().name == accessCodeSceneName)
+        {
+            AccessCodePrompt prompt = FindFirstObjectByType<AccessCodePrompt>(FindObjectsInactive.Include);
+            prompt?.ShowConnecting();
+            AccessControlManager.GetOrCreateInstance().ValidateAtBoot(HandleBootAccessCheck);
+        }
     }
 
     private void OnEnable()
@@ -75,8 +80,19 @@ public class SceneFlowManager : MonoBehaviour
 
     private void HandleBootAccessCheck(bool accessGranted)
     {
-        if (!accessGranted && SceneManager.GetActiveScene().name != accessCodeSceneName)
+        if (accessGranted)
+        {
+            LoadStartScene();
+            return;
+        }
+
+        if (SceneManager.GetActiveScene().name != accessCodeSceneName)
+        {
             LoadScene(accessCodeSceneName);
+            return;
+        }
+
+        FindFirstObjectByType<AccessCodePrompt>(FindObjectsInactive.Include)?.ShowEnterCode();
     }
 
     public void LoadEndScene()

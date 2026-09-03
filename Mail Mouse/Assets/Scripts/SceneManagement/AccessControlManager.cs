@@ -22,11 +22,12 @@ public class AccessControlManager : MonoBehaviour
     [Tooltip("POST endpoint that accepts { accessCode, productId, buildVersion } and returns { valid: true }.")]
     [SerializeField] private string validationUrl = "";
     [SerializeField] private string productId = "mail-mouse";
-    [SerializeField] private float requestTimeoutSeconds = 10f;
+    [SerializeField] private float requestTimeoutSeconds = 60f;
 
     private const string AccessCodeFileName = "access-code.json";
     private bool isChecking;
     private bool accessGranted;
+    private bool configurationLoaded;
 
     private string AccessCodeFilePath => Path.Combine(Application.persistentDataPath, AccessCodeFileName);
 
@@ -63,22 +64,35 @@ public class AccessControlManager : MonoBehaviour
 
     private void LoadConfiguration()
     {
+        if (configurationLoaded)
+            return;
+
+        configurationLoaded = true;
         TextAsset configurationAsset = Resources.Load<TextAsset>("access-control-config");
+        if (configurationAsset == null)
+            configurationAsset = Resources.Load<TextAsset>("access-control-config.json");
+
         if (configurationAsset == null || string.IsNullOrWhiteSpace(configurationAsset.text))
         {
-            Debug.LogError("AccessControlManager: Resources/access-control-config.json was not found or is empty.");
+            Debug.LogError("AccessControlManager: could not load Resources/access-control-config.json. Confirm it is inside an Assets/Resources folder and included in the current build.");
             return;
         }
 
         try
         {
+            Debug.Log($"AccessControlManager: reading access-control-config.json: {configurationAsset.text}");
             AccessControlConfiguration configuration = JsonUtility.FromJson<AccessControlConfiguration>(configurationAsset.text);
-            if (configuration != null)
+            if (configuration == null || string.IsNullOrWhiteSpace(configuration.validationUrl))
             {
-                validationUrl = configuration.validationUrl;
-                productId = string.IsNullOrWhiteSpace(configuration.productId) ? productId : configuration.productId;
-                Debug.Log($"AccessControlManager: loaded validation endpoint '{validationUrl}'.");
+                Debug.LogError("AccessControlManager: access-control-config.json loaded, but validationUrl is missing or empty.");
+                return;
             }
+
+            validationUrl = configuration.validationUrl.Trim();
+            productId = string.IsNullOrWhiteSpace(configuration.productId) ? productId : configuration.productId.Trim();
+            if (configuration.requestTimeoutSeconds > 0f)
+                requestTimeoutSeconds = configuration.requestTimeoutSeconds;
+            Debug.Log($"AccessControlManager: loaded validation endpoint '{validationUrl}'.");
         }
         catch (Exception exception)
         {
@@ -88,6 +102,8 @@ public class AccessControlManager : MonoBehaviour
 
     public void ValidateAtBoot(Action<bool> result)
     {
+        LoadConfiguration();
+
         if (accessGranted)
         {
             result?.Invoke(true);
@@ -99,6 +115,8 @@ public class AccessControlManager : MonoBehaviour
 
     public void SubmitAccessCode(string code, Action<AccessCodeValidationResult> result = null)
     {
+        LoadConfiguration();
+
         if (isChecking)
             return;
 
@@ -276,5 +294,6 @@ public class AccessControlManager : MonoBehaviour
     {
         public string validationUrl;
         public string productId;
+        public float requestTimeoutSeconds;
     }
 }
