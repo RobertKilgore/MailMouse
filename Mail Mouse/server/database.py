@@ -28,7 +28,12 @@ class AccessCode(Base):
     expires_at = mapped_column(DateTime(timezone=True), nullable=True)
 
 
-engine = create_engine(database_url(), pool_pre_ping=True)
+configured_database_url = database_url()
+engine = create_engine(
+    configured_database_url,
+    pool_pre_ping=True,
+    connect_args={"connect_timeout": 10} if configured_database_url.startswith("postgresql+") else {},
+)
 
 
 def initialize_database() -> None:

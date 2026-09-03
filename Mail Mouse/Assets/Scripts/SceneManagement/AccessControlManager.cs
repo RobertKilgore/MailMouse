@@ -65,7 +65,10 @@ public class AccessControlManager : MonoBehaviour
     {
         TextAsset configurationAsset = Resources.Load<TextAsset>("access-control-config");
         if (configurationAsset == null || string.IsNullOrWhiteSpace(configurationAsset.text))
+        {
+            Debug.LogError("AccessControlManager: Resources/access-control-config.json was not found or is empty.");
             return;
+        }
 
         try
         {
@@ -74,6 +77,7 @@ public class AccessControlManager : MonoBehaviour
             {
                 validationUrl = configuration.validationUrl;
                 productId = string.IsNullOrWhiteSpace(configuration.productId) ? productId : configuration.productId;
+                Debug.Log($"AccessControlManager: loaded validation endpoint '{validationUrl}'.");
             }
         }
         catch (Exception exception)

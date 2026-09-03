@@ -51,6 +51,8 @@ code, product_id, active, expires_at
 
 For hosted deployment, set `DATABASE_URL` to the PostgreSQL connection string supplied by your database provider. Do not use `codes.json` in production.
 
+For Render connecting to Supabase, use Supabase's **Session Pooler** connection string rather than the direct database connection string. The direct hostname may resolve to IPv6, which can produce `Network is unreachable` on Render. In Supabase, open **Connect**, choose **Session pooler**, select URI format, and copy that URL into Render's `DATABASE_URL` environment variable. It normally uses a host containing `.pooler.supabase.com`.
+
 For Render, set the service root directory to `server`, set the build command to `pip install -r requirements.txt`, and set the start command to:
 
 ```text

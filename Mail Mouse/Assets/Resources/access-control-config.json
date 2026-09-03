@@ -1,4 +1,4 @@
 {
-  "validationUrl": "http://localhost:8000/api/validate-access",
+  "validationUrl": "https://mailmouse-access-code.onrender.com/api/validate-access",
   "productId": "mail-mouse"
 }
