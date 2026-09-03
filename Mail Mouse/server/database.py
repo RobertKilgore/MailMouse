@@ -1,5 +1,6 @@
 import os
 from datetime import datetime
+from typing import Optional
 
 from sqlalchemy import Boolean, DateTime, String, create_engine, select
 from sqlalchemy.orm import DeclarativeBase, Mapped, Session, mapped_column
@@ -25,7 +26,7 @@ class AccessCode(Base):
     code: Mapped[str] = mapped_column(String(128), index=True)
     product_id: Mapped[str] = mapped_column(String(128), index=True)
     active: Mapped[bool] = mapped_column(Boolean, default=True)
-    expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    expires_at: Mapped[Optional[datetime]] = mapped_column(DateTime(timezone=True), nullable=True)
 
 
 engine = create_engine(database_url(), pool_pre_ping=True)

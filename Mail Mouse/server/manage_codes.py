@@ -1,5 +1,6 @@
 import argparse
 from datetime import datetime
+from typing import Optional
 
 try:
     from .database import AccessCode, Session, engine, initialize_database
@@ -7,7 +8,7 @@ except ImportError:
     from database import AccessCode, Session, engine, initialize_database
 
 
-def add_code(code: str, product_id: str, expires_at: datetime | None) -> None:
+def add_code(code: str, product_id: str, expires_at: Optional[datetime]) -> None:
     with Session(engine) as session:
         existing = session.query(AccessCode).filter_by(code=code, product_id=product_id).first()
         if existing is not None:
@@ -34,7 +35,7 @@ def set_active(code: str, product_id: str, active: bool) -> None:
         session.commit()
 
 
-def list_codes(product_id: str | None) -> None:
+def list_codes(product_id: Optional[str]) -> None:
     with Session(engine) as session:
         query = session.query(AccessCode).order_by(AccessCode.product_id, AccessCode.code)
         if product_id:
@@ -46,7 +47,7 @@ def list_codes(product_id: str | None) -> None:
             print(f"{access_code.code} | {access_code.product_id} | {state} | expires: {expiration}")
 
 
-def parse_expiration(value: str | None) -> datetime | None:
+def parse_expiration(value: Optional[str]) -> Optional[datetime]:
     if value is None:
         return None
     try:
