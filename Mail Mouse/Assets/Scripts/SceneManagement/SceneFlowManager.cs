@@ -19,6 +19,9 @@ public class SceneFlowManager : MonoBehaviour
     [Tooltip("Scene name used for the end game screen.")]
     public string endSceneName = "End Menu";
 
+    [Tooltip("Scene shown when the saved access code is missing or invalid.")]
+    public string accessCodeSceneName = "Access Code";
+
     public static SceneFlowManager GetOrCreateInstance()
     {
         if (Instance != null)
@@ -46,6 +49,8 @@ public class SceneFlowManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        AccessControlManager.GetOrCreateInstance().ValidateAtBoot(HandleBootAccessCheck);
     }
 
     private void OnEnable()
@@ -66,6 +71,12 @@ public class SceneFlowManager : MonoBehaviour
     public void LoadGameplayScene()
     {
         LoadScene(gameplaySceneName);
+    }
+
+    private void HandleBootAccessCheck(bool accessGranted)
+    {
+        if (!accessGranted && SceneManager.GetActiveScene().name != accessCodeSceneName)
+            LoadScene(accessCodeSceneName);
     }
 
     public void LoadEndScene()
@@ -106,6 +117,11 @@ public class SceneFlowManager : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
         }
     }
 
