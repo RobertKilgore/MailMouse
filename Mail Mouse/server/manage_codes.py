@@ -1,5 +1,6 @@
 import argparse
 from datetime import datetime
+import secrets
 from typing import Optional
 
 from database import AccessCode, Session, engine, initialize_database
@@ -20,6 +21,41 @@ def add_code(code: str, product_id: str, expires_at: Optional[datetime]) -> None
             )
         )
         session.commit()
+
+
+def generate_codes(count: int, length: int, product_id: str, expires_at: Optional[datetime]) -> None:
+    if count < 1:
+        raise SystemExit("count must be at least 1.")
+    if length < 2 or length % 2 != 0:
+        raise SystemExit("length must be an even number of at least 2 characters.")
+
+    with Session(engine) as session:
+        generated_codes = []
+        existing_codes = {
+            access_code.code.casefold()
+            for access_code in session.query(AccessCode).filter_by(product_id=product_id).all()
+        }
+
+        while len(generated_codes) < count:
+            code = secrets.token_hex(length // 2).upper()
+            if code.casefold() in existing_codes:
+                continue
+
+            existing_codes.add(code.casefold())
+            generated_codes.append(code)
+            session.add(
+                AccessCode(
+                    code=code.casefold(),
+                    product_id=product_id,
+                    active=True,
+                    expires_at=expires_at,
+                )
+            )
+
+        session.commit()
+
+    for code in generated_codes:
+        print(code)
 
 
 def set_active(code: str, product_id: str, active: bool) -> None:
@@ -62,6 +98,12 @@ def main() -> None:
     add_parser.add_argument("--product-id", default="mail-mouse")
     add_parser.add_argument("--expires-at")
 
+    generate_parser = subparsers.add_parser("generate")
+    generate_parser.add_argument("--count", type=int, default=1)
+    generate_parser.add_argument("--length", type=int, default=12)
+    generate_parser.add_argument("--product-id", default="mail-mouse")
+    generate_parser.add_argument("--expires-at")
+
     for command, active in (("deactivate", False), ("reactivate", True)):
         command_parser = subparsers.add_parser(command)
         command_parser.set_defaults(active=active)
@@ -77,6 +119,8 @@ def main() -> None:
     if args.command == "add":
         add_code(args.code.strip().casefold(), args.product_id.strip().casefold(), parse_expiration(args.expires_at))
         print("Access code added.")
+    elif args.command == "generate":
+        generate_codes(args.count, args.length, args.product_id.strip().casefold(), parse_expiration(args.expires_at))
     elif args.command in ("deactivate", "reactivate"):
         set_active(args.code.strip().casefold(), args.product_id.strip().casefold(), args.active)
         print(f"Access code {args.command}d.")

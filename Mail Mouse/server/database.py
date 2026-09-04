@@ -1,6 +1,6 @@
 import os
 
-from sqlalchemy import Boolean, DateTime, String, create_engine, select
+from sqlalchemy import Boolean, DateTime, String, create_engine, func, select
 from sqlalchemy import Integer
 from sqlalchemy.orm import DeclarativeBase, Session, mapped_column
 
@@ -43,7 +43,7 @@ def initialize_database() -> None:
 def find_access_code(code: str, product_id: str) -> AccessCode | None:
     with Session(engine) as session:
         statement = select(AccessCode).where(
-            AccessCode.code == code,
-            AccessCode.product_id == product_id,
+            func.lower(AccessCode.code) == code.casefold(),
+            func.lower(AccessCode.product_id) == product_id.casefold(),
         )
         return session.scalar(statement)

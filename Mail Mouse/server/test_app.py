@@ -36,6 +36,14 @@ def test_valid_code():
     assert response.json() == {"valid": True, "status": "valid"}
 
 
+def test_code_matching_is_case_insensitive():
+    request = {**REQUEST, "accessCode": "DeMo-VaLiD-CoDe"}
+    response = client.post("/api/validate-access", json=request)
+
+    assert response.status_code == 200
+    assert response.json() == {"valid": True, "status": "valid"}
+
+
 def test_unknown_code():
     request = {**REQUEST, "accessCode": "DOES-NOT-EXIST"}
     response = client.post("/api/validate-access", json=request)

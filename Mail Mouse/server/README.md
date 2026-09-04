@@ -76,6 +76,14 @@ Add an expiration date:
 .\.venv\Scripts\python.exe server\manage_codes.py add PLAYER-CODE --expires-at 2027-01-31T23:59:59+00:00
 ```
 
+Generate random hexadecimal codes:
+
+```powershell
+.\.venv\Scripts\python.exe server\manage_codes.py generate --count 10 --length 12 --product-id mail-mouse
+```
+
+`--length` is the number of hexadecimal characters and must be even. Generated codes use cryptographically secure randomness, print in uppercase, and are stored case-insensitively. The default generates one 12-character code.
+
 Other commands:
 
 ```powershell
@@ -83,6 +91,12 @@ Other commands:
 .\.venv\Scripts\python.exe server\manage_codes.py deactivate PLAYER-CODE
 .\.venv\Scripts\python.exe server\manage_codes.py reactivate PLAYER-CODE
 ```
+
+## One-click Unity Editor generator
+
+The Unity Editor has an admin-only tool at `Access Control > Generate One Access Code`. It runs the generator locally, inserts one 32-character hexadecimal code into the database, and copies the code to the clipboard. Editor scripts are not included in the shipped game.
+
+Open the tool, paste the private Supabase Session Pooler URL into `Supabase Database URL`, and click `Generate and Add One Code`. The URL is held in the editor window's memory and passed to the generator process; it is not saved in the Unity project. The button is disabled until a URL is entered.
 
 Run these commands from a trusted machine only. Do not add an unauthenticated admin endpoint to the public API.
 
