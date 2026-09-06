@@ -1,0 +1,5 @@
+{
+  "validationUrl": "https://mailmouse-access-code.onrender.com/api/validate-access",
+  "productId": "mail-mouse",
+  "requestTimeoutSeconds": 60
+}

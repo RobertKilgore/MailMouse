@@ -289,28 +289,36 @@ public class InventoryDragController : MonoBehaviour
         if (heldItem == null)
             return;
 
-        heldItem.RotateTo(originalRotation);
+        InventoryInstance returnInventory = sourceInventory;
+        InventoryItem itemToReturn = heldItem;
 
-        if (sourceInventory != null)
+        itemToReturn.RotateTo(originalRotation);
+
+        if (returnInventory != null)
         {
-            bool reinserted = sourceInventory.Grid.PlaceItem(originalGridPos, heldItem, 0, false);
+            itemToReturn.SetOwnerInventory(returnInventory);
+
+            bool reinserted = returnInventory.Grid.PlaceItem(originalGridPos, itemToReturn, 0, false);
             if (!reinserted)
             {
-                DebugLogWarning($"ReturnItem: failed to reinsert {heldItem.name} into source inventory '{sourceInventory.InventoryId}' even with placement permission ignored.");
+                DebugLogWarning($"ReturnItem: failed to reinsert {itemToReturn.name} into source inventory '{returnInventory.InventoryId}' even with placement permission ignored.");
             }
 
-            heldItem.RectTransform.SetParent(sourceInventory.ItemLayer, false);
-            heldItem.RectTransform.localPosition = originalLocalPos;
-            heldItem.SetBackgroundVisible(true);
-            DebugLog($"Returned {heldItem.name} to {sourceInventory.InventoryId}");
+            itemToReturn.RectTransform.SetParent(returnInventory.ItemLayer, false);
+            itemToReturn.RectTransform.localPosition = originalLocalPos;
+            itemToReturn.SetBackgroundVisible(true);
+
+            returnInventory.SaveInventoryData(true);
+            DebugLog($"Returned {itemToReturn.name} to {returnInventory.InventoryId}");
             AudioManager.PlayPackageSound();
         }
         else
         {
-            DebugLogWarning($"Cannot return {heldItem.name}: missing source inventory.");
+            DebugLogWarning($"Cannot return {itemToReturn.name}: missing source inventory.");
         }
 
         heldItem = null;
+        dragging = false;
     }
 
     /// <summary>
@@ -357,7 +365,6 @@ public class InventoryDragController : MonoBehaviour
         if (heldItem == null)
             return;
 
-        // End drag state then return the item to its origin.
         dragging = false;
         ReturnItem();
     }
