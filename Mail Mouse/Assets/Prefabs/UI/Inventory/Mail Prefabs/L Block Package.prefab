@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 122, y: 122}
+  m_SizeDelta: {x: 81, y: 122}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &355919077933505371
 MonoBehaviour:
@@ -58,11 +58,11 @@ MonoBehaviour:
     packageModifier: 
     name: 
   prefabId: 11
-  shapeDefinition: 'X00
+  shapeDefinition: 'X0
 
-    X00
+    X0
 
-    XX0'
+    XX'
   tileColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 0.7019608}
 --- !u!1 &6231234627893425712
 GameObject:
@@ -98,7 +98,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -21.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 73.3, y: 114.77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2587661145546152097

@@ -103495,21 +103495,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 393938618220339551, guid: 992c21b70e348134093e2d357837b373, type: 3}
+      propertyPath: playerInventoryDataHolder
+      value: 
+      objectReference: {fileID: 2141950125}
+    - target: {fileID: 1703069768633704326, guid: 992c21b70e348134093e2d357837b373, type: 3}
+      propertyPath: postOfficeInventorySetDefinition
+      value: 
+      objectReference: {fileID: 11400000, guid: 0b46a5e3b833d5647b2ac0ee9132345c, type: 2}
     - target: {fileID: 2774318988443663716, guid: 992c21b70e348134093e2d357837b373, type: 3}
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 3831363962418966426, guid: 992c21b70e348134093e2d357837b373, type: 3}
-      propertyPath: playerInventoryDataHolder
-      value: 
-      objectReference: {fileID: 2141950125}
     - target: {fileID: 4303003046712961076, guid: 992c21b70e348134093e2d357837b373, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4303003046712961076, guid: 992c21b70e348134093e2d357837b373, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -626
       objectReference: {fileID: 0}
     - target: {fileID: 8362364180827069204, guid: 992c21b70e348134093e2d357837b373, type: 3}
       propertyPath: m_Pivot.x
@@ -104704,7 +104704,7 @@ MonoBehaviour:
   canInteract: 1
   canHighlight: 1
   playerMenuInputController: {fileID: 0}
-  slotCount: 4
+  slotCount: 6
   inventoryDataHolder: {fileID: 0}
 --- !u!65 &8103583161365102422
 BoxCollider:

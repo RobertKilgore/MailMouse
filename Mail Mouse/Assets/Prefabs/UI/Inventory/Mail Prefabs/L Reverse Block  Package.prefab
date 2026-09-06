@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 21.6, y: -0.0000076294}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 71.1, y: 114.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4728520558208392551
@@ -110,7 +110,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 122, y: 122}
+  m_SizeDelta: {x: 81, y: 122}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1955057979611872099
 MonoBehaviour:
@@ -133,9 +133,9 @@ MonoBehaviour:
     packageModifier: 
     name: 
   prefabId: 12
-  shapeDefinition: '00X
+  shapeDefinition: '0X
 
-    00X
+    0X
 
-    0XX'
+    XX'
   tileColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 0.7019608}
