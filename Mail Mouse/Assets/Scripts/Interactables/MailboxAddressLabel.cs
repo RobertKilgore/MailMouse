@@ -16,6 +16,7 @@ public class MailboxAddressLabel : MonoBehaviour
     [Tooltip("Optional shared address catalog. If assigned, this can be used to resolve or format the mailbox address.")]
     [SerializeField] private MailAddressBook addressBook;
 
+
     [Header("Display")]
     [SerializeField] private string prefix = "";
     [SerializeField] private string suffix = "";
@@ -32,6 +33,7 @@ public class MailboxAddressLabel : MonoBehaviour
         TryAutoWire();
         RefreshDisplay();
     }
+
 
     private void OnValidate()
     {

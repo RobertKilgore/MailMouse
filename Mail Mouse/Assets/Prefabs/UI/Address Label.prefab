@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4095646335099141641}
   - component: {fileID: 8374448729412207230}
   - component: {fileID: 7442202888330836046}
-  - component: {fileID: 8670525081340593100}
+  - component: {fileID: -3713548030245775340}
   m_Layer: 0
   m_Name: Address Label
   m_TagString: Untagged
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2
+  m_text: 400
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 1.2629411, y: -0.39461708, z: 6.620453, w: 2.270127}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 8374448729412207230}
   m_maskType: 0
---- !u!114 &8670525081340593100
+--- !u!114 &-3713548030245775340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,4 +194,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26f701a09c080074985bda8c1c90a5f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AddressRotation
-  addressText: {fileID: 3581634927867795502}
