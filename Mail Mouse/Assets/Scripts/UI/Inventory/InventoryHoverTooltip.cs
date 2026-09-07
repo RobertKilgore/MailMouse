@@ -128,8 +128,37 @@ public class InventoryHoverTooltip : MonoBehaviour
 
     private void ShowTooltipInstance(string text)
     {
+        if (canvasGroup == null)
+            canvasGroup = GetComponent<CanvasGroup>() ?? gameObject.AddComponent<CanvasGroup>();
+
+        if (tooltipRootRect == null)
+            tooltipRootRect = GetComponent<RectTransform>() ?? gameObject.AddComponent<RectTransform>();
+
+        if (tooltipCanvas == null)
+        {
+            tooltipCanvas = GetComponentInParent<Canvas>();
+            if (tooltipCanvas == null)
+            {
+                tooltipCanvas = gameObject.GetComponent<Canvas>() ?? gameObject.AddComponent<Canvas>();
+                tooltipCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+
+                if (GetComponent<GraphicRaycaster>() == null)
+                    gameObject.AddComponent<GraphicRaycaster>();
+            }
+
+            tooltipCanvasRect = tooltipCanvas.transform as RectTransform;
+        }
+
+        EnsureTooltipSetup();
+
         if (tooltipText == null || canvasGroup == null || backgroundRect == null)
+        {
+            Debug.LogWarning(
+                $"InventoryHoverTooltip could not show. Missing: " +
+                $"tooltipText={tooltipText == null}, canvasGroup={canvasGroup == null}, backgroundRect={backgroundRect == null}.",
+                this);
             return;
+        }
 
         if (!gameObject.activeSelf)
             gameObject.SetActive(true);
@@ -149,8 +178,6 @@ public class InventoryHoverTooltip : MonoBehaviour
             backgroundRect.anchoredPosition = Vector2.zero;
             backgroundRect.gameObject.SetActive(false);
         }
-
-        gameObject.SetActive(false);
     }
 
     private void BringToFrontInstance()
