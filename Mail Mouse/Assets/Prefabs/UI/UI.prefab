@@ -2887,8 +2887,8 @@ RectTransform:
   m_Children:
   - {fileID: 177791616284868036}
   - {fileID: 2193026503599960783}
-  - {fileID: 8039130867985386650}
   - {fileID: 3182426276631909132}
+  - {fileID: 8039130867985386650}
   - {fileID: 8117142542196733737}
   - {fileID: 9193346740634542210}
   m_Father: {fileID: 0}
@@ -12172,3 +12172,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StreetDisplayManager
   streetNameText: {fileID: 2878937722220298036}
   carTag: Player
+  streetCheckInterval: 0.1

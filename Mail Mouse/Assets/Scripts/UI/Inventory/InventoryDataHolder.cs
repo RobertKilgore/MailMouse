@@ -79,7 +79,7 @@ public class InventoryDataHolder : MonoBehaviour
 
     /// <summary>
     /// Returns every unique package delivery address with the number of packages at that address,
-    /// sorted by package count descending and then alphabetically by address.
+    /// sorted alphabetically by street name and then numerically by house number.
     /// </summary>
     public List<KeyValuePair<string, int>> GetAllPackageDeliveryAddressCounts()
     {
@@ -104,18 +104,14 @@ public class InventoryDataHolder : MonoBehaviour
         List<KeyValuePair<string, int>> results = new List<KeyValuePair<string, int>>(addressCounts);
         results.Sort((left, right) =>
         {
-            int countComparison = right.Value.CompareTo(left.Value);
-            if (countComparison != 0)
-                return countComparison;
-
-            return string.Compare(left.Key, right.Key, System.StringComparison.OrdinalIgnoreCase);
+            return CompareDeliveryAddresses(left.Key, right.Key);
         });
 
         return results;
     }
 
     /// <summary>
-    /// Returns the unique delivery addresses only, ordered by package count descending and then alphabetically.
+    /// Returns the unique delivery addresses only, ordered by street name and then house number.
     /// </summary>
     public List<string> GetAllPackageDeliveryAddresses()
     {
@@ -126,6 +122,38 @@ public class InventoryDataHolder : MonoBehaviour
         }
 
         return addresses;
+    }
+
+    private static int CompareDeliveryAddresses(string leftAddress, string rightAddress)
+    {
+        SplitDeliveryAddress(leftAddress, out int leftNumber, out string leftStreet);
+        SplitDeliveryAddress(rightAddress, out int rightNumber, out string rightStreet);
+
+        int streetComparison = string.Compare(leftStreet, rightStreet, System.StringComparison.OrdinalIgnoreCase);
+        if (streetComparison != 0)
+            return streetComparison;
+
+        int numberComparison = leftNumber.CompareTo(rightNumber);
+        if (numberComparison != 0)
+            return numberComparison;
+
+        return string.Compare(leftAddress, rightAddress, System.StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static void SplitDeliveryAddress(string address, out int houseNumber, out string street)
+    {
+        houseNumber = 0;
+        street = address?.Trim() ?? string.Empty;
+
+        int numberEnd = 0;
+        while (numberEnd < street.Length && char.IsDigit(street[numberEnd]))
+            numberEnd++;
+
+        if (numberEnd > 0)
+        {
+            int.TryParse(street.Substring(0, numberEnd), out houseNumber);
+            street = street.Substring(numberEnd).TrimStart();
+        }
     }
 
     /// <summary>
