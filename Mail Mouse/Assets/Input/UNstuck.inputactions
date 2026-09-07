@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "UNstuck",
+    "maps": [
+        {
+            "name": "Unstuck",
+            "id": "6d933461-3b4d-4907-9431-0005ce95139d",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "560844c5-e325-4c23-aa9e-f98b48ecead8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7fb56998-9a72-4a1a-8bca-f5078bbbbd9d",
+                    "path": "<Keyboard>/#(U)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
