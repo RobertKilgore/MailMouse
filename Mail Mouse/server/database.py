@@ -1,6 +1,6 @@
 import os
 
-from sqlalchemy import Boolean, DateTime, String, create_engine, func, select
+from sqlalchemy import Boolean, DateTime, String, create_engine, func, select, text
 from sqlalchemy import Integer
 from sqlalchemy.orm import DeclarativeBase, Session, mapped_column
 
@@ -38,6 +38,19 @@ engine = create_engine(
 
 def initialize_database() -> None:
     Base.metadata.create_all(engine)
+    if configured_database_url.startswith("postgresql+"):
+        with engine.begin() as connection:
+            connection.execute(
+                text(
+                    """
+                    SELECT setval(
+                        pg_get_serial_sequence('access_codes', 'id'),
+                        COALESCE((SELECT MAX(id) FROM access_codes), 0) + 1,
+                        false
+                    )
+                    """
+                )
+            )
 
 
 def find_access_code(code: str, product_id: str) -> AccessCode | None:

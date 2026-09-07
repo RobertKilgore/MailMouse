@@ -50,6 +50,12 @@ public class PlayerMenuInputController : MonoBehaviour
 
         if (inputActions.UI.Cancel.WasPressedThisFrame())
         {
+            if (TutorialMenuHandler.Instance != null && TutorialMenuHandler.Instance.IsOpen)
+            {
+                TutorialMenuHandler.Instance.CloseTutorial();
+                return;
+            }
+
             RequestPauseToggle();
             return;
         }

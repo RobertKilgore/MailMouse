@@ -13,7 +13,7 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     [TextArea(3, 10)]
     [SerializeField]
-    private string shapeDefinition = "X"; // ASCII-art shape definition using X for filled tiles.
+    private string shapeDefinition = "X"; // ASCII-art shape definition using X for filled tiles. 
 
     [Header("Tile Visual")]
     [SerializeField]

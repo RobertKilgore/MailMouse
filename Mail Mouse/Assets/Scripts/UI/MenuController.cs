@@ -86,9 +86,10 @@ public class MenuController : MonoBehaviour
         Debug.Log($"[MenuController.Open] {gameObject.name}");
         if (IsOpen && gameObject.activeSelf)
         {
-            if (MenuManager.Instance != null && !MenuManager.Instance.GetActiveMenus().Any(m => m == this))
-                MenuManager.Instance.OpenMenu(this);
-            return true;
+            if (MenuManager.Instance == null || MenuManager.Instance.GetActiveMenus().Any(m => m == this))
+                return true;
+
+            return MenuManager.Instance.OpenMenu(this);
         }
 
         bool opened = true;

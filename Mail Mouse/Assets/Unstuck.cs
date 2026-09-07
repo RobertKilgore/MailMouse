@@ -3,6 +3,7 @@ using UnityEngine;
 public class Unstuck : MonoBehaviour
 {
     [SerializeField] private GameObject player;
+    [SerializeField] private PauseMenuHandler pauseMenuHandler;
     [SerializeField] private float distanceInFrontOfMailbox = 2f;
     [SerializeField] private float verticalOffset = 0.5f;
     [SerializeField] private float rotationOffset = 0f;
@@ -48,12 +49,22 @@ public class Unstuck : MonoBehaviour
             playerRigidbody.rotation = targetRotation;
             playerRigidbody.linearVelocity = Vector3.zero;
             playerRigidbody.angularVelocity = Vector3.zero;
+            ClosePauseMenu();
             return;
         }
 
         player.transform.SetPositionAndRotation(
             targetPosition,
             targetRotation);
+        ClosePauseMenu();
     }
+
+    private void ClosePauseMenu()
+    {
+        if (pauseMenuHandler == null)
+            pauseMenuHandler = FindFirstObjectByType<PauseMenuHandler>(FindObjectsInactive.Include);
+
+        pauseMenuHandler?.ClosePauseMenu();
     }
+}
 

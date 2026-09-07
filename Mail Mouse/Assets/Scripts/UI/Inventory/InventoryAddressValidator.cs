@@ -63,6 +63,8 @@ public class InventoryAddressValidator : MonoBehaviour
 
         HashSet<string> sceneAddresses = new HashSet<string>(System.StringComparer.OrdinalIgnoreCase);
         HashSet<string> bookAddresses = new HashSet<string>(System.StringComparer.OrdinalIgnoreCase);
+        Dictionary<string, List<string>> addressSources = new Dictionary<string, List<string>>(System.StringComparer.OrdinalIgnoreCase);
+        Dictionary<string, InventoryDataHolder> addressObjects = new Dictionary<string, InventoryDataHolder>(System.StringComparer.OrdinalIgnoreCase);
         int checkedItems = 0;
 
         if (addressBook.entries != null)
@@ -92,7 +94,13 @@ public class InventoryAddressValidator : MonoBehaviour
 
                 if (!string.IsNullOrWhiteSpace(inventoryData.address))
                 {
-                    sceneAddresses.Add(inventoryData.address.Trim());
+                    AddAddressSource(
+                        inventoryData.address,
+                        $"{holder.name} / {inventoryData.displayName} (inventoryId: {inventoryData.inventoryId})",
+                        holder,
+                        sceneAddresses,
+                        addressSources,
+                        addressObjects);
                 }
 
                 if (inventoryData.items == null)
@@ -107,7 +115,13 @@ public class InventoryAddressValidator : MonoBehaviour
                     if (string.IsNullOrWhiteSpace(itemData.mailData.address))
                         continue;
 
-                    sceneAddresses.Add(itemData.mailData.address.Trim());
+                    AddAddressSource(
+                        itemData.mailData.address,
+                        $"{holder.name} / {inventoryData.displayName} / item {itemData.itemId}",
+                        holder,
+                        sceneAddresses,
+                        addressSources,
+                        addressObjects);
                 }
             }
         }
@@ -133,6 +147,20 @@ public class InventoryAddressValidator : MonoBehaviour
 
             if (sceneAddressesMissingFromBook.Count > 0)
             {
+                foreach (string missingAddress in sceneAddressesMissingFromBook)
+                {
+                    string sources = addressSources.TryGetValue(missingAddress, out List<string> sourceList)
+                        ? BuildJoinedList(sourceList)
+                        : "unknown source";
+                    InventoryDataHolder sourceObject = addressObjects.TryGetValue(missingAddress, out InventoryDataHolder holder)
+                        ? holder
+                        : null;
+                    string hierarchyPath = sourceObject != null ? GetHierarchyPath(sourceObject.transform) : "unknown hierarchy";
+                    Debug.LogWarning(
+                        $"[AddressValidator] Address '{missingAddress}' is missing from the address book. Source: {sources}. Hierarchy: {hierarchyPath}.",
+                        sourceObject != null ? sourceObject.gameObject : gameObject);
+                }
+
                 Debug.LogWarning($"[AddressValidator] Scene addresses missing from the address book: {sceneAddressesMissingFromBook.Count} ({sceneMissingText})", this);
             }
 
@@ -161,5 +189,41 @@ public class InventoryAddressValidator : MonoBehaviour
         }
 
         return result;
+    }
+
+    private void AddAddressSource(
+        string address,
+        string source,
+        InventoryDataHolder holder,
+        HashSet<string> sceneAddresses,
+        Dictionary<string, List<string>> addressSources,
+        Dictionary<string, InventoryDataHolder> addressObjects)
+    {
+        string normalizedAddress = address.Trim();
+        sceneAddresses.Add(normalizedAddress);
+
+        if (!addressSources.TryGetValue(normalizedAddress, out List<string> sources))
+        {
+            sources = new List<string>();
+            addressSources.Add(normalizedAddress, sources);
+        }
+
+        if (!sources.Contains(source))
+            sources.Add(source);
+
+        if (!addressObjects.ContainsKey(normalizedAddress))
+            addressObjects.Add(normalizedAddress, holder);
+    }
+
+    private string GetHierarchyPath(Transform target)
+    {
+        string path = target.name;
+        while (target.parent != null)
+        {
+            target = target.parent;
+            path = $"{target.name}/{path}";
+        }
+
+        return path;
     }
 }
